@@ -8,8 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		D8D212EC9FA78396A8372755 /* libPods-MQX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EE210233C280BA3763F0E7 /* libPods-MQX.a */; };
+		F46641E0204A972800DA4CCE /* YNCMqxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641DF204A972800DA4CCE /* YNCMqxViewController.m */; };
+		F46641E1204AA07400DA4CCE /* ABECam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F482ACD5204A403300029E50 /* ABECam.framework */; };
+		F46641E2204AA07400DA4CCE /* ABECam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F482ACD5204A403300029E50 /* ABECam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */; };
+		F46641FE204AACA600DA4CCE /* YNCVideoTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641FD204AACA600DA4CCE /* YNCVideoTimeView.m */; };
+		F4664200204AACBD00DA4CCE /* YNCCameraToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46641FF204AACBD00DA4CCE /* YNCCameraToolView.xib */; };
+		F4664202204AACCA00DA4CCE /* YNCVideoTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */; };
+		F4664206204AAFE600DA4CCE /* UIButton+YNCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F4664204204AAFE600DA4CCE /* UIButton+YNCButton.m */; };
+		F482ACDB204A6D1E00029E50 /* YNCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACDA204A6D1E00029E50 /* YNCConst.m */; };
+		F482ACEA204A72FC00029E50 /* YNCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACE9204A72FC00029E50 /* YNCUtil.m */; };
+		F482ACEE204A78DA00029E50 /* YNCBaseNavigationControllerStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACED204A78DA00029E50 /* YNCBaseNavigationControllerStack.m */; };
+		F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF2204A7C0800029E50 /* MainViewController.m */; };
+		F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */; };
+		F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF9204A83B300029E50 /* YNCABECamManager.m */; };
 		F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5C920463B8000B06CEE /* AppDelegate.m */; };
-		F4B7F5CD20463B8000B06CEE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5CC20463B8000B06CEE /* ViewController.m */; };
 		F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5CE20463B8000B06CEE /* Main.storyboard */; };
 		F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5D120463B8000B06CEE /* Assets.xcassets */; };
 		F4B7F5D520463B8000B06CEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5D320463B8000B06CEE /* LaunchScreen.storyboard */; };
@@ -35,15 +48,56 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F46641E3204AA07500DA4CCE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F46641E2204AA07400DA4CCE /* ABECam.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		412D59867CEB8D47C4686724 /* Pods-MQX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQX/Pods-MQX.debug.xcconfig"; sourceTree = "<group>"; };
 		80EE210233C280BA3763F0E7 /* libPods-MQX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MQX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88825A89DA548D527E95DEEC /* Pods-MQX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQX.release.xcconfig"; path = "Pods/Target Support Files/Pods-MQX/Pods-MQX.release.xcconfig"; sourceTree = "<group>"; };
+		F46641DE204A972800DA4CCE /* YNCMqxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCMqxViewController.h; sourceTree = "<group>"; };
+		F46641DF204A972800DA4CCE /* YNCMqxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCMqxViewController.m; sourceTree = "<group>"; };
+		F46641F9204AAC8400DA4CCE /* YNCCameraToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCameraToolView.h; sourceTree = "<group>"; };
+		F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCCameraToolView.m; sourceTree = "<group>"; };
+		F46641FC204AACA600DA4CCE /* YNCVideoTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCVideoTimeView.h; sourceTree = "<group>"; };
+		F46641FD204AACA600DA4CCE /* YNCVideoTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCVideoTimeView.m; sourceTree = "<group>"; };
+		F46641FF204AACBD00DA4CCE /* YNCCameraToolView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCCameraToolView.xib; sourceTree = "<group>"; };
+		F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCVideoTimeView.xib; sourceTree = "<group>"; };
+		F4664204204AAFE600DA4CCE /* UIButton+YNCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+YNCButton.m"; sourceTree = "<group>"; };
+		F4664205204AAFE600DA4CCE /* UIButton+YNCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+YNCButton.h"; sourceTree = "<group>"; };
+		F482ACD5204A403300029E50 /* ABECam.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ABECam.framework; sourceTree = "<group>"; };
+		F482ACD7204A682900029E50 /* YNCMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCMacros.h; sourceTree = "<group>"; };
+		F482ACD8204A6D0400029E50 /* YNCAppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCAppConfig.h; sourceTree = "<group>"; };
+		F482ACD9204A6D1E00029E50 /* YNCConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCConst.h; sourceTree = "<group>"; };
+		F482ACDA204A6D1E00029E50 /* YNCConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCConst.m; sourceTree = "<group>"; };
+		F482ACDC204A6D3600029E50 /* YNCEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCEnum.h; sourceTree = "<group>"; };
+		F482ACDD204A6D4E00029E50 /* YNCBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCBlock.h; sourceTree = "<group>"; };
+		F482ACDE204A6D9900029E50 /* YNCURLConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCURLConfig.h; sourceTree = "<group>"; };
+		F482ACE0204A6F4400029E50 /* YNCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCSingleton.h; sourceTree = "<group>"; };
+		F482ACE8204A72FC00029E50 /* YNCUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCUtil.h; sourceTree = "<group>"; };
+		F482ACE9204A72FC00029E50 /* YNCUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCUtil.m; sourceTree = "<group>"; };
+		F482ACEC204A78DA00029E50 /* YNCBaseNavigationControllerStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCBaseNavigationControllerStack.h; sourceTree = "<group>"; };
+		F482ACED204A78DA00029E50 /* YNCBaseNavigationControllerStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCBaseNavigationControllerStack.m; sourceTree = "<group>"; };
+		F482ACF1204A7C0800029E50 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		F482ACF2204A7C0800029E50 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		F482ACF4204A7C4D00029E50 /* YNCVideoPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCVideoPreviewViewController.h; sourceTree = "<group>"; };
+		F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCVideoPreviewViewController.m; sourceTree = "<group>"; };
+		F482ACF8204A83B300029E50 /* YNCABECamManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCABECamManager.h; sourceTree = "<group>"; };
+		F482ACF9204A83B300029E50 /* YNCABECamManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCABECamManager.m; sourceTree = "<group>"; };
 		F4B7F5C520463B8000B06CEE /* MQX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MQX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B7F5C820463B8000B06CEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F4B7F5C920463B8000B06CEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F4B7F5CB20463B8000B06CEE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F4B7F5CC20463B8000B06CEE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F4B7F5CF20463B8000B06CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4B7F5D120463B8000B06CEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4B7F5D420463B8000B06CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8D212EC9FA78396A8372755 /* libPods-MQX.a in Frameworks */,
+				F46641E1204AA07400DA4CCE /* ABECam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +155,203 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F46641E4204AABF600DA4CCE /* CameraTool */ = {
+			isa = PBXGroup;
+			children = (
+				F46641F9204AAC8400DA4CCE /* YNCCameraToolView.h */,
+				F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */,
+				F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */,
+				F46641FC204AACA600DA4CCE /* YNCVideoTimeView.h */,
+				F46641FD204AACA600DA4CCE /* YNCVideoTimeView.m */,
+				F46641FF204AACBD00DA4CCE /* YNCCameraToolView.xib */,
+			);
+			path = CameraTool;
+			sourceTree = "<group>";
+		};
+		F4664203204AAFDA00DA4CCE /* YNCButton */ = {
+			isa = PBXGroup;
+			children = (
+				F4664205204AAFE600DA4CCE /* UIButton+YNCButton.h */,
+				F4664204204AAFE600DA4CCE /* UIButton+YNCButton.m */,
+			);
+			path = YNCButton;
+			sourceTree = "<group>";
+		};
+		F482ACCD204A3FCD00029E50 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F482ACCE204A3FCD00029E50 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACD7204A682900029E50 /* YNCMacros.h */,
+				F482ACD8204A6D0400029E50 /* YNCAppConfig.h */,
+				F482ACD9204A6D1E00029E50 /* YNCConst.h */,
+				F482ACDA204A6D1E00029E50 /* YNCConst.m */,
+				F482ACDC204A6D3600029E50 /* YNCEnum.h */,
+				F482ACDD204A6D4E00029E50 /* YNCBlock.h */,
+				F482ACDE204A6D9900029E50 /* YNCURLConfig.h */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		F482ACCF204A3FCD00029E50 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACE5204A709000029E50 /* Category */,
+				F482ACE4204A709000029E50 /* Helper */,
+				F482ACE1204A709000029E50 /* Manager */,
+				F482ACE2204A709000029E50 /* Protocol */,
+				F482ACE3204A709000029E50 /* Router */,
+				F482ACE7204A709000029E50 /* Service */,
+				F482ACE6204A709000029E50 /* Util */,
+				F482ACDF204A6F3800029E50 /* Singleton */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F482ACD0204A3FCD00029E50 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACEF204A7B5B00029E50 /* Main */,
+				F482ACF0204A7B5B00029E50 /* VideoPreview */,
+				F482ACEB204A787200029E50 /* BaseClass */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F482ACD1204A3FCD00029E50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F46641E4204AABF600DA4CCE /* CameraTool */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F482ACD2204A3FCD00029E50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F482ACD3204A3FCD00029E50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F482ACD4204A3FCE00029E50 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACD5204A403300029E50 /* ABECam.framework */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		F482ACDF204A6F3800029E50 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACE0204A6F4400029E50 /* YNCSingleton.h */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		F482ACE1204A709000029E50 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACF7204A82B400029E50 /* ABECam */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		F482ACE2204A709000029E50 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F482ACE3204A709000029E50 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F482ACE4204A709000029E50 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F482ACE5204A709000029E50 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F4664203204AAFDA00DA4CCE /* YNCButton */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		F482ACE6204A709000029E50 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACE8204A72FC00029E50 /* YNCUtil.h */,
+				F482ACE9204A72FC00029E50 /* YNCUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		F482ACE7204A709000029E50 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F482ACEB204A787200029E50 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACEC204A78DA00029E50 /* YNCBaseNavigationControllerStack.h */,
+				F482ACED204A78DA00029E50 /* YNCBaseNavigationControllerStack.m */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		F482ACEF204A7B5B00029E50 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACF1204A7C0800029E50 /* MainViewController.h */,
+				F482ACF2204A7C0800029E50 /* MainViewController.m */,
+				F46641DE204A972800DA4CCE /* YNCMqxViewController.h */,
+				F46641DF204A972800DA4CCE /* YNCMqxViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F482ACF0204A7B5B00029E50 /* VideoPreview */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACF4204A7C4D00029E50 /* YNCVideoPreviewViewController.h */,
+				F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */,
+			);
+			path = VideoPreview;
+			sourceTree = "<group>";
+		};
+		F482ACF7204A82B400029E50 /* ABECam */ = {
+			isa = PBXGroup;
+			children = (
+				F482ACF8204A83B300029E50 /* YNCABECamManager.h */,
+				F482ACF9204A83B300029E50 /* YNCABECamManager.m */,
+			);
+			path = ABECam;
+			sourceTree = "<group>";
+		};
 		F4B7F5BC20463B8000B06CEE = {
 			isa = PBXGroup;
 			children = (
@@ -125,10 +377,16 @@
 		F4B7F5C720463B8000B06CEE /* MQX */ = {
 			isa = PBXGroup;
 			children = (
+				F482ACD2204A3FCD00029E50 /* Model */,
+				F482ACD1204A3FCD00029E50 /* View */,
+				F482ACD0204A3FCD00029E50 /* ViewController */,
+				F482ACD3204A3FCD00029E50 /* ViewModel */,
+				F482ACCF204A3FCD00029E50 /* Utils */,
+				F482ACD4204A3FCE00029E50 /* Vendor */,
+				F482ACCE204A3FCD00029E50 /* Macros */,
+				F482ACCD204A3FCD00029E50 /* Resource */,
 				F4B7F5C820463B8000B06CEE /* AppDelegate.h */,
 				F4B7F5C920463B8000B06CEE /* AppDelegate.m */,
-				F4B7F5CB20463B8000B06CEE /* ViewController.h */,
-				F4B7F5CC20463B8000B06CEE /* ViewController.m */,
 				F4B7F5CE20463B8000B06CEE /* Main.storyboard */,
 				F4B7F5D120463B8000B06CEE /* Assets.xcassets */,
 				F4B7F5D320463B8000B06CEE /* LaunchScreen.storyboard */,
@@ -169,6 +427,7 @@
 				F4B7F5C320463B8000B06CEE /* Resources */,
 				588270316B76C2D5E76A1CBA /* [CP] Embed Pods Frameworks */,
 				8E2DCF15F2C0C0A77200F3C5 /* [CP] Copy Pods Resources */,
+				F46641E3204AA07500DA4CCE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,7 +526,9 @@
 			files = (
 				F4B7F5D520463B8000B06CEE /* LaunchScreen.storyboard in Resources */,
 				F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */,
+				F4664200204AACBD00DA4CCE /* YNCCameraToolView.xib in Resources */,
 				F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */,
+				F4664202204AACCA00DA4CCE /* YNCVideoTimeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,8 +612,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4B7F5CD20463B8000B06CEE /* ViewController.m in Sources */,
+				F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */,
 				F4B7F5D820463B8000B06CEE /* main.m in Sources */,
+				F4664206204AAFE600DA4CCE /* UIButton+YNCButton.m in Sources */,
+				F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */,
+				F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */,
+				F482ACEE204A78DA00029E50 /* YNCBaseNavigationControllerStack.m in Sources */,
+				F46641FE204AACA600DA4CCE /* YNCVideoTimeView.m in Sources */,
+				F482ACDB204A6D1E00029E50 /* YNCConst.m in Sources */,
+				F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */,
+				F46641E0204A972800DA4CCE /* YNCMqxViewController.m in Sources */,
+				F482ACEA204A72FC00029E50 /* YNCUtil.m in Sources */,
 				F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +789,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWV6233J9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MQX/Vendor",
+				);
 				INFOPLIST_FILE = MQX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -535,6 +810,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWV6233J9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MQX/Vendor",
+				);
 				INFOPLIST_FILE = MQX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

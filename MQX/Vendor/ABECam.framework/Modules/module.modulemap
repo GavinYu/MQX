@@ -1,0 +1,6 @@
+framework module ABECam {
+  umbrella header "ABECam.h"
+
+  export *
+  module * { export * }
+}
