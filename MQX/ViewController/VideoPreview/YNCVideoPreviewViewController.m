@@ -10,8 +10,7 @@
 
 #import "YNCABECamManager.h"
 #import "YNCAppConfig.h"
-//引入 ABECam Framework
-#import <ABECam/ABECam.h>
+
 
 @interface YNCVideoPreviewViewController () <AbeCamHandleDelegate>
 

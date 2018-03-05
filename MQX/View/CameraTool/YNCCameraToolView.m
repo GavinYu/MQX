@@ -86,7 +86,7 @@
     
     self.numLabel = [[UILabel alloc] init];
     _numLabel.textAlignment = NSTextAlignmentCenter;
-//    _numLabel.textColor = TextGreenColor;
+//    _numLabel.textColor = [UIColor yncGreenColor];
     _numLabel.font = [UIFont systemFontOfSize:9.0f];
     [_cameraOperateButton addSubview:_numLabel];
     [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {

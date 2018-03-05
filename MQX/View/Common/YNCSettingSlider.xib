@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YNCSettingSlider">
+            <connections>
+                <outlet property="animationLine" destination="crc-KW-aJl" id="gWS-2H-bKM"/>
+                <outlet property="animationLineWidth" destination="JsE-SQ-AyP" id="SCI-bY-mfb"/>
+                <outlet property="backLineView" destination="xPQ-oi-pC0" id="69W-yY-Ygz"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="PaJ-Ry-zTC"/>
+                <outlet property="panGesture" destination="XeS-Sm-4TQ" id="gu8-VO-raO"/>
+                <outlet property="touchImageView" destination="ATm-HI-slJ" id="CCr-74-3jv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="298" height="105"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPQ-oi-pC0" userLabel="backLine">
+                    <rect key="frame" x="0.0" y="51.5" width="298" height="2"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="oYT-QE-mfR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crc-KW-aJl" userLabel="animationLine">
+                    <rect key="frame" x="0.0" y="51" width="0.0" height="3"/>
+                    <color key="backgroundColor" red="0.15294117647058825" green="0.73333333333333328" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="G0g-ZN-0B0"/>
+                        <constraint firstAttribute="width" id="JsE-SQ-AyP"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_greenCircle" translatesAutoresizingMaskIntoConstraints="NO" id="ATm-HI-slJ">
+                    <rect key="frame" x="-15" y="37.5" width="30" height="30"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Alf-GV-lJv"/>
+                        <constraint firstAttribute="width" constant="30" id="opb-gd-S8K"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="userInteractionEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="XeS-Sm-4TQ" appends="YES" id="d1J-gs-cFT"/>
+                    </connections>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="xPQ-oi-pC0" firstAttribute="centerY" secondItem="crc-KW-aJl" secondAttribute="centerY" id="2ju-Sy-vXD"/>
+                <constraint firstItem="ATm-HI-slJ" firstAttribute="centerY" secondItem="xPQ-oi-pC0" secondAttribute="centerY" id="7On-G5-SRg"/>
+                <constraint firstItem="xPQ-oi-pC0" firstAttribute="leading" secondItem="crc-KW-aJl" secondAttribute="leading" id="KAS-0m-Ryp"/>
+                <constraint firstItem="xPQ-oi-pC0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aje-0Y-M9U"/>
+                <constraint firstItem="ATm-HI-slJ" firstAttribute="trailing" secondItem="crc-KW-aJl" secondAttribute="trailing" constant="15" id="bpu-m0-8MB"/>
+                <constraint firstItem="xPQ-oi-pC0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jfp-bl-s0Q"/>
+                <constraint firstAttribute="trailing" secondItem="xPQ-oi-pC0" secondAttribute="trailing" id="sZJ-BL-MQh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-124" y="-229.5"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="XeS-Sm-4TQ">
+            <connections>
+                <action selector="panGestureAction:" destination="-1" id="sXS-4t-p07"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="icon_greenCircle" width="30" height="30"/>
+    </resources>
+</document>

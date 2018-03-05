@@ -59,13 +59,55 @@
                     <view key="view" contentMode="scaleToFill" id="fhq-lN-t1W">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuh-UE-5q5">
+                                <rect key="frame" x="223" y="122" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Record"/>
+                                <connections>
+                                    <action selector="clickStartRecordButton:" destination="CeY-ed-dBx" eventType="touchUpInside" id="KaT-j7-5ET"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHu-t4-FQq">
+                                <rect key="frame" x="223" y="56" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="clickTakePhotoButton:" destination="CeY-ed-dBx" eventType="touchUpInside" id="11B-x1-Ar2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyI-KA-Gln">
+                                <rect key="frame" x="223" y="181" width="85" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop Record"/>
+                                <connections>
+                                    <action selector="clickStopRecordButton:" destination="CeY-ed-dBx" eventType="touchUpInside" id="DIw-IW-tsE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4C-0k-9Af">
+                                <rect key="frame" x="401" y="295" width="100" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FPV"/>
+                                <connections>
+                                    <action selector="clickFPVButton:" destination="CeY-ed-dBx" eventType="touchUpInside" id="ruU-Ky-Nzd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVM-y2-QeP">
+                                <rect key="frame" x="260" y="278" width="98" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Convert Video"/>
+                                <connections>
+                                    <action selector="clickConvertButton:" destination="CeY-ed-dBx" eventType="touchUpInside" id="GeQ-0e-s6b"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Fjy-hD-683"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhu-j4-TCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="6"/>
+            <point key="canvasLocation" x="64.31784107946028" y="5.5999999999999996"/>
         </scene>
         <!--Video Preview View Controller-->
         <scene sceneID="mFp-VU-8mo">

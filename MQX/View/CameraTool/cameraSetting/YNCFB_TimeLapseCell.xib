@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="154" id="KGk-i7-Jjw" customClass="YNCFB_TimeLapseCell">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="154"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="369" height="153.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZh-8r-RJW">
+                        <rect key="frame" x="169" y="23.5" width="30" height="30"/>
+                        <state key="normal" title="5s">
+                            <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="timeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KeF-vX-QxE"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPK-w0-0K9">
+                        <rect key="frame" x="262" y="24" width="30" height="30"/>
+                        <state key="normal" title="10s">
+                            <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="timeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e1T-Io-pBn"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-TY-FUi">
+                        <rect key="frame" x="77.5" y="100" width="30" height="30"/>
+                        <state key="normal" title="15s">
+                            <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="timeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4ky-Cc-LmO"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ES-sk-PiB">
+                        <rect key="frame" x="169" y="100" width="30" height="30"/>
+                        <state key="normal" title="20s">
+                            <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="timeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9Ry-VT-asW"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhM-PB-0GV">
+                        <rect key="frame" x="77.5" y="24" width="30" height="30"/>
+                        <state key="normal" title="2s">
+                            <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="timeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9Qr-an-Wop"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8ES-sk-PiB" firstAttribute="centerX" secondItem="JZh-8r-RJW" secondAttribute="centerX" id="0qY-4b-wNL"/>
+                    <constraint firstItem="8ES-sk-PiB" firstAttribute="height" secondItem="NhM-PB-0GV" secondAttribute="height" id="47t-lC-LtL"/>
+                    <constraint firstItem="8ES-sk-PiB" firstAttribute="centerY" secondItem="9hd-TY-FUi" secondAttribute="centerY" id="7Ag-FB-CiO"/>
+                    <constraint firstItem="JZh-8r-RJW" firstAttribute="width" secondItem="NhM-PB-0GV" secondAttribute="width" id="Acd-8y-IGQ"/>
+                    <constraint firstItem="NhM-PB-0GV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="0.5" id="BYT-tw-WLG"/>
+                    <constraint firstItem="WPK-w0-0K9" firstAttribute="height" secondItem="NhM-PB-0GV" secondAttribute="height" id="Epb-LR-S25"/>
+                    <constraint firstItem="8ES-sk-PiB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="1.5" id="G4P-aN-81K"/>
+                    <constraint firstItem="WPK-w0-0K9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="1.5" id="SAC-mx-03W"/>
+                    <constraint firstItem="9hd-TY-FUi" firstAttribute="centerX" secondItem="NhM-PB-0GV" secondAttribute="centerX" id="SmQ-Fa-GKd"/>
+                    <constraint firstItem="9hd-TY-FUi" firstAttribute="height" secondItem="NhM-PB-0GV" secondAttribute="height" id="Thq-eJ-74H"/>
+                    <constraint firstItem="JZh-8r-RJW" firstAttribute="height" secondItem="NhM-PB-0GV" secondAttribute="height" id="VvZ-da-n54"/>
+                    <constraint firstItem="WPK-w0-0K9" firstAttribute="width" secondItem="NhM-PB-0GV" secondAttribute="width" id="ZgX-Ql-8wC"/>
+                    <constraint firstItem="JZh-8r-RJW" firstAttribute="centerY" secondItem="NhM-PB-0GV" secondAttribute="centerY" id="hHC-LE-6qA"/>
+                    <constraint firstItem="JZh-8r-RJW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="0.5" id="hv9-N1-bsI"/>
+                    <constraint firstItem="JZh-8r-RJW" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ihs-Zc-9dV"/>
+                    <constraint firstItem="8ES-sk-PiB" firstAttribute="width" secondItem="NhM-PB-0GV" secondAttribute="width" id="j0L-Uh-b52"/>
+                    <constraint firstItem="WPK-w0-0K9" firstAttribute="centerY" secondItem="NhM-PB-0GV" secondAttribute="centerY" id="jJY-0P-so5"/>
+                    <constraint firstItem="9hd-TY-FUi" firstAttribute="width" secondItem="NhM-PB-0GV" secondAttribute="width" id="nTn-ET-8El"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="timeFifteenBtn" destination="9hd-TY-FUi" id="qgm-dU-CoV"/>
+                <outlet property="timeFiveBtn" destination="JZh-8r-RJW" id="f3U-bE-AhM"/>
+                <outlet property="timeSevenBtn" destination="WPK-w0-0K9" id="W90-h9-gxm"/>
+                <outlet property="timeTwentyBtn" destination="8ES-sk-PiB" id="YqL-IL-MRx"/>
+                <outlet property="timeTwoBtn" destination="NhM-PB-0GV" id="Qha-DU-ePh"/>
+            </connections>
+            <point key="canvasLocation" x="-229" y="13"/>
+        </tableViewCell>
+    </objects>
+</document>

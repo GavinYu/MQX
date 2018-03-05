@@ -7,6 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8442DCE9204BF31500BF1E30 /* YNCCameraSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCBF204BF31000BF1E30 /* YNCCameraSettingHeaderView.m */; };
+		8442DCEA204BF31500BF1E30 /* YNCCameraSettingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCC0204BF31000BF1E30 /* YNCCameraSettingModeCell.xib */; };
+		8442DCEB204BF31500BF1E30 /* YNCFB_ISOCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCC1204BF31000BF1E30 /* YNCFB_ISOCell.m */; };
+		8442DCEC204BF31500BF1E30 /* YNCCameraCommonSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCC2204BF31000BF1E30 /* YNCCameraCommonSettingView.m */; };
+		8442DCED204BF31500BF1E30 /* YNCFB_ExposureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCC4204BF31000BF1E30 /* YNCFB_ExposureCell.xib */; };
+		8442DCEE204BF31500BF1E30 /* YNCFB_BurstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCC6204BF31000BF1E30 /* YNCFB_BurstCell.xib */; };
+		8442DCEF204BF31500BF1E30 /* YNCFB_MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCC7204BF31100BF1E30 /* YNCFB_MaskView.m */; };
+		8442DCF0204BF31500BF1E30 /* YNCFB_PhotoModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCC8204BF31100BF1E30 /* YNCFB_PhotoModeCell.m */; };
+		8442DCF1204BF31500BF1E30 /* YNCCameraSettingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCCA204BF31100BF1E30 /* YNCCameraSettingFooterView.m */; };
+		8442DCF2204BF31500BF1E30 /* YNCFB_ShutterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCCB204BF31100BF1E30 /* YNCFB_ShutterView.xib */; };
+		8442DCF3204BF31500BF1E30 /* YNCFB_ShutterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCCC204BF31100BF1E30 /* YNCFB_ShutterCell.xib */; };
+		8442DCF4204BF31500BF1E30 /* YNCFB_ExposureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCCF204BF31200BF1E30 /* YNCFB_ExposureView.xib */; };
+		8442DCF5204BF31500BF1E30 /* YNCCameraSettingModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCD0204BF31200BF1E30 /* YNCCameraSettingModeCell.m */; };
+		8442DCF6204BF31500BF1E30 /* YNCFB_ShutterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCD2204BF31200BF1E30 /* YNCFB_ShutterCell.m */; };
+		8442DCF7204BF31500BF1E30 /* YNCFB_ISOCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCD3204BF31200BF1E30 /* YNCFB_ISOCell.xib */; };
+		8442DCF8204BF31500BF1E30 /* YNCCameraSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCD6204BF31300BF1E30 /* YNCCameraSettingHeaderView.xib */; };
+		8442DCF9204BF31500BF1E30 /* YNCFB_ExposureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCD7204BF31300BF1E30 /* YNCFB_ExposureCell.m */; };
+		8442DCFA204BF31500BF1E30 /* YNCFB_PhotoModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCD9204BF31300BF1E30 /* YNCFB_PhotoModeCell.xib */; };
+		8442DCFB204BF31500BF1E30 /* YNCCameraSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCDA204BF31300BF1E30 /* YNCCameraSettingView.m */; };
+		8442DCFC204BF31500BF1E30 /* YNCFB_MaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCDC204BF31300BF1E30 /* YNCFB_MaskView.xib */; };
+		8442DCFD204BF31500BF1E30 /* YNCFB_TimeLapseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCDE204BF31400BF1E30 /* YNCFB_TimeLapseCell.m */; };
+		8442DCFE204BF31500BF1E30 /* YNCFB_TimeLapseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCE0204BF31400BF1E30 /* YNCFB_TimeLapseCell.xib */; };
+		8442DCFF204BF31500BF1E30 /* YNCCameraSettingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCE1204BF31400BF1E30 /* YNCCameraSettingFooterView.xib */; };
+		8442DD00204BF31500BF1E30 /* YNCFB_BurstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCE3204BF31400BF1E30 /* YNCFB_BurstCell.m */; };
+		8442DD01204BF31500BF1E30 /* YNCFB_ShutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCE4204BF31400BF1E30 /* YNCFB_ShutterView.m */; };
+		8442DD02204BF31500BF1E30 /* UIPickerView+YNCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCE5204BF31400BF1E30 /* UIPickerView+YNCPicker.m */; };
+		8442DD03204BF31500BF1E30 /* YNCFB_ExposureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCE8204BF31500BF1E30 /* YNCFB_ExposureView.m */; };
+		8442DD15204C026B00BF1E30 /* YNCFB_FlickerValue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD08204C026B00BF1E30 /* YNCFB_FlickerValue.plist */; };
+		8442DD16204C026B00BF1E30 /* YNCFB_PhotoQuality.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD09204C026B00BF1E30 /* YNCFB_PhotoQuality.plist */; };
+		8442DD17204C026B00BF1E30 /* YNCFB_MeteringMode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0A204C026B00BF1E30 /* YNCFB_MeteringMode.plist */; };
+		8442DD18204C026B00BF1E30 /* CameraSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0B204C026B00BF1E30 /* CameraSetting.plist */; };
+		8442DD19204C026B00BF1E30 /* WhiteBalance.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0C204C026B00BF1E30 /* WhiteBalance.plist */; };
+		8442DD1A204C026B00BF1E30 /* YNCFB_ISOValue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0D204C026B00BF1E30 /* YNCFB_ISOValue.plist */; };
+		8442DD1B204C026B00BF1E30 /* YNCFB_PhotoFormat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0E204C026B00BF1E30 /* YNCFB_PhotoFormat.plist */; };
+		8442DD1C204C026B00BF1E30 /* ScenesMode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0F204C026B00BF1E30 /* ScenesMode.plist */; };
+		8442DD1D204C026B00BF1E30 /* YNCFB_CameraMode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD10204C026B00BF1E30 /* YNCFB_CameraMode.plist */; };
+		8442DD1E204C026B00BF1E30 /* YNCFB_PhotoResolution.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD11204C026B00BF1E30 /* YNCFB_PhotoResolution.plist */; };
+		8442DD1F204C026B00BF1E30 /* YNCFB_VideoResolution.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD12204C026B00BF1E30 /* YNCFB_VideoResolution.plist */; };
+		8442DD20204C026B00BF1E30 /* YNCFB_VideoFormat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD13204C026B00BF1E30 /* YNCFB_VideoFormat.plist */; };
+		8442DD21204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD14204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist */; };
+		8442DD26204C03C200BF1E30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD28204C03C200BF1E30 /* Localizable.strings */; };
+		8442DD2C204C202500BF1E30 /* YNCMessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD2A204C202500BF1E30 /* YNCMessageBox.m */; };
+		8442DD30204C37DC00BF1E30 /* YNCCameraSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD2E204C37DC00BF1E30 /* YNCCameraSettingViewModel.m */; };
+		8442DD35204C386E00BF1E30 /* UIColor+YNCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD34204C386E00BF1E30 /* UIColor+YNCColor.m */; };
+		8442DD38204C387C00BF1E30 /* UIFont+YNCFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD36204C387C00BF1E30 /* UIFont+YNCFont.m */; };
+		8442DD3D204C3A7500BF1E30 /* YNCFB_SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD3A204C3A7400BF1E30 /* YNCFB_SwitchCell.m */; };
+		8442DD3E204C3A7500BF1E30 /* YNCFB_SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD3B204C3A7400BF1E30 /* YNCFB_SwitchCell.xib */; };
+		8442DD43204C3B0E00BF1E30 /* YNCPopWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD40204C3B0D00BF1E30 /* YNCPopWindowView.xib */; };
+		8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */; };
+		8442DD48204C3F3500BF1E30 /* YNCSettingSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD45204C3F3500BF1E30 /* YNCSettingSlider.xib */; };
+		8442DD49204C3F3500BF1E30 /* YNCSettingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD46204C3F3500BF1E30 /* YNCSettingSlider.m */; };
 		D8D212EC9FA78396A8372755 /* libPods-MQX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EE210233C280BA3763F0E7 /* libPods-MQX.a */; };
 		F46641E0204A972800DA4CCE /* YNCMqxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641DF204A972800DA4CCE /* YNCMqxViewController.m */; };
 		F46641E1204AA07400DA4CCE /* ABECam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F482ACD5204A403300029E50 /* ABECam.framework */; };
@@ -65,6 +116,82 @@
 /* Begin PBXFileReference section */
 		412D59867CEB8D47C4686724 /* Pods-MQX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQX/Pods-MQX.debug.xcconfig"; sourceTree = "<group>"; };
 		80EE210233C280BA3763F0E7 /* libPods-MQX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MQX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8442DCBF204BF31000BF1E30 /* YNCCameraSettingHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingHeaderView.m; sourceTree = "<group>"; };
+		8442DCC0204BF31000BF1E30 /* YNCCameraSettingModeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCCameraSettingModeCell.xib; sourceTree = "<group>"; };
+		8442DCC1204BF31000BF1E30 /* YNCFB_ISOCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_ISOCell.m; sourceTree = "<group>"; };
+		8442DCC2204BF31000BF1E30 /* YNCCameraCommonSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraCommonSettingView.m; sourceTree = "<group>"; };
+		8442DCC3204BF31000BF1E30 /* YNCCameraSettingModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingModeCell.h; sourceTree = "<group>"; };
+		8442DCC4204BF31000BF1E30 /* YNCFB_ExposureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_ExposureCell.xib; sourceTree = "<group>"; };
+		8442DCC5204BF31000BF1E30 /* YNCFB_ExposureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_ExposureView.h; sourceTree = "<group>"; };
+		8442DCC6204BF31000BF1E30 /* YNCFB_BurstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_BurstCell.xib; sourceTree = "<group>"; };
+		8442DCC7204BF31100BF1E30 /* YNCFB_MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_MaskView.m; sourceTree = "<group>"; };
+		8442DCC8204BF31100BF1E30 /* YNCFB_PhotoModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_PhotoModeCell.m; sourceTree = "<group>"; };
+		8442DCC9204BF31100BF1E30 /* YNCFB_TimeLapseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_TimeLapseCell.h; sourceTree = "<group>"; };
+		8442DCCA204BF31100BF1E30 /* YNCCameraSettingFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingFooterView.m; sourceTree = "<group>"; };
+		8442DCCB204BF31100BF1E30 /* YNCFB_ShutterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_ShutterView.xib; sourceTree = "<group>"; };
+		8442DCCC204BF31100BF1E30 /* YNCFB_ShutterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_ShutterCell.xib; sourceTree = "<group>"; };
+		8442DCCD204BF31100BF1E30 /* YNCCameraSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingView.h; sourceTree = "<group>"; };
+		8442DCCE204BF31200BF1E30 /* YNCFB_MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_MaskView.h; sourceTree = "<group>"; };
+		8442DCCF204BF31200BF1E30 /* YNCFB_ExposureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_ExposureView.xib; sourceTree = "<group>"; };
+		8442DCD0204BF31200BF1E30 /* YNCCameraSettingModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingModeCell.m; sourceTree = "<group>"; };
+		8442DCD1204BF31200BF1E30 /* YNCFB_ISOCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_ISOCell.h; sourceTree = "<group>"; };
+		8442DCD2204BF31200BF1E30 /* YNCFB_ShutterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_ShutterCell.m; sourceTree = "<group>"; };
+		8442DCD3204BF31200BF1E30 /* YNCFB_ISOCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_ISOCell.xib; sourceTree = "<group>"; };
+		8442DCD4204BF31200BF1E30 /* YNCFB_BurstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_BurstCell.h; sourceTree = "<group>"; };
+		8442DCD5204BF31300BF1E30 /* YNCFB_ShutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_ShutterView.h; sourceTree = "<group>"; };
+		8442DCD6204BF31300BF1E30 /* YNCCameraSettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCCameraSettingHeaderView.xib; sourceTree = "<group>"; };
+		8442DCD7204BF31300BF1E30 /* YNCFB_ExposureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_ExposureCell.m; sourceTree = "<group>"; };
+		8442DCD8204BF31300BF1E30 /* YNCFB_ExposureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_ExposureCell.h; sourceTree = "<group>"; };
+		8442DCD9204BF31300BF1E30 /* YNCFB_PhotoModeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_PhotoModeCell.xib; sourceTree = "<group>"; };
+		8442DCDA204BF31300BF1E30 /* YNCCameraSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingView.m; sourceTree = "<group>"; };
+		8442DCDB204BF31300BF1E30 /* YNCCameraSettingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingFooterView.h; sourceTree = "<group>"; };
+		8442DCDC204BF31300BF1E30 /* YNCFB_MaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_MaskView.xib; sourceTree = "<group>"; };
+		8442DCDD204BF31300BF1E30 /* YNCFB_ShutterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_ShutterCell.h; sourceTree = "<group>"; };
+		8442DCDE204BF31400BF1E30 /* YNCFB_TimeLapseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_TimeLapseCell.m; sourceTree = "<group>"; };
+		8442DCDF204BF31400BF1E30 /* UIPickerView+YNCPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPickerView+YNCPicker.h"; sourceTree = "<group>"; };
+		8442DCE0204BF31400BF1E30 /* YNCFB_TimeLapseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_TimeLapseCell.xib; sourceTree = "<group>"; };
+		8442DCE1204BF31400BF1E30 /* YNCCameraSettingFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCCameraSettingFooterView.xib; sourceTree = "<group>"; };
+		8442DCE2204BF31400BF1E30 /* YNCFB_PhotoModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_PhotoModeCell.h; sourceTree = "<group>"; };
+		8442DCE3204BF31400BF1E30 /* YNCFB_BurstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_BurstCell.m; sourceTree = "<group>"; };
+		8442DCE4204BF31400BF1E30 /* YNCFB_ShutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_ShutterView.m; sourceTree = "<group>"; };
+		8442DCE5204BF31400BF1E30 /* UIPickerView+YNCPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPickerView+YNCPicker.m"; sourceTree = "<group>"; };
+		8442DCE6204BF31400BF1E30 /* YNCCameraSettingHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingHeaderView.h; sourceTree = "<group>"; };
+		8442DCE7204BF31400BF1E30 /* YNCCameraCommonSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraCommonSettingView.h; sourceTree = "<group>"; };
+		8442DCE8204BF31500BF1E30 /* YNCFB_ExposureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_ExposureView.m; sourceTree = "<group>"; };
+		8442DD08204C026B00BF1E30 /* YNCFB_FlickerValue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_FlickerValue.plist; sourceTree = "<group>"; };
+		8442DD09204C026B00BF1E30 /* YNCFB_PhotoQuality.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_PhotoQuality.plist; sourceTree = "<group>"; };
+		8442DD0A204C026B00BF1E30 /* YNCFB_MeteringMode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_MeteringMode.plist; sourceTree = "<group>"; };
+		8442DD0B204C026B00BF1E30 /* CameraSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CameraSetting.plist; sourceTree = "<group>"; };
+		8442DD0C204C026B00BF1E30 /* WhiteBalance.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WhiteBalance.plist; sourceTree = "<group>"; };
+		8442DD0D204C026B00BF1E30 /* YNCFB_ISOValue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_ISOValue.plist; sourceTree = "<group>"; };
+		8442DD0E204C026B00BF1E30 /* YNCFB_PhotoFormat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_PhotoFormat.plist; sourceTree = "<group>"; };
+		8442DD0F204C026B00BF1E30 /* ScenesMode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ScenesMode.plist; sourceTree = "<group>"; };
+		8442DD10204C026B00BF1E30 /* YNCFB_CameraMode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_CameraMode.plist; sourceTree = "<group>"; };
+		8442DD11204C026B00BF1E30 /* YNCFB_PhotoResolution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_PhotoResolution.plist; sourceTree = "<group>"; };
+		8442DD12204C026B00BF1E30 /* YNCFB_VideoResolution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_VideoResolution.plist; sourceTree = "<group>"; };
+		8442DD13204C026B00BF1E30 /* YNCFB_VideoFormat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_VideoFormat.plist; sourceTree = "<group>"; };
+		8442DD14204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YNCFB_ShutterTimeValue.plist; sourceTree = "<group>"; };
+		8442DD22204C032500BF1E30 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		8442DD23204C032600BF1E30 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8442DD27204C03C200BF1E30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8442DD29204C03C600BF1E30 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8442DD2A204C202500BF1E30 /* YNCMessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCMessageBox.m; sourceTree = "<group>"; };
+		8442DD2B204C202500BF1E30 /* YNCMessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCMessageBox.h; sourceTree = "<group>"; };
+		8442DD2E204C37DC00BF1E30 /* YNCCameraSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingViewModel.m; sourceTree = "<group>"; };
+		8442DD2F204C37DC00BF1E30 /* YNCCameraSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingViewModel.h; sourceTree = "<group>"; };
+		8442DD33204C386E00BF1E30 /* UIColor+YNCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YNCColor.h"; sourceTree = "<group>"; };
+		8442DD34204C386E00BF1E30 /* UIColor+YNCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YNCColor.m"; sourceTree = "<group>"; };
+		8442DD36204C387C00BF1E30 /* UIFont+YNCFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+YNCFont.m"; sourceTree = "<group>"; };
+		8442DD37204C387C00BF1E30 /* UIFont+YNCFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+YNCFont.h"; sourceTree = "<group>"; };
+		8442DD3A204C3A7400BF1E30 /* YNCFB_SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFB_SwitchCell.m; sourceTree = "<group>"; };
+		8442DD3B204C3A7400BF1E30 /* YNCFB_SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFB_SwitchCell.xib; sourceTree = "<group>"; };
+		8442DD3C204C3A7500BF1E30 /* YNCFB_SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFB_SwitchCell.h; sourceTree = "<group>"; };
+		8442DD40204C3B0D00BF1E30 /* YNCPopWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCPopWindowView.xib; sourceTree = "<group>"; };
+		8442DD41204C3B0D00BF1E30 /* YNCPopWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCPopWindowView.h; sourceTree = "<group>"; };
+		8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCPopWindowView.m; sourceTree = "<group>"; };
+		8442DD45204C3F3500BF1E30 /* YNCSettingSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCSettingSlider.xib; sourceTree = "<group>"; };
+		8442DD46204C3F3500BF1E30 /* YNCSettingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCSettingSlider.m; sourceTree = "<group>"; };
+		8442DD47204C3F3500BF1E30 /* YNCSettingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCSettingSlider.h; sourceTree = "<group>"; };
 		88825A89DA548D527E95DEEC /* Pods-MQX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQX.release.xcconfig"; path = "Pods/Target Support Files/Pods-MQX/Pods-MQX.release.xcconfig"; sourceTree = "<group>"; };
 		F46641DE204A972800DA4CCE /* YNCMqxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCMqxViewController.h; sourceTree = "<group>"; };
 		F46641DF204A972800DA4CCE /* YNCMqxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCMqxViewController.m; sourceTree = "<group>"; };
@@ -138,6 +265,136 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8442DCBE204BF30200BF1E30 /* cameraSetting */ = {
+			isa = PBXGroup;
+			children = (
+				8442DCDF204BF31400BF1E30 /* UIPickerView+YNCPicker.h */,
+				8442DCE5204BF31400BF1E30 /* UIPickerView+YNCPicker.m */,
+				8442DCE7204BF31400BF1E30 /* YNCCameraCommonSettingView.h */,
+				8442DCC2204BF31000BF1E30 /* YNCCameraCommonSettingView.m */,
+				8442DCDB204BF31300BF1E30 /* YNCCameraSettingFooterView.h */,
+				8442DCCA204BF31100BF1E30 /* YNCCameraSettingFooterView.m */,
+				8442DCE1204BF31400BF1E30 /* YNCCameraSettingFooterView.xib */,
+				8442DCE6204BF31400BF1E30 /* YNCCameraSettingHeaderView.h */,
+				8442DCBF204BF31000BF1E30 /* YNCCameraSettingHeaderView.m */,
+				8442DCD6204BF31300BF1E30 /* YNCCameraSettingHeaderView.xib */,
+				8442DCC3204BF31000BF1E30 /* YNCCameraSettingModeCell.h */,
+				8442DCD0204BF31200BF1E30 /* YNCCameraSettingModeCell.m */,
+				8442DCC0204BF31000BF1E30 /* YNCCameraSettingModeCell.xib */,
+				8442DCCD204BF31100BF1E30 /* YNCCameraSettingView.h */,
+				8442DCDA204BF31300BF1E30 /* YNCCameraSettingView.m */,
+				8442DCD4204BF31200BF1E30 /* YNCFB_BurstCell.h */,
+				8442DCE3204BF31400BF1E30 /* YNCFB_BurstCell.m */,
+				8442DCC6204BF31000BF1E30 /* YNCFB_BurstCell.xib */,
+				8442DCD8204BF31300BF1E30 /* YNCFB_ExposureCell.h */,
+				8442DCD7204BF31300BF1E30 /* YNCFB_ExposureCell.m */,
+				8442DCC4204BF31000BF1E30 /* YNCFB_ExposureCell.xib */,
+				8442DCC5204BF31000BF1E30 /* YNCFB_ExposureView.h */,
+				8442DCE8204BF31500BF1E30 /* YNCFB_ExposureView.m */,
+				8442DCCF204BF31200BF1E30 /* YNCFB_ExposureView.xib */,
+				8442DCD1204BF31200BF1E30 /* YNCFB_ISOCell.h */,
+				8442DCC1204BF31000BF1E30 /* YNCFB_ISOCell.m */,
+				8442DCD3204BF31200BF1E30 /* YNCFB_ISOCell.xib */,
+				8442DCCE204BF31200BF1E30 /* YNCFB_MaskView.h */,
+				8442DCC7204BF31100BF1E30 /* YNCFB_MaskView.m */,
+				8442DCDC204BF31300BF1E30 /* YNCFB_MaskView.xib */,
+				8442DCE2204BF31400BF1E30 /* YNCFB_PhotoModeCell.h */,
+				8442DCC8204BF31100BF1E30 /* YNCFB_PhotoModeCell.m */,
+				8442DCD9204BF31300BF1E30 /* YNCFB_PhotoModeCell.xib */,
+				8442DCDD204BF31300BF1E30 /* YNCFB_ShutterCell.h */,
+				8442DCD2204BF31200BF1E30 /* YNCFB_ShutterCell.m */,
+				8442DCCC204BF31100BF1E30 /* YNCFB_ShutterCell.xib */,
+				8442DCD5204BF31300BF1E30 /* YNCFB_ShutterView.h */,
+				8442DCE4204BF31400BF1E30 /* YNCFB_ShutterView.m */,
+				8442DCCB204BF31100BF1E30 /* YNCFB_ShutterView.xib */,
+				8442DCC9204BF31100BF1E30 /* YNCFB_TimeLapseCell.h */,
+				8442DCDE204BF31400BF1E30 /* YNCFB_TimeLapseCell.m */,
+				8442DCE0204BF31400BF1E30 /* YNCFB_TimeLapseCell.xib */,
+			);
+			path = cameraSetting;
+			sourceTree = "<group>";
+		};
+		8442DD05204C022900BF1E30 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD06204C025C00BF1E30 /* Plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		8442DD06204C025C00BF1E30 /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD07204C026B00BF1E30 /* cameraSetting */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
+		8442DD07204C026B00BF1E30 /* cameraSetting */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD08204C026B00BF1E30 /* YNCFB_FlickerValue.plist */,
+				8442DD09204C026B00BF1E30 /* YNCFB_PhotoQuality.plist */,
+				8442DD0A204C026B00BF1E30 /* YNCFB_MeteringMode.plist */,
+				8442DD0B204C026B00BF1E30 /* CameraSetting.plist */,
+				8442DD0C204C026B00BF1E30 /* WhiteBalance.plist */,
+				8442DD0D204C026B00BF1E30 /* YNCFB_ISOValue.plist */,
+				8442DD0E204C026B00BF1E30 /* YNCFB_PhotoFormat.plist */,
+				8442DD0F204C026B00BF1E30 /* ScenesMode.plist */,
+				8442DD10204C026B00BF1E30 /* YNCFB_CameraMode.plist */,
+				8442DD11204C026B00BF1E30 /* YNCFB_PhotoResolution.plist */,
+				8442DD12204C026B00BF1E30 /* YNCFB_VideoResolution.plist */,
+				8442DD13204C026B00BF1E30 /* YNCFB_VideoFormat.plist */,
+				8442DD14204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist */,
+			);
+			path = cameraSetting;
+			sourceTree = "<group>";
+		};
+		8442DD2D204C37C100BF1E30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8442DD31204C385E00BF1E30 /* YNCFont */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD37204C387C00BF1E30 /* UIFont+YNCFont.h */,
+				8442DD36204C387C00BF1E30 /* UIFont+YNCFont.m */,
+			);
+			path = YNCFont;
+			sourceTree = "<group>";
+		};
+		8442DD32204C385F00BF1E30 /* YNCColor */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD33204C386E00BF1E30 /* UIColor+YNCColor.h */,
+				8442DD34204C386E00BF1E30 /* UIColor+YNCColor.m */,
+			);
+			path = YNCColor;
+			sourceTree = "<group>";
+		};
+		8442DD39204C3A4F00BF1E30 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD3C204C3A7500BF1E30 /* YNCFB_SwitchCell.h */,
+				8442DD3A204C3A7400BF1E30 /* YNCFB_SwitchCell.m */,
+				8442DD3B204C3A7400BF1E30 /* YNCFB_SwitchCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		8442DD3F204C3AFD00BF1E30 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8442DD47204C3F3500BF1E30 /* YNCSettingSlider.h */,
+				8442DD46204C3F3500BF1E30 /* YNCSettingSlider.m */,
+				8442DD45204C3F3500BF1E30 /* YNCSettingSlider.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DED28BE5DF4D2DEBF7ABC81B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +415,7 @@
 		F46641E4204AABF600DA4CCE /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
+				8442DCBE204BF30200BF1E30 /* cameraSetting */,
 				F46641F9204AAC8400DA4CCE /* YNCCameraToolView.h */,
 				F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */,
 				F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */,
@@ -175,13 +433,6 @@
 				F4664204204AAFE600DA4CCE /* UIButton+YNCButton.m */,
 			);
 			path = YNCButton;
-			sourceTree = "<group>";
-		};
-		F482ACCD204A3FCD00029E50 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		F482ACCE204A3FCD00029E50 /* Macros */ = {
@@ -226,16 +477,14 @@
 		F482ACD1204A3FCD00029E50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8442DD3F204C3AFD00BF1E30 /* Common */,
+				8442DD41204C3B0D00BF1E30 /* YNCPopWindowView.h */,
+				8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */,
+				8442DD40204C3B0D00BF1E30 /* YNCPopWindowView.xib */,
+				8442DD39204C3A4F00BF1E30 /* TableViewCell */,
 				F46641E4204AABF600DA4CCE /* CameraTool */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		F482ACD2204A3FCD00029E50 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F482ACD3204A3FCD00029E50 /* ViewModel */ = {
@@ -293,6 +542,8 @@
 		F482ACE5204A709000029E50 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8442DD32204C385F00BF1E30 /* YNCColor */,
+				8442DD31204C385E00BF1E30 /* YNCFont */,
 				F4664203204AAFDA00DA4CCE /* YNCButton */,
 			);
 			path = Category;
@@ -301,6 +552,8 @@
 		F482ACE6204A709000029E50 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				8442DD2B204C202500BF1E30 /* YNCMessageBox.h */,
+				8442DD2A204C202500BF1E30 /* YNCMessageBox.m */,
 				F482ACE8204A72FC00029E50 /* YNCUtil.h */,
 				F482ACE9204A72FC00029E50 /* YNCUtil.m */,
 			);
@@ -377,14 +630,16 @@
 		F4B7F5C720463B8000B06CEE /* MQX */ = {
 			isa = PBXGroup;
 			children = (
-				F482ACD2204A3FCD00029E50 /* Model */,
+				8442DD2D204C37C100BF1E30 /* Model */,
+				8442DD2F204C37DC00BF1E30 /* YNCCameraSettingViewModel.h */,
+				8442DD2E204C37DC00BF1E30 /* YNCCameraSettingViewModel.m */,
 				F482ACD1204A3FCD00029E50 /* View */,
 				F482ACD0204A3FCD00029E50 /* ViewController */,
 				F482ACD3204A3FCD00029E50 /* ViewModel */,
 				F482ACCF204A3FCD00029E50 /* Utils */,
 				F482ACD4204A3FCE00029E50 /* Vendor */,
 				F482ACCE204A3FCD00029E50 /* Macros */,
-				F482ACCD204A3FCD00029E50 /* Resource */,
+				8442DD05204C022900BF1E30 /* Resource */,
 				F4B7F5C820463B8000B06CEE /* AppDelegate.h */,
 				F4B7F5C920463B8000B06CEE /* AppDelegate.m */,
 				F4B7F5CE20463B8000B06CEE /* Main.storyboard */,
@@ -392,6 +647,7 @@
 				F4B7F5D320463B8000B06CEE /* LaunchScreen.storyboard */,
 				F4B7F5D620463B8000B06CEE /* Info.plist */,
 				F4B7F5D720463B8000B06CEE /* main.m */,
+				8442DD28204C03C200BF1E30 /* Localizable.strings */,
 			);
 			path = MQX;
 			sourceTree = "<group>";
@@ -506,6 +762,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = F4B7F5BC20463B8000B06CEE;
 			productRefGroup = F4B7F5C620463B8000B06CEE /* Products */;
@@ -524,11 +781,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8442DD21204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist in Resources */,
 				F4B7F5D520463B8000B06CEE /* LaunchScreen.storyboard in Resources */,
+				8442DCEA204BF31500BF1E30 /* YNCCameraSettingModeCell.xib in Resources */,
+				8442DD15204C026B00BF1E30 /* YNCFB_FlickerValue.plist in Resources */,
+				8442DD1E204C026B00BF1E30 /* YNCFB_PhotoResolution.plist in Resources */,
+				8442DD17204C026B00BF1E30 /* YNCFB_MeteringMode.plist in Resources */,
+				8442DD1F204C026B00BF1E30 /* YNCFB_VideoResolution.plist in Resources */,
+				8442DD16204C026B00BF1E30 /* YNCFB_PhotoQuality.plist in Resources */,
+				8442DD3E204C3A7500BF1E30 /* YNCFB_SwitchCell.xib in Resources */,
+				8442DCF8204BF31500BF1E30 /* YNCCameraSettingHeaderView.xib in Resources */,
+				8442DD18204C026B00BF1E30 /* CameraSetting.plist in Resources */,
+				8442DCFF204BF31500BF1E30 /* YNCCameraSettingFooterView.xib in Resources */,
+				8442DD20204C026B00BF1E30 /* YNCFB_VideoFormat.plist in Resources */,
 				F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */,
 				F4664200204AACBD00DA4CCE /* YNCCameraToolView.xib in Resources */,
+				8442DCF2204BF31500BF1E30 /* YNCFB_ShutterView.xib in Resources */,
 				F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */,
+				8442DD26204C03C200BF1E30 /* Localizable.strings in Resources */,
+				8442DCFC204BF31500BF1E30 /* YNCFB_MaskView.xib in Resources */,
+				8442DD19204C026B00BF1E30 /* WhiteBalance.plist in Resources */,
+				8442DD48204C3F3500BF1E30 /* YNCSettingSlider.xib in Resources */,
+				8442DCEE204BF31500BF1E30 /* YNCFB_BurstCell.xib in Resources */,
+				8442DCFA204BF31500BF1E30 /* YNCFB_PhotoModeCell.xib in Resources */,
+				8442DD43204C3B0E00BF1E30 /* YNCPopWindowView.xib in Resources */,
 				F4664202204AACCA00DA4CCE /* YNCVideoTimeView.xib in Resources */,
+				8442DCF3204BF31500BF1E30 /* YNCFB_ShutterCell.xib in Resources */,
+				8442DCF4204BF31500BF1E30 /* YNCFB_ExposureView.xib in Resources */,
+				8442DCFE204BF31500BF1E30 /* YNCFB_TimeLapseCell.xib in Resources */,
+				8442DCF7204BF31500BF1E30 /* YNCFB_ISOCell.xib in Resources */,
+				8442DD1B204C026B00BF1E30 /* YNCFB_PhotoFormat.plist in Resources */,
+				8442DD1C204C026B00BF1E30 /* ScenesMode.plist in Resources */,
+				8442DCED204BF31500BF1E30 /* YNCFB_ExposureCell.xib in Resources */,
+				8442DD1A204C026B00BF1E30 /* YNCFB_ISOValue.plist in Resources */,
+				8442DD1D204C026B00BF1E30 /* YNCFB_CameraMode.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,17 +898,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8442DCF9204BF31500BF1E30 /* YNCFB_ExposureCell.m in Sources */,
 				F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */,
+				8442DD35204C386E00BF1E30 /* UIColor+YNCColor.m in Sources */,
+				8442DCF5204BF31500BF1E30 /* YNCCameraSettingModeCell.m in Sources */,
+				8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */,
+				8442DCEC204BF31500BF1E30 /* YNCCameraCommonSettingView.m in Sources */,
 				F4B7F5D820463B8000B06CEE /* main.m in Sources */,
+				8442DCEF204BF31500BF1E30 /* YNCFB_MaskView.m in Sources */,
+				8442DD30204C37DC00BF1E30 /* YNCCameraSettingViewModel.m in Sources */,
 				F4664206204AAFE600DA4CCE /* UIButton+YNCButton.m in Sources */,
+				8442DCF6204BF31500BF1E30 /* YNCFB_ShutterCell.m in Sources */,
 				F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */,
+				8442DCFB204BF31500BF1E30 /* YNCCameraSettingView.m in Sources */,
+				8442DD2C204C202500BF1E30 /* YNCMessageBox.m in Sources */,
+				8442DD38204C387C00BF1E30 /* UIFont+YNCFont.m in Sources */,
 				F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */,
+				8442DD01204BF31500BF1E30 /* YNCFB_ShutterView.m in Sources */,
+				8442DD3D204C3A7500BF1E30 /* YNCFB_SwitchCell.m in Sources */,
 				F482ACEE204A78DA00029E50 /* YNCBaseNavigationControllerStack.m in Sources */,
 				F46641FE204AACA600DA4CCE /* YNCVideoTimeView.m in Sources */,
+				8442DD00204BF31500BF1E30 /* YNCFB_BurstCell.m in Sources */,
+				8442DD02204BF31500BF1E30 /* UIPickerView+YNCPicker.m in Sources */,
+				8442DCF0204BF31500BF1E30 /* YNCFB_PhotoModeCell.m in Sources */,
 				F482ACDB204A6D1E00029E50 /* YNCConst.m in Sources */,
+				8442DD03204BF31500BF1E30 /* YNCFB_ExposureView.m in Sources */,
 				F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */,
+				8442DD49204C3F3500BF1E30 /* YNCSettingSlider.m in Sources */,
+				8442DCF1204BF31500BF1E30 /* YNCCameraSettingFooterView.m in Sources */,
 				F46641E0204A972800DA4CCE /* YNCMqxViewController.m in Sources */,
+				8442DCE9204BF31500BF1E30 /* YNCCameraSettingHeaderView.m in Sources */,
 				F482ACEA204A72FC00029E50 /* YNCUtil.m in Sources */,
+				8442DCFD204BF31500BF1E30 /* YNCFB_TimeLapseCell.m in Sources */,
+				8442DCEB204BF31500BF1E30 /* YNCFB_ISOCell.m in Sources */,
 				F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,10 +967,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8442DD28204C03C200BF1E30 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8442DD27204C03C200BF1E30 /* en */,
+				8442DD29204C03C600BF1E30 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F4B7F5CE20463B8000B06CEE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F4B7F5CF20463B8000B06CEE /* Base */,
+				8442DD22204C032500BF1E30 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -671,6 +989,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4B7F5D420463B8000B06CEE /* Base */,
+				8442DD23204C032600BF1E30 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -682,6 +1001,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -737,6 +1057,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
