@@ -73,6 +73,8 @@
 		F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF2204A7C0800029E50 /* MainViewController.m */; };
 		F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */; };
 		F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF9204A83B300029E50 /* YNCABECamManager.m */; };
+		F498FB092050D09700C885CE /* YNCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB072050D09700C885CE /* YNCScrollLabelView.m */; };
+		F498FB0C2050DDD700C885CE /* YNCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB0B2050DDD700C885CE /* YNCNavigationViewController.m */; };
 		F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5C920463B8000B06CEE /* AppDelegate.m */; };
 		F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5CE20463B8000B06CEE /* Main.storyboard */; };
 		F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5D120463B8000B06CEE /* Assets.xcassets */; };
@@ -222,6 +224,10 @@
 		F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCVideoPreviewViewController.m; sourceTree = "<group>"; };
 		F482ACF8204A83B300029E50 /* YNCABECamManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCABECamManager.h; sourceTree = "<group>"; };
 		F482ACF9204A83B300029E50 /* YNCABECamManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCABECamManager.m; sourceTree = "<group>"; };
+		F498FB072050D09700C885CE /* YNCScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCScrollLabelView.m; sourceTree = "<group>"; };
+		F498FB082050D09700C885CE /* YNCScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCScrollLabelView.h; sourceTree = "<group>"; };
+		F498FB0A2050DDD600C885CE /* YNCNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCNavigationViewController.h; sourceTree = "<group>"; };
+		F498FB0B2050DDD700C885CE /* YNCNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCNavigationViewController.m; sourceTree = "<group>"; };
 		F4B7F5C520463B8000B06CEE /* MQX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MQX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B7F5C820463B8000B06CEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F4B7F5C920463B8000B06CEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 		8442DD3F204C3AFD00BF1E30 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F498FB062050D08D00C885CE /* ScrollLabelView */,
 				8442DD47204C3F3500BF1E30 /* YNCSettingSlider.h */,
 				8442DD46204C3F3500BF1E30 /* YNCSettingSlider.m */,
 				8442DD45204C3F3500BF1E30 /* YNCSettingSlider.xib */,
@@ -570,6 +577,8 @@
 		F482ACEB204A787200029E50 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				F498FB0A2050DDD600C885CE /* YNCNavigationViewController.h */,
+				F498FB0B2050DDD700C885CE /* YNCNavigationViewController.m */,
 				F482ACEC204A78DA00029E50 /* YNCBaseNavigationControllerStack.h */,
 				F482ACED204A78DA00029E50 /* YNCBaseNavigationControllerStack.m */,
 			);
@@ -603,6 +612,15 @@
 				F482ACF9204A83B300029E50 /* YNCABECamManager.m */,
 			);
 			path = ABECam;
+			sourceTree = "<group>";
+		};
+		F498FB062050D08D00C885CE /* ScrollLabelView */ = {
+			isa = PBXGroup;
+			children = (
+				F498FB082050D09700C885CE /* YNCScrollLabelView.h */,
+				F498FB072050D09700C885CE /* YNCScrollLabelView.m */,
+			);
+			path = ScrollLabelView;
 			sourceTree = "<group>";
 		};
 		F4B7F5BC20463B8000B06CEE = {
@@ -903,6 +921,7 @@
 				8442DD35204C386E00BF1E30 /* UIColor+YNCColor.m in Sources */,
 				8442DCF5204BF31500BF1E30 /* YNCCameraSettingModeCell.m in Sources */,
 				8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */,
+				F498FB0C2050DDD700C885CE /* YNCNavigationViewController.m in Sources */,
 				8442DCEC204BF31500BF1E30 /* YNCCameraCommonSettingView.m in Sources */,
 				F4B7F5D820463B8000B06CEE /* main.m in Sources */,
 				8442DCEF204BF31500BF1E30 /* YNCFB_MaskView.m in Sources */,
@@ -923,6 +942,7 @@
 				8442DCF0204BF31500BF1E30 /* YNCFB_PhotoModeCell.m in Sources */,
 				F482ACDB204A6D1E00029E50 /* YNCConst.m in Sources */,
 				8442DD03204BF31500BF1E30 /* YNCFB_ExposureView.m in Sources */,
+				F498FB092050D09700C885CE /* YNCScrollLabelView.m in Sources */,
 				F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */,
 				8442DD49204C3F3500BF1E30 /* YNCSettingSlider.m in Sources */,
 				8442DCF1204BF31500BF1E30 /* YNCCameraSettingFooterView.m in Sources */,

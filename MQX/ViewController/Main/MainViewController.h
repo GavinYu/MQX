@@ -10,6 +10,7 @@
 
 @interface MainViewController : UIViewController
 
+- (IBAction)clickDeviceConnectedButton:(UIButton *)sender;
 
 @end
 
