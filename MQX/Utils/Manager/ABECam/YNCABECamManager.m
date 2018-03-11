@@ -10,6 +10,8 @@
 
 #import <ABECam/ABECam.h>
 #import "YNCMacros.h"
+#import "YNCDeviceInfoDataModel.h"
+#import <NSObject+YYModel.h>
 
 #define kPeriod 1.0
 
@@ -60,6 +62,17 @@ YNCSingletonM(ABECamManager)
         dispatch_source_cancel(_checkWiFiTimer);
         _checkWiFiTimer = nil;
     }
+}
+
+//MARK: -- 获取飞机设备信息
+- (void)getDeviceInfo:(void(^)(YNCDeviceInfoDataModel *deviceInfo))block {
+    [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
+        if (succeeded) {
+            YNCDeviceInfoDataModel *tmpModel = [YNCDeviceInfoDataModel new];
+            tmpModel = [YNCDeviceInfoDataModel modelWithJSON:data];
+            block(tmpModel);
+        }
+    }];
 }
 
 @end

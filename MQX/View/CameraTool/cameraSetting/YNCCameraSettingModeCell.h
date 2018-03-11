@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class YNCCameraSettingViewModel;
+@class YNCCameraSettingDataModel;
 @interface YNCCameraSettingModeCell : UITableViewCell
 
-- (void)configureWithModel:(YNCCameraSettingViewModel *)model;
+- (void)configureWithModel:(YNCCameraSettingDataModel *)model;
 
 @end

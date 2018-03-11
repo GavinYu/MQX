@@ -12,6 +12,8 @@
 #import "YNCAppConfig.h"
 #import "YNCCameraToolView.h"
 #import "YNCCameraSettingView.h"
+#import "YNCNavigationBar.h"
+#import "YNCVideoHomepageView.h"
 
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
 
@@ -22,6 +24,18 @@
 //相机设置视图
 @property (strong, nonatomic) YNCCameraSettingView *cameraSettingView;
 
+@property (strong, nonatomic) YNCNavigationBar *myNavigationBar;
+@property (strong, nonatomic) YNCNavigationBar *fpvNavigationBar;
+@property (strong, nonatomic) UIButton *fpvSwitchButton;
+@property (strong, nonatomic) UIView *fpvHomepageView;
+@property (strong, nonatomic) YNCVideoHomepageView *videoHomepageView;
+//重绘FPV相关的变量
+@property (strong, nonatomic) YNCVideoHomepageView *leftVideoHomepageView;
+@property (strong, nonatomic) YNCVideoHomepageView *rightVideoHomepageView;
+@property (strong, nonatomic) YNCNavigationBar *leftNavigationBar;
+@property (strong, nonatomic) YNCNavigationBar *rightNavigationBar;
+@property (strong, nonatomic) UIView *fpvLineView;
+
 @end
 
 @implementation YNCMqxViewController
@@ -31,6 +45,84 @@
     // Do any additional setup after loading the view.
   [self videoPreview];
   [self createCameraToolView];
+}
+
+//MARK: -- Lazyload  videoHomepageView
+- (YNCVideoHomepageView *)videoHomepageView {
+    if (!_videoHomepageView) {
+        _videoHomepageView = [YNCVideoHomepageView instanceVideoHomepageView];
+        _videoHomepageView.backgroundColor = [UIColor clearColor];
+    }
+    
+    return _videoHomepageView;
+}
+
+//MARK: -- Lazyload  leftvideoHomepageView
+- (YNCVideoHomepageView *)leftvideoHomepageView {
+    if (!_leftVideoHomepageView) {
+        _leftVideoHomepageView = [YNCVideoHomepageView instanceVideoHomepageView];
+        _leftVideoHomepageView.backgroundColor = [UIColor clearColor];
+    }
+    
+    return _leftVideoHomepageView;
+}
+
+//MARK: -- Lazyload  rightvideoHomepageView
+- (YNCVideoHomepageView *)rightvideoHomepageView {
+    if (!_rightVideoHomepageView) {
+        _rightVideoHomepageView = [YNCVideoHomepageView instanceVideoHomepageView];
+        
+        _rightVideoHomepageView.backgroundColor = [UIColor clearColor];
+    }
+    
+    return _rightVideoHomepageView;
+}
+
+//MARK: -- Lazyload  leftNavigationBar
+- (YNCNavigationBar *)leftNavigationBar {
+    if (!_leftNavigationBar) {
+        _leftNavigationBar = [YNCNavigationBar instanceNavigationBar];
+    }
+    
+    return _leftNavigationBar;
+}
+
+//MARK: -- Lazyload  rightNavigationBar
+- (YNCNavigationBar *)rightNavigationBar {
+    if (!_rightNavigationBar) {
+        _rightNavigationBar = [YNCNavigationBar instanceNavigationBar];
+    }
+    
+    return _rightNavigationBar;
+}
+
+//MARK: -- Lazyload myNavigationBar
+- (YNCNavigationBar *)myNavigationBar {
+    if (!_myNavigationBar) {
+        _myNavigationBar = [YNCNavigationBar instanceNavigationBar];
+    }
+    
+    return _myNavigationBar;
+}
+
+//MARK: -- Lazyload fpvNavigationBar
+- (YNCNavigationBar *)fpvNavigationBar {
+    if (!_fpvNavigationBar) {
+        _fpvNavigationBar = [YNCNavigationBar instanceNavigationBar];
+    }
+    
+    return _fpvNavigationBar;
+}
+
+//MARK: -- Lazyload fpvSwitchButton
+- (UIButton *)fpvSwitchButton {
+    if (!_fpvSwitchButton) {
+        _fpvSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_fpvSwitchButton setImage:[UIImage imageNamed:@"btn_fpv_switch"] forState:UIControlStateNormal];
+        [_fpvSwitchButton addTarget:self action:@selector(clickFPVSwitchButton:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _fpvSwitchButton;
 }
 
 //MARK: -- lazyload videoPreview
@@ -63,6 +155,102 @@
   }
   
   return _cameraToolView;
+}
+
+//MARK: -- 创建FPV的首页视图
+- (void)createFirebirdFPVHomepageView {
+    WS(weakSelf);
+    
+    self.fpvHomepageView = [UIView new];
+    self.fpvHomepageView.backgroundColor = [UIColor atrousColor];
+    [self.view insertSubview:self.fpvHomepageView belowSubview:self.fpvSwitchButton];
+    
+    [self.fpvHomepageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.view).offset(BottomUnsafeArea);
+        make.top.equalTo(weakSelf.view);
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH - TopUnsafeArea - BottomUnsafeArea , SCREENHEIGHT - HorizontalScreenBottomUnsafeArea));
+    }];
+    
+    [self.fpvHomepageView addSubview:self.leftvideoHomepageView];
+    [self.fpvHomepageView addSubview:self.rightvideoHomepageView];
+    
+    [self.leftvideoHomepageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.fpvHomepageView);
+        make.top.equalTo(weakSelf.fpvHomepageView).offset((SCREENHEIGHT-HorizontalScreenBottomUnsafeArea) *0.25);
+        make.size.mas_equalTo(CGSizeMake((SCREENWIDTH-BottomUnsafeArea-TopUnsafeArea)*0.5, (SCREENHEIGHT-HorizontalScreenBottomUnsafeArea)*0.5));
+    }];
+    
+    [self.rightvideoHomepageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.leftvideoHomepageView);
+        make.left.equalTo(weakSelf.fpvHomepageView).offset((SCREENWIDTH-BottomUnsafeArea-TopUnsafeArea)*0.5);
+        make.size.mas_equalTo(weakSelf.leftvideoHomepageView);
+    }];
+    
+    [self.fpvHomepageView layoutIfNeeded];
+    
+    [self.leftvideoHomepageView initSubView:YNCModeDisplayGlass];
+    [self.rightvideoHomepageView initSubView:YNCModeDisplayGlass];
+    
+    [self createFPVNavigationBar];
+    
+    self.fpvLineView = [UIView new];
+    self.fpvLineView.backgroundColor = UICOLOR_FROM_HEXRGB(0x00ffa8);
+    [self.fpvHomepageView addSubview:self.fpvLineView];
+    [self.fpvLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.fpvHomepageView);
+        make.centerX.equalTo(self.fpvHomepageView);
+        make.size.mas_equalTo(CGSizeMake(1.0, self.fpvHomepageView.bounds.size.height));
+    }];
+    
+    self.fpvHomepageView.hidden = YES;
+}
+
+//MARK: -- 创建导航栏
+- (void)createNavigationBar {
+    WS(weakSelf);
+
+    [self.view addSubview:self.myNavigationBar];
+    [self.myNavigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.videoHomepageView);
+        make.top.equalTo(weakSelf.view);
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH - TopUnsafeArea - BottomUnsafeArea, YNCNAVGATIONBARHEIGHT));
+    }];
+
+    [self.view layoutIfNeeded];
+    
+    [self.myNavigationBar initSubView:self.currentDisplay];
+    
+    [self.myNavigationBar setNavigationBarButtonEventBlock:^(YNCEventAction eventAction){
+        if (eventAction == YNCEventActionNavBarHomeBtn) {
+            //do something
+            [weakSelf performSegueWithIdentifier:@"unwindToFlight" sender:weakSelf];
+        }
+    }];
+}
+
+//MARK: -- 创建FPV模式的导航栏
+- (void)createFPVNavigationBar {
+    WS(weakSelf);
+    
+    [self.fpvHomepageView addSubview:self.leftNavigationBar];
+    [self.leftNavigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.equalTo(weakSelf.leftvideoHomepageView);
+        make.size.mas_equalTo(CGSizeMake((SCREENWIDTH-TopUnsafeArea-BottomUnsafeArea)*0.5, YNCNAVGATIONBARHEIGHT*0.5));
+    }];
+    
+    [self.leftNavigationBar initSubView:YNCModeDisplayGlass];
+    [self.leftNavigationBar hiddenNavigationBarSubView:YES withModeDisplay:YNCModeDisplayGlass];
+    
+    [self.fpvHomepageView addSubview:self.rightNavigationBar];
+    [self.rightNavigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.equalTo(weakSelf.rightvideoHomepageView);
+        make.size.mas_equalTo(CGSizeMake((SCREENWIDTH-TopUnsafeArea-BottomUnsafeArea)*0.5, YNCNAVGATIONBARHEIGHT*0.5));
+    }];
+    
+    [self.rightNavigationBar initSubView:YNCModeDisplayGlass];
+    [self.rightNavigationBar hiddenNavigationBarSubView:YES withModeDisplay:YNCModeDisplayGlass];
+    
+    [self.fpvHomepageView layoutIfNeeded];
 }
 
 //MARK: -- 创建相机工具栏
@@ -198,34 +386,6 @@
     }
     
     [self setCameraToolViewShowStatus:NO];
-    
-//    _doubleClickCount++;
-//    if (_doubleClickCount == 1) {
-//      [self.firebirdHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
-//      [self.leftFirebirdHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
-//      [self.rightFirebirdHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
-//    } else if (_doubleClickCount == 2) {
-//      [UIView animateWithDuration:0.3 animations:^{
-//        weakSelf.myNavigationBar.alpha = 0;
-//        weakSelf.fpvSwitchButton.alpha = 0;
-//      }];
-//
-//      [self.firebirdHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
-//      //            [self.leftFirebirdHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
-//      //            [self.rightFirebirdHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
-//
-//    } else if (_doubleClickCount == 3) {
-//      [UIView animateWithDuration:0.3 animations:^{
-//        weakSelf.myNavigationBar.alpha = 1.0;
-//        weakSelf.fpvSwitchButton.alpha = 1.0;
-//      }];
-    
-//      [self.firebirdHomepageView hiddenSubView:NO withDoubleClickCount:_doubleClickCount];
-//      [self.leftFirebirdHomepageView hiddenSubView:NO withDoubleClickCount:_doubleClickCount];
-//      [self.rightFirebirdHomepageView hiddenSubView:NO withDoubleClickCount:_doubleClickCount];
-//
-//      _doubleClickCount = 0;
-//    }
   }
 }
 
@@ -235,12 +395,7 @@
   UIEvent *event = [[UIEvent alloc] init];
   CGPoint locataion = [gestureRecognizer locationInView:gestureRecognizer.view];
   UIView *view = [gestureRecognizer.view hitTest:locataion withEvent:event];
-//  if ([view isKindOfClass:[YNCFlightStatusView_Firebird class]] || [view isKindOfClass:[YNCStatusView_Firebird class]] || [view isKindOfClass:[YNCTransformView class]]) {
-//    return YES;
-//  } else {
-//    return NO;
-//  }
-  
+    
   return YES;
 }
 
@@ -310,7 +465,7 @@
   [self stopRecord];
 }
 
-- (IBAction)clickFPVButton:(UIButton *)sender {
+- (void)clickFPVSwitchButton:(UIButton *)sender {
   [sender setSelected:!sender.isSelected];
   [self switchFPVModel:sender.isSelected];
 }

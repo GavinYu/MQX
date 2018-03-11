@@ -129,6 +129,10 @@
 #define SYSTEMVERSION [[[UIDevice currentDevice] systemName] stringByAppendingString:[[UIDevice currentDevice] systemVersion]]
 #endif
 
+#ifndef ISLarge47Inch
+#define ISLarge47Inch ([UIScreen mainScreen].bounds.size.height>667)//6+
+#endif
+
 //当前应用在App Store的App ID
 #ifndef YNC_APP_ID
 #define YNC_APP_ID @"1231375336"

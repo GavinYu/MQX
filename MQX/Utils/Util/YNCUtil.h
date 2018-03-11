@@ -48,8 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString *)formatString;
 //MARK: -- 根据GPS计算两个点的距离
 + (CGFloat)calculateDistanceSourceLocationCoordinate2D:(CLLocationCoordinate2D)origCoordinate  WithDistLocationCoordinate2D:(CLLocationCoordinate2D)distCoordinate;
-//MARK: -- 获取剩余电量百分比
-+ (CGFloat)getPowerRemainPercent:(CGFloat)voltage;
 //MARK: -- 获取信号等级
 + (NSInteger)getSignalLevel:(NSInteger)number;
 //MARK: -- 单位转换（米->英尺）
@@ -64,7 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isValidWiFiName:(NSString *)inputString;
 //MARK: -- 验证WiFi密码是否符合8-21个字符，仅支持字母、数字、下划线
 + (BOOL)isValidWiFiPassword:(NSString *)inputString;
-
+//MARK: -- 获取HD Racer的飞行模式
++ (NSString *)getHDRacerFlightMode:(YNCHDRacerFlightMode)HDRacerFlightMode;
 /*--------------------------- Add by GavinYu End ----------------------------*/
 
 #pragma mark - Add By Jack Wu
@@ -77,21 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return NSString
  */
 + (NSString *)nullString:(NSString *)string;
-
-/**
- *  网络连接是否正常
- *
- *  @return NO不正常
- */
-+ (BOOL)isNetwork;
-
-
-/**
- 获取当前连接的网络类型
- 
- @return 当前连接的网络状态是wifi，还是蜂窝网，还是无连接
- */
-+ (NetWorkStatus)getNetWorkStatus;
 
 #pragma mark ----------------- 获取视频第一帧 网络视频 && 本地视频 -----------
 
@@ -133,17 +117,12 @@ NS_ASSUME_NONNULL_BEGIN
 /********************** Add by JackWu End **************************************/
 /*******************************************************************************/
 
-
 // Kenny Start
-+ (BOOL) isFCDebug;
-+ (void) setFCDebug:(BOOL)val;
 + (NSString *)getAppLanguage;
-
 + (BOOL)getIsSeenAgreement;
 + (void)setIsSeenAgreement:(BOOL)val;
 + (float)getLatestAgreementVersion;
 + (void)setLatestAgreementVersion:(float)version;
-
 + (NSString *)getAgreementUrl;
 + (void)setAgreementUrl:(NSString *)url;
 // Kenny end

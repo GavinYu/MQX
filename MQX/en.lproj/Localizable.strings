@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-  MQX
-
-  Created by admin on 2018/3/4.
-  Copyright © 2018年 YunEEC. All rights reserved.
-*/
-
 "app_name" = "Yuneec Exp";
 "person_center_old_password_error" = "Old password is incorrect, please enter again.";
 "person_center_me" = "Me";
@@ -210,8 +202,8 @@
 "gallery_add_music" = "Add music";
 "homepage_aviation" = "Aviation";
 "homepage_start_to_fly" = "Fly Now";
-"homepage_how_to_buy" = "How to buy";
-"homepage_device_not_conneted" = "device disconnected";
+"homepage_how_to_buy" = "How to buy>";
+"homepage_device_not_conneted" = "device disconnected>";
 "homepage_device_conneted" = "device connected";
 "homepage_remote_controller_connected" = "Controller connected";
 "homepage_remote_controller_disconnected" = "Controller disconnected";
@@ -610,3 +602,10 @@
 "ota_update_warning_electricity" = "Please make sure aircraft remaining power is above 30% and controller remaining power is above 25%.";
 "ota_update_finished" = "Finished";
 "ota_upload_success" = "Upload success";
+"photo_title" = "No access to the camera";
+"photo_message" = "No access to the camera. Please enter the system [settings]>[Privacy]>[Camera], turn on the switch to enable the camera setting.";
+"photo_sureBtn" = "Enable this setting immediately";
+"flight_warning_low_voltage" = "Low voltage";
+"flight_warning_Force_Landing" = "Force Landing";
+
+

@@ -49,7 +49,6 @@
 		8442DD21204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD14204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist */; };
 		8442DD26204C03C200BF1E30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD28204C03C200BF1E30 /* Localizable.strings */; };
 		8442DD2C204C202500BF1E30 /* YNCMessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD2A204C202500BF1E30 /* YNCMessageBox.m */; };
-		8442DD30204C37DC00BF1E30 /* YNCCameraSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD2E204C37DC00BF1E30 /* YNCCameraSettingViewModel.m */; };
 		8442DD35204C386E00BF1E30 /* UIColor+YNCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD34204C386E00BF1E30 /* UIColor+YNCColor.m */; };
 		8442DD38204C387C00BF1E30 /* UIFont+YNCFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD36204C387C00BF1E30 /* UIFont+YNCFont.m */; };
 		8442DD3D204C3A7500BF1E30 /* YNCFB_SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD3A204C3A7400BF1E30 /* YNCFB_SwitchCell.m */; };
@@ -75,6 +74,21 @@
 		F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF9204A83B300029E50 /* YNCABECamManager.m */; };
 		F498FB092050D09700C885CE /* YNCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB072050D09700C885CE /* YNCScrollLabelView.m */; };
 		F498FB0C2050DDD700C885CE /* YNCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB0B2050DDD700C885CE /* YNCNavigationViewController.m */; };
+		F4AFAB012054D35600BC425A /* YNCVideoHomepageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB002054D35600BC425A /* YNCVideoHomepageView.m */; };
+		F4AFAB112054DD1D00BC425A /* YNCFlightStatusView_Firebird.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB0F2054DD1D00BC425A /* YNCFlightStatusView_Firebird.m */; };
+		F4AFAB122054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB102054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib */; };
+		F4AFAB152054DDFF00BC425A /* YNCStatusView_Firebird.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB142054DDFF00BC425A /* YNCStatusView_Firebird.m */; };
+		F4AFAB172054F55700BC425A /* YNCVideoHomepageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB162054F55700BC425A /* YNCVideoHomepageView.xib */; };
+		F4AFAB1B2054F7CB00BC425A /* UIImage+YNCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB1A2054F7CB00BC425A /* UIImage+YNCImage.m */; };
+		F4AFAB222054FAC200BC425A /* YNCDroneStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB1C2054FAC100BC425A /* YNCDroneStateView.xib */; };
+		F4AFAB232054FAC200BC425A /* YNCNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB1D2054FAC100BC425A /* YNCNavigationBar.m */; };
+		F4AFAB242054FAC200BC425A /* YNCNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB1E2054FAC100BC425A /* YNCNavigationBar.xib */; };
+		F4AFAB252054FAC200BC425A /* YNCDroneStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB212054FAC200BC425A /* YNCDroneStateView.m */; };
+		F4AFAB2A205502E800BC425A /* YNCWarningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB29205502E800BC425A /* YNCWarningManager.m */; };
+		F4AFAB2F2055089100BC425A /* YNCWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB2D2055089000BC425A /* YNCWarningView.m */; };
+		F4AFAB302055089100BC425A /* YNCWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB2E2055089100BC425A /* YNCWarningView.xib */; };
+		F4AFAB3420550E3200BC425A /* YNCCameraSettingDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB3320550E3200BC425A /* YNCCameraSettingDataModel.m */; };
+		F4AFAB382055247200BC425A /* YNCDeviceInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB372055247200BC425A /* YNCDeviceInfoDataModel.m */; };
 		F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5C920463B8000B06CEE /* AppDelegate.m */; };
 		F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5CE20463B8000B06CEE /* Main.storyboard */; };
 		F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5D120463B8000B06CEE /* Assets.xcassets */; };
@@ -179,8 +193,6 @@
 		8442DD29204C03C600BF1E30 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8442DD2A204C202500BF1E30 /* YNCMessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCMessageBox.m; sourceTree = "<group>"; };
 		8442DD2B204C202500BF1E30 /* YNCMessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCMessageBox.h; sourceTree = "<group>"; };
-		8442DD2E204C37DC00BF1E30 /* YNCCameraSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingViewModel.m; sourceTree = "<group>"; };
-		8442DD2F204C37DC00BF1E30 /* YNCCameraSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingViewModel.h; sourceTree = "<group>"; };
 		8442DD33204C386E00BF1E30 /* UIColor+YNCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YNCColor.h"; sourceTree = "<group>"; };
 		8442DD34204C386E00BF1E30 /* UIColor+YNCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YNCColor.m"; sourceTree = "<group>"; };
 		8442DD36204C387C00BF1E30 /* UIFont+YNCFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+YNCFont.m"; sourceTree = "<group>"; };
@@ -228,6 +240,32 @@
 		F498FB082050D09700C885CE /* YNCScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCScrollLabelView.h; sourceTree = "<group>"; };
 		F498FB0A2050DDD600C885CE /* YNCNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCNavigationViewController.h; sourceTree = "<group>"; };
 		F498FB0B2050DDD700C885CE /* YNCNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCNavigationViewController.m; sourceTree = "<group>"; };
+		F4AFAAFF2054D35600BC425A /* YNCVideoHomepageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCVideoHomepageView.h; sourceTree = "<group>"; };
+		F4AFAB002054D35600BC425A /* YNCVideoHomepageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCVideoHomepageView.m; sourceTree = "<group>"; };
+		F4AFAB0E2054DD1C00BC425A /* YNCFlightStatusView_Firebird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCFlightStatusView_Firebird.h; sourceTree = "<group>"; };
+		F4AFAB0F2054DD1D00BC425A /* YNCFlightStatusView_Firebird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCFlightStatusView_Firebird.m; sourceTree = "<group>"; };
+		F4AFAB102054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCFlightStatusView_Firebird.xib; sourceTree = "<group>"; };
+		F4AFAB132054DDFE00BC425A /* YNCStatusView_Firebird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCStatusView_Firebird.h; sourceTree = "<group>"; };
+		F4AFAB142054DDFF00BC425A /* YNCStatusView_Firebird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCStatusView_Firebird.m; sourceTree = "<group>"; };
+		F4AFAB162054F55700BC425A /* YNCVideoHomepageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YNCVideoHomepageView.xib; sourceTree = "<group>"; };
+		F4AFAB192054F7CA00BC425A /* UIImage+YNCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YNCImage.h"; sourceTree = "<group>"; };
+		F4AFAB1A2054F7CB00BC425A /* UIImage+YNCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YNCImage.m"; sourceTree = "<group>"; };
+		F4AFAB1C2054FAC100BC425A /* YNCDroneStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCDroneStateView.xib; sourceTree = "<group>"; };
+		F4AFAB1D2054FAC100BC425A /* YNCNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCNavigationBar.m; sourceTree = "<group>"; };
+		F4AFAB1E2054FAC100BC425A /* YNCNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCNavigationBar.xib; sourceTree = "<group>"; };
+		F4AFAB1F2054FAC200BC425A /* YNCDroneStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCDroneStateView.h; sourceTree = "<group>"; };
+		F4AFAB202054FAC200BC425A /* YNCNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCNavigationBar.h; sourceTree = "<group>"; };
+		F4AFAB212054FAC200BC425A /* YNCDroneStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCDroneStateView.m; sourceTree = "<group>"; };
+		F4AFAB27205502E700BC425A /* YNCWarningConstMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCWarningConstMacro.h; sourceTree = "<group>"; };
+		F4AFAB28205502E700BC425A /* YNCWarningManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCWarningManager.h; sourceTree = "<group>"; };
+		F4AFAB29205502E800BC425A /* YNCWarningManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCWarningManager.m; sourceTree = "<group>"; };
+		F4AFAB2C2055089000BC425A /* YNCWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCWarningView.h; sourceTree = "<group>"; };
+		F4AFAB2D2055089000BC425A /* YNCWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCWarningView.m; sourceTree = "<group>"; };
+		F4AFAB2E2055089100BC425A /* YNCWarningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCWarningView.xib; sourceTree = "<group>"; };
+		F4AFAB3220550E3200BC425A /* YNCCameraSettingDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingDataModel.h; sourceTree = "<group>"; };
+		F4AFAB3320550E3200BC425A /* YNCCameraSettingDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingDataModel.m; sourceTree = "<group>"; };
+		F4AFAB362055247200BC425A /* YNCDeviceInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDeviceInfoDataModel.h; sourceTree = "<group>"; };
+		F4AFAB372055247200BC425A /* YNCDeviceInfoDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDeviceInfoDataModel.m; sourceTree = "<group>"; };
 		F4B7F5C520463B8000B06CEE /* MQX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MQX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B7F5C820463B8000B06CEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F4B7F5C920463B8000B06CEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -359,6 +397,8 @@
 		8442DD2D204C37C100BF1E30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4AFAB35205523EF00BC425A /* DeviceInfo */,
+				F4AFAB3120550E1200BC425A /* CameraSetting */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -425,10 +465,10 @@
 				8442DCBE204BF30200BF1E30 /* cameraSetting */,
 				F46641F9204AAC8400DA4CCE /* YNCCameraToolView.h */,
 				F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */,
-				F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */,
+				F46641FF204AACBD00DA4CCE /* YNCCameraToolView.xib */,
 				F46641FC204AACA600DA4CCE /* YNCVideoTimeView.h */,
 				F46641FD204AACA600DA4CCE /* YNCVideoTimeView.m */,
-				F46641FF204AACBD00DA4CCE /* YNCCameraToolView.xib */,
+				F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */,
 			);
 			path = CameraTool;
 			sourceTree = "<group>";
@@ -484,6 +524,9 @@
 		F482ACD1204A3FCD00029E50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4AFAB2B2055088200BC425A /* Warning */,
+				F4AFAB022054D45300BC425A /* NavigationBar */,
+				F4AFAAFE2054D10D00BC425A /* Home */,
 				8442DD3F204C3AFD00BF1E30 /* Common */,
 				8442DD41204C3B0D00BF1E30 /* YNCPopWindowView.h */,
 				8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */,
@@ -520,6 +563,7 @@
 		F482ACE1204A709000029E50 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F4AFAB26205502D500BC425A /* Warning */,
 				F482ACF7204A82B400029E50 /* ABECam */,
 			);
 			path = Manager;
@@ -549,6 +593,7 @@
 		F482ACE5204A709000029E50 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F4AFAB182054F7BA00BC425A /* YNCImage */,
 				8442DD32204C385F00BF1E30 /* YNCColor */,
 				8442DD31204C385E00BF1E30 /* YNCFont */,
 				F4664203204AAFDA00DA4CCE /* YNCButton */,
@@ -623,6 +668,89 @@
 			path = ScrollLabelView;
 			sourceTree = "<group>";
 		};
+		F4AFAAFE2054D10D00BC425A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB0D2054DD0A00BC425A /* FlightStatusView */,
+				F4AFAAFF2054D35600BC425A /* YNCVideoHomepageView.h */,
+				F4AFAB002054D35600BC425A /* YNCVideoHomepageView.m */,
+				F4AFAB162054F55700BC425A /* YNCVideoHomepageView.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F4AFAB022054D45300BC425A /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB1F2054FAC200BC425A /* YNCDroneStateView.h */,
+				F4AFAB212054FAC200BC425A /* YNCDroneStateView.m */,
+				F4AFAB1C2054FAC100BC425A /* YNCDroneStateView.xib */,
+				F4AFAB202054FAC200BC425A /* YNCNavigationBar.h */,
+				F4AFAB1D2054FAC100BC425A /* YNCNavigationBar.m */,
+				F4AFAB1E2054FAC100BC425A /* YNCNavigationBar.xib */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		F4AFAB0D2054DD0A00BC425A /* FlightStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB132054DDFE00BC425A /* YNCStatusView_Firebird.h */,
+				F4AFAB142054DDFF00BC425A /* YNCStatusView_Firebird.m */,
+				F4AFAB0E2054DD1C00BC425A /* YNCFlightStatusView_Firebird.h */,
+				F4AFAB0F2054DD1D00BC425A /* YNCFlightStatusView_Firebird.m */,
+				F4AFAB102054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib */,
+			);
+			path = FlightStatusView;
+			sourceTree = "<group>";
+		};
+		F4AFAB182054F7BA00BC425A /* YNCImage */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB192054F7CA00BC425A /* UIImage+YNCImage.h */,
+				F4AFAB1A2054F7CB00BC425A /* UIImage+YNCImage.m */,
+			);
+			path = YNCImage;
+			sourceTree = "<group>";
+		};
+		F4AFAB26205502D500BC425A /* Warning */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB27205502E700BC425A /* YNCWarningConstMacro.h */,
+				F4AFAB28205502E700BC425A /* YNCWarningManager.h */,
+				F4AFAB29205502E800BC425A /* YNCWarningManager.m */,
+			);
+			path = Warning;
+			sourceTree = "<group>";
+		};
+		F4AFAB2B2055088200BC425A /* Warning */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB2C2055089000BC425A /* YNCWarningView.h */,
+				F4AFAB2D2055089000BC425A /* YNCWarningView.m */,
+				F4AFAB2E2055089100BC425A /* YNCWarningView.xib */,
+			);
+			path = Warning;
+			sourceTree = "<group>";
+		};
+		F4AFAB3120550E1200BC425A /* CameraSetting */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB3220550E3200BC425A /* YNCCameraSettingDataModel.h */,
+				F4AFAB3320550E3200BC425A /* YNCCameraSettingDataModel.m */,
+			);
+			path = CameraSetting;
+			sourceTree = "<group>";
+		};
+		F4AFAB35205523EF00BC425A /* DeviceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFAB362055247200BC425A /* YNCDeviceInfoDataModel.h */,
+				F4AFAB372055247200BC425A /* YNCDeviceInfoDataModel.m */,
+			);
+			path = DeviceInfo;
+			sourceTree = "<group>";
+		};
 		F4B7F5BC20463B8000B06CEE = {
 			isa = PBXGroup;
 			children = (
@@ -649,8 +777,6 @@
 			isa = PBXGroup;
 			children = (
 				8442DD2D204C37C100BF1E30 /* Model */,
-				8442DD2F204C37DC00BF1E30 /* YNCCameraSettingViewModel.h */,
-				8442DD2E204C37DC00BF1E30 /* YNCCameraSettingViewModel.m */,
 				F482ACD1204A3FCD00029E50 /* View */,
 				F482ACD0204A3FCD00029E50 /* ViewController */,
 				F482ACD3204A3FCD00029E50 /* ViewModel */,
@@ -799,6 +925,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4AFAB122054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib in Resources */,
 				8442DD21204C026B00BF1E30 /* YNCFB_ShutterTimeValue.plist in Resources */,
 				F4B7F5D520463B8000B06CEE /* LaunchScreen.storyboard in Resources */,
 				8442DCEA204BF31500BF1E30 /* YNCCameraSettingModeCell.xib in Resources */,
@@ -808,18 +935,22 @@
 				8442DD1F204C026B00BF1E30 /* YNCFB_VideoResolution.plist in Resources */,
 				8442DD16204C026B00BF1E30 /* YNCFB_PhotoQuality.plist in Resources */,
 				8442DD3E204C3A7500BF1E30 /* YNCFB_SwitchCell.xib in Resources */,
+				F4AFAB242054FAC200BC425A /* YNCNavigationBar.xib in Resources */,
 				8442DCF8204BF31500BF1E30 /* YNCCameraSettingHeaderView.xib in Resources */,
 				8442DD18204C026B00BF1E30 /* CameraSetting.plist in Resources */,
 				8442DCFF204BF31500BF1E30 /* YNCCameraSettingFooterView.xib in Resources */,
+				F4AFAB172054F55700BC425A /* YNCVideoHomepageView.xib in Resources */,
 				8442DD20204C026B00BF1E30 /* YNCFB_VideoFormat.plist in Resources */,
 				F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */,
 				F4664200204AACBD00DA4CCE /* YNCCameraToolView.xib in Resources */,
 				8442DCF2204BF31500BF1E30 /* YNCFB_ShutterView.xib in Resources */,
+				F4AFAB222054FAC200BC425A /* YNCDroneStateView.xib in Resources */,
 				F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */,
 				8442DD26204C03C200BF1E30 /* Localizable.strings in Resources */,
 				8442DCFC204BF31500BF1E30 /* YNCFB_MaskView.xib in Resources */,
 				8442DD19204C026B00BF1E30 /* WhiteBalance.plist in Resources */,
 				8442DD48204C3F3500BF1E30 /* YNCSettingSlider.xib in Resources */,
+				F4AFAB302055089100BC425A /* YNCWarningView.xib in Resources */,
 				8442DCEE204BF31500BF1E30 /* YNCFB_BurstCell.xib in Resources */,
 				8442DCFA204BF31500BF1E30 /* YNCFB_PhotoModeCell.xib in Resources */,
 				8442DD43204C3B0E00BF1E30 /* YNCPopWindowView.xib in Resources */,
@@ -916,8 +1047,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4AFAB3420550E3200BC425A /* YNCCameraSettingDataModel.m in Sources */,
 				8442DCF9204BF31500BF1E30 /* YNCFB_ExposureCell.m in Sources */,
 				F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */,
+				F4AFAB2A205502E800BC425A /* YNCWarningManager.m in Sources */,
+				F4AFAB252054FAC200BC425A /* YNCDroneStateView.m in Sources */,
 				8442DD35204C386E00BF1E30 /* UIColor+YNCColor.m in Sources */,
 				8442DCF5204BF31500BF1E30 /* YNCCameraSettingModeCell.m in Sources */,
 				8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */,
@@ -925,22 +1059,28 @@
 				8442DCEC204BF31500BF1E30 /* YNCCameraCommonSettingView.m in Sources */,
 				F4B7F5D820463B8000B06CEE /* main.m in Sources */,
 				8442DCEF204BF31500BF1E30 /* YNCFB_MaskView.m in Sources */,
-				8442DD30204C37DC00BF1E30 /* YNCCameraSettingViewModel.m in Sources */,
 				F4664206204AAFE600DA4CCE /* UIButton+YNCButton.m in Sources */,
 				8442DCF6204BF31500BF1E30 /* YNCFB_ShutterCell.m in Sources */,
 				F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */,
+				F4AFAB012054D35600BC425A /* YNCVideoHomepageView.m in Sources */,
 				8442DCFB204BF31500BF1E30 /* YNCCameraSettingView.m in Sources */,
 				8442DD2C204C202500BF1E30 /* YNCMessageBox.m in Sources */,
 				8442DD38204C387C00BF1E30 /* UIFont+YNCFont.m in Sources */,
 				F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */,
 				8442DD01204BF31500BF1E30 /* YNCFB_ShutterView.m in Sources */,
 				8442DD3D204C3A7500BF1E30 /* YNCFB_SwitchCell.m in Sources */,
+				F4AFAB382055247200BC425A /* YNCDeviceInfoDataModel.m in Sources */,
 				F482ACEE204A78DA00029E50 /* YNCBaseNavigationControllerStack.m in Sources */,
 				F46641FE204AACA600DA4CCE /* YNCVideoTimeView.m in Sources */,
+				F4AFAB112054DD1D00BC425A /* YNCFlightStatusView_Firebird.m in Sources */,
+				F4AFAB232054FAC200BC425A /* YNCNavigationBar.m in Sources */,
 				8442DD00204BF31500BF1E30 /* YNCFB_BurstCell.m in Sources */,
+				F4AFAB1B2054F7CB00BC425A /* UIImage+YNCImage.m in Sources */,
 				8442DD02204BF31500BF1E30 /* UIPickerView+YNCPicker.m in Sources */,
 				8442DCF0204BF31500BF1E30 /* YNCFB_PhotoModeCell.m in Sources */,
+				F4AFAB2F2055089100BC425A /* YNCWarningView.m in Sources */,
 				F482ACDB204A6D1E00029E50 /* YNCConst.m in Sources */,
+				F4AFAB152054DDFF00BC425A /* YNCStatusView_Firebird.m in Sources */,
 				8442DD03204BF31500BF1E30 /* YNCFB_ExposureView.m in Sources */,
 				F498FB092050D09700C885CE /* YNCScrollLabelView.m in Sources */,
 				F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */,

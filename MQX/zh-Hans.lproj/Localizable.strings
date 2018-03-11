@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-  MQX
-
-  Created by admin on 2018/3/4.
-  Copyright © 2018年 YunEEC. All rights reserved.
-*/
-
 "app_name" = "Yuneec Exp";
 "person_center_old_password_error" = "旧密码错误，请重新输入";
 "person_center_me" = "我";
@@ -210,8 +202,8 @@
 "gallery_add_music" = "添加音乐";
 "homepage_aviation" = "飞行器";
 "homepage_start_to_fly" = "进入飞行";
-"homepage_how_to_buy" = "购买信息";
-"homepage_device_not_conneted" = "设备未连接";
+"homepage_how_to_buy" = "购买信息>";
+"homepage_device_not_conneted" = "设备未连接>";
 "homepage_device_conneted" = "设备已连接";
 "homepage_remote_controller_connected" = "遥控器已连接";
 "homepage_remote_controller_disconnected" = "遥控器已断开";
@@ -577,3 +569,10 @@
 "ota_update_warning_electricity" = "请保证飞机电量高于30%，遥控器电量高于25%";
 "ota_update_finished" = "完成";
 "ota_upload_success" = "上传成功";
+"photo_title" = "相机权限未开启";
+"photo_message" = "相机权限未开启，请进入系统【设置】>【隐私】>【相机】中打开开关,开启相机功能。";
+"photo_sureBtn" = "立即开启";
+"flight_warning_low_voltage" = "低电量";
+"flight_warning_Force_Landing" = "紧急降落";
+
+

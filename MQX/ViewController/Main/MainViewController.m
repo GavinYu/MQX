@@ -17,32 +17,26 @@
 #import "AppDelegate.h"
 #import "YNCScrollLabelView.h"
 #import "YNCNavigationViewController.h"
+#import "YNCDeviceInfoDataModel.h"
 
 static const CGFloat kAnimationBGColorDuration = 0.5;
 static CGFloat kDroneNameFontSize = 38.0f;
 
-@interface MainViewController ()
-<UIScrollViewDelegate>
-{
-    BOOL __shouldAutorotate;
-    int _kvo_act;
-}
-@property (weak, nonatomic) IBOutlet UIButton *connectionStatusButton;
-//@property (weak, nonatomic) IBOutlet UIImageView *connectionStatusImageView;
-@property (weak, nonatomic) IBOutlet UILabel *droneNameLabel;
-@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+@interface MainViewController () <UIScrollViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *droneImageArray;
+
 @property (weak, nonatomic) IBOutlet UIView *referView;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *readyToFlyButton;
+@property (weak, nonatomic) IBOutlet UIButton *connectionStatusButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *droneNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *downArrowImage;
 @property (weak, nonatomic) IBOutlet UIButton *droneTypeSelectionButton;
 @property (weak, nonatomic) IBOutlet YNCScrollLabelView *tipsView;
+@property (weak, nonatomic) IBOutlet UIButton *readyToFlyButton;
 @property (weak, nonatomic) IBOutlet UIButton *buyInfoButton;
+
 @property (strong, nonatomic) CAGradientLayer *gradient;
-
-
-- (IBAction)droneGenerationButtonTapped:(id)sender;
 
 @end
 
@@ -55,14 +49,13 @@ static CGFloat kDroneNameFontSize = 38.0f;
     //ABECam connect TalkSession
     if ([YNCABECamManager sharedABECamManager].WiFiConnected) {
         [[AbeCamHandle sharedInstance] connectedTalkSession];
+        [self getDroneDeviceInfo];
     }
     
     //配置子视图
     [self configSubView];
     
     [self addNotifications];
-    
-    
     
     [self autolayout];
     [self localize];
@@ -106,9 +99,21 @@ static CGFloat kDroneNameFontSize = 38.0f;
 
 }
 
+//MARK: -- lazyload
+- (NSMutableArray *)droneImageArray {
+    if (!_droneImageArray) {
+        _droneImageArray = [NSMutableArray new];
+        _droneImageArray = @[@"icon_aircraft_mqx"];
+    }
+    
+    return _droneImageArray;
+}
 //MARK: -- 初始化子视图
 - (void)configSubView {
-    
+    [_connectionStatusButton setTitle:NSLocalizedString(@"homepage_device_not_conneted", nil) forState:UIControlStateNormal];
+    [self prepareForScrollView];
+    [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
+    [_buyInfoButton setTitle:NSLocalizedString(@"homepage_how_to_buy", nil) forState:UIControlStateNormal];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -290,10 +295,20 @@ static CGFloat kDroneNameFontSize = 38.0f;
     }];
 }
 
+//MARK: -- 配置MyScrollView
 - (void)prepareForScrollView {
     CGFloat s_height = 290;//self.myScrollView.frame.size.height;
     CGFloat s_width = APPWIDTH;//self.myScrollView.frame.size.width
-
+    
+    for (int i = 0; i < self.droneImageArray.count; ++i) {
+        UIImageView *itemImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.droneImageArray[i]]];
+        [_myScrollView addSubview:itemImageView];
+        [itemImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.myScrollView).offset(i*s_width);
+            make.centerY.equalTo(self.myScrollView);
+            make.size.mas_equalTo(CGSizeMake(s_width, s_height));
+        }];
+    }
 }
 
 // MARK: UIScrollView Delegate
@@ -341,6 +356,16 @@ static CGFloat kDroneNameFontSize = 38.0f;
     }
 }
 
+- (void)getDroneDeviceInfo {
+    
+    [[YNCABECamManager sharedABECamManager] getDeviceInfo:^(YNCDeviceInfoDataModel *deviceInfo) {
+        if (deviceInfo != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_connectionStatusButton setTitle:deviceInfo.ssid forState:UIControlStateNormal];
+            });
+        }
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

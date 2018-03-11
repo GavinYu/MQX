@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "YNCSingleton.h"
+#import "YNCBlock.h"
+
+@class YNCDeviceInfoDataModel;
 
 @interface YNCABECamManager : NSObject
 
@@ -23,5 +26,8 @@ YNCSingletonH(ABECamManager)
 - (void)checkWiFiState;
 //释放监测WiFi连接的状态的定时器
 - (void)freeCheckWiFiTimer;
+
+//获取飞机设备信息
+- (void)getDeviceInfo:(void(^)(YNCDeviceInfoDataModel *deviceInfo))block;
 
 @end

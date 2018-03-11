@@ -47,6 +47,7 @@
     if (sender.enabled) {
         [sender setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_%@_normal", name]] forState:UIControlStateNormal];
         [sender setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_%@_selected", name]] forState:UIControlStateSelected];
+        [sender setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_%@_highlight", name]] forState:UIControlStateHighlighted];
     } else {
         [sender setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_%@_disable", name]] forState:UIControlStateNormal];
     }

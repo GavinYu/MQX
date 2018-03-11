@@ -28,7 +28,7 @@
 */
 
 - (void)dealloc {
-    NSLog(@"dealloc: %@", NSStringFromClass([self class]));
+    DLog(@"dealloc: %@", NSStringFromClass([self class]));
 }
 
 - (void)setCameraMode:(YNCCameraMode)cameraMode
@@ -37,9 +37,10 @@
     if (cameraMode == YNCCameraModeVideo) {
         self.backImageView.hidden = YES;
         self.numLabel.hidden = YES;
+        
         [UIButton setButtonImageForState:_cameraOperateButton withImageName:@"video"];
     } else if (cameraMode == YNCCameraModeTakePhoto) {
-        [UIButton setButtonImageForState:_cameraOperateButton withImageName:@"takephoto"];
+        [UIButton setButtonImageForState:_cameraOperateButton withImageName:@"takePhoto"];
     }
 }
 
@@ -66,16 +67,10 @@
 }
 
 - (void)initSubView:(BOOL)connected {
-    //    _backView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
-    //
-    //    self.isCancel = NO;
     _switchModeButton.tag = YNCEventActionCameraSwitchMode;
     self.cameraOperateButton.tag = YNCEventActionCameraOperate;
     self.cameraSettingButton.tag = YNCEventActionCameraSetting;
     self.galleryButton.tag = YNCEventActionCameraGallery;
-    
-    //    self.pointLabel.layer.cornerRadius = self.pointLabel.bounds.size.width * 0.5;
-    //    self.pointLabel.layer.masksToBounds = YES;
     
     self.backImageView = [[UIImageView alloc] init];
     [_cameraOperateButton addSubview:_backImageView];
@@ -86,7 +81,6 @@
     
     self.numLabel = [[UILabel alloc] init];
     _numLabel.textAlignment = NSTextAlignmentCenter;
-//    _numLabel.textColor = [UIColor yncGreenColor];
     _numLabel.font = [UIFont systemFontOfSize:9.0f];
     [_cameraOperateButton addSubview:_numLabel];
     [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,18 +88,10 @@
         make.width.equalTo(@(18));
         make.height.equalTo(@(10));
     }];
-#ifdef DIRECT_DRONE
+
     [self updateBtnImageWithConnect:YES];
-#else
-    [self updateBtnImageWithConnect:connected];
-#endif
-    
+
     self.photoMode = YNCPhotoModeSingle;
-    
-    //    if (_cameraToolViewEventBlock) {
-    //        _cameraToolViewEventBlock(YNCEventActionCameraSwitchMode);
-    //    }
-    
 }
 
 - (void)updateBtnImageWithConnect:(BOOL)connect
@@ -116,11 +102,6 @@
         self.cameraSettingButton.enabled = YES;
         self.galleryButton.enabled = YES;
         [UIButton setButtonImageForState:self.switchModeButton withImageName:@"camera_switch_mode"];
-//        if ([YNCCameraManager sharedCameraManager].cameraMode == YuneecCameraModePhoto) {
-//            self.cameraMode = YNCCameraModeTakePhoto;
-//        } else if ([YNCCameraManager sharedCameraManager].cameraMode == YuneecCameraModeVideo) {
-//            self.cameraMode = YNCCameraModeVideo;
-//        }
         [UIButton setButtonImageForState:self.cameraSettingButton withImageName:@"carmaSetting"];
         [UIButton setButtonImageForState:self.galleryButton withImageName:@"gallery"];
     } else {

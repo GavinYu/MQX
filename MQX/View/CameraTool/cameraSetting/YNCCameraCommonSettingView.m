@@ -8,7 +8,7 @@
 
 #import "YNCCameraCommonSettingView.h"
 #import "YNCCameraSettingModeCell.h"
-#import "YNCCameraSettingViewModel.h"
+#import "YNCCameraSettingDataModel.h"
 #import "YNCCameraSettingFooterView.h"
 #import "YNCCameraSettingHeaderView.h"
 #import "YNCFB_ShutterCell.h"
@@ -252,7 +252,7 @@ static NSString *PHOTOMODECELL = @"photoModeCell";
 //                {
 //                    YNCCameraSettingModeCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
 //                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                    YNCCameraSettingViewModel *model = [[YNCCameraSettingViewModel alloc] init];
+//                    YNCCameraSettingDataModel *model = [[YNCCameraSettingDataModel alloc] init];
 //                    NSDictionary *dic = self.dataArray[indexPath.row - 4];
 //                    [model setValuesForKeysWithDictionary:dic];
 //                    [cell configureWithModel:model];
