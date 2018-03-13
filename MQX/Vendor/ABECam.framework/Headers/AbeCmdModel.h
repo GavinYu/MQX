@@ -12,7 +12,7 @@
 @protocol AbeCmdModelDelegate <NSObject>
 
 // 手到rvs回传数据，APP做出相关操作（拍照、录像）
-//- (void)abeCmdModelDidReceiveRvsCallback:(RVST_UINT16)u16Cmd;
+-(void) abeCmdModelDidReceiveRvsCallback:(unsigned short)u16cmd serialNum:(unsigned char)u8SerialNum recvLen:(long)s32RecvLen userData:(void *)userData;
 
 @end
 
