@@ -18,6 +18,7 @@
 @interface YNCABECamManager ()
 {
     dispatch_source_t _checkWiFiTimer;
+    
 }
 /*
  * The connection status of the component.

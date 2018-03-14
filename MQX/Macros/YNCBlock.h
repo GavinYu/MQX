@@ -8,6 +8,8 @@
 
 #import "YNCEnum.h"
 
+#import <CoreGraphics/CoreGraphics.h>
+
 @class UIView;
 
 #ifndef YNCBlock_h

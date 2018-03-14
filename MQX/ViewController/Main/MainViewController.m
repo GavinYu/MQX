@@ -103,7 +103,6 @@ static CGFloat kDroneNameFontSize = 38.0f;
 - (NSMutableArray *)droneImageArray {
     if (!_droneImageArray) {
         _droneImageArray = [NSMutableArray new];
-        _droneImageArray = @[@"icon_aircraft_mqx"];
     }
     
     return _droneImageArray;
@@ -327,11 +326,6 @@ static CGFloat kDroneNameFontSize = 38.0f;
     }
 }
 
-// MARK: Unwind
-- (IBAction)backToFlightViewController:(UIStoryboardSegue *)segue {
-    
-}
-
 //MARK: Orientation
 - (BOOL)shouldAutorotate {
     return NO;
@@ -341,21 +335,14 @@ static CGFloat kDroneNameFontSize = 38.0f;
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (IBAction)clickEnterButton:(UIButton *)sender {
-    
-}
 //MARK: 设备连接状态按钮事件
 - (IBAction)clickDeviceConnectedButton:(UIButton *)sender {
-    NSString * urlString = @"App-Prefs:root=WIFI";
+    NSString * urlString = NO_BELOW_iOS10==YES?@"App-Prefs:root=WIFI":@"prefs:root=WIFI";
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
-        if (NO_BELOW_iOS10) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
-        } else {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
-        }
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
     }
 }
-
+//MARK: -- 获取设备信息
 - (void)getDroneDeviceInfo {
     
     [[YNCABECamManager sharedABECamManager] getDeviceInfo:^(YNCDeviceInfoDataModel *deviceInfo) {
