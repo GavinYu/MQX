@@ -17,7 +17,6 @@
 
 @property (nonatomic, strong) YNCFlightStatusView_Firebird *flightStatusView_fireBird;
 
-@property (copy, nonatomic) YNCEventBlock wifiNameBlock;
 @property (nonatomic, assign) int pitch;
 @property (nonatomic, assign) int roll;
 @property (assign, nonatomic) BOOL isShowVideoTimeView;
@@ -26,7 +25,6 @@
 + (YNCVideoHomepageView *)instanceVideoHomepageView;
 
 - (void)initSubView:(YNCModeDisplay)modeDisplay;
-- (void)updateWifiName:(NSString *)wifName;
 - (void)hiddenSubView:(BOOL)isHidden withDoubleClickCount:(NSInteger)count;
 
 @end

@@ -64,40 +64,16 @@
     }];
     
     [self.remoteControlButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.voltageImageView.mas_left).offset(-6*_sizeMultiple);
+        make.right.equalTo(self.voltageImageView.mas_left).offset(-10*_sizeMultiple);
         make.centerY.equalTo(self.voltageImageView);
         make.size.mas_equalTo(CGSizeMake(17*_sizeMultiple, 13*_sizeMultiple));
     }];
     
     [_hdSignalButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_remoteControlButton.mas_left).offset(-6*_sizeMultiple);
+        make.right.equalTo(_remoteControlButton.mas_left).offset(-10*_sizeMultiple);
         make.centerY.equalTo(_remoteControlButton);
         make.size.mas_equalTo(CGSizeMake(18*_sizeMultiple, 12*_sizeMultiple));
     }];
-}
-
-//MARK: -- 更新遥控器与相机之间的信号强弱
-- (void)updateHDSignal:(int)signal {
-    int tmp = 0;
-    
-    if (signal != 0) {
-        tmp = signal + 100;
-    }
-    
-    int k = 0;
-    if (tmp > 40) {
-        k = 5;
-    } else if (tmp > 32) {
-        k = 4;
-    } else if (tmp > 24) {
-        k = 3;
-    } else if (tmp > 16) {
-        k = 2;
-    } else if (tmp > 8) {
-        k = 1;
-    }
-
-    [_hdSignalButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_wifi%d",k]] forState:UIControlStateNormal];
 }
 
 - (void)dealloc {
@@ -153,9 +129,9 @@
 #warning TODO: ---------
 - (void)updateShowWithHDRacerTelemetry {
     int errorFlag = 0;
-    [_remoteControlButton setImage:[UIImage imageNamed:1?@"btn_HDRacer_remote_control":@"btn_firebird_remote_control"] forState:UIControlStateNormal];
+    [_remoteControlButton setImage:[UIImage imageNamed:1?@"icon_remoteControl_disconnected":@"icon_remoteControl_connected"] forState:UIControlStateNormal];
     
-    if (1) {
+    if ([YNCABECamManager sharedABECamManager].WiFiConnected) {
         if (_powerValue != 0) {
             _voltageImageView.hidden = NO;
             
@@ -169,23 +145,18 @@
         } else if (errorFlag == 3) {
             [_voltageImageView setImage:[UIImage imageNamed:@"icon_voltage0"]];
         }
-        
-    } else {
-        [_voltageImageView setImage:[UIImage imageNamed:@"icon_voltage_disconnected"]];
-        [_remoteControlButton setImage:[UIImage imageNamed:@"btn_HDRacer_remote_control"] forState:UIControlStateNormal];
     }
-    
-    [_hdSignalButton setImage:[UIImage imageNamed:1?@"icon_wifi4":@"icon_wifi0"] forState:UIControlStateNormal];
 }
-
-- (void)setHDRacerWiFiConnected:(BOOL)HDRacerWiFiConnected {
-    if (!HDRacerWiFiConnected) {
+//MARK: -- setter WiFiConnected
+- (void)setWiFiConnected:(BOOL)WiFiConnected {
+    if (!WiFiConnected) {
         _powerValue = 0;
-        [_voltageImageView setImage:[UIImage imageNamed:@"icon_voltage0"]];
-        [_remoteControlButton setImage:[UIImage imageNamed:@"btn_HDRacer_remote_control"] forState:UIControlStateNormal];
+        [_voltageImageView setImage:[UIImage imageNamed:@"icon_voltage0_disconnectd"]];
+        [_remoteControlButton setImage:[UIImage imageNamed:@"icon_remoteControl_disconnected"] forState:UIControlStateNormal];
         [_hdSignalButton setImage:[UIImage imageNamed:@"icon_wifi0"] forState:UIControlStateNormal];
     } else {
         [_voltageImageView setImage:[UIImage imageNamed:@"icon_voltage4"]];
+        [_hdSignalButton setImage:[UIImage imageNamed:@"icon_wifi4"] forState:UIControlStateNormal];
     }
 }
 

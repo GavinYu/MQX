@@ -14,8 +14,15 @@
 #import "YNCCameraSettingView.h"
 #import "YNCNavigationBar.h"
 #import "YNCVideoHomepageView.h"
+#import "YNCABECamManager.h"
+#import "AppDelegate.h"
+#import "YNCNavigationViewController.h"
+#import "YNCWarningConstMacro.h"
 
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
+{
+    FBKVOController *_kvoController;
+}
 
 //相机工具栏
 @property (strong, nonatomic) YNCCameraToolView *cameraToolView;
@@ -39,12 +46,28 @@
 @end
 
 @implementation YNCMqxViewController
-
+//MARK: -- View life cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden = YES;
+    //绑定KVO
+    [self bindViewModel];
+    //关闭返回手势
+    self.fd_prefersNavigationBarHidden = YES;
+    self.fd_interactivePopDisabled = YES;
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    //强制旋转横屏
+    [UIView animateWithDuration:.3 animations:^{
+        [self forceOrientationLandscape];
+    }];
     // Do any additional setup after loading the view.
-  [self videoPreview];
-  [self createCameraToolView];
+    self.currentDisplay = YNCModeDisplayNormal;
+    
+    [self videoPreview];
+    
+    [self initMySubView];
+    
+    [self addGestureRecognizers];
 }
 
 //MARK: -- Lazyload  videoHomepageView
@@ -118,7 +141,7 @@
 - (UIButton *)fpvSwitchButton {
     if (!_fpvSwitchButton) {
         _fpvSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_fpvSwitchButton setImage:[UIImage imageNamed:@"btn_fpv_switch"] forState:UIControlStateNormal];
+        [_fpvSwitchButton setImage:[UIImage imageNamed:@"btn_FPV"] forState:UIControlStateNormal];
         [_fpvSwitchButton addTarget:self action:@selector(clickFPVSwitchButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -146,8 +169,6 @@
     return _videoPreview;
 }
 
-
-
 //MARK: -- Lazyload cameraToolView
 - (YNCCameraToolView *)cameraToolView {
   if (!_cameraToolView) {
@@ -156,9 +177,60 @@
   
   return _cameraToolView;
 }
+//MARK: -- 强制横屏
+- (void)forceOrientationLandscape
+{
+    AppDelegate *appdelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+    appdelegate.isForceLandscape=YES;
+    appdelegate.isForcePortrait=NO;
+    [appdelegate application:[UIApplication sharedApplication] supportedInterfaceOrientationsForWindow:self.view.window];
+    
+    YNCNavigationViewController *navi = (YNCNavigationViewController *)self.navigationController;
+    navi.interfaceOrientation = UIInterfaceOrientationLandscapeRight;
+    navi.interfaceOrientationMask = UIInterfaceOrientationMaskLandscapeRight;
+    
+    //强制翻转屏幕，Home键在右边。
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeRight) forKey:@"orientation"];
+    //刷新
+    [UIViewController attemptRotationToDeviceOrientation];
+}
 
+//MARK: -- init subView 初始化子视图
+- (void)initMySubView {
+    [self createFPVSwitchButton];
+    [self createVideoHomepageView];
+    [self createNavigationBar];
+//    [self createFPVVideoHomepageView];
+    [self createCameraToolView];
+}
+//MARK: -- 创建 fpvSwitchButton
+- (void)createFPVSwitchButton {
+    WS(weakSelf);
+    
+    [self.view addSubview:self.fpvSwitchButton];
+    [self.fpvSwitchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(weakSelf.view.mas_bottom).offset(-15);
+        make.right.equalTo(weakSelf.view.mas_right).offset(-20-BottomUnsafeArea);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+}
+//MARK: -- 创建Firebird 首页视图
+- (void)createVideoHomepageView {
+    WS(weakSelf);
+    
+    [self.view insertSubview:self.videoHomepageView belowSubview:self.fpvSwitchButton];
+    [self.videoHomepageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.view).offset(BottomUnsafeArea);
+        make.top.equalTo(weakSelf.view);
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH - TopUnsafeArea - BottomUnsafeArea , SCREENHEIGHT - HorizontalScreenBottomUnsafeArea));
+    }];
+    
+    [self.videoHomepageView layoutIfNeeded];
+    
+    [self.videoHomepageView initSubView:self.currentDisplay];
+}
 //MARK: -- 创建FPV的首页视图
-- (void)createFirebirdFPVHomepageView {
+- (void)createFPVVideoHomepageView {
     WS(weakSelf);
     
     self.fpvHomepageView = [UIView new];
@@ -220,10 +292,14 @@
     
     [self.myNavigationBar initSubView:self.currentDisplay];
     
+    BOOL tmpWiFiConnected = [YNCABECamManager sharedABECamManager].WiFiConnected;
+    self.myNavigationBar.WiFiConnected = tmpWiFiConnected;
+    [self.myNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+    
     [self.myNavigationBar setNavigationBarButtonEventBlock:^(YNCEventAction eventAction){
         if (eventAction == YNCEventActionNavBarHomeBtn) {
             //do something
-            [weakSelf performSegueWithIdentifier:@"unwindToFlight" sender:weakSelf];
+            [weakSelf performSegueWithIdentifier:@"unwindToMain" sender:weakSelf];
         }
     }];
 }
@@ -250,6 +326,12 @@
     [self.rightNavigationBar initSubView:YNCModeDisplayGlass];
     [self.rightNavigationBar hiddenNavigationBarSubView:YES withModeDisplay:YNCModeDisplayGlass];
     
+    BOOL tmpWiFiConnected = [YNCABECamManager sharedABECamManager].WiFiConnected;
+    self.leftNavigationBar.WiFiConnected = tmpWiFiConnected;
+    self.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
+    [self.leftNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+    [self.rightNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+    
     [self.fpvHomepageView layoutIfNeeded];
 }
 
@@ -264,17 +346,17 @@
     make.size.mas_equalTo(CGSizeMake(50.0, 185.0));
   }];
   
-#warning TODO: --
-  [self.cameraToolView initSubView:YES];
+  [self.cameraToolView initSubView:[YNCABECamManager sharedABECamManager].WiFiConnected];
   
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [weakSelf setCameraToolViewShowStatus:NO];
   });
+    
   [self.cameraToolView setCameraToolViewEventBlock:^(UIButton *sender) {
     switch (sender.tag) {
       case YNCEventActionCameraSwitchMode:
       {
-        [weakSelf changeCurrentCameraMode];
+          [weakSelf changeCurrentCameraMode:sender];
       }
         break;
         
@@ -304,7 +386,6 @@
             make.left.equalTo(weakSelf.view);
           }];
           [UIView animateWithDuration:0.3 animations:^{
-            //                        weakSelf.cameraSettingView.frame = CGRectMake(0, 0, width, kScreenHeight);
             [weakSelf.view layoutIfNeeded];
           }];
         }
@@ -389,6 +470,24 @@
   }
 }
 
+#pragma mark - YNCCameraSettingViewDelegate
+- (void)popView
+{
+    WS(weakSelf);
+    [self.cameraSettingView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.view).offset(SCREENWIDTH);
+    }];
+    [UIView animateWithDuration:0.3 animations:^{
+        //        weakSelf.cameraSettingView.frame = CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, SCREENHEIGHT);
+        [weakSelf.view layoutIfNeeded];
+    }  completion:^(BOOL finished) {
+        if (finished) {
+            [weakSelf.cameraSettingView removeFromSuperview];
+            weakSelf.cameraSettingView = nil;
+        }
+    }];
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
@@ -400,9 +499,12 @@
 }
 
 //MARK: -- 拍照/录像
-- (void)takePhotoOrRecroding
-{
-  
+- (void)takePhotoOrRecroding {
+    if (self.cameraToolView.cameraMode == YNCCameraModeVideo) {
+        [self startRecord];
+    } else {
+        [self takePhoto];
+    }
 }
 
 //MARK: -- 开始录像
@@ -426,15 +528,8 @@
 }
 
 //MARK: -- 切换相机模式（录像/拍照）
-- (void)changeCurrentCameraMode {
-  [[AbeCamHandle sharedInstance] setRecordStatus:@1 result:^(BOOL succeeded) {
-    if (succeeded) {
-      NSLog(@"open recored success ");
-    }else{
-      NSLog(@"strat record failed");
-      
-    }
-  }];
+- (void)changeCurrentCameraMode:(UIButton *)sender {
+    self.cameraToolView.cameraMode = sender.isSelected==YES?YNCCameraModeTakePhoto:YNCCameraModeVideo;
 }
 
 //MARK: -- 翻转镜头
@@ -473,6 +568,21 @@
 - (IBAction)clickConvertButton:(UIButton *)sender {
   [sender setSelected:!sender.isSelected];
   [self convertVideo:sender.isSelected];
+}
+//MARK: -- 绑定ViewModel
+- (void)bindViewModel {
+    _kvoController = [[FBKVOController alloc] initWithObserver:self];
+    [_kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.myNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+            [self.leftNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+            [self.rightNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+            self.myNavigationBar.WiFiConnected = tmpWiFiConnected;
+            self.leftNavigationBar.WiFiConnected = tmpWiFiConnected;
+            self.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

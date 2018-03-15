@@ -45,32 +45,17 @@ static CGFloat kDroneNameFontSize = 38.0f;
 //MARK: -- View life methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden = YES;
     // Do any additional setup after loading the view, typically from a nib.
-    //ABECam connect TalkSession
-    if ([YNCABECamManager sharedABECamManager].WiFiConnected) {
-        [[AbeCamHandle sharedInstance] connectedTalkSession];
-        [self getDroneDeviceInfo];
-    }
-    
-    //配置子视图
+    [self.droneImageArray addObject:@"icon_aircraft_mqx"];
+    //初始化子视图
     [self configSubView];
-    
-    [self addNotifications];
-    
+    //适配子视图
     [self autolayout];
-    [self localize];
-    
-    [self initViews];
-    
-    
-    
-    [self prepareForScrollView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBarHidden = YES;
     
     // 如果不是竖屏, 强制转为竖屏
     WS(weakSelf);
@@ -78,25 +63,19 @@ static CGFloat kDroneNameFontSize = 38.0f;
         [weakSelf forceOrientationPortrait];
     } completion:^(BOOL finished) {
         
-#ifndef DIRECT_DRONE
-        // 根据飞机状态刷新UI
-        [weakSelf refreshUI];
-#endif
     }];
     
     [self.view layoutIfNeeded];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    self.navigationController.navigationBarHidden = NO;
-    
-    [super viewWillDisappear:animated];
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self.view layoutIfNeeded];
 }
 
 - (void)dealloc {
     [[AbeCamHandle sharedInstance] disconnectedTalkSession];
     DLog(@"dealloc %@", NSStringFromClass([self class]));
-
 }
 
 //MARK: -- lazyload
@@ -107,27 +86,35 @@ static CGFloat kDroneNameFontSize = 38.0f;
     
     return _droneImageArray;
 }
+
+//MARK: -- 执行bindViewMode
+- (void)bindViewModel {
+    [super bindViewModel];
+    
+    WS(weakSelf);
+    [_kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf refreshUI:tmpWiFiConnected];
+            if (tmpWiFiConnected) {
+                [[AbeCamHandle sharedInstance] connectedTalkSession];
+                [weakSelf getDroneDeviceInfo];
+            }
+        });
+    }];
+}
 //MARK: -- 初始化子视图
 - (void)configSubView {
+    _connectionStatusButton.userInteractionEnabled = YES;
     [_connectionStatusButton setTitle:NSLocalizedString(@"homepage_device_not_conneted", nil) forState:UIControlStateNormal];
     [self prepareForScrollView];
+    
+    [_readyToFlyButton setTitleColor:[UIColor grayishColor] forState:UIControlStateNormal];
     [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
     [_buyInfoButton setTitle:NSLocalizedString(@"homepage_how_to_buy", nil) forState:UIControlStateNormal];
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    [self.view layoutIfNeeded];
-}
-
-//MARK: -- Add Notifications
-- (void)addNotifications {
-
     
+    [self changeToBGColor:UICOLOR_FROM_HEXRGB(0xaab7b8):UICOLOR_FROM_HEXRGB(0x6c787b)];
 }
-
-
-
 
 //MARK: -- 设置状态栏
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -153,7 +140,6 @@ static CGFloat kDroneNameFontSize = 38.0f;
     [UIViewController attemptRotationToDeviceOrientation];
 }
 
-
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([NSStringFromClass([segue destinationViewController].class) isEqualToString:@"YNCMainViewController"]) {
@@ -162,45 +148,17 @@ static CGFloat kDroneNameFontSize = 38.0f;
     }
 }
 
-
-//MARK: Private Methods
-- (void)localize {
-    [self.connectionStatusButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [self.droneNameLabel setFont:[UIFont systemFontOfSize:38]];
-    [self.readyToFlyButton.titleLabel setFont:[UIFont systemFontOfSize:18]];
-}
-
-- (void)initViews {
-    // Image
-    //    self.tabBarItem.image = [[UIImage imageNamed:@"Aircraft0"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    //    self.tabBarItem.selectedImage = [[UIImage imageNamed:@"Aircraft1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    [self.readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
-    [self.readyToFlyButton setTitleColor:[UIColor grayishColor] forState:UIControlStateNormal];
-    
-    //    self.bgView.backgroundColor = [UIColor redColor];
-    //
-    //    self.referView.backgroundColor = [UIColor yellowColor];
-#ifdef DIRECT_DRONE
-    _connectionStatusButton.userInteractionEnabled = YES;
-#endif
-}
-
+//MARK: -- 适配视图
 - (void)autolayout {
-    
     [self.referView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self.view);
-        make.size.mas_equalTo(CGSizeMake(APPWIDTH, APPHEIGHT-TABBARHEIGHT));
-        //        make.edges.equalTo(self.bgView);
+        make.size.mas_equalTo(CGSizeMake(APPWIDTH, APPHEIGHT));
     }];
     
-    
     [self.connectionStatusButton mas_makeConstraints:^(MASConstraintMaker *make) {
-
-        make.right.equalTo(self.referView.mas_right);
-        make.left.equalTo(@(16));
-        make.height.equalTo(@(30));
-        make.top.equalTo(self.referView.mas_bottom);
+        make.left.equalTo(_referView).offset(12);
+        make.top.equalTo(_referView).offset(42);
+        make.size.mas_equalTo(CGSizeMake(355, 30));
     }];
     
     [self.myScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -208,18 +166,16 @@ static CGFloat kDroneNameFontSize = 38.0f;
         make.height.equalTo(@(290));
         make.centerY.equalTo(self.referView.mas_centerY).offset(-25);
     }];
-
+    
     [self.droneNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.referView.mas_left).offset(15);
-        make.height.equalTo(@(48));
-        make.top.equalTo(self.myScrollView.mas_bottom).offset(-22);
+        make.left.equalTo(self.referView.mas_left).offset(15); make.top.equalTo(self.myScrollView.mas_bottom).offset(-22);
+        make.size.mas_equalTo(CGSizeMake(74, 40));
     }];
     
     [self.downArrowImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(10));
-        make.height.equalTo(@(6));
         make.left.equalTo(self.droneNameLabel.mas_right).offset(10);
         make.centerY.equalTo(self.droneNameLabel.mas_centerY);
+        make.size.mas_equalTo(CGSizeMake(10, 6));
     }];
     
     [self.droneTypeSelectionButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -251,21 +207,17 @@ static CGFloat kDroneNameFontSize = 38.0f;
     }];
 }
 
-- (void)refreshUI {
+- (void)refreshUI:(BOOL)WiFiConnected {
     // 根据飞机状态刷新UI
-    
-            if (1) {
-                [self.connectionStatusButton setTitle:NSLocalizedString(@"flight_interface_warning_CONNECTION_STABLE",nil) forState:UIControlStateNormal];
-                [self.readyToFlyButton setTitle:NSLocalizedString(@"homepage_start_to_fly", nil) forState:UIControlStateNormal];
-                [self.readyToFlyButton setTitleColor:[UIColor yncFirebirdGreenColor] forState:UIControlStateNormal];
-            } else {
-                [self.readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
-                [self.readyToFlyButton setTitleColor:[UIColor atrousColor] forState:UIControlStateNormal];
-                [self.connectionStatusButton setTitle:NSLocalizedString(@"homepage_remote_controller_connected", nil) forState:UIControlStateNormal];
-            }
-    
-        
-        [self.droneNameLabel setText:@"HD RACER"];
+    if (WiFiConnected) {
+        [_connectionStatusButton setTitleColor:[UIColor yncFirebirdGreenColor] forState:UIControlStateNormal];
+        [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_start_to_fly", nil) forState:UIControlStateNormal];
+        [_readyToFlyButton setTitleColor:[UIColor yncFirebirdGreenColor] forState:UIControlStateNormal];
+    } else {
+        [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
+        [_readyToFlyButton setTitleColor:[UIColor atrousColor] forState:UIControlStateNormal];
+        [_connectionStatusButton setTitle:NSLocalizedString(@"homepage_device_not_conneted", nil) forState:UIControlStateNormal];
+    }
 }
 
 // MARK: UI Aux Methods
@@ -282,12 +234,11 @@ static CGFloat kDroneNameFontSize = 38.0f;
     [_downArrowImage updateConstraintsIfNeeded];
     [_droneTypeSelectionButton updateConstraintsIfNeeded];
 }
-
+//MARK: -- 背景渐变色
 - (void)changeToBGColor:(UIColor *)upperColor :(UIColor *)lowerColor {
-    
     [UIView animateWithDuration:kAnimationBGColorDuration animations:^{
         self.gradient = [CAGradientLayer layer];
-        self.gradient.frame = CGRectMake(0, 0, APPWIDTH, APPHEIGHT-TABBARHEIGHT);
+        self.gradient.frame = CGRectMake(0, 0, APPWIDTH, APPHEIGHT);
         
         self.gradient.colors = @[(id)upperColor.CGColor, (id)lowerColor.CGColor];
         [self.view.layer insertSublayer:self.gradient below:self.referView.layer];
@@ -319,10 +270,10 @@ static CGFloat kDroneNameFontSize = 38.0f;
     
     if (previousPage != page) {
         // Update
-       
+        
         previousPage = page;
         
-       
+        
     }
 }
 
@@ -344,13 +295,27 @@ static CGFloat kDroneNameFontSize = 38.0f;
 }
 //MARK: -- 获取设备信息
 - (void)getDroneDeviceInfo {
-    
     [[YNCABECamManager sharedABECamManager] getDeviceInfo:^(YNCDeviceInfoDataModel *deviceInfo) {
         if (deviceInfo != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_connectionStatusButton setTitle:deviceInfo.ssid forState:UIControlStateNormal];
+#warning TODO: -- TEST CODE
+                [self getSDCardInfo];
             });
         }
+    }];
+}
+
+// MARK: Unwind
+- (IBAction)mainViewControllerUnwindSegue:(UIStoryboardSegue *)unwindSegue {
+    
+}
+
+//MARK: -- 获取SD卡信息
+- (void)getSDCardInfo {
+    [[AbeCamHandle sharedInstance] getSDSpaceResult:^(BOOL succeeded, NSData *data) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        DLog(@"获取的SD卡信息：%@", dic);
     }];
 }
 

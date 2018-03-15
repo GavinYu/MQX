@@ -16,13 +16,9 @@
     CGFloat _sizeMultiple;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *wifiNameButton;
-
 @property (nonatomic, assign) int currentPitch;
 @property (nonatomic, assign) int currentRoll;
 
-
-- (IBAction)clickWifiNameButton:(UIButton *)sender;
 @property (nonatomic, strong) dispatch_source_t dispatch_displayTimer;
 @end
 
@@ -124,16 +120,12 @@
 - (void)initSubView:(YNCModeDisplay)modeDisplay {
     _sizeMultiple = modeDisplay==YNCModeDisplayNormal ? 1.0:0.5;
     
-    self.wifiNameButton.titleLabel.font = [UIFont systemFontOfSize:14*_sizeMultiple];
-    
-    [self.wifiNameButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(40*_sizeMultiple);
-        make.right.equalTo(self).offset(-10*_sizeMultiple);
-        make.size.mas_equalTo(CGSizeMake(160*_sizeMultiple, 30*_sizeMultiple));
-    }];
-
     self.flightStatusView_fireBird = [YNCFlightStatusView_Firebird statusView_Firebird];
-    self.flightStatusView_fireBird.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    [self addSubview:self.flightStatusView_fireBird];
+    [self.flightStatusView_fireBird mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.equalTo(self);
+        make.size.mas_equalTo(self.bounds.size);
+    }];
 
     [self layoutIfNeeded];
     
@@ -148,92 +140,24 @@
     }];
     [self.videoTimeView initSubView:modeDisplay];
     
-#pragma mark TODO:测试使用
-#ifdef YNCTEST
-    [self addSliders];
-#endif
-    
     self.currentPitch = 0;
     self.currentRoll = 0;
     dispatch_resume(self.dispatch_displayTimer);
 }
-
-#ifdef YNCTEST
-- (void)addSliders {
-    WS(weakSelf);
-    
-    UISlider *speedSlider = [UISlider new];
-    speedSlider.minimumValue = 0;
-    speedSlider.maximumValue = 800;
-    speedSlider.value = 0;
-    speedSlider.tag = 101;
-    [speedSlider addTarget:self action:@selector(dragSlider:) forControlEvents:UIControlEventValueChanged];
-    [self addSubview:speedSlider];
-    [speedSlider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(weakSelf);
-        make.centerX.equalTo(weakSelf);
-        make.size.mas_equalTo(CGSizeMake(273, 31));
-    }];
-    
-    UISlider *altSlider = [UISlider new];
-    altSlider.minimumValue = -60;
-    altSlider.maximumValue = 90;
-    altSlider.value = 0;
-    altSlider.tag = 102;
-    [altSlider addTarget:self action:@selector(dragSlider:) forControlEvents:UIControlEventValueChanged];
-    [self addSubview:altSlider];
-    [altSlider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(speedSlider.mas_top);
-        make.centerX.equalTo(weakSelf);
-        make.size.mas_equalTo(CGSizeMake(273, 31));
-    }];
-}
-
-- (void)dragSlider:(UISlider *)sender {
-    if (sender.tag == 101) {
-        //                [self.speedStaffSliderView updateStaffSliderView:round(sender.value)];
-        [self.distanceView updateSubView:sender.value];
-    } else {
-        [self.altStaffSliderView updateStaffSliderView:round(sender.value)];
-    }
-    
-}
-#endif
-
+//MARK: -- 双击隐藏 视图
 - (void)hiddenSubView:(BOOL)isHidden withDoubleClickCount:(NSInteger)count {
     WS(weakSelf);
     
     CGFloat tmpAlpha = isHidden==YES?0:1.0;
     
     if (count == 1) {
-        [UIView animateWithDuration:0.3 animations:^{
-            weakSelf.wifiNameButton.alpha = tmpAlpha;
-        }];
         [self.flightStatusView_fireBird hiddenSubView:isHidden withDoubleClickCount:count];
     } else if (count == 2) {
         [self.flightStatusView_fireBird hiddenSubView:isHidden withDoubleClickCount:count];
-        
-        
     } else if (count == 3) {
-        [UIView animateWithDuration:0.3 animations:^{
-            weakSelf.wifiNameButton.alpha = tmpAlpha;
-        }];
-        
         [self.flightStatusView_fireBird hiddenSubView:isHidden withDoubleClickCount:count];
     }
     
-}
-
-- (void)updateWifiName:(NSString *)wifName {
-    if (wifName == nil) {
-        [self.wifiNameButton setTitle:@"--" forState:UIControlStateNormal];
-        self.wifiNameButton.enabled = NO;
-        [self.wifiNameButton setTitleColor:[UIColor lightGrayishColor] forState:UIControlStateNormal];
-    } else {
-        [self.wifiNameButton setTitle:wifName forState:UIControlStateNormal];
-        self.wifiNameButton.enabled = YES;
-        [self.wifiNameButton setTitleColor:[UIColor yncFirebirdLightGreenColor] forState:UIControlStateNormal];
-    }
 }
 
 - (void)dealloc {
@@ -242,12 +166,6 @@
         dispatch_source_cancel(_dispatch_displayTimer);
         _dispatch_displayTimer = nil;
         NSLog(@"dealloc display timer");
-    }
-}
-
-- (IBAction)clickWifiNameButton:(UIButton *)sender {
-    if (_wifiNameBlock) {
-        _wifiNameBlock(YNCEventActionFirebirdHomepageWifiName);
     }
 }
 
@@ -272,6 +190,7 @@
         }];
     }
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

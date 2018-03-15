@@ -9,14 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YNCMqxViewController : UIViewController
-
+//显示图传视图
 @property (nonatomic, weak) UIView *videoPreview;
-
-- (IBAction)clickTakePhotoButton:(UIButton *)sender;
-- (IBAction)clickStartRecordButton:(UIButton *)sender;
-- (IBAction)clickStopRecordButton:(UIButton *)sender;
-- (IBAction)clickFPVButton:(UIButton *)sender;
-- (IBAction)clickConvertButton:(UIButton *)sender;
-
 
 @end

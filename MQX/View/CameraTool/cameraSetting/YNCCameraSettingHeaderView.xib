@@ -30,7 +30,7 @@
                         <constraint firstAttribute="height" constant="40" id="9kk-gI-heZ"/>
                         <constraint firstAttribute="width" constant="40" id="eMT-8p-yru"/>
                     </constraints>
-                    <state key="normal" title="Button" image="icon_returnLastPage"/>
+                    <state key="normal" title="Button" image="btn_back"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,6 +51,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_returnLastPage" width="40" height="40"/>
+        <image name="btn_back" width="22" height="22"/>
     </resources>
 </document>

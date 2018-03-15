@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_voltage0_disconnectd" translatesAutoresizingMaskIntoConstraints="NO" id="cQV-A8-t3A">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_voltage0_disconnectd" translatesAutoresizingMaskIntoConstraints="NO" id="cQV-A8-t3A">
                     <rect key="frame" x="170" y="11" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>

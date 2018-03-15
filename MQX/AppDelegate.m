@@ -20,9 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //检测飞机的WiFi连接状态
-    [[YNCABECamManager sharedABECamManager] checkWiFiState];
-    
+
     return YES;
 }
 
@@ -43,15 +41,14 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    if (![YNCABECamManager sharedABECamManager].WiFiConnected) {
-        [[YNCABECamManager sharedABECamManager] checkWiFiState];
-    }
-    
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if (![YNCABECamManager sharedABECamManager].WiFiConnected) {
+        [[YNCABECamManager sharedABECamManager] checkWiFiState];
+    }
 }
 
 

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+#import "YNCBaseViewController.h"
+
+@interface MainViewController : YNCBaseViewController
 
 - (IBAction)clickDeviceConnectedButton:(UIButton *)sender;
 

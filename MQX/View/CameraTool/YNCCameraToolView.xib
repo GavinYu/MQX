@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="50" height="185"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNJ-oe-xSF">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNJ-oe-xSF">
                     <rect key="frame" x="10" y="0.0" width="30" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="I3C-36-xyy"/>
@@ -27,7 +27,7 @@
                         <action selector="clickCameraSwitchModeButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="OwK-uH-wWK"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnK-Dv-JrQ">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnK-Dv-JrQ">
                     <rect key="frame" x="0.0" y="45" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="ccS-ch-shH"/>
@@ -56,7 +56,7 @@
                         <constraint firstAttribute="width" constant="30" id="73o-19-h5x"/>
                         <constraint firstAttribute="height" constant="30" id="iE1-HT-zfZ"/>
                     </constraints>
-                    <state key="normal" image="btn_drone_gallery_disconnected"/>
+                    <state key="normal" image="btn_drone_gallery_disable"/>
                     <connections>
                         <action selector="clickGalleryButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="8ic-dF-iMK"/>
                     </connections>
@@ -86,7 +86,7 @@
     </objects>
     <resources>
         <image name="btn_cameraSetting_connected" width="30" height="30"/>
-        <image name="btn_drone_gallery_disconnected" width="30" height="30"/>
+        <image name="btn_drone_gallery_disable" width="30" height="30"/>
         <image name="btn_switch_photoMode_disable" width="30" height="30"/>
         <image name="btn_takePhoto_disable" width="50" height="50"/>
     </resources>

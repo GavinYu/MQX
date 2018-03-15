@@ -12,6 +12,10 @@
 
 - (void)resetCameraSettings;
 - (void)formatSDcardStoreage;
+//设置低延时模式
+- (void)setLowLatencyMode:(BOOL)on;
+//设置图传视频方向
+- (void)setVideoDirection:(BOOL)on;
 
 @end
 
@@ -20,5 +24,9 @@
 @property (nonatomic, weak) id <YNCCameraSettingFooterViewDelegate> delegate;
 + (instancetype)cameraSettingFooterView;
 - (void)configureWithDictionary:(NSDictionary *)dictionary;
+//更新低延时模式开关
+- (void)updateLowLatencySwitch:(BOOL)on;
+//更新图传视频方向开关
+- (void)updateVideoDirectionSwitch:(BOOL)on;
 
 @end

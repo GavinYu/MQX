@@ -165,6 +165,11 @@
 
 // 数组为空
 #define YNCArrayIsEmpty(__array) ((MHObjectIsNil(__array)) || (__array.count==0))
+
+//购买链接
+#ifndef YNC_STORE_LINK
+#define YNC_STORE_LINK   @"https://yuneec.tmall.com"
+#endif
 /*--------------------------- Add by GavinYu End ----------------------------*/
 
 

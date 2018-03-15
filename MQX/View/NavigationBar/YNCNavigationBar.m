@@ -49,18 +49,6 @@
     return [nibView objectAtIndex:0];
 }
 
-//MARK: -- 标尺头尾添加虚影效果 frosted glass
--(void)addFrostedGlass:(UIView *)imageView {
-    CAGradientLayer *maskLayer = [CAGradientLayer layer];
-    maskLayer.frame = imageView.bounds;
-    //    maskLayer.frame = CGRectMake(imageView.bounds.origin.x, imageView.bounds.origin.y, imageView.bounds.size.width, imageView.bounds.size.height+self.attributeLabel.bounds.size.height);
-    maskLayer.colors = @[(id)[[UIColor blackColor] CGColor],
-                         (id)[[UIColor clearColor] CGColor]];
-    maskLayer.locations = @[@0.1, @1.0];
-    maskLayer.startPoint = CGPointMake(0.0, 0.0);
-    maskLayer.endPoint = CGPointMake(0.0, 1.0);
-    imageView.layer.mask = maskLayer;
-}
 //MARK: -- initData
 - (void)initData {
     self.flightMode = -1;
@@ -72,22 +60,14 @@
     [self initData];
     
     self.currentModeLabel.font = [UIFont systemFontOfSize:14*_sizeMultiple];
-    
-    self.backgroundColor = [UIColor clearColor];
-    self.stateView.backgroundColor = [UIColor clearColor];
+
     self.stateView.textAlignment = NSTextAlignmentLeft;
     self.stateView.currentDisplayMode = display;
     self.stateView.textFont = [UIFont systemFontOfSize:18.0*_sizeMultiple];
     self.stateView.textColor = [UIColor middleGrayColor];
-    self.stateView.text = NSLocalizedString(@"homepage_device_not_conneted",nil);
+    self.stateView.text =  NSLocalizedString(@"homepage_device_not_conneted",nil);
     [self.stateView addObaserverNotification];
-    
-    self.droneStateView.backgroundColor = [UIColor clearColor];
-    
-    UIImage *homeBtnImage = [UIImage imageNamed:@"btn_firebird_home"];
-    [self.homeButton setImage:homeBtnImage forState:UIControlStateNormal];
 
-    
     [self.homeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(10*_sizeMultiple);
         make.top.equalTo(self).offset(3*_sizeMultiple);
@@ -95,7 +75,7 @@
     }];
     
     [self.stateView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.homeButton.mas_right).offset(3*_sizeMultiple);
+        make.left.equalTo(self.homeButton.mas_right).offset(8*_sizeMultiple);
         make.centerY.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(210*_sizeMultiple, 30*_sizeMultiple));
     }];
@@ -121,17 +101,6 @@
     }
 }
 
-//MARK: -- 更新遥控器与相机之间的信号强弱
-- (void)updateRemoteControlSignal:(int)signal {
-    if (signal != self.remoteControlAndCameraSignal) {
-        [self.droneStateView updateHDSignal:signal];
-        self.remoteControlAndCameraSignal = signal;
-    }
-    
-    if (signal == 0) {
-        self.remoteControlAndCameraSignal = 0;
-    }
-}
 
 //MARK: -- stateView methods
 //MARK: -- lazyload stateMessageArray
@@ -425,21 +394,21 @@
 }
 //MARK: -- 根据HD Racer 的 Telemetry 更新界面
 - (void)updateShowWithHDRacerTelemetry {
-    if (1) {
+//    if (1) {
         self.currentModeLabel.text = [YNCUtil getHDRacerFlightMode:3] ;
         self.flightMode = 3;
         self.currentModeLabel.textColor =  1?[UIColor yncFirebirdLightGreenColor]:[UIColor lightGrayishColor];
-    }
+//    }
     
     [self.droneStateView updateShowWithHDRacerTelemetry];
 }
-
-- (void)setHDRacerWiFiConnected:(BOOL)HDRacerWiFiConnected {
-    if (_HDRacerWiFiConnected != HDRacerWiFiConnected) {
-        self.droneStateView.HDRacerWiFiConnected = HDRacerWiFiConnected;
+//MARK: -- setter WiFiConnected
+- (void)setWiFiConnected:(BOOL)WiFiConnected {
+    if (_WiFiConnected != WiFiConnected) {
+        self.droneStateView.WiFiConnected = WiFiConnected;
     }
     
-    if (!HDRacerWiFiConnected) {
+    if (!WiFiConnected) {
         self.currentModeLabel.text = @"--" ;
         self.currentModeLabel.textColor = [UIColor lightGrayishColor];
     } else {
@@ -447,7 +416,7 @@
         self.currentModeLabel.textColor = [UIColor yncFirebirdLightGreenColor];
     }
     
-    _HDRacerWiFiConnected = HDRacerWiFiConnected;
+    _WiFiConnected = WiFiConnected;
 }
 
 @end

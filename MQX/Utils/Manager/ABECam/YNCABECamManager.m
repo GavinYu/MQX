@@ -18,7 +18,7 @@
 @interface YNCABECamManager ()
 {
     dispatch_source_t _checkWiFiTimer;
-    
+    BOOL _currentWiFiConnected;
 }
 /*
  * The connection status of the component.
@@ -41,7 +41,7 @@ YNCSingletonM(ABECamManager)
 //MARK: -- 监测WiFi连接的状态
 - (void)checkWiFiState {
     WS(weakSelf);
-    
+
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
@@ -50,7 +50,11 @@ YNCSingletonM(ABECamManager)
     
     dispatch_source_set_event_handler(_timer, ^{
         //在这里执行事件
-        weakSelf.WiFiConnected = [[AbeCamHandle sharedInstance] checkWIFI];
+        BOOL tmpValue = [[AbeCamHandle sharedInstance] checkWIFI];
+        if (_currentWiFiConnected != tmpValue) {
+            weakSelf.WiFiConnected = tmpValue;
+            _currentWiFiConnected = tmpValue;
+        }
     });
     
     dispatch_resume(_timer);
@@ -67,13 +71,16 @@ YNCSingletonM(ABECamManager)
 
 //MARK: -- 获取飞机设备信息
 - (void)getDeviceInfo:(void(^)(YNCDeviceInfoDataModel *deviceInfo))block {
-    [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
-        if (succeeded) {
-            YNCDeviceInfoDataModel *tmpModel = [YNCDeviceInfoDataModel new];
-            tmpModel = [YNCDeviceInfoDataModel modelWithJSON:data];
-            block(tmpModel);
-        }
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
+            if (succeeded) {
+                YNCDeviceInfoDataModel *tmpModel = [YNCDeviceInfoDataModel new];
+                tmpModel = [YNCDeviceInfoDataModel modelWithJSON:data];
+                block(tmpModel);
+            }
+        }];
+    });
 }
+
 
 @end

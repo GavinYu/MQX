@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *formatBtn;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *resetBtn;
+@property (weak, nonatomic) IBOutlet UILabel *lowLatencyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *videoDirectionLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *lowLatencySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *videoDirectionSwitch;
 
 @end
 
@@ -39,6 +43,14 @@
     self.statusLabel.text = NSLocalizedString(dictionary[@"status"], nil);
     self.statusLabel.textColor = [UIColor yncGreenColor];
     _statusLabel.font = [UIFont tenFontSize];
+    
+    _videoDirectionLabel.text = NSLocalizedString(@"hdracer_camera_setting_video_direction", nil);
+
+}
+
+//MARK: -- 更新图传视频方向开关
+- (void)updateVideoDirectionSwitch:(BOOL)on {
+    [_videoDirectionSwitch setOn:on];
 }
 
 - (IBAction)resetBtnAction:(UIButton *)sender {
@@ -50,6 +62,13 @@
 - (IBAction)formatBtnAction:(UIButton *)sender {
     if ([_delegate respondsToSelector:@selector(formatSDcardStoreage)]) {
         [_delegate formatSDcardStoreage];
+    }
+}
+
+//MARK: -- 设置图传视频方向
+- (IBAction)changeVideoDirectionSwitch:(UISwitch *)sender {
+    if ([_delegate respondsToSelector:@selector(setVideoDirection:)]) {
+        [_delegate setVideoDirection:sender.on];
     }
 }
 

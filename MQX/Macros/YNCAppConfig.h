@@ -21,8 +21,11 @@
 #import "UIColor+YNCColor.h"
 #import "UIFont+YNCFont.h"
 #import "YNCUtil.h"
+#import "YNCABECamManager.h"
 //引入第三方库的头文件
 #import <Masonry/Masonry.h>
 #import <YYKit/YYKit.h>
+#import <KVOController/KVOController.h>
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
 #endif /* YNCAppConfig_h */

@@ -11,13 +11,8 @@
 #import "YNCCameraSettingDataModel.h"
 #import "YNCCameraSettingFooterView.h"
 #import "YNCCameraSettingHeaderView.h"
-#import "YNCFB_ShutterCell.h"
-#import "YNCFB_ExposureCell.h"
-#import "YNCFB_ISOCell.h"
+
 #import "YNCFB_SwitchCell.h"
-#import "YNCFB_BurstCell.h"
-#import "YNCFB_TimeLapseCell.h"
-#import "YNCFB_PhotoModeCell.h"
 #import "YNCAppConfig.h"
 
 #define kCell @"commonSettingViewcell"
@@ -27,11 +22,10 @@ static NSString *SHTTERCELL = @"shuttercell";
 static NSString *EXPOSURECELL = @"exposurecell";
 static NSString *ISOCELL = @"isocell";
 static NSString *SWITCHCELL = @"switchcell";
-static NSString *BURSTCELL = @"burstCell";
-static NSString *TIMELAPSECELL = @"timeLapseCell";
+
 static NSString *PHOTOMODECELL = @"photoModeCell";
 
-@interface YNCCameraCommonSettingView ()<UITableViewDelegate, UITableViewDataSource, YNCFB_SwitchCellDelegate, YNCCameraSettingFooterViewDelegate, YNCFB_BurstCellDelegate, YNCFB_TimeLapseCellDelegate>
+@interface YNCCameraCommonSettingView ()<UITableViewDelegate, UITableViewDataSource, YNCFB_SwitchCellDelegate, YNCCameraSettingFooterViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray *dataArray;
@@ -132,13 +126,9 @@ static NSString *PHOTOMODECELL = @"photoModeCell";
     self.tableView.backgroundColor = [UIColor yncViewBackgroundColor];
     [self addSubview:_tableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"YNCCameraSettingModeCell" bundle:nil] forCellReuseIdentifier:kCell];
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_ShutterCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SHTTERCELL];
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_ExposureCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:EXPOSURECELL];
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_ISOCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:ISOCELL];
+    
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_SwitchCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SWITCHCELL];
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_BurstCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:BURSTCELL];
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_TimeLapseCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TIMELAPSECELL];
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_PhotoModeCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:PHOTOMODECELL];
+
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCell];
     
 }
@@ -168,171 +158,6 @@ static NSString *PHOTOMODECELL = @"photoModeCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    switch (self.cameraSettingViewType) {
-//        case YNCCameraSettingViewTypeCameraSetting:
-//        {
-////            YNCCameraManager *cameraManager = [YNCCameraManager sharedCameraManager];
-//            switch (indexPath.row) {
-//                case 0:
-//                {
-//                    YNCFB_SwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:SWITCHCELL];
-//                    cell.leftConstraint.constant = 10;
-//                    cell.rightConstraint.constant = 10;
-//                    _SW_On = NO;
-//                    cell.showLine = NO;
-//                    cell.delegate = self;
-//                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-////                    if (cameraManager.current_aeMode == YuneecCameraAEModeAuto) {
-////                        _SW_On = YES;
-////                    } else if (cameraManager.current_aeMode == YuneecCameraAEModeManual) {
-////                        _SW_On = NO;
-////                    }
-//                    cell.switchBtn.on = _SW_On;
-//                    [cell configureTextLabel:NSLocalizedString(@"camera_setting_auto", nil) on:_SW_On];
-//                    return cell;
-//                }
-//                    break;
-//                case 1:
-//                {
-//                    YNCFB_ISOCell *cell = [tableView dequeueReusableCellWithIdentifier:ISOCELL];
-//                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-////                    cell.textValue = [NSString stringWithFormat:@"%ld", (long)[YNCCameraManager sharedCameraManager].current_isoValue];
-////                    if (cameraManager.current_aeMode == YuneecCameraAEModeAuto) {
-////                        _SW_On = YES;
-////                    } else if (cameraManager.current_aeMode == YuneecCameraAEModeManual) {
-////                        _SW_On = NO;
-////                    }
-//                    cell.enableUse = _SW_On;
-//                    return cell;
-//                }
-//                    break;
-//                case 2:
-//                {
-//                    YNCFB_ShutterCell *cell = [tableView dequeueReusableCellWithIdentifier:SHTTERCELL];
-//                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-////                    if (cameraManager.current_aeMode == YuneecCameraAEModeAuto) {
-////                        _SW_On = YES;
-////                    } else if (cameraManager.current_aeMode == YuneecCameraAEModeManual) {
-////                        _SW_On = NO;
-////                    }
-//                    [cell updateShutter];
-//                    cell.enableUse = _SW_On;
-//                    return cell;
-//                }
-//                    break;
-//                case 3:
-//                {
-//                    YNCFB_ExposureCell *cell = [tableView dequeueReusableCellWithIdentifier:EXPOSURECELL];
-//                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-////                    YuneecRational *rational = [YNCCameraManager sharedCameraManager].current_exposureValueRa;
-////                    if (rational) {
-////                        cell.value = rational.numerator / (CGFloat)rational.denominator;
-////                    } else {
-////                        cell.value = 0;
-////                    }
-////                    if (cameraManager.current_aeMode == YuneecCameraAEModeAuto) {
-////                        _SW_On = YES;
-////                    } else if (cameraManager.current_aeMode == YuneecCameraAEModeManual) {
-////                        _SW_On = NO;
-////                    }
-//                    cell.enableUse = _SW_On;
-//                    return cell;
-//                }
-//                    break;
-//                case 5:
-//                {
-//                    YNCFB_PhotoModeCell *photoModeCell = [tableView dequeueReusableCellWithIdentifier:PHOTOMODECELL];
-//                    photoModeCell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                    NSDictionary *dic = self.dataArray[indexPath.row - 4];
-//                    [photoModeCell configureSubviewsWithDic:dic];
-//                    return photoModeCell;
-//                }
-//                    break;
-//                default:
-//                {
-//                    YNCCameraSettingModeCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
-//                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                    YNCCameraSettingDataModel *model = [[YNCCameraSettingDataModel alloc] init];
-//                    NSDictionary *dic = self.dataArray[indexPath.row - 4];
-//                    [model setValuesForKeysWithDictionary:dic];
-//                    [cell configureWithModel:model];
-//                    return cell;
-//                }
-//                    break;
-//            }
-//        }
-//            break;
-//        case YNCCameraSettingViewTypeWhiteBlance:
-//        {
-//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            NSMutableDictionary *dic = self.dataArray[indexPath.row];
-//            NSString *imageName = dic[@"imageName"];
-//            imageName = [imageName stringByAppendingString:@"Normal"];
-//            cell.imageView.image = [UIImage imageNamed:imageName];
-//            cell.textLabel.text = NSLocalizedString(dic[@"title"], nil);
-//            cell.textLabel.font = [UIFont thirteenFontSize];
-//            cell.textLabel.textColor = [UIColor atrousColor];
-//            return cell;
-//        }
-//        case YNCCameraSettingViewTypeCameraMode:
-//        {
-////            if ([YNCCameraManager sharedCameraManager].photoMode == YuneecCameraPhotoModeBurst) {
-////                if (indexPath.row == 2) {
-////                    YNCFB_BurstCell *burstCell = [tableView dequeueReusableCellWithIdentifier:BURSTCELL];
-////                    burstCell.delegate = self;
-////                    [burstCell changeBtnTitleColor:[YNCCameraManager sharedCameraManager].currentBurstAmount];
-////                    DLog(@"amout:%ld", [YNCCameraManager sharedCameraManager].currentBurstAmount);
-////                    burstCell.selectionStyle = UITableViewCellSelectionStyleNone;
-////                    return burstCell;
-////                } else {
-////                    return [self createTableViewCellWithIndexPath:indexPath tableView:tableView];
-////                }
-////            } else if ([YNCCameraManager sharedCameraManager].photoMode == YuneecCameraPhotoModeTimeLapse) {
-////                if (indexPath.row == 3) {
-////                    YNCFB_TimeLapseCell *timeLapseCell = [tableView dequeueReusableCellWithIdentifier:TIMELAPSECELL];
-////                    timeLapseCell.delegate = self;
-////                    [timeLapseCell changeTimeBtnTitleColor:[YNCCameraManager sharedCameraManager].currentMillisecond];
-////                    DLog(@"millisecond:%ld", [YNCCameraManager sharedCameraManager].currentMillisecond);
-////                    timeLapseCell.selectionStyle = UITableViewCellSelectionStyleNone;
-////                    return timeLapseCell;
-////                } else {
-////                    return [self createTableViewCellWithIndexPath:indexPath tableView:tableView];
-////                }
-////            } else if ([YNCCameraManager sharedCameraManager].photoMode == YuneecCameraPhotoModeSingle) {
-////                return [self createTableViewCellWithIndexPath:indexPath tableView:tableView];
-////            } else {
-////                return [self createTableViewCellWithIndexPath:indexPath tableView:tableView];
-////            }
-//
-//        }
-//            break;
-//        case YNCCameraSettingViewTypeMeteringMode:
-//        case YNCCameraSettingViewTypeScenesMode:
-//        case YNCCameraSettingViewTypeVideoFormat:
-//        case YNCCameraSettingViewTypeVideoResolution:
-//        case YNCCameraSettingViewTypePhotoFormat:
-//        case YNCCameraSettingViewTypePhotoResolution:
-//        case YNCCameraSettingViewTypePhotoQuality:
-//        case YNCCameraSettingViewTypeFlickerMode:
-//        {
-//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-//            cell.selectedBackgroundView.backgroundColor = [UIColor yncGreenColor];
-//            NSDictionary *dic = self.dataArray[indexPath.row];
-//            cell.textLabel.text = NSLocalizedString(dic[@"title"], nil);
-//            cell.textLabel.textColor = [UIColor atrousColor];
-//            cell.textLabel.font = [UIFont thirteenFontSize];
-//            cell.textLabel.numberOfLines = 0;
-//            return cell;
-//        }
-//            break;
-//        default:
-//            return nil;
-//            break;
-//    }
-  
   return nil;
 }
 
@@ -606,17 +431,6 @@ static NSString *PHOTOMODECELL = @"photoModeCell";
 - (void)switchIsOn:(BOOL)isOn
 {
     _SW_On = isOn;
-    NSIndexPath *indexPath_1 = [NSIndexPath indexPathForRow:1 inSection:0];
-    YNCFB_ISOCell *cell_1 = [_tableView cellForRowAtIndexPath:indexPath_1];
-    cell_1.enableUse = isOn;
-    
-    NSIndexPath *indexPath_2 = [NSIndexPath indexPathForRow:2 inSection:0];
-    YNCFB_ShutterCell *cell_2 = [_tableView cellForRowAtIndexPath:indexPath_2];
-    cell_2.enableUse = isOn;
-    
-    NSIndexPath *indexPath_3 = [NSIndexPath indexPathForRow:3 inSection:0];
-    YNCFB_ExposureCell *cell_3 = [_tableView cellForRowAtIndexPath:indexPath_3];
-    cell_3.enableUse = isOn;
 }
 
 - (void)reloadCellWithIndexPaths:(NSArray *)indexPaths
@@ -634,10 +448,6 @@ static NSString *PHOTOMODECELL = @"photoModeCell";
 
 - (void)formatSDcardStoreage
 {
-//    if ([[YNCCameraManager sharedCameraManager].totalStorage isEqualToString:@"0MB"]) {
-//        [[YNCMessageBox instance] show:[NSString stringWithFormat:@"%@", NSLocalizedString(@"flight_interface_warning_CAMERA_NO_SDCARD", nil)]];
-//        return;
-//    }
     if ([_delegate respondsToSelector:@selector(footerView_formatSDcardStoreage)]) {
         [_delegate footerView_formatSDcardStoreage];
     }
@@ -664,16 +474,13 @@ static NSString *PHOTOMODECELL = @"photoModeCell";
 - (void)changeBurstCellBtnTitleColor:(NSInteger)num
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-    YNCFB_BurstCell *burstCell = (YNCFB_BurstCell *)[_tableView cellForRowAtIndexPath:indexPath];
-    [burstCell changeBtnTitleColor:num];
 }
 
 #pragma mark - 改变timelapseCell btn字体颜色
 - (void)changeTimeLapseCellBtnTitleColor:(NSInteger)num
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
-    YNCFB_TimeLapseCell *timeLapseCell = (YNCFB_TimeLapseCell *)[_tableView cellForRowAtIndexPath:indexPath];
-    [timeLapseCell changeTimeBtnTitleColor:num];
+    
 }
 
 - (void)reloadTableView

@@ -17,15 +17,14 @@
 //低电压报警
 @property (assign, nonatomic) BOOL isLowPower;
 
-//HD Racer WiFi 的连接状态
-@property (assign, nonatomic) BOOL HDRacerWiFiConnected;
+//WiFi 的连接状态
+@property (assign, nonatomic) BOOL WiFiConnected;
 
 + (YNCNavigationBar *)instanceNavigationBar;
 
 - (IBAction)clickHomeButton:(UIButton *)sender;
 
 - (void)initSubView:(YNCModeDisplay)display;
-- (void)updateRemoteControlSignal:(int)signal;
 - (void)hiddenNavigationBarSubView:(BOOL)hidden withModeDisplay:(YNCModeDisplay)display;
 //MARK: 更新导航栏的状态栏的信息显示
 - (void)updateStateView:(id)warningData;

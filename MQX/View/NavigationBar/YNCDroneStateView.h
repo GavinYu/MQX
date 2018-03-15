@@ -15,11 +15,10 @@
 //低电压报警
 @property (assign, nonatomic) BOOL isLowPower;
 
-//HD Racer WiFi 的连接状态
-@property (assign, nonatomic) BOOL HDRacerWiFiConnected;
+// WiFi 的连接状态
+@property (assign, nonatomic) BOOL WiFiConnected;
 
 - (void)initSubView:(YNCModeDisplay)display;
-- (void)updateHDSignal:(int)signal;
 - (void)updateShowWithHDRacerTelemetry;
 
 @end
