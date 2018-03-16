@@ -170,6 +170,8 @@
 #ifndef YNC_STORE_LINK
 #define YNC_STORE_LINK   @"https://yuneec.tmall.com"
 #endif
+
+#define kPeriod 1.0  //定时器时间 （每秒执行一次）
 /*--------------------------- Add by GavinYu End ----------------------------*/
 
 

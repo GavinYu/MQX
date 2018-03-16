@@ -270,29 +270,7 @@ typedef NS_ENUM(NSInteger, YNCCropScaleType) {
 //MARK: -- 列表视图类型 Enum
 typedef NS_ENUM(NSInteger, YNCCameraSettingViewType){
     YNCCameraSettingViewTypeCameraSetting = 0, //相机设置主界面
-    YNCCameraSettingViewTypeWhiteBlance, // 白平衡
-    YNCCameraSettingViewTypeCameraMode, // 相机模式
-    YNCCameraSettingViewTypeMeteringMode, // 测光模式
-    YNCCameraSettingViewTypeScenesMode, // 场景模式
-    YNCCameraSettingViewTypeVideoFormat, // 视频格式
-    YNCCameraSettingViewTypeVideoResolution, // 视频尺寸
-    YNCCameraSettingViewTypePhotoFormat, // 照片格式
-    YNCCameraSettingViewTypePhotoResolution, // 照片尺寸
-    YNCCameraSettingViewTypePhotoQuality, // 照片质量
-    YNCCameraSettingViewTypeFlickerMode // 抗频闪
-};
-
-//MARK: -- 设置slider类型 Enum
-typedef NS_ENUM(NSInteger, YNCSettingSliderColor){
-    YNCSettingSliderColorBlack,
-    YNCSettingSliderColorRed,
-    YNCSettingSliderColorGreen,
-    YNCSettingSliderColorGray,
-};
-
-typedef NS_ENUM(NSInteger, YNCSettingSliderType){
-    YNCSettingSliderTypeFlightSetting,
-    YNCSettingSliderTypeCameraSetting,
+    YNCCameraSettingViewTypeAbout              //关于
 };
 
 //MARK: -- 设置飞机r类型 Enum

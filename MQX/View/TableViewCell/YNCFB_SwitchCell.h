@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class YNCCameraSettingDataModel;
+
 @protocol YNCFB_SwitchCellDelegate <NSObject>
 
 @optional
@@ -23,6 +25,7 @@
 @property (nonatomic, assign) BOOL showLine;
 @property (nonatomic, weak) id<YNCFB_SwitchCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *textL;
-- (void)configureTextLabel:(NSString *)text on:(BOOL)on;
+
+- (void)configureTextLabel:(YNCCameraSettingDataModel *)dataModel;
 
 @end

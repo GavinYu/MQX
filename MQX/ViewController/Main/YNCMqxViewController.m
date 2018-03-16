@@ -22,6 +22,7 @@
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
 {
     FBKVOController *_kvoController;
+    dispatch_source_t _countVideoDurationTimer;
 }
 
 //相机工具栏
@@ -30,7 +31,6 @@
 @property (assign, nonatomic) YNCModeDisplay currentDisplay;
 //相机设置视图
 @property (strong, nonatomic) YNCCameraSettingView *cameraSettingView;
-
 @property (strong, nonatomic) YNCNavigationBar *myNavigationBar;
 @property (strong, nonatomic) YNCNavigationBar *fpvNavigationBar;
 @property (strong, nonatomic) UIButton *fpvSwitchButton;
@@ -42,6 +42,8 @@
 @property (strong, nonatomic) YNCNavigationBar *leftNavigationBar;
 @property (strong, nonatomic) YNCNavigationBar *rightNavigationBar;
 @property (strong, nonatomic) UIView *fpvLineView;
+
+@property (assign, nonatomic) NSUInteger videoDuration;
 
 @end
 
@@ -362,7 +364,7 @@
         
       case YNCEventActionCameraOperate:
       {
-        [weakSelf takePhotoOrRecroding];
+          [weakSelf takePhotoOrRecroding:sender];
       }
         break;
         
@@ -398,8 +400,8 @@
 //          [[YNCMessageBox instance] show:[NSString stringWithFormat:@"%@", NSLocalizedString(@"flight_interface_warning_CAMERA_NO_SDCARD", nil)]];
 //          return;
 //        }
-//        YNCFB_DroneGalleryViewController *fb_droneGalleryVC = [[YNCFB_DroneGalleryViewController alloc] initWithNibName:NSStringFromClass([YNCFB_DroneGalleryViewController class]) bundle:[NSBundle mainBundle]];
-//        [weakSelf.navigationController pushViewController:fb_droneGalleryVC animated:YES];
+//          YNCFB_DroneGalleryPreviewViewController *fb_droneGalleryVC = [[YNCFB_DroneGalleryPreviewViewController alloc] init];
+//          [weakSelf.navigationController pushViewController:fb_droneGalleryVC animated:YES];
         
       }
         break;
@@ -499,9 +501,13 @@
 }
 
 //MARK: -- 拍照/录像
-- (void)takePhotoOrRecroding {
+- (void)takePhotoOrRecroding:(UIButton *)sender {
     if (self.cameraToolView.cameraMode == YNCCameraModeVideo) {
-        [self startRecord];
+        if (sender.isSelected) {
+            [self startRecord];
+        } else {
+            [self stopRecord];
+        }
     } else {
         [self takePhoto];
     }
@@ -510,12 +516,26 @@
 //MARK: -- 开始录像
 - (void)startRecord {
     [[AbeCamHandle sharedInstance] setRecordStatus:@1 result:^(BOOL succeeded) {
+        if (succeeded) {
+            self.videoHomepageView.isShowVideoTimeView = YES;
+            self.leftVideoHomepageView.isShowVideoTimeView = YES;
+            self.rightVideoHomepageView.isShowVideoTimeView = YES;
+            //开启计数定时器
+            [self startCountVideoDurationTimer];
+        }
       [[YNCMessageBox instance] show:succeeded==YES?@"start Record succeeded":@"start Record failed"];
     }];
 }
 //MARK: -- 停止录像
 - (void)stopRecord {
   [[AbeCamHandle sharedInstance] setRecordStatus:@0 result:^(BOOL succeeded) {
+      if (succeeded) {
+          //关闭计数定时器
+          [self destroyCountVideoDurationTimer];
+          self.videoHomepageView.isShowVideoTimeView = NO;
+          self.leftVideoHomepageView.isShowVideoTimeView = NO;
+          self.rightVideoHomepageView.isShowVideoTimeView = NO;
+      }
     [[YNCMessageBox instance] show:succeeded==YES?@"stop Record succeeded":@"stop Record failed"];
   }];
 }
@@ -532,16 +552,6 @@
     self.cameraToolView.cameraMode = sender.isSelected==YES?YNCCameraModeTakePhoto:YNCCameraModeVideo;
 }
 
-//MARK: -- 翻转镜头
-- (void)convertVideo:(BOOL)status {
-  [[AbeCamHandle sharedInstance] setFlipWithStatus:[NSNumber numberWithBool:status] result:^(BOOL succeeded) {
-    if (succeeded) {
-      DLog( @"convert succeeded.");
-    } else {
-      DLog( @"convert failed.");
-    }
-  }];
-}
 
 //MARK: -- 切换FPV模式
 - (void)switchFPVModel:(BOOL)isFPV {
@@ -565,10 +575,6 @@
   [self switchFPVModel:sender.isSelected];
 }
 
-- (IBAction)clickConvertButton:(UIButton *)sender {
-  [sender setSelected:!sender.isSelected];
-  [self convertVideo:sender.isSelected];
-}
 //MARK: -- 绑定ViewModel
 - (void)bindViewModel {
     _kvoController = [[FBKVOController alloc] initWithObserver:self];
@@ -583,6 +589,35 @@
             self.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
         });
     }];
+}
+
+//MARK: -- start count video duration
+- (void)startCountVideoDurationTimer {
+    WS(weakSelf);
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), kPeriod * NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        //在这里执行事件
+        weakSelf.videoDuration++;
+        NSString *tmpVideoString = [YNCUtil convertSecondToDisplayString:weakSelf.videoDuration];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.videoHomepageView.videoTimeView.recordTimeInSecond = tmpVideoString;
+        });
+    });
+    
+    dispatch_resume(_timer);
+    
+    _countVideoDurationTimer = _timer;
+}
+
+//MARK: -- destroy count video duration
+- (void)destroyCountVideoDurationTimer {
+    if (_countVideoDurationTimer) {
+        dispatch_source_cancel(_countVideoDurationTimer);
+        _countVideoDurationTimer = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

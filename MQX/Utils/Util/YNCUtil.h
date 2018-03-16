@@ -64,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isValidWiFiPassword:(NSString *)inputString;
 //MARK: -- 获取HD Racer的飞行模式
 + (NSString *)getHDRacerFlightMode:(YNCHDRacerFlightMode)HDRacerFlightMode;
++ (NSString *)convertSecondToDisplayString:(NSUInteger)seconds;
 /*--------------------------- Add by GavinYu End ----------------------------*/
 
 #pragma mark - Add By Jack Wu

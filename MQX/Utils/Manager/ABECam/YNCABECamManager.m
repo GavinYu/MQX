@@ -13,8 +13,6 @@
 #import "YNCDeviceInfoDataModel.h"
 #import <NSObject+YYModel.h>
 
-#define kPeriod 1.0
-
 @interface YNCABECamManager ()
 {
     dispatch_source_t _checkWiFiTimer;

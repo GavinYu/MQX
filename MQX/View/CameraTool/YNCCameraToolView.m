@@ -84,6 +84,11 @@
 }
 //MARK: --
 - (IBAction)clickCameraOperateButton:(UIButton *)sender {
+    if (self.cameraMode == YNCCameraModeVideo) {
+        [sender setSelected:!sender.isSelected];
+        _switchModeButton.enabled = !sender.isSelected;
+    }
+    
     if (_cameraToolViewEventBlock) {
         _cameraToolViewEventBlock(sender);
     }

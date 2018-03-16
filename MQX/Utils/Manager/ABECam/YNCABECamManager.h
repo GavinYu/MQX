@@ -16,7 +16,6 @@
 @interface YNCABECamManager : NSObject
 
 YNCSingletonH(ABECamManager)
-
 /*
  * The connection status of the component.
  */
@@ -26,7 +25,6 @@ YNCSingletonH(ABECamManager)
 - (void)checkWiFiState;
 //释放监测WiFi连接的状态的定时器
 - (void)freeCheckWiFiTimer;
-
 //获取飞机设备信息
 - (void)getDeviceInfo:(void(^)(YNCDeviceInfoDataModel *deviceInfo))block;
 

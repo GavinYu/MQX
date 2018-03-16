@@ -390,4 +390,15 @@ static NSString *_agreementUrl = @"_agreementUrl";
     [userDefault synchronize];
 }
 
++ (NSString *)convertSecondToDisplayString:(NSUInteger)seconds
+{
+    NSInteger remindHours = seconds / 3600;
+    
+    NSInteger remindMinutes = (seconds - (remindHours * 3600)) / 60;
+    
+    NSInteger remindSeconds = seconds - (remindMinutes * 60) - (remindHours * 3600);
+    
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", (int32_t)remindHours, (int32_t)remindMinutes, (int32_t)remindSeconds];
+}
+
 @end

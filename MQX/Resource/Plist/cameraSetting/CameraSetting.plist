@@ -8,71 +8,24 @@
 	<array>
 		<dict>
 			<key>item</key>
-			<string>camera_setting_white_balance</string>
+			<string>hdracer_camera_setting_video_direction</string>
 			<key>status</key>
-			<string>null</string>
+			<string>0</string>
 		</dict>
 		<dict>
 			<key>item</key>
-			<string>camera_setting_shot_mode</string>
-			<key>status</key>
-			<string>null</string>
+			<string>full_settings_restore_default_settings</string>
 		</dict>
 		<dict>
 			<key>item</key>
-			<string>camera_setting_photometry</string>
+			<string>camera_setting_format_sd_card</string>
 			<key>status</key>
-			<string>null</string>
+			<string>0G/0G</string>
 		</dict>
 		<dict>
 			<key>item</key>
-			<string>camera_setting_scene_mode</string>
-			<key>status</key>
-			<string>null</string>
-		</dict>
-		<dict>
-			<key>item</key>
-			<string>camera_setting_video_format</string>
-			<key>status</key>
-			<string>null</string>
-		</dict>
-		<dict>
-			<key>item</key>
-			<string>camera_setting_video_resolution</string>
-			<key>status</key>
-			<string>null</string>
-		</dict>
-		<dict>
-			<key>item</key>
-			<string>camera_setting_photo_format</string>
-			<key>status</key>
-			<string>null</string>
-		</dict>
-		<dict>
-			<key>item</key>
-			<string>camera_setting_photo_resolution</string>
-			<key>status</key>
-			<string>null</string>
-		</dict>
-		<dict>
-			<key>item</key>
-			<string>camera_setting_photo_quality</string>
-			<key>status</key>
-			<string>null</string>
-		</dict>
-		<dict>
-			<key>item</key>
-			<string>camera_setting_anti_ficker</string>
-			<key>status</key>
-			<string>null</string>
+			<string>full_settings_about</string>
 		</dict>
 	</array>
-	<key>footer</key>
-	<dict>
-		<key>title</key>
-		<string>camera_setting_format_sd_card</string>
-		<key>status</key>
-		<string>null/null</string>
-	</dict>
 </dict>
 </plist>

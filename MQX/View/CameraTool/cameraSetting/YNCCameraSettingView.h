@@ -9,15 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @protocol YNCCameraSettingViewDelegate <NSObject>
-
 - (void)popView;
-
 @end
 
 @interface YNCCameraSettingView : UIView
 
 @property (nonatomic, weak) id<YNCCameraSettingViewDelegate> delegate;
 - (void)createUI;
-- (void)updataShutterView;
-
 @end

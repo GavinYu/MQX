@@ -7,16 +7,18 @@
 //
 
 #import "YNCCameraSettingView.h"
+
 #import "YNCCameraCommonSettingView.h"
 #import "YNCPopWindowView.h"
 #import "YNCAppConfig.h"
+#import "YNCWarningConstMacro.h"
 
 #define kAnimationTime 0.3
 #define kViewWidth 210.0
 
 @interface YNCCameraSettingView ()<YNCCameraCommonSettingViewDelegate>
 
-@property (nonatomic, copy) NSDictionary *dataDictionary;
+@property (nonatomic, strong) NSMutableDictionary *dataDictionary;
 @property (nonatomic, strong) YNCCameraCommonSettingView *cameraSettingView; // 相机设置主页
 @property (nonatomic, assign) YNCCameraSettingViewType type;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -26,10 +28,12 @@
 
 @implementation YNCCameraSettingView
 
-- (NSDictionary *)dataDictionary
+//MARK: -- lazyload dataDictionary
+- (NSMutableDictionary *)dataDictionary
 {
     if (!_dataDictionary) {
-        self.dataDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"CameraSetting" ofType:@"plist"];
+        _dataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     }
     return _dataDictionary;
 }
@@ -49,7 +53,7 @@
     _cameraSettingView.delegate = self;
     _cameraSettingView.cameraSettingViewType = YNCCameraSettingViewTypeCameraSetting;
     _cameraSettingView.showBackBtn = NO;
-    _cameraSettingView.hasFooterView = YES;
+    _cameraSettingView.dataDictionary = self.dataDictionary;
     _cameraSettingView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
     self.type = YNCCameraSettingViewTypeCameraSetting;
 }
@@ -57,7 +61,23 @@
 #pragma mark - YNCCameraCommonSettingViewDelegate
 - (void)cameraSettingView_didSelectedIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSInteger row = indexPath.row;
+    switch (row) {
+        case 1:
+        {
+            [self resetCameraSettings];
+        }
+            break;
+            
+        case 2:
+        {
+            [self formatSDcardStoreage];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 // MARK:推出动画
@@ -84,30 +104,13 @@
 - (void)back
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.type + 3 inSection:0];
-    if (self.type == YNCCameraSettingViewTypeVideoResolution) {
-        WS(weakSelf);
-        double delayInSeconds = 0.5f;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-//                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.type + 3 inSection:0];
-//                DLog(@"_________________indexPath.row:%ld, type:%ld", indexPath.row, weakSelf.type);
-                [weakSelf.cameraSettingView reloadCellWithIndexPaths:@[indexPath]];
-            });
-        });
-    } else {
-        [self.cameraSettingView reloadCellWithIndexPaths:@[indexPath]];
-    }
-}
 
-- (void)updataShutterView
-{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     [self.cameraSettingView reloadCellWithIndexPaths:@[indexPath]];
 }
+//MARK: -- 设置视频方向
 
 #pragma mark - 恢复默认设置
-- (void)footerView_resetCameraSettings
+- (void)resetCameraSettings
 {
     WS(weakSelf);
     
@@ -117,14 +120,24 @@
                         colorType:PopWindowViewColorTypeOrange
                          sizeType:PopWindowViewSizeTypeBig
                     handleConfirm:^{
-
-    } handleCancel:^{
+                        [[AbeCamHandle sharedInstance] deviceResetToDefault:^(BOOL succeeded) {
+                            if (!succeeded) {
+                                [weakSelf postNotificationWithNumber:YNCWARNING_RESET_ALL_SETTINGS_FAILED];
+                            } else {
+                                double delayInSeconds = 1.5f;
+                                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
+                                dispatch_after(popTime, dispatch_get_main_queue(), ^{
+                                    [weakSelf.cameraSettingView reloadTableView];
+                                });
+                            }
+                        }];
+                    }handleCancel:^{
         
     }];
 }
 
 #pragma mark - 格式化内存卡
-- (void)footerView_formatSDcardStoreage
+- (void)formatSDcardStoreage
 {
     WS(weakSelf);
     [YNCPopWindowView showMessage:NSLocalizedString(@"camera_setting_do_you_want_to_format_sd_card", nil)
@@ -133,8 +146,15 @@
                         colorType:PopWindowViewColorTypeOrange
                          sizeType:PopWindowViewSizeTypeSmall
                     handleConfirm:^{
-
-    } handleCancel:^{
+                        [[AbeCamHandle sharedInstance] setSDFormat:^(BOOL succeeded, NSData *data) {
+                            if (succeeded) {
+                                NSDictionary *tmp = [NSDictionary modelDictionaryWithClass:[NSData class] json:data];
+                                DLog(@"成功返回数据：%@", tmp);
+                                [weakSelf.cameraSettingView updateFooterViewStorage];
+                            }
+                            [weakSelf postNotificationWithNumber:succeeded==YES?YNCWARNING_CAMERA_SD_FORMAT_SUCCEED:YNCWARNING_CAMERA_SD_FORMAT_FAILED];
+                        }];
+                    } handleCancel:^{
         
     }];
 }

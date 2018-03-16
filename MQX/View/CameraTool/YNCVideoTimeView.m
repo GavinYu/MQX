@@ -13,11 +13,14 @@
 @interface YNCVideoTimeView ()
 {
     CGFloat _sizeMultiple;
+   
+    
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *pointLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videoTimeLabel;
 @property (nonatomic, assign) BOOL isCancel;
+
 
 @end
 
@@ -89,6 +92,8 @@
     _recordTimeInSecond = recordTimeInSecond;
     _videoTimeLabel.text = recordTimeInSecond;
 }
+
+
 
 - (void)dealloc {
     DLog(@"dealloc: %@", NSStringFromClass([self class]));

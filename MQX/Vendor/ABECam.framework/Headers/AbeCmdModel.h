@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#include "rvs_def.h"
 
 @protocol AbeCmdModelDelegate <NSObject>
 
