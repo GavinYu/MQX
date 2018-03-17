@@ -6,8 +6,8 @@
 //  Copyright © 2018年 YunEEC. All rights reserved.
 //
 
-#import "YNCCameraSettingDataModel.h"
+#import "YNCCameraSettingModel.h"
 
-@implementation YNCCameraSettingDataModel
+@implementation YNCCameraSettingModel
 
 @end

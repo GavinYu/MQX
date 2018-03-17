@@ -23,6 +23,38 @@
 		8442DD43204C3B0E00BF1E30 /* YNCPopWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD40204C3B0D00BF1E30 /* YNCPopWindowView.xib */; };
 		8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */; };
 		D8D212EC9FA78396A8372755 /* libPods-MQX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EE210233C280BA3763F0E7 /* libPods-MQX.a */; };
+		F4107125205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107124205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m */; };
+		F4107128205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107127205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m */; };
+		F410712B205CC17000FF135D /* YNCDroneGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F410712A205CC17000FF135D /* YNCDroneGalleryViewController.m */; };
+		F410712E205CC23700FF135D /* YNCMeidasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F410712D205CC23700FF135D /* YNCMeidasViewController.m */; };
+		F4107133205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107132205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m */; };
+		F4107138205CC47500FF135D /* YNCCommonCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107137205CC47500FF135D /* YNCCommonCollectionCell.m */; };
+		F410713C205CC6FB00FF135D /* YNCDroneToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = F410713B205CC6FB00FF135D /* YNCDroneToolView.m */; };
+		F410713F205CC71700FF135D /* YNCDroneNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F410713E205CC71700FF135D /* YNCDroneNavigationView.m */; };
+		F4107141205CC72800FF135D /* YNCDroneToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4107140205CC72800FF135D /* YNCDroneToolView.xib */; };
+		F4107151205CCAA200FF135D /* YNCDroneNavigationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107150205CCAA200FF135D /* YNCDroneNavigationModel.m */; };
+		F4107153205CCCDF00FF135D /* YNCDroneNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4107152205CCCDE00FF135D /* YNCDroneNavigationView.xib */; };
+		F4107157205CCEE500FF135D /* YNCAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107156205CCEE500FF135D /* YNCAVPlayerView.m */; };
+		F4107159205CCFA100FF135D /* YNCAVPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4107158205CCFA000FF135D /* YNCAVPlayerView.xib */; };
+		F410715D205CD3E300FF135D /* YNCPreviewPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F410715B205CD3E200FF135D /* YNCPreviewPhotoCell.m */; };
+		F4107160205CD79600FF135D /* YNCPhotosDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F410715E205CD79500FF135D /* YNCPhotosDataBaseModel.m */; };
+		F4107194205CD98E00FF135D /* YNCSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F410716A205CD98E00FF135D /* YNCSessionModel.m */; };
+		F4107195205CD98E00FF135D /* YNCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F410716D205CD98E00FF135D /* YNCDownloadManager.m */; };
+		F4107196205CD98E00FF135D /* YNCPhotosDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F410716F205CD98E00FF135D /* YNCPhotosDataBase.m */; };
+		F4107197205CD98E00FF135D /* UIImage+Clip.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107170205CD98E00FF135D /* UIImage+Clip.m */; };
+		F4107198205CD98E00FF135D /* YNCImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107172205CD98E00FF135D /* YNCImageHelper.m */; };
+		F4107199205CD98E00FF135D /* ZWVerticalAlignLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107174205CD98E00FF135D /* ZWVerticalAlignLabel.m */; };
+		F41071AC205CE21800FF135D /* YNCCameraSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071AA205CE21800FF135D /* YNCCameraSettingModel.m */; };
+		F41071AF205CEFFD00FF135D /* YNCDronePhotoInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071AE205CEFFD00FF135D /* YNCDronePhotoInfoModel.m */; };
+		F41071B3205CF3A500FF135D /* YNCCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071B2205CF3A500FF135D /* YNCCircleProgress.m */; };
+		F41071B6205CF3FC00FF135D /* YNCCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071B5205CF3FC00FF135D /* YNCCircleProgressView.m */; };
+		F41071B8205CF4DB00FF135D /* YNCCircleProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41071B7205CF4DA00FF135D /* YNCCircleProgressView.xib */; };
+		F41071BB205CF5C100FF135D /* YNCCircleProgressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071BA205CF5C100FF135D /* YNCCircleProgressModel.m */; };
+		F41071BF205CF6E300FF135D /* YNCDroneMediasDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071BE205CF6E300FF135D /* YNCDroneMediasDownloadManager.m */; };
+		F41071C3205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071C2205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.m */; };
+		F41071C6205CFD8600FF135D /* YNCDroneGalleryTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071C4205CFD8500FF135D /* YNCDroneGalleryTransitionAnimator.m */; };
+		F41071C9205D1D3700FF135D /* YNCSDCardInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071C8205D1D3700FF135D /* YNCSDCardInfoModel.m */; };
+		F458A573205CBDEE008B57D8 /* YNCGalleryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F458A571205CBDEE008B57D8 /* YNCGalleryBaseViewController.m */; };
 		F46641E0204A972800DA4CCE /* YNCMqxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641DF204A972800DA4CCE /* YNCMqxViewController.m */; };
 		F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */; };
 		F46641FE204AACA600DA4CCE /* YNCVideoTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641FD204AACA600DA4CCE /* YNCVideoTimeView.m */; };
@@ -53,8 +85,7 @@
 		F4AFAB2A205502E800BC425A /* YNCWarningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB29205502E800BC425A /* YNCWarningManager.m */; };
 		F4AFAB2F2055089100BC425A /* YNCWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB2D2055089000BC425A /* YNCWarningView.m */; };
 		F4AFAB302055089100BC425A /* YNCWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB2E2055089100BC425A /* YNCWarningView.xib */; };
-		F4AFAB3420550E3200BC425A /* YNCCameraSettingDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB3320550E3200BC425A /* YNCCameraSettingDataModel.m */; };
-		F4AFAB382055247200BC425A /* YNCDeviceInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB372055247200BC425A /* YNCDeviceInfoDataModel.m */; };
+		F4AFAB382055247200BC425A /* YNCDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB372055247200BC425A /* YNCDeviceInfoModel.m */; };
 		F4B6EEBD205A19AA00B92BEA /* YNCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B6EEBC205A19AA00B92BEA /* YNCBaseViewController.m */; };
 		F4B6EEC1205A3FB600B92BEA /* YNCStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B6EEC0205A3FB600B92BEA /* YNCStoreViewController.m */; };
 		F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5C920463B8000B06CEE /* AppDelegate.m */; };
@@ -128,6 +159,66 @@
 		8442DD41204C3B0D00BF1E30 /* YNCPopWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCPopWindowView.h; sourceTree = "<group>"; };
 		8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCPopWindowView.m; sourceTree = "<group>"; };
 		88825A89DA548D527E95DEEC /* Pods-MQX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQX.release.xcconfig"; path = "Pods/Target Support Files/Pods-MQX/Pods-MQX.release.xcconfig"; sourceTree = "<group>"; };
+		F4107123205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryPreviewViewController.h; sourceTree = "<group>"; };
+		F4107124205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneGalleryPreviewViewController.m; sourceTree = "<group>"; };
+		F4107126205CBFF800FF135D /* YNCDroneGalleryBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryBaseViewController.h; sourceTree = "<group>"; };
+		F4107127205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneGalleryBaseViewController.m; sourceTree = "<group>"; };
+		F4107129205CC17000FF135D /* YNCDroneGalleryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryViewController.h; sourceTree = "<group>"; };
+		F410712A205CC17000FF135D /* YNCDroneGalleryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneGalleryViewController.m; sourceTree = "<group>"; };
+		F410712C205CC23700FF135D /* YNCMeidasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCMeidasViewController.h; sourceTree = "<group>"; };
+		F410712D205CC23700FF135D /* YNCMeidasViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCMeidasViewController.m; sourceTree = "<group>"; };
+		F4107131205CC3DB00FF135D /* YNCCommonCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCommonCollectionHeaderView.h; sourceTree = "<group>"; };
+		F4107132205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCommonCollectionHeaderView.m; sourceTree = "<group>"; };
+		F4107136205CC47500FF135D /* YNCCommonCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCommonCollectionCell.h; sourceTree = "<group>"; };
+		F4107137205CC47500FF135D /* YNCCommonCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCommonCollectionCell.m; sourceTree = "<group>"; };
+		F410713A205CC6FB00FF135D /* YNCDroneToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneToolView.h; sourceTree = "<group>"; };
+		F410713B205CC6FB00FF135D /* YNCDroneToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneToolView.m; sourceTree = "<group>"; };
+		F410713D205CC71700FF135D /* YNCDroneNavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneNavigationView.h; sourceTree = "<group>"; };
+		F410713E205CC71700FF135D /* YNCDroneNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneNavigationView.m; sourceTree = "<group>"; };
+		F4107140205CC72800FF135D /* YNCDroneToolView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YNCDroneToolView.xib; sourceTree = "<group>"; };
+		F410714F205CCAA200FF135D /* YNCDroneNavigationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneNavigationModel.h; sourceTree = "<group>"; };
+		F4107150205CCAA200FF135D /* YNCDroneNavigationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneNavigationModel.m; sourceTree = "<group>"; };
+		F4107152205CCCDE00FF135D /* YNCDroneNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCDroneNavigationView.xib; sourceTree = "<group>"; };
+		F4107155205CCEE500FF135D /* YNCAVPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCAVPlayerView.h; sourceTree = "<group>"; };
+		F4107156205CCEE500FF135D /* YNCAVPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCAVPlayerView.m; sourceTree = "<group>"; };
+		F4107158205CCFA000FF135D /* YNCAVPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCAVPlayerView.xib; sourceTree = "<group>"; };
+		F410715B205CD3E200FF135D /* YNCPreviewPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCPreviewPhotoCell.m; sourceTree = "<group>"; };
+		F410715C205CD3E300FF135D /* YNCPreviewPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCPreviewPhotoCell.h; sourceTree = "<group>"; };
+		F410715E205CD79500FF135D /* YNCPhotosDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCPhotosDataBaseModel.m; sourceTree = "<group>"; };
+		F410715F205CD79500FF135D /* YNCPhotosDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCPhotosDataBaseModel.h; sourceTree = "<group>"; };
+		F410716A205CD98E00FF135D /* YNCSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCSessionModel.m; sourceTree = "<group>"; };
+		F410716B205CD98E00FF135D /* UIImage+Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Clip.h"; sourceTree = "<group>"; };
+		F410716C205CD98E00FF135D /* YNCImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCImageHelper.h; sourceTree = "<group>"; };
+		F410716D205CD98E00FF135D /* YNCDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCDownloadManager.m; sourceTree = "<group>"; };
+		F410716E205CD98E00FF135D /* ZWVerticalAlignLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWVerticalAlignLabel.h; sourceTree = "<group>"; };
+		F410716F205CD98E00FF135D /* YNCPhotosDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCPhotosDataBase.m; sourceTree = "<group>"; };
+		F4107170205CD98E00FF135D /* UIImage+Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Clip.m"; sourceTree = "<group>"; };
+		F4107171205CD98E00FF135D /* YNCSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCSessionModel.h; sourceTree = "<group>"; };
+		F4107172205CD98E00FF135D /* YNCImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCImageHelper.m; sourceTree = "<group>"; };
+		F4107173205CD98E00FF135D /* YNCPhotosDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCPhotosDataBase.h; sourceTree = "<group>"; };
+		F4107174205CD98E00FF135D /* ZWVerticalAlignLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWVerticalAlignLabel.m; sourceTree = "<group>"; };
+		F4107175205CD98E00FF135D /* YNCDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCDownloadManager.h; sourceTree = "<group>"; };
+		F41071AA205CE21800FF135D /* YNCCameraSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingModel.m; sourceTree = "<group>"; };
+		F41071AB205CE21800FF135D /* YNCCameraSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingModel.h; sourceTree = "<group>"; };
+		F41071AD205CEFFD00FF135D /* YNCDronePhotoInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDronePhotoInfoModel.h; sourceTree = "<group>"; };
+		F41071AE205CEFFD00FF135D /* YNCDronePhotoInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDronePhotoInfoModel.m; sourceTree = "<group>"; };
+		F41071B1205CF3A500FF135D /* YNCCircleProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCircleProgress.h; sourceTree = "<group>"; };
+		F41071B2205CF3A500FF135D /* YNCCircleProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCCircleProgress.m; sourceTree = "<group>"; };
+		F41071B4205CF3FC00FF135D /* YNCCircleProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCircleProgressView.h; sourceTree = "<group>"; };
+		F41071B5205CF3FC00FF135D /* YNCCircleProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCCircleProgressView.m; sourceTree = "<group>"; };
+		F41071B7205CF4DA00FF135D /* YNCCircleProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCCircleProgressView.xib; sourceTree = "<group>"; };
+		F41071B9205CF5C100FF135D /* YNCCircleProgressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCircleProgressModel.h; sourceTree = "<group>"; };
+		F41071BA205CF5C100FF135D /* YNCCircleProgressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCCircleProgressModel.m; sourceTree = "<group>"; };
+		F41071BD205CF6E300FF135D /* YNCDroneMediasDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneMediasDownloadManager.h; sourceTree = "<group>"; };
+		F41071BE205CF6E300FF135D /* YNCDroneMediasDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneMediasDownloadManager.m; sourceTree = "<group>"; };
+		F41071C1205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryMediasHelper.h; sourceTree = "<group>"; };
+		F41071C2205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneGalleryMediasHelper.m; sourceTree = "<group>"; };
+		F41071C4205CFD8500FF135D /* YNCDroneGalleryTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCDroneGalleryTransitionAnimator.m; sourceTree = "<group>"; };
+		F41071C5205CFD8600FF135D /* YNCDroneGalleryTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryTransitionAnimator.h; sourceTree = "<group>"; };
+		F41071C7205D1D3700FF135D /* YNCSDCardInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCSDCardInfoModel.h; sourceTree = "<group>"; };
+		F41071C8205D1D3700FF135D /* YNCSDCardInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCSDCardInfoModel.m; sourceTree = "<group>"; };
+		F458A571205CBDEE008B57D8 /* YNCGalleryBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCGalleryBaseViewController.m; sourceTree = "<group>"; };
+		F458A572205CBDEE008B57D8 /* YNCGalleryBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCGalleryBaseViewController.h; sourceTree = "<group>"; };
 		F46641DE204A972800DA4CCE /* YNCMqxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCMqxViewController.h; sourceTree = "<group>"; };
 		F46641DF204A972800DA4CCE /* YNCMqxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCMqxViewController.m; sourceTree = "<group>"; };
 		F46641F9204AAC8400DA4CCE /* YNCCameraToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCameraToolView.h; sourceTree = "<group>"; };
@@ -183,10 +274,8 @@
 		F4AFAB2C2055089000BC425A /* YNCWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCWarningView.h; sourceTree = "<group>"; };
 		F4AFAB2D2055089000BC425A /* YNCWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCWarningView.m; sourceTree = "<group>"; };
 		F4AFAB2E2055089100BC425A /* YNCWarningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCWarningView.xib; sourceTree = "<group>"; };
-		F4AFAB3220550E3200BC425A /* YNCCameraSettingDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCCameraSettingDataModel.h; sourceTree = "<group>"; };
-		F4AFAB3320550E3200BC425A /* YNCCameraSettingDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCCameraSettingDataModel.m; sourceTree = "<group>"; };
-		F4AFAB362055247200BC425A /* YNCDeviceInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDeviceInfoDataModel.h; sourceTree = "<group>"; };
-		F4AFAB372055247200BC425A /* YNCDeviceInfoDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDeviceInfoDataModel.m; sourceTree = "<group>"; };
+		F4AFAB362055247200BC425A /* YNCDeviceInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDeviceInfoModel.h; sourceTree = "<group>"; };
+		F4AFAB372055247200BC425A /* YNCDeviceInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDeviceInfoModel.m; sourceTree = "<group>"; };
 		F4B6EEBB205A19AA00B92BEA /* YNCBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCBaseViewController.h; sourceTree = "<group>"; };
 		F4B6EEBC205A19AA00B92BEA /* YNCBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCBaseViewController.m; sourceTree = "<group>"; };
 		F4B6EEBF205A3FB600B92BEA /* YNCStoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCStoreViewController.h; sourceTree = "<group>"; };
@@ -279,6 +368,7 @@
 		8442DD2D204C37C100BF1E30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F410714E205CCA7E00FF135D /* DroneGallery */,
 				F4AFAB35205523EF00BC425A /* DeviceInfo */,
 				F4AFAB3120550E1200BC425A /* CameraSetting */,
 			);
@@ -338,6 +428,173 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F4107122205CBF1F00FF135D /* GalleryPreview */ = {
+			isa = PBXGroup;
+			children = (
+				F41071C5205CFD8600FF135D /* YNCDroneGalleryTransitionAnimator.h */,
+				F41071C4205CFD8500FF135D /* YNCDroneGalleryTransitionAnimator.m */,
+				F4107126205CBFF800FF135D /* YNCDroneGalleryBaseViewController.h */,
+				F4107127205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m */,
+				F4107123205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.h */,
+				F4107124205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m */,
+				F4107129205CC17000FF135D /* YNCDroneGalleryViewController.h */,
+				F410712A205CC17000FF135D /* YNCDroneGalleryViewController.m */,
+				F410712C205CC23700FF135D /* YNCMeidasViewController.h */,
+				F410712D205CC23700FF135D /* YNCMeidasViewController.m */,
+			);
+			path = GalleryPreview;
+			sourceTree = "<group>";
+		};
+		F410712F205CC3A900FF135D /* CollectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				F4107130205CC3CB00FF135D /* GalleryCommon */,
+			);
+			path = CollectionHeaderView;
+			sourceTree = "<group>";
+		};
+		F4107130205CC3CB00FF135D /* GalleryCommon */ = {
+			isa = PBXGroup;
+			children = (
+				F4107131205CC3DB00FF135D /* YNCCommonCollectionHeaderView.h */,
+				F4107132205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m */,
+			);
+			path = GalleryCommon;
+			sourceTree = "<group>";
+		};
+		F4107134205CC43D00FF135D /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F410715A205CD3D100FF135D /* Gallery */,
+				F4107135205CC45C00FF135D /* GalleryCommon */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		F4107135205CC45C00FF135D /* GalleryCommon */ = {
+			isa = PBXGroup;
+			children = (
+				F4107136205CC47500FF135D /* YNCCommonCollectionCell.h */,
+				F4107137205CC47500FF135D /* YNCCommonCollectionCell.m */,
+			);
+			path = GalleryCommon;
+			sourceTree = "<group>";
+		};
+		F4107139205CC6BD00FF135D /* DroneGallery */ = {
+			isa = PBXGroup;
+			children = (
+				F41071B0205CF37500FF135D /* Common */,
+				F410713A205CC6FB00FF135D /* YNCDroneToolView.h */,
+				F410713B205CC6FB00FF135D /* YNCDroneToolView.m */,
+				F4107140205CC72800FF135D /* YNCDroneToolView.xib */,
+				F410713D205CC71700FF135D /* YNCDroneNavigationView.h */,
+				F410713E205CC71700FF135D /* YNCDroneNavigationView.m */,
+				F4107152205CCCDE00FF135D /* YNCDroneNavigationView.xib */,
+			);
+			path = DroneGallery;
+			sourceTree = "<group>";
+		};
+		F410714E205CCA7E00FF135D /* DroneGallery */ = {
+			isa = PBXGroup;
+			children = (
+				F410715F205CD79500FF135D /* YNCPhotosDataBaseModel.h */,
+				F410715E205CD79500FF135D /* YNCPhotosDataBaseModel.m */,
+				F410714F205CCAA200FF135D /* YNCDroneNavigationModel.h */,
+				F4107150205CCAA200FF135D /* YNCDroneNavigationModel.m */,
+				F41071AD205CEFFD00FF135D /* YNCDronePhotoInfoModel.h */,
+				F41071AE205CEFFD00FF135D /* YNCDronePhotoInfoModel.m */,
+				F41071B9205CF5C100FF135D /* YNCCircleProgressModel.h */,
+				F41071BA205CF5C100FF135D /* YNCCircleProgressModel.m */,
+			);
+			path = DroneGallery;
+			sourceTree = "<group>";
+		};
+		F4107154205CCEC600FF135D /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				F4107155205CCEE500FF135D /* YNCAVPlayerView.h */,
+				F4107156205CCEE500FF135D /* YNCAVPlayerView.m */,
+				F4107158205CCFA000FF135D /* YNCAVPlayerView.xib */,
+			);
+			path = AVPlayer;
+			sourceTree = "<group>";
+		};
+		F410715A205CD3D100FF135D /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				F410715C205CD3E300FF135D /* YNCPreviewPhotoCell.h */,
+				F410715B205CD3E200FF135D /* YNCPreviewPhotoCell.m */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		F4107161205CD98E00FF135D /* GalleryLibs */ = {
+			isa = PBXGroup;
+			children = (
+				F4107169205CD98E00FF135D /* YNCPhotoKit */,
+			);
+			path = GalleryLibs;
+			sourceTree = "<group>";
+		};
+		F4107169205CD98E00FF135D /* YNCPhotoKit */ = {
+			isa = PBXGroup;
+			children = (
+				F410716A205CD98E00FF135D /* YNCSessionModel.m */,
+				F410716B205CD98E00FF135D /* UIImage+Clip.h */,
+				F410716C205CD98E00FF135D /* YNCImageHelper.h */,
+				F410716D205CD98E00FF135D /* YNCDownloadManager.m */,
+				F410716E205CD98E00FF135D /* ZWVerticalAlignLabel.h */,
+				F410716F205CD98E00FF135D /* YNCPhotosDataBase.m */,
+				F4107170205CD98E00FF135D /* UIImage+Clip.m */,
+				F4107171205CD98E00FF135D /* YNCSessionModel.h */,
+				F4107172205CD98E00FF135D /* YNCImageHelper.m */,
+				F4107173205CD98E00FF135D /* YNCPhotosDataBase.h */,
+				F4107174205CD98E00FF135D /* ZWVerticalAlignLabel.m */,
+				F4107175205CD98E00FF135D /* YNCDownloadManager.h */,
+			);
+			path = YNCPhotoKit;
+			sourceTree = "<group>";
+		};
+		F41071B0205CF37500FF135D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F41071B1205CF3A500FF135D /* YNCCircleProgress.h */,
+				F41071B2205CF3A500FF135D /* YNCCircleProgress.m */,
+				F41071B4205CF3FC00FF135D /* YNCCircleProgressView.h */,
+				F41071B5205CF3FC00FF135D /* YNCCircleProgressView.m */,
+				F41071B7205CF4DA00FF135D /* YNCCircleProgressView.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F41071BC205CF6B400FF135D /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				F41071BD205CF6E300FF135D /* YNCDroneMediasDownloadManager.h */,
+				F41071BE205CF6E300FF135D /* YNCDroneMediasDownloadManager.m */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		F41071C0205CFC3500FF135D /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				F41071C1205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.h */,
+				F41071C2205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.m */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		F458A570205CBDD5008B57D8 /* DroneGallery */ = {
+			isa = PBXGroup;
+			children = (
+				F4107122205CBF1F00FF135D /* GalleryPreview */,
+				F458A572205CBDEE008B57D8 /* YNCGalleryBaseViewController.h */,
+				F458A571205CBDEE008B57D8 /* YNCGalleryBaseViewController.m */,
+			);
+			path = DroneGallery;
+			sourceTree = "<group>";
+		};
 		F46641E4204AABF600DA4CCE /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +650,7 @@
 		F482ACD0204A3FCD00029E50 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F458A570205CBDD5008B57D8 /* DroneGallery */,
 				F4B6EEBE205A3FA100B92BEA /* Store */,
 				F482ACEF204A7B5B00029E50 /* Main */,
 				F482ACF0204A7B5B00029E50 /* VideoPreview */,
@@ -404,6 +662,10 @@
 		F482ACD1204A3FCD00029E50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4107154205CCEC600FF135D /* AVPlayer */,
+				F4107139205CC6BD00FF135D /* DroneGallery */,
+				F4107134205CC43D00FF135D /* CollectionViewCell */,
+				F410712F205CC3A900FF135D /* CollectionHeaderView */,
 				F4AFAB2B2055088200BC425A /* Warning */,
 				F4AFAB022054D45300BC425A /* NavigationBar */,
 				F4AFAAFE2054D10D00BC425A /* Home */,
@@ -427,6 +689,7 @@
 		F482ACD4204A3FCE00029E50 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F4107161205CD98E00FF135D /* GalleryLibs */,
 				F484491C205BCAC700EC4CCC /* ABECam.framework */,
 			);
 			path = Vendor;
@@ -443,6 +706,7 @@
 		F482ACE1204A709000029E50 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F41071BC205CF6B400FF135D /* Gallery */,
 				F4AFAB26205502D500BC425A /* Warning */,
 				F482ACF7204A82B400029E50 /* ABECam */,
 			);
@@ -466,6 +730,7 @@
 		F482ACE4204A709000029E50 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F41071C0205CFC3500FF135D /* Gallery */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -618,8 +883,8 @@
 		F4AFAB3120550E1200BC425A /* CameraSetting */ = {
 			isa = PBXGroup;
 			children = (
-				F4AFAB3220550E3200BC425A /* YNCCameraSettingDataModel.h */,
-				F4AFAB3320550E3200BC425A /* YNCCameraSettingDataModel.m */,
+				F41071AB205CE21800FF135D /* YNCCameraSettingModel.h */,
+				F41071AA205CE21800FF135D /* YNCCameraSettingModel.m */,
 			);
 			path = CameraSetting;
 			sourceTree = "<group>";
@@ -627,8 +892,10 @@
 		F4AFAB35205523EF00BC425A /* DeviceInfo */ = {
 			isa = PBXGroup;
 			children = (
-				F4AFAB362055247200BC425A /* YNCDeviceInfoDataModel.h */,
-				F4AFAB372055247200BC425A /* YNCDeviceInfoDataModel.m */,
+				F4AFAB362055247200BC425A /* YNCDeviceInfoModel.h */,
+				F4AFAB372055247200BC425A /* YNCDeviceInfoModel.m */,
+				F41071C7205D1D3700FF135D /* YNCSDCardInfoModel.h */,
+				F41071C8205D1D3700FF135D /* YNCSDCardInfoModel.m */,
 			);
 			path = DeviceInfo;
 			sourceTree = "<group>";
@@ -819,18 +1086,22 @@
 				F4AFAB122054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib in Resources */,
 				F4B7F5D520463B8000B06CEE /* LaunchScreen.storyboard in Resources */,
 				8442DCEA204BF31500BF1E30 /* YNCCameraSettingModeCell.xib in Resources */,
+				F4107141205CC72800FF135D /* YNCDroneToolView.xib in Resources */,
 				8442DD3E204C3A7500BF1E30 /* YNCFB_SwitchCell.xib in Resources */,
 				F4AFAB242054FAC200BC425A /* YNCNavigationBar.xib in Resources */,
 				8442DCF8204BF31500BF1E30 /* YNCCameraSettingHeaderView.xib in Resources */,
+				F4107159205CCFA100FF135D /* YNCAVPlayerView.xib in Resources */,
 				8442DD18204C026B00BF1E30 /* CameraSetting.plist in Resources */,
 				F4AFAB172054F55700BC425A /* YNCVideoHomepageView.xib in Resources */,
 				F4B7F5D220463B8000B06CEE /* Assets.xcassets in Resources */,
+				F4107153205CCCDF00FF135D /* YNCDroneNavigationView.xib in Resources */,
 				F4664200204AACBD00DA4CCE /* YNCCameraToolView.xib in Resources */,
 				F4AFAB222054FAC200BC425A /* YNCDroneStateView.xib in Resources */,
 				F4B7F5D020463B8000B06CEE /* Main.storyboard in Resources */,
 				8442DD26204C03C200BF1E30 /* Localizable.strings in Resources */,
 				F4AFAB302055089100BC425A /* YNCWarningView.xib in Resources */,
 				8442DD43204C3B0E00BF1E30 /* YNCPopWindowView.xib in Resources */,
+				F41071B8205CF4DB00FF135D /* YNCCircleProgressView.xib in Resources */,
 				F4664202204AACCA00DA4CCE /* YNCVideoTimeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -915,41 +1186,68 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4AFAB3420550E3200BC425A /* YNCCameraSettingDataModel.m in Sources */,
+				F4107160205CD79600FF135D /* YNCPhotosDataBaseModel.m in Sources */,
 				F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */,
+				F410712B205CC17000FF135D /* YNCDroneGalleryViewController.m in Sources */,
+				F41071AF205CEFFD00FF135D /* YNCDronePhotoInfoModel.m in Sources */,
+				F4107133205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m in Sources */,
 				F4AFAB2A205502E800BC425A /* YNCWarningManager.m in Sources */,
 				F4AFAB252054FAC200BC425A /* YNCDroneStateView.m in Sources */,
 				8442DD35204C386E00BF1E30 /* UIColor+YNCColor.m in Sources */,
 				8442DCF5204BF31500BF1E30 /* YNCCameraSettingModeCell.m in Sources */,
+				F410713C205CC6FB00FF135D /* YNCDroneToolView.m in Sources */,
 				8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */,
 				F498FB0C2050DDD700C885CE /* YNCNavigationViewController.m in Sources */,
 				8442DCEC204BF31500BF1E30 /* YNCCameraCommonSettingView.m in Sources */,
 				F4B7F5D820463B8000B06CEE /* main.m in Sources */,
 				F4B6EEBD205A19AA00B92BEA /* YNCBaseViewController.m in Sources */,
+				F4107195205CD98E00FF135D /* YNCDownloadManager.m in Sources */,
+				F41071BF205CF6E300FF135D /* YNCDroneMediasDownloadManager.m in Sources */,
+				F410715D205CD3E300FF135D /* YNCPreviewPhotoCell.m in Sources */,
 				F4B6EEC1205A3FB600B92BEA /* YNCStoreViewController.m in Sources */,
+				F41071B6205CF3FC00FF135D /* YNCCircleProgressView.m in Sources */,
 				F4664206204AAFE600DA4CCE /* UIButton+YNCButton.m in Sources */,
 				F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */,
+				F41071BB205CF5C100FF135D /* YNCCircleProgressModel.m in Sources */,
+				F4107157205CCEE500FF135D /* YNCAVPlayerView.m in Sources */,
 				F4AFAB012054D35600BC425A /* YNCVideoHomepageView.m in Sources */,
 				8442DCFB204BF31500BF1E30 /* YNCCameraSettingView.m in Sources */,
+				F41071AC205CE21800FF135D /* YNCCameraSettingModel.m in Sources */,
 				8442DD2C204C202500BF1E30 /* YNCMessageBox.m in Sources */,
+				F41071C6205CFD8600FF135D /* YNCDroneGalleryTransitionAnimator.m in Sources */,
+				F410713F205CC71700FF135D /* YNCDroneNavigationView.m in Sources */,
+				F4107197205CD98E00FF135D /* UIImage+Clip.m in Sources */,
 				8442DD38204C387C00BF1E30 /* UIFont+YNCFont.m in Sources */,
 				F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */,
 				8442DD3D204C3A7500BF1E30 /* YNCFB_SwitchCell.m in Sources */,
-				F4AFAB382055247200BC425A /* YNCDeviceInfoDataModel.m in Sources */,
+				F4107199205CD98E00FF135D /* ZWVerticalAlignLabel.m in Sources */,
+				F4AFAB382055247200BC425A /* YNCDeviceInfoModel.m in Sources */,
+				F458A573205CBDEE008B57D8 /* YNCGalleryBaseViewController.m in Sources */,
 				F482ACEE204A78DA00029E50 /* YNCBaseNavigationControllerStack.m in Sources */,
+				F4107151205CCAA200FF135D /* YNCDroneNavigationModel.m in Sources */,
 				F46641FE204AACA600DA4CCE /* YNCVideoTimeView.m in Sources */,
+				F4107128205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m in Sources */,
+				F4107194205CD98E00FF135D /* YNCSessionModel.m in Sources */,
+				F4107198205CD98E00FF135D /* YNCImageHelper.m in Sources */,
+				F41071B3205CF3A500FF135D /* YNCCircleProgress.m in Sources */,
 				F4AFAB112054DD1D00BC425A /* YNCFlightStatusView_Firebird.m in Sources */,
 				F4AFAB232054FAC200BC425A /* YNCNavigationBar.m in Sources */,
+				F41071C3205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.m in Sources */,
+				F4107125205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m in Sources */,
 				F4AFAB1B2054F7CB00BC425A /* UIImage+YNCImage.m in Sources */,
 				F4AFAB2F2055089100BC425A /* YNCWarningView.m in Sources */,
 				F482ACDB204A6D1E00029E50 /* YNCConst.m in Sources */,
+				F410712E205CC23700FF135D /* YNCMeidasViewController.m in Sources */,
 				F4AFAB152054DDFF00BC425A /* YNCStatusView_Firebird.m in Sources */,
 				F498FB092050D09700C885CE /* YNCScrollLabelView.m in Sources */,
 				F46641FB204AAC8400DA4CCE /* YNCCameraToolView.m in Sources */,
+				F4107196205CD98E00FF135D /* YNCPhotosDataBase.m in Sources */,
 				F46641E0204A972800DA4CCE /* YNCMqxViewController.m in Sources */,
+				F41071C9205D1D3700FF135D /* YNCSDCardInfoModel.m in Sources */,
 				8442DCE9204BF31500BF1E30 /* YNCCameraSettingHeaderView.m in Sources */,
 				F482ACEA204A72FC00029E50 /* YNCUtil.m in Sources */,
 				F4B7F5CA20463B8000B06CEE /* AppDelegate.m in Sources */,
+				F4107138205CC47500FF135D /* YNCCommonCollectionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

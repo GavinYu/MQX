@@ -11,7 +11,8 @@
 #import "YNCSingleton.h"
 #import "YNCBlock.h"
 
-@class YNCDeviceInfoDataModel;
+@class YNCDeviceInfoModel;
+@class YNCSDCardInfoModel;
 
 @interface YNCABECamManager : NSObject
 
@@ -20,12 +21,17 @@ YNCSingletonH(ABECamManager)
  * The connection status of the component.
  */
 @property (nonatomic, readonly) BOOL  WiFiConnected;
+//SD卡总容量
+@property (nonatomic, readonly) NSString *totalStorage;
+//SD卡可用容量
+@property (nonatomic, readonly) NSString *freeStorage;
 
 //监测WiFi连接的状态
 - (void)checkWiFiState;
 //释放监测WiFi连接的状态的定时器
 - (void)freeCheckWiFiTimer;
 //获取飞机设备信息
-- (void)getDeviceInfo:(void(^)(YNCDeviceInfoDataModel *deviceInfo))block;
-
+- (void)getDeviceInfo:(void(^)(YNCDeviceInfoModel *deviceInfo))block;
+//获取SD卡信息
+- (void)getSDCardInfo:(void(^)(YNCSDCardInfoModel *SDCardInfo))block;
 @end

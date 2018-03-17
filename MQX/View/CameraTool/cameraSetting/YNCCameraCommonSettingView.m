@@ -8,7 +8,7 @@
 
 #import "YNCCameraCommonSettingView.h"
 #import "YNCCameraSettingModeCell.h"
-#import "YNCCameraSettingDataModel.h"
+#import "YNCCameraSettingModel.h"
 #import "YNCCameraSettingHeaderView.h"
 
 #import "YNCFB_SwitchCell.h"
@@ -109,10 +109,10 @@ static NSString *SWITCHCELL = @"switchcell";
     NSInteger row = indexPath.row;
     
     NSDictionary *rowDic;
-    YNCCameraSettingDataModel *rowDataModel;
+    YNCCameraSettingModel *rowDataModel;
     if (self.dataArray.count > 0) {
         rowDic = self.dataArray[row];
-        rowDataModel = [YNCCameraSettingDataModel new];
+        rowDataModel = [YNCCameraSettingModel new];
         //将字典转换成数据模型
         [rowDataModel setValuesForKeysWithDictionary:rowDic];
     }

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class YNCCameraSettingDataModel;
+@class YNCCameraSettingModel;
 
 @interface YNCCameraSettingModeCell : UITableViewCell
 
 @property (strong, nonatomic) UIColor *titleColor;
 @property (assign, nonatomic) BOOL isShowRightArrowImage;
 
-- (void)configureWithModel:(YNCCameraSettingDataModel *)model;
+- (void)configureWithModel:(YNCCameraSettingModel *)model;
 
 @end

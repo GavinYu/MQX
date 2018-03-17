@@ -8,7 +8,7 @@
 
 #import "YNCCameraSettingModeCell.h"
 
-#import "YNCCameraSettingDataModel.h"
+#import "YNCCameraSettingModel.h"
 
 #import "UIFont+YNCFont.h"
 
@@ -30,7 +30,7 @@
 }
 
 //MARK: -- config Cell
-- (void)configureWithModel:(YNCCameraSettingDataModel *)model
+- (void)configureWithModel:(YNCCameraSettingModel *)model
 {
     self.itemLabel.text = NSLocalizedString(model.item, nil);
     self.statusLabel.text = NSLocalizedString(model.status, nil);

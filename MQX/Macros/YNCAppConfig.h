@@ -27,5 +27,6 @@
 #import <YYKit/YYKit.h>
 #import <KVOController/KVOController.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #endif /* YNCAppConfig_h */

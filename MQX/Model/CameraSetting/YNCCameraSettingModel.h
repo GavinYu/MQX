@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YNCCameraSettingDataModel : NSObject
+@interface YNCCameraSettingModel : NSObject
 
 @property (nonatomic, copy) NSString *item;
 @property (nonatomic, copy) NSString *status;

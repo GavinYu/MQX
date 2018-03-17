@@ -17,7 +17,7 @@
 #import "AppDelegate.h"
 #import "YNCScrollLabelView.h"
 #import "YNCNavigationViewController.h"
-#import "YNCDeviceInfoDataModel.h"
+#import "YNCDeviceInfoModel.h"
 
 static const CGFloat kAnimationBGColorDuration = 0.5;
 static CGFloat kDroneNameFontSize = 38.0f;
@@ -295,12 +295,10 @@ static CGFloat kDroneNameFontSize = 38.0f;
 }
 //MARK: -- 获取设备信息
 - (void)getDroneDeviceInfo {
-    [[YNCABECamManager sharedABECamManager] getDeviceInfo:^(YNCDeviceInfoDataModel *deviceInfo) {
+    [[YNCABECamManager sharedABECamManager] getDeviceInfo:^(YNCDeviceInfoModel *deviceInfo) {
         if (deviceInfo != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_connectionStatusButton setTitle:deviceInfo.ssid forState:UIControlStateNormal];
-#warning TODO: -- TEST CODE
-                [self getSDCardInfo];
             });
         }
     }];
@@ -309,14 +307,6 @@ static CGFloat kDroneNameFontSize = 38.0f;
 // MARK: Unwind
 - (IBAction)mainViewControllerUnwindSegue:(UIStoryboardSegue *)unwindSegue {
     
-}
-
-//MARK: -- 获取SD卡信息
-- (void)getSDCardInfo {
-    [[AbeCamHandle sharedInstance] getSDSpaceResult:^(BOOL succeeded, NSData *data) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        DLog(@"获取的SD卡信息：%@", dic);
-    }];
 }
 
 - (void)didReceiveMemoryWarning {

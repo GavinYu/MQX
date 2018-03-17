@@ -18,6 +18,7 @@
 #import "AppDelegate.h"
 #import "YNCNavigationViewController.h"
 #import "YNCWarningConstMacro.h"
+#import "YNCDroneGalleryPreviewViewController.h"
 
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
 {
@@ -400,8 +401,8 @@
 //          [[YNCMessageBox instance] show:[NSString stringWithFormat:@"%@", NSLocalizedString(@"flight_interface_warning_CAMERA_NO_SDCARD", nil)]];
 //          return;
 //        }
-//          YNCFB_DroneGalleryPreviewViewController *fb_droneGalleryVC = [[YNCFB_DroneGalleryPreviewViewController alloc] init];
-//          [weakSelf.navigationController pushViewController:fb_droneGalleryVC animated:YES];
+          YNCDroneGalleryPreviewViewController *droneGalleryVC = [[YNCDroneGalleryPreviewViewController alloc] init];
+          [weakSelf.navigationController pushViewController:droneGalleryVC animated:YES];
         
       }
         break;

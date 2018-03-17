@@ -172,6 +172,53 @@
 #endif
 
 #define kPeriod 1.0  //定时器时间 （每秒执行一次）
+
+//颜色配置
+#define TextGrayColor UICOLOR_FROM_HEXRGB(0x888888)  // 文字浅灰
+#define TextBlackColor UICOLOR_FROM_HEXRGB(0x1e1e1e)  // 文字黑色
+#define TextOrangeColor UICOLOR_FROM_HEXRGB(0xf53333) // 文字橘色
+#define TextLittleGrayColor UICOLOR_FROM_HEXRGB(0xbbbbbb) // 浅灰
+#define TextGreenColor UICOLOR_FROM_HEXRGB(0x27bb77)
+#define TextWhiteColor UICOLOR_FROM_HEXRGB(0xffffff)
+// 背景色
+#define BackgroundColor_Black UICOLOR_FROM_HEXRGB(0x1e1e1e)
+#define BackgroundColor_White UICOLOR_FROM_HEXRGB(0xffffff)
+#define BackgroundColor_NavigationView UICOLOR_FROM_HEXRGB(0xf8f8f8)
+#define BackgroundColor_green_cameraSettingCell UICOLOR_FROM_HEXRGB(0x2bbb77)
+#define BackgroundColor_ImportLabel UICOLOR_FROM_HEXRGB(0xff5533)
+#define BackgroundColor_Green UICOLOR_FROM_HEXRGB(0x27bb77)
+
+// 线的色值
+#define LineColor_litteGray UICOLOR_FROM_HEXRGB(0xbbbbbb)
+#define LineColor_darkGray UICOLOR_FROM_HEXRGB(0x1e1e1e)
+#define LineColor_importListColor UICOLOR_FROM_HEXRGB(0xdddddd)
+#define LineColor_Orange UICOLOR_FROM_HEXRGB(0xf53333)
+#define LineColor_greenColor UICOLOR_FROM_HEXRGB(0x27bb77)
+
+// 字体
+#define SystemFont_19 [UIFont systemFontOfSize:19.0] // 这里对应的是36px
+#define SystemFont_18 [UIFont systemFontOfSize:18.0] // 这里对应的是34px
+#define SystemFont_17 [UIFont systemFontOfSize:17.0] // 这里对应的是32px
+#define SystemFont_16 [UIFont systemFontOfSize:16.0] // 这里对应的是30px
+#define SystemFont_15 [UIFont systemFontOfSize:15.0] // 这里对应的是28px
+#define SystemFont_14 [UIFont systemFontOfSize:14.0] // 这里对应的是26px
+#define SystemFont_13 [UIFont systemFontOfSize:13.0] // 这里对应的是24px
+#define SystemFont_12 [UIFont systemFontOfSize:12.0] // 这里对应的是22px
+#define SystemFont_11 [UIFont systemFontOfSize:11.0] // 这里对应的是20px
+#define SystemFont_10 [UIFont systemFontOfSize:10.0] // 这里对应的是18px
+#define SystemFont_9 [UIFont systemFontOfSize:9] // 这里对应的是16px
+#define SystemFont_8 [UIFont systemFontOfSize:8] // 这里对应的是14px
+
+// 缓存地址
+#define DocumentDirectiory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#define Document_Download [DocumentDirectiory stringByAppendingPathComponent:@"download"]
+#define Document_ImageEdit [DocumentDirectiory stringByAppendingPathComponent:@"imageEdit"]
+#define Document_FlightLog [DocumentDirectiory stringByAppendingPathComponent:@"flightLog"]
+#define Document_FilterImage [DocumentDirectiory stringByAppendingPathComponent:@"filterImage"]
+#define Document_Version [DocumentDirectiory stringByAppendingPathComponent:@"version"]
+
+#define kURL_Breeze_2DCIM @"http://192.168.42.1/DCIM/100MEDIA/"
+
 /*--------------------------- Add by GavinYu End ----------------------------*/
 
 

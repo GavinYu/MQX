@@ -10,7 +10,9 @@
 
 #import <ABECam/ABECam.h>
 #import "YNCMacros.h"
-#import "YNCDeviceInfoDataModel.h"
+#import "YNCDeviceInfoModel.h"
+#import "YNCSDCardInfoModel.h"
+
 #import <NSObject+YYModel.h>
 
 @interface YNCABECamManager ()
@@ -22,6 +24,10 @@
  * The connection status of the component.
  */
 @property (nonatomic, assign, readwrite) BOOL  WiFiConnected;
+//SD卡总容量
+@property (nonatomic, copy) NSString *totalStorage;
+//SD卡可用容量
+@property (nonatomic, copy) NSString *freeStorage;
 
 @end
 
@@ -68,17 +74,34 @@ YNCSingletonM(ABECamManager)
 }
 
 //MARK: -- 获取飞机设备信息
-- (void)getDeviceInfo:(void(^)(YNCDeviceInfoDataModel *deviceInfo))block {
+- (void)getDeviceInfo:(void(^)(YNCDeviceInfoModel *deviceInfo))block {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
             if (succeeded) {
-                YNCDeviceInfoDataModel *tmpModel = [YNCDeviceInfoDataModel new];
-                tmpModel = [YNCDeviceInfoDataModel modelWithJSON:data];
+                YNCDeviceInfoModel *tmpModel = [YNCDeviceInfoModel new];
+                tmpModel = [YNCDeviceInfoModel modelWithJSON:data];
                 block(tmpModel);
             }
         }];
     });
 }
-
+//MARK: -- 获取SD卡信息
+- (void)getSDCardInfo:(void(^)(YNCSDCardInfoModel *SDCardInfo))block {
+    WS(weakSelf);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [[AbeCamHandle sharedInstance] getSDSpaceResult:^(BOOL succeeded, NSData *data) {
+            if (succeeded) {
+                YNCSDCardInfoModel *tmpModel = [YNCSDCardInfoModel new];
+                tmpModel = [YNCSDCardInfoModel modelWithJSON:data];
+                weakSelf.totalStorage = [NSString stringWithFormat:@"%liG", (long)tmpModel.totalspace];
+                CGFloat tmpFree = tmpModel.totalspace * (tmpModel.sdspace + [tmpModel.sdspace_decimals floatValue]) / 100.0;
+                weakSelf.freeStorage = [NSString stringWithFormat:@"%.1fG", tmpFree];
+                block(tmpModel);
+            }
+        }];
+    });
+    
+}
 
 @end

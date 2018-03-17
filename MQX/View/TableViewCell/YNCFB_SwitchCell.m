@@ -9,7 +9,7 @@
 #import "YNCFB_SwitchCell.h"
 
 #import "YNCAppConfig.h"
-#import "YNCCameraSettingDataModel.h"
+#import "YNCCameraSettingModel.h"
 
 @interface YNCFB_SwitchCell ()
 
@@ -38,7 +38,7 @@
     // Configure the view for the selected state
 }
 
-- (void)configureTextLabel:(YNCCameraSettingDataModel *)dataModel
+- (void)configureTextLabel:(YNCCameraSettingModel *)dataModel
 {
     _textL.text = NSLocalizedString(dataModel.item, nil);
     _textL.textColor = [UIColor atrousColor];

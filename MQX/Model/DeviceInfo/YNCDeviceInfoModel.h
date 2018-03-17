@@ -1,5 +1,5 @@
 //
-//  YNCDeviceInfoDataModel.h
+//  YNCDeviceInfoModel.h
 //  MQX
 //
 //  Created by yc-sh-vr-pc05 on 2018/3/11.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YNCDeviceInfoDataModel : NSObject
+@interface YNCDeviceInfoModel : NSObject
 
 @property (assign, nonatomic) NSInteger batterylevel;
 @property (assign, nonatomic) NSInteger day;
