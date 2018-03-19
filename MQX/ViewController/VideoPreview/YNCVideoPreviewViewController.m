@@ -21,6 +21,7 @@
 //MARK: -- View life methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view.
     [self configABECamHandle];
 }
@@ -39,8 +40,8 @@
             if (succeeded) {
                 // should chose right mode
                 //                    [[AbeCamHandle sharedInstance] openVideo:mode720];
-                [[AbeCamHandle sharedInstance] openVideo:mode7218];
-                
+                BOOL tmp = [[AbeCamHandle sharedInstance] openVideo:mode7218];
+                DLog(@"open stream %@", tmp==YES?@"succeed":@"failed");
             }else{
                 DLog(@"open failed");
             }

@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) YNCStatusView_Firebird *statusView_fireBird;
 @property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
 @property (nonatomic, strong) UIImageView *centerImageView;
 @property (nonatomic, assign) CGFloat sizeMutiple;
 
@@ -63,6 +64,7 @@
 {
     self.sizeMutiple = sizeMutiple;
     self.width = self.frame.size.width;
+    self.height = self.frame.size.height;
 
     self.statusView_fireBird = [[YNCStatusView_Firebird alloc] init];
     _statusView_fireBird.backgroundColor = [UIColor clearColor];
@@ -71,7 +73,7 @@
     _statusView_fireBird.centerMode = YES;
     [_statusView_fireBird mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset((_width - kStatusView_fireBirdWidth*_sizeMutiple) / 2.0 );
-        make.top.equalTo(self.mas_bottom).offset(-kStatusView_HiddenHeight / 2.0 * _sizeMutiple);
+        make.top.equalTo(self).offset((_height - kStatusView_HiddenHeight* _sizeMutiple) / 2.0 );
         make.width.equalTo(@(kStatusView_fireBirdWidth * _sizeMutiple));
         make.height.equalTo(@(kStatusView_HiddenHeight * _sizeMutiple));
     }];
@@ -83,7 +85,7 @@
     _statusView_fireBird.value = 0;
 
     self.centerImageView = [[UIImageView alloc] init];
-    _centerImageView.image = [UIImage imageNamed:@"icon_centerPoint"];
+    _centerImageView.image = [UIImage imageNamed:@"icon_center"];
     [self addSubview:_centerImageView];
     [_centerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(_statusView_fireBird);

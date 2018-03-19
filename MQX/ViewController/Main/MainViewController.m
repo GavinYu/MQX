@@ -45,7 +45,7 @@ static CGFloat kDroneNameFontSize = 38.0f;
 //MARK: -- View life methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
+    
     // Do any additional setup after loading the view, typically from a nib.
     [self.droneImageArray addObject:@"icon_aircraft_mqx"];
     //初始化子视图
@@ -56,7 +56,7 @@ static CGFloat kDroneNameFontSize = 38.0f;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBarHidden = YES;
     // 如果不是竖屏, 强制转为竖屏
     WS(weakSelf);
     [UIView animateWithDuration:.3 animations:^{
@@ -95,10 +95,8 @@ static CGFloat kDroneNameFontSize = 38.0f;
     [_kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
         BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf refreshUI:tmpWiFiConnected];
             if (tmpWiFiConnected) {
-                [[AbeCamHandle sharedInstance] connectedTalkSession];
-                [weakSelf getDroneDeviceInfo];
+                [weakSelf refreshUI:tmpWiFiConnected];
             }
         });
     }];
@@ -211,11 +209,15 @@ static CGFloat kDroneNameFontSize = 38.0f;
     // 根据飞机状态刷新UI
     if (WiFiConnected) {
         [_connectionStatusButton setTitleColor:[UIColor yncFirebirdGreenColor] forState:UIControlStateNormal];
+        [_connectionStatusButton setTitle:[YNCABECamManager sharedABECamManager].deviceInfo.ssid forState:UIControlStateNormal];
+        
         [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_start_to_fly", nil) forState:UIControlStateNormal];
         [_readyToFlyButton setTitleColor:[UIColor yncFirebirdGreenColor] forState:UIControlStateNormal];
     } else {
         [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
-        [_readyToFlyButton setTitleColor:[UIColor atrousColor] forState:UIControlStateNormal];
+        [_readyToFlyButton setTitleColor:[UIColor grayishColor] forState:UIControlStateNormal];
+        
+        [_connectionStatusButton setTitleColor:[UIColor grayishColor] forState:UIControlStateNormal];
         [_connectionStatusButton setTitle:NSLocalizedString(@"homepage_device_not_conneted", nil) forState:UIControlStateNormal];
     }
 }
@@ -292,16 +294,6 @@ static CGFloat kDroneNameFontSize = 38.0f;
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
     }
-}
-//MARK: -- 获取设备信息
-- (void)getDroneDeviceInfo {
-    [[YNCABECamManager sharedABECamManager] getDeviceInfo:^(YNCDeviceInfoModel *deviceInfo) {
-        if (deviceInfo != nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_connectionStatusButton setTitle:deviceInfo.ssid forState:UIControlStateNormal];
-            });
-        }
-    }];
 }
 
 // MARK: Unwind

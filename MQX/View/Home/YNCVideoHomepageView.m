@@ -139,6 +139,7 @@
         make.size.mas_equalTo(CGSizeMake(60*_sizeMultiple, 14*_sizeMultiple));
     }];
     [self.videoTimeView initSubView:modeDisplay];
+    self.videoTimeView.hidden = YES;
     
     self.currentPitch = 0;
     self.currentRoll = 0;
@@ -171,6 +172,8 @@
 
 //MARK: -- 设置是否显示录像时间
 - (void)setIsShowVideoTimeView:(BOOL)isShowVideoTimeView {
+    self.videoTimeView.hidden = !isShowVideoTimeView;
+    
     _isShowVideoTimeView = isShowVideoTimeView;
     self.videoTimeView.showTimeLabel = isShowVideoTimeView;
     

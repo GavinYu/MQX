@@ -24,6 +24,7 @@
 {
     FBKVOController *_kvoController;
     dispatch_source_t _countVideoDurationTimer;
+    NSInteger _doubleClickCount;
 }
 
 //相机工具栏
@@ -77,7 +78,6 @@
 - (YNCVideoHomepageView *)videoHomepageView {
     if (!_videoHomepageView) {
         _videoHomepageView = [YNCVideoHomepageView instanceVideoHomepageView];
-        _videoHomepageView.backgroundColor = [UIColor clearColor];
     }
     
     return _videoHomepageView;
@@ -87,7 +87,6 @@
 - (YNCVideoHomepageView *)leftvideoHomepageView {
     if (!_leftVideoHomepageView) {
         _leftVideoHomepageView = [YNCVideoHomepageView instanceVideoHomepageView];
-        _leftVideoHomepageView.backgroundColor = [UIColor clearColor];
     }
     
     return _leftVideoHomepageView;
@@ -97,8 +96,6 @@
 - (YNCVideoHomepageView *)rightvideoHomepageView {
     if (!_rightVideoHomepageView) {
         _rightVideoHomepageView = [YNCVideoHomepageView instanceVideoHomepageView];
-        
-        _rightVideoHomepageView.backgroundColor = [UIColor clearColor];
     }
     
     return _rightVideoHomepageView;
@@ -203,7 +200,7 @@
     [self createFPVSwitchButton];
     [self createVideoHomepageView];
     [self createNavigationBar];
-//    [self createFPVVideoHomepageView];
+    [self createFPVVideoHomepageView];
     [self createCameraToolView];
 }
 //MARK: -- 创建 fpvSwitchButton
@@ -237,7 +234,7 @@
     WS(weakSelf);
     
     self.fpvHomepageView = [UIView new];
-    self.fpvHomepageView.backgroundColor = [UIColor atrousColor];
+    self.fpvHomepageView.backgroundColor = [UIColor clearColor];
     [self.view insertSubview:self.fpvHomepageView belowSubview:self.fpvSwitchButton];
     
     [self.fpvHomepageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -269,7 +266,7 @@
     [self createFPVNavigationBar];
     
     self.fpvLineView = [UIView new];
-    self.fpvLineView.backgroundColor = UICOLOR_FROM_HEXRGB(0x00ffa8);
+    self.fpvLineView.backgroundColor = UICOLOR_FROM_HEXRGB(0xff5cdb);
     [self.fpvHomepageView addSubview:self.fpvLineView];
     [self.fpvLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.fpvHomepageView);
@@ -470,6 +467,34 @@
     }
     
     [self setCameraToolViewShowStatus:NO];
+      
+      _doubleClickCount++;
+      if (_doubleClickCount == 1) {
+          [self.videoHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
+          [self.leftVideoHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
+          [self.rightVideoHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
+      } else if (_doubleClickCount == 2) {
+          [UIView animateWithDuration:0.3 animations:^{
+              weakSelf.myNavigationBar.alpha = 0;
+              weakSelf.fpvSwitchButton.alpha = 0;
+          }];
+          
+          [self.videoHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
+          [self.leftVideoHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
+          [self.rightVideoHomepageView hiddenSubView:YES withDoubleClickCount:_doubleClickCount];
+          
+      } else if (_doubleClickCount == 3) {
+          [UIView animateWithDuration:0.3 animations:^{
+              weakSelf.myNavigationBar.alpha = 1.0;
+              weakSelf.fpvSwitchButton.alpha = 1.0;
+          }];
+          
+          [self.videoHomepageView hiddenSubView:NO withDoubleClickCount:_doubleClickCount];
+          [self.leftVideoHomepageView hiddenSubView:NO withDoubleClickCount:_doubleClickCount];
+          [self.rightVideoHomepageView hiddenSubView:NO withDoubleClickCount:_doubleClickCount];
+          
+          _doubleClickCount = 0;
+      }
   }
 }
 
@@ -571,9 +596,40 @@
   [self stopRecord];
 }
 
+//MARK: -- FPV按钮事件
 - (void)clickFPVSwitchButton:(UIButton *)sender {
-  [sender setSelected:!sender.isSelected];
-  [self switchFPVModel:sender.isSelected];
+    if (self.cameraSettingView != nil) {
+        [self.cameraSettingView removeFromSuperview];
+        self.cameraSettingView = nil;
+    }
+    
+    [sender setSelected:!sender.isSelected];
+    [self switchFPVModel:sender.isSelected];
+
+    self.currentDisplay = sender.isSelected == YES?YNCModeDisplayGlass:YNCModeDisplayNormal;
+    
+    if (self.currentDisplay == YNCModeDisplayGlass) {
+        [self setCameraToolViewShowStatus:NO];
+        [self.myNavigationBar hiddenNavigationBarSubView:YES withModeDisplay:YNCModeDisplayNormal];
+        self.videoHomepageView.hidden = YES;
+        self.fpvHomepageView.hidden = NO;
+        
+        [self.view bringSubviewToFront:self.fpvHomepageView];
+        [self.view bringSubviewToFront:self.fpvSwitchButton];
+        [self.view bringSubviewToFront:self.myNavigationBar];
+    } else {
+        self.fpvHomepageView.hidden = YES;
+        self.videoHomepageView.hidden = NO;
+        [self.myNavigationBar hiddenNavigationBarSubView:NO withModeDisplay:YNCModeDisplayNormal];
+        self.cameraToolView.hidden = NO;
+        
+        [self.view bringSubviewToFront:self.videoHomepageView];
+        [self.view bringSubviewToFront:self.fpvSwitchButton];
+        [self.view bringSubviewToFront:self.myNavigationBar];
+    }
+    
+    [self.view bringSubviewToFront:self.cameraToolView];
+    [self.view layoutIfNeeded];
 }
 
 //MARK: -- 绑定ViewModel

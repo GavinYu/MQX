@@ -18,7 +18,6 @@
 @interface YNCABECamManager ()
 {
     dispatch_source_t _checkWiFiTimer;
-    BOOL _currentWiFiConnected;
 }
 /*
  * The connection status of the component.
@@ -28,6 +27,9 @@
 @property (nonatomic, copy) NSString *totalStorage;
 //SD卡可用容量
 @property (nonatomic, copy) NSString *freeStorage;
+@property (nonatomic, assign) BOOL currentWiFiConnected;
+//设备信息
+@property (nonatomic, strong) YNCDeviceInfoModel *deviceInfo;
 
 @end
 
@@ -55,9 +57,21 @@ YNCSingletonM(ABECamManager)
     dispatch_source_set_event_handler(_timer, ^{
         //在这里执行事件
         BOOL tmpValue = [[AbeCamHandle sharedInstance] checkWIFI];
-        if (_currentWiFiConnected != tmpValue) {
-            weakSelf.WiFiConnected = tmpValue;
-            _currentWiFiConnected = tmpValue;
+        if (weakSelf.currentWiFiConnected != tmpValue) {
+            [[AbeCamHandle sharedInstance] connectedTalkSession];
+            if ([[AbeCamHandle sharedInstance]checkTalkSeesion]) {
+                [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
+                    if (succeeded) {
+                        YNCDeviceInfoModel *tmpModel = [YNCDeviceInfoModel new];
+                        tmpModel = [YNCDeviceInfoModel modelWithJSON:data];
+                        if (tmpModel.ssid.length > 0) {
+                            weakSelf.deviceInfo = tmpModel;
+                            weakSelf.WiFiConnected = tmpValue;
+                            weakSelf.currentWiFiConnected = tmpValue;
+                        }
+                    }
+                }];
+            }
         }
     });
     
@@ -73,18 +87,6 @@ YNCSingletonM(ABECamManager)
     }
 }
 
-//MARK: -- 获取飞机设备信息
-- (void)getDeviceInfo:(void(^)(YNCDeviceInfoModel *deviceInfo))block {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
-            if (succeeded) {
-                YNCDeviceInfoModel *tmpModel = [YNCDeviceInfoModel new];
-                tmpModel = [YNCDeviceInfoModel modelWithJSON:data];
-                block(tmpModel);
-            }
-        }];
-    });
-}
 //MARK: -- 获取SD卡信息
 - (void)getSDCardInfo:(void(^)(YNCSDCardInfoModel *SDCardInfo))block {
     WS(weakSelf);
