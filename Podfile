@@ -1,6 +1,6 @@
 target "MQX" do
  
-platform :ios, '10.0'
+platform :ios, '9.0'
 
 pod 'Masonry'
 pod 'SVProgressHUD'
