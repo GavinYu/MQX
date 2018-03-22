@@ -15,10 +15,8 @@
  
  @param complete 完成回调
  */
-+ (void)requestFireBirdDroneInfoDataComplete:(void(^)(NSDictionary *dataDictionary,
++ (void)requestDronePhotoListComplete:(void(^)(NSString *photoListString,
                                                       NSArray *dateArray,
-                                                      NSArray *mediaArray,
-                                                      NSInteger videoAmount,
                                                       NSInteger photoAmount,
                                                       NSError * error))complete;
 

@@ -578,22 +578,9 @@
     self.cameraToolView.cameraMode = sender.isSelected==YES?YNCCameraModeTakePhoto:YNCCameraModeVideo;
 }
 
-
 //MARK: -- 切换FPV模式
 - (void)switchFPVModel:(BOOL)isFPV {
   [[AbeCamHandle sharedInstance] setDualViewStatus:isFPV];
-}
-
-- (IBAction)clickTakePhotoButton:(UIButton *)sender {
-  [self takePhoto];
-}
-
-- (IBAction)clickStartRecordButton:(UIButton *)sender {
-  [self startRecord];
-}
-
-- (IBAction)clickStopRecordButton:(UIButton *)sender {
-  [self stopRecord];
 }
 
 //MARK: -- FPV按钮事件

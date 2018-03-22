@@ -39,10 +39,13 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 @property (nonatomic, strong) YNCDroneNavigationModel *droneNavigationModel;
 @property (nonatomic, strong) YNCDroneMediasDownloadManager *downloadManager;
 
+@property (strong, nonatomic) UIImageView *tmpImageView;
+
 @end
 
 @implementation YNCDroneGalleryPreviewViewController
 
+//MARK: -- View life cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -52,9 +55,21 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     [self addObservers];
     [self setupNavigationView];
     [self setupToolView];
+    self.tmpImageView = [UIImageView new];
+    [self.view addSubview:self.tmpImageView];
+    [self.tmpImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.equalTo(self.view).offset(50);
+        make.size.mas_equalTo(CGSizeMake(260, 260));
+    }];
+    [self.view layoutIfNeeded];
+    
     [self requestDroneMediasData];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+}
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -369,29 +384,31 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     [SVProgressHUD setMinimumDismissTimeInterval:0.5f];
     [SVProgressHUD setContainerView:self.view];
     [SVProgressHUD show];
-    [YNCDroneGalleryMediasHelper requestFireBirdDroneInfoDataComplete:^(NSDictionary *dataDictionary,
-                                                                           NSArray *dateArray,
-                                                                           NSArray *mediaArray,
-                                                                           NSInteger videoAmount,
-                                                                           NSInteger photoAmount,
-                                                                           NSError *error) {
+    [YNCDroneGalleryMediasHelper requestDronePhotoListComplete:^(NSString *photoListString, NSArray *dateArray, NSInteger photoAmount, NSError *error) {
         if (error == nil) {
-            weakSelf.dataDictionary = dataDictionary.mutableCopy;
-            weakSelf.dateArray = dateArray.mutableCopy;
-            weakSelf.droneNavigationModel.videosAmount = videoAmount;
-            weakSelf.droneNavigationModel.photosAmount = photoAmount;
-            [weakSelf configureData];
-            YNCDroneMediasDownloadManager *droneMediasDownloadManager = [[YNCDroneMediasDownloadManager alloc] init];
-            [droneMediasDownloadManager downloadMediaThumbnailWithMediaArray:mediaArray
-                                                              CompletedBlock:^(BOOL completed) {
-                                                                  if (completed) {
-                                                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                                                          [weakSelf configureSubViews];
-                                                                          [SVProgressHUD setContainerView:nil];
-                                                                          [SVProgressHUD dismiss];
-                                                                      });
-                                                                  }
-                                                              }];
+            if (photoListString.length > 0) {
+                NSArray *tmpArr = [photoListString componentsSeparatedByString:@","];
+                NSString *tmpStr = [kURL_MQX_PHOTO stringByAppendingPathComponent:tmpArr[0]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.tmpImageView setImageWithURL:[NSURL URLWithString:tmpStr] placeholder:[UIImage imageNamed:@"icon_aircraft_mqx"]];
+                });
+            }
+            //            weakSelf.dataDictionary = dataDictionary.mutableCopy;
+            //            weakSelf.dateArray = dateArray.mutableCopy;
+            //            weakSelf.droneNavigationModel.videosAmount = videoAmount;
+            //            weakSelf.droneNavigationModel.photosAmount = photoAmount;
+            //            [weakSelf configureData];
+            //            YNCDroneMediasDownloadManager *droneMediasDownloadManager = [[YNCDroneMediasDownloadManager alloc] init];
+            //            [droneMediasDownloadManager downloadMediaThumbnailWithMediaArray:mediaArray
+            //                                                              CompletedBlock:^(BOOL completed) {
+            //                                                                  if (completed) {
+            //                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+            //                                                                          [weakSelf configureSubViews];
+            //                                                                          [SVProgressHUD setContainerView:nil];
+            //                                                                          [SVProgressHUD dismiss];
+            //                                                                      });
+            //                                                                  }
+            //                                                              }];
         } else {
             [[YNCMessageBox instance] show:NSLocalizedString(@"gallery_no_files", nil)];
             [SVProgressHUD dismiss];
@@ -410,7 +427,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
         }
     }
 }
-
+//MARK: -- 初始化子视图
 - (void)configureSubViews
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -579,7 +596,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     DLog(@"*********%@dealloc", NSStringFromClass([self class]));
 }
 
-
+//MARK: -- UINavigationControllerDelegate methods
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
     if ([toVC isKindOfClass:[YNCDroneGalleryViewController class]] ||

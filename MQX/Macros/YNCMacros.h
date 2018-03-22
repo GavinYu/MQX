@@ -217,6 +217,8 @@
 #define Document_FilterImage [DocumentDirectiory stringByAppendingPathComponent:@"filterImage"]
 #define Document_Version [DocumentDirectiory stringByAppendingPathComponent:@"version"]
 
+#define kURL_MQX_VIDEO @"https://192.168.99.1/VIDEO"
+#define kURL_MQX_PHOTO @"https://192.168.99.1/PHOTO"
 #define kURL_Breeze_2DCIM @"http://192.168.42.1/DCIM/100MEDIA/"
 
 /*--------------------------- Add by GavinYu End ----------------------------*/

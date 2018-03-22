@@ -12,24 +12,23 @@
 #import "YNCAppConfig.h"
 
 @implementation YNCDroneGalleryMediasHelper
-#pragma mark - 获取火鸟飞机的数据
-+ (void)requestFireBirdDroneInfoDataComplete:(void(^)(NSDictionary *dataDictionary,
-                                                      NSArray *dateArray,
-                                                      NSArray *mediaArray,
-                                                      NSInteger videoAmount,
-                                                      NSInteger photoAmount,
-                                                      NSError * error))complete
+#pragma mark - 获取飞机的数据
++ (void)requestDronePhotoListComplete:(void(^)(NSString *photoListString,
+                                               NSArray *dateArray,
+                                               NSInteger photoAmount,
+                                               NSError * error))complete
 {
     __block NSMutableArray *dateArray = [NSMutableArray array];
-    __block NSMutableDictionary *dataDictionary = [NSMutableDictionary dictionary];
-#ifdef OPENTOAST_HANK
-    [[YNCMessageBox instance] show:@"start get media"];
-#endif
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[AbeCamHandle sharedInstance] getGetIndexFileWithList:@1 result:^(BOOL succeeded, NSData *data) {
-            NSDictionary *dic = [NSDictionary modelDictionaryWithClass:[NSData class] json:data];
-            DLog(@"获取的图片列表：%@", dic);
+        [[AbeCamHandle sharedInstance] getGetIndexFileWithList:@10 result:^(BOOL succeeded, NSData *data) {
+            NSString *fileStr = [[NSString alloc] initWithBytes:[data bytes] length:data.length encoding:NSUTF8StringEncoding];
+            DLog(@"获取的图片列表：%@", fileStr);
+            if (succeeded) {
+                complete(fileStr,nil,0,nil);
+            } else {
+                complete(nil, nil, 0, [NSError errorWithDomain:@"error" code:404 userInfo:nil]);
+            }
         }];
     });
 }
