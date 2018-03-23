@@ -12,9 +12,12 @@
 #import "YNCPopWindowView.h"
 #import "YNCAppConfig.h"
 #import "YNCWarningConstMacro.h"
+#import "WTAboutInfoView.h"
 
 #define kAnimationTime 0.3
 #define kViewWidth 210.0
+// 向右动画出window的rect
+#define kRightRect CGRectMake(_cameraSettingView.frame.size.width, 0, _cameraSettingView.frame.size.width, _cameraSettingView.frame.size.height - 45)
 
 @interface YNCCameraSettingView ()<YNCCameraCommonSettingViewDelegate>
 
@@ -74,6 +77,14 @@
             [self formatSDcardStoreage];
         }
             break;
+            
+        case 3:
+        {
+            [self formatSDcardStoreage];
+        }
+            break;
+            
+            
             
         default:
             break;
@@ -157,6 +168,20 @@
                     } handleCancel:^{
         
     }];
+}
+
+//MARK: -- PUSH About View
+- (void)pushAboutView {
+    WTAboutInfoView *aboutInfoView = [WTAboutInfoView aboutInfoView];
+    [_scrollView addSubview:aboutInfoView];
+    aboutInfoView.frame = kRightRect;
+    [aboutInfoView setUpSubViews];
+    aboutInfoView.dataArray = @[NSLocalizedString(@"full_settings_flight_control_version", nil), NSLocalizedString(@"full_settings_camera_version", nil)];
+//    _cameraSettingView. = NSLocalizedString(@"full_settings_about", nil);
+
+    [self pushView];
+    
+   
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

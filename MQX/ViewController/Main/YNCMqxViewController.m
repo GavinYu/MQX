@@ -659,6 +659,7 @@
 //MARK: -- destroy count video duration
 - (void)destroyCountVideoDurationTimer {
     if (_countVideoDurationTimer) {
+        self.videoDuration = 0;
         dispatch_source_cancel(_countVideoDurationTimer);
         _countVideoDurationTimer = nil;
     }
