@@ -33,7 +33,7 @@
 //MARK: -- 配置ABECam 显示图传界面
 - (void)configABECamHandle {
     [[AbeCamHandle sharedInstance] addLiveViewToSuperView:self.view Rect:self.view.bounds dualView:NO];
-    [AbeCamHandle sharedInstance].delegate = self;//最先设置好 first set delegate
+    
     
     if ([[AbeCamHandle sharedInstance] checkTalkSeesion]) {
         [[AbeCamHandle sharedInstance] openLiveVideoResult:^(BOOL succeeded) {
@@ -56,66 +56,6 @@
     [[AbeCamHandle sharedInstance] closeVideo];
     [[AbeCamHandle sharedInstance] clearFrame];
     [[AbeCamHandle sharedInstance] removeLiveView];
-}
-
-//MARK: -- AbeCamHandleDelegate methods
-//MARK: -- 检查WiFi错误
--(void)checkWifiError {
-    DLog(@"[%s  %d], thread: %@", __func__, __LINE__, [NSThread currentThread]);
-}
-
--(void)liveStreamDidConnected {
-    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-}
-
--(void)liveStreamDidDisconnected {
-    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-    
-}
-
-//-(void)liveStreamConnectedFailed;
--(void)liveStreamDidRcvFrm {
-    //        DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-}
-
--(void)liveStreamRcvErrData {
-    DLog(@"[%s  %d], thread: %@", __func__, __LINE__, [NSThread currentThread]);
-}
-
--(void)talkSessonDidConnected {
-    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-    
-    [[AbeCamHandle sharedInstance] syncTime:[NSDate date] result:^(BOOL succeeded) {
-        if (succeeded) {
-            DLog(@"sync time success");
-            
-        }else{
-            DLog(@"sync time failed");
-        }
-    }];
-}
-
--(void)talkSessonDidDisconnected {
-    //    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-}
-
--(void)recordStart {
-    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-}
-
--(void)recordWriteFrame {
-    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-    
-}
-
--(void)recordStop {
-    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
-}
-//MARK: -- 当前视频转换为图像格式 current video to uiimage
--(void)getCurrentVideoToImg:(UIImage *)img
-{
-    DLog(@"[%s  %d], thread: %@", __func__, __LINE__, [NSThread currentThread]);
-//    imgView.image = img;
 }
 
 //MARK: --  ReceiveMemoryWarning

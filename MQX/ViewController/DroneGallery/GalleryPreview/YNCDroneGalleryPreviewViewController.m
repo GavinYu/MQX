@@ -39,7 +39,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 @property (nonatomic, strong) YNCDroneNavigationModel *droneNavigationModel;
 @property (nonatomic, strong) YNCDroneMediasDownloadManager *downloadManager;
 
-@property (strong, nonatomic) UIImageView *tmpImageView;
+//@property (strong, nonatomic) UIImageView *tmpImageView;
 
 @end
 
@@ -55,13 +55,13 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     [self addObservers];
     [self setupNavigationView];
     [self setupToolView];
-    self.tmpImageView = [UIImageView new];
-    [self.view addSubview:self.tmpImageView];
-    [self.tmpImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.view).offset(50);
-        make.size.mas_equalTo(CGSizeMake(260, 260));
-    }];
-    [self.view layoutIfNeeded];
+    //    self.tmpImageView = [UIImageView new];
+    //    [self.view addSubview:self.tmpImageView];
+    //    [self.tmpImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.left.top.equalTo(self.view).offset(50);
+    //        make.size.mas_equalTo(CGSizeMake(260, 260));
+    //    }];
+    //    [self.view layoutIfNeeded];
     
     [self requestDroneMediasData];
 }
@@ -181,49 +181,49 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 - (void)deleteMedia
 {
     NSIndexPath *indexPath = [_collectionView indexPathsForVisibleItems].firstObject;
-//    YuneecMedia *media = self.dataArray[indexPath.row];
-//    YuneecMediaManager *mediaManager = [[YuneecMediaManager alloc] initWithCameraType:YuneecCameraTypeHDRacer];
-//    WS(weakSelf);
-//    [mediaManager deleteMedia:@[media] withCompletion:^(NSError * _Nullable error) {
-//        if (error == nil) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [weakSelf releasePlayerView];
-//                if (weakSelf.dataArray.count > indexPath.row) {
-//                    [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
-//                    [weakSelf deleteMediaInDataArrayWithMedia:media];
-//                    [weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-//                }
-//                int index = (int)indexPath.row - 1;
-//                NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-//                if (weakSelf.dataArray.count == 0) {
-//                    weakSelf.toolView.deleteBtn.enabled = NO;
-//                    weakSelf.toolView.downloadBtn.enabled = NO;
-//                    weakSelf.toolView.deleteBtn.alpha = 0.6;
-//                    weakSelf.toolView.downloadBtn.alpha = 0.6;
-//                    weakSelf.droneNavigationModel.totalMediasAmount = weakSelf.dataArray.count;
-//                    weakSelf.droneNavigationModel.currentIndex = 0;
-//                    return;
-//                }
-//                if (index < 0) {
-//                    [weakSelf.collectionView reloadData];
-//                } else {
-//                    [weakSelf.collectionView reloadItemsAtIndexPaths:@[newIndexPath]];
-//
-//                }
-//                NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//                if (weakSelf.dataArray.count > 1) {
-//                    currentIndexPath = [weakSelf.collectionView indexPathsForVisibleItems].firstObject;
-//                }
-//                if (currentIndexPath != nil) {
-//                    weakSelf.droneNavigationModel.totalMediasAmount = weakSelf.dataArray.count;
-//                    weakSelf.droneNavigationModel.currentIndex = currentIndexPath.row + 1;
-//                    [weakSelf configureToolViewWithNumber:currentIndexPath.row];
-//                }
-//            });
-//        } else {
-//
-//        }
-//    }];
+    //    YuneecMedia *media = self.dataArray[indexPath.row];
+    //    YuneecMediaManager *mediaManager = [[YuneecMediaManager alloc] initWithCameraType:YuneecCameraTypeHDRacer];
+    //    WS(weakSelf);
+    //    [mediaManager deleteMedia:@[media] withCompletion:^(NSError * _Nullable error) {
+    //        if (error == nil) {
+    //            dispatch_async(dispatch_get_main_queue(), ^{
+    //                [weakSelf releasePlayerView];
+    //                if (weakSelf.dataArray.count > indexPath.row) {
+    //                    [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+    //                    [weakSelf deleteMediaInDataArrayWithMedia:media];
+    //                    [weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    //                }
+    //                int index = (int)indexPath.row - 1;
+    //                NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    //                if (weakSelf.dataArray.count == 0) {
+    //                    weakSelf.toolView.deleteBtn.enabled = NO;
+    //                    weakSelf.toolView.downloadBtn.enabled = NO;
+    //                    weakSelf.toolView.deleteBtn.alpha = 0.6;
+    //                    weakSelf.toolView.downloadBtn.alpha = 0.6;
+    //                    weakSelf.droneNavigationModel.totalMediasAmount = weakSelf.dataArray.count;
+    //                    weakSelf.droneNavigationModel.currentIndex = 0;
+    //                    return;
+    //                }
+    //                if (index < 0) {
+    //                    [weakSelf.collectionView reloadData];
+    //                } else {
+    //                    [weakSelf.collectionView reloadItemsAtIndexPaths:@[newIndexPath]];
+    //
+    //                }
+    //                NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //                if (weakSelf.dataArray.count > 1) {
+    //                    currentIndexPath = [weakSelf.collectionView indexPathsForVisibleItems].firstObject;
+    //                }
+    //                if (currentIndexPath != nil) {
+    //                    weakSelf.droneNavigationModel.totalMediasAmount = weakSelf.dataArray.count;
+    //                    weakSelf.droneNavigationModel.currentIndex = currentIndexPath.row + 1;
+    //                    [weakSelf configureToolViewWithNumber:currentIndexPath.row];
+    //                }
+    //            });
+    //        } else {
+    //
+    //        }
+    //    }];
 }
 
 - (void)downloadMedia
@@ -236,26 +236,26 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
         progressModel.totalDownloadNum = 1;
         [self.circleProgress configureSubviewWithModel:progressModel];
         WS(weakSelf);
-//        YuneecMedia *media = self.dataArray[indexPath.row];
-//        NSArray *mediasArray = @[media];
-//        self.downloadManager.isCancel = NO;
-//        [_downloadManager downloadDroneMediasWithMediasArray:mediasArray
-//                                               progressBlock:^(NSInteger currentNum, NSString *fileSize, CGFloat progress) {
-//                                                   progressModel.currentDownloadNum = currentNum;
-//                                                   dispatch_async(dispatch_get_main_queue(), ^{
-//                                                       progressModel.fileSize = fileSize;
-//                                                       [weakSelf.circleProgress configureSubviewWithModel:progressModel];
-//                                                       weakSelf.circleProgress.progress = progress;
-//                                                   });
-//                                               } completeBlock:^(BOOL complete) {
-//                                                   dispatch_async(dispatch_get_main_queue(), ^{
-//                                                       weakSelf.circleProgress.progress = 0.0;
-//                                                       [weakSelf.circleProgress removeFromSuperview];
-//                                                       NSIndexPath *indexPath = [weakSelf.collectionView indexPathsForVisibleItems].firstObject;
-//                                                       [weakSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-//                                                       weakSelf.isClickDownload = NO;
-//                                                   });
-//                                               }];
+        //        YuneecMedia *media = self.dataArray[indexPath.row];
+        //        NSArray *mediasArray = @[media];
+        //        self.downloadManager.isCancel = NO;
+        //        [_downloadManager downloadDroneMediasWithMediasArray:mediasArray
+        //                                               progressBlock:^(NSInteger currentNum, NSString *fileSize, CGFloat progress) {
+        //                                                   progressModel.currentDownloadNum = currentNum;
+        //                                                   dispatch_async(dispatch_get_main_queue(), ^{
+        //                                                       progressModel.fileSize = fileSize;
+        //                                                       [weakSelf.circleProgress configureSubviewWithModel:progressModel];
+        //                                                       weakSelf.circleProgress.progress = progress;
+        //                                                   });
+        //                                               } completeBlock:^(BOOL complete) {
+        //                                                   dispatch_async(dispatch_get_main_queue(), ^{
+        //                                                       weakSelf.circleProgress.progress = 0.0;
+        //                                                       [weakSelf.circleProgress removeFromSuperview];
+        //                                                       NSIndexPath *indexPath = [weakSelf.collectionView indexPathsForVisibleItems].firstObject;
+        //                                                       [weakSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        //                                                       weakSelf.isClickDownload = NO;
+        //                                                   });
+        //                                               }];
     }
 }
 
@@ -286,37 +286,37 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     NSIndexPath *indexPath = [self.collectionView indexPathsForVisibleItems].firstObject;
     YNCPreviewPhotoCell *previewCell = (YNCPreviewPhotoCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     self.playIndexPath = indexPath;
-//    YuneecMedia *media = self.dataArray[indexPath.row];
-//    NSString *fileName = media.thumbnailMedia.fileName;
-//    NSString *createDate = media.thumbnailMedia.createDate;
-//    NSString *singleKey = [NSString stringWithFormat:@"%@_%@", createDate, [fileName stringByDeletingPathExtension]];
-//    YNCPhotosDataBaseModel *model = [[YNCPhotosDataBase shareDataBase] selectOnePhotoDataBaseModelBySingleKey:singleKey type:YNCMediaTypeDroneVideo];
-//    if ([model.singleKey isEqualToString:singleKey]) {
-//        NSString *path = [Document_Download stringByAppendingPathComponent:[singleKey stringByAppendingPathExtension:@"mp4"]];
-//
-//        if (![previewCell.subviews containsObject:self.playerView]) {
-//            self.playerView = [YNCAVPlayerView sharedAVPlayerView];
-//            self.playerView.backBtn.hidden = YES;
-//            self.playerView.delegate = self;
-//            _playerView.playerMode = YNCPlayerModeNoFullScreen;
-//            [previewCell addSubview:_playerView];
-//            [_playerView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.left.right.bottom.top.equalTo(previewCell);
-//            }];
-//            [_playerView layoutIfNeeded];
-//            [self.playerView setUpSubviews];
-//            AVPlayerItem *playerItem_1 = [AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:path]];
-//            _playerView.playerItem = playerItem_1;
-//            [_playerView play];
-//        } else {
-//            [previewCell insertSubview:previewCell.playeBtn
-//                          belowSubview:_playerView];
-//            [_playerView pause];
-//        }
-//
-//    } else {
-//        [[YNCMessageBox instance] show:@"please download media first"];
-//    }
+    //    YuneecMedia *media = self.dataArray[indexPath.row];
+    //    NSString *fileName = media.thumbnailMedia.fileName;
+    //    NSString *createDate = media.thumbnailMedia.createDate;
+    //    NSString *singleKey = [NSString stringWithFormat:@"%@_%@", createDate, [fileName stringByDeletingPathExtension]];
+    //    YNCPhotosDataBaseModel *model = [[YNCPhotosDataBase shareDataBase] selectOnePhotoDataBaseModelBySingleKey:singleKey type:YNCMediaTypeDroneVideo];
+    //    if ([model.singleKey isEqualToString:singleKey]) {
+    //        NSString *path = [Document_Download stringByAppendingPathComponent:[singleKey stringByAppendingPathExtension:@"mp4"]];
+    //
+    //        if (![previewCell.subviews containsObject:self.playerView]) {
+    //            self.playerView = [YNCAVPlayerView sharedAVPlayerView];
+    //            self.playerView.backBtn.hidden = YES;
+    //            self.playerView.delegate = self;
+    //            _playerView.playerMode = YNCPlayerModeNoFullScreen;
+    //            [previewCell addSubview:_playerView];
+    //            [_playerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //                make.left.right.bottom.top.equalTo(previewCell);
+    //            }];
+    //            [_playerView layoutIfNeeded];
+    //            [self.playerView setUpSubviews];
+    //            AVPlayerItem *playerItem_1 = [AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:path]];
+    //            _playerView.playerItem = playerItem_1;
+    //            [_playerView play];
+    //        } else {
+    //            [previewCell insertSubview:previewCell.playeBtn
+    //                          belowSubview:_playerView];
+    //            [_playerView pause];
+    //        }
+    //
+    //    } else {
+    //        [[YNCMessageBox instance] show:@"please download media first"];
+    //    }
 }
 
 
@@ -374,7 +374,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     _toolView.deleteBtn.alpha = 0.6;
     _toolView.downloadBtn.alpha = 0.6;
 }
-
+//MARK: -- 获取图库数据
 - (void)requestDroneMediasData
 {
     WS(weakSelf);
@@ -384,31 +384,28 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     [SVProgressHUD setMinimumDismissTimeInterval:0.5f];
     [SVProgressHUD setContainerView:self.view];
     [SVProgressHUD show];
-    [YNCDroneGalleryMediasHelper requestDronePhotoListComplete:^(NSString *photoListString, NSArray *dateArray, NSInteger photoAmount, NSError *error) {
+    [YNCDroneGalleryMediasHelper requestDroneInfoDataComplete:^(NSDictionary *dataDictionary, NSArray *dateArray, NSArray<WTMediaModel *> *mediaArray, NSInteger videoAmount, NSInteger photoAmount, NSError *error) {
         if (error == nil) {
-            if (photoListString.length > 0) {
-                NSArray *tmpArr = [photoListString componentsSeparatedByString:@","];
-                NSString *tmpStr = [kURL_MQX_PHOTO stringByAppendingPathComponent:tmpArr[0]];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.tmpImageView setImageWithURL:[NSURL URLWithString:tmpStr] placeholder:[UIImage imageNamed:@"icon_aircraft_mqx"]];
-                });
+            if (mediaArray.count > 0) {
+                weakSelf.dataDictionary = dataDictionary.mutableCopy;
+                weakSelf.dateArray = dateArray.mutableCopy;
+                weakSelf.droneNavigationModel.videosAmount = videoAmount;
+                weakSelf.droneNavigationModel.photosAmount = photoAmount;
+                [weakSelf configureData];
+                YNCDroneMediasDownloadManager *droneMediasDownloadManager = [[YNCDroneMediasDownloadManager alloc] init];
+                [droneMediasDownloadManager downloadMediaThumbnailWithMediaArray:mediaArray
+                                                                  CompletedBlock:^(BOOL completed) {
+                                                                      if (completed) {
+                                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                                              [weakSelf configureSubViews];
+                                                                              [SVProgressHUD setContainerView:nil];
+                                                                              [SVProgressHUD dismiss];
+                                                                          });
+                                                                      }
+                                                                  }];
             }
-            //            weakSelf.dataDictionary = dataDictionary.mutableCopy;
-            //            weakSelf.dateArray = dateArray.mutableCopy;
-            //            weakSelf.droneNavigationModel.videosAmount = videoAmount;
-            //            weakSelf.droneNavigationModel.photosAmount = photoAmount;
-            //            [weakSelf configureData];
-            //            YNCDroneMediasDownloadManager *droneMediasDownloadManager = [[YNCDroneMediasDownloadManager alloc] init];
-            //            [droneMediasDownloadManager downloadMediaThumbnailWithMediaArray:mediaArray
-            //                                                              CompletedBlock:^(BOOL completed) {
-            //                                                                  if (completed) {
-            //                                                                      dispatch_async(dispatch_get_main_queue(), ^{
-            //                                                                          [weakSelf configureSubViews];
-            //                                                                          [SVProgressHUD setContainerView:nil];
-            //                                                                          [SVProgressHUD dismiss];
-            //                                                                      });
-            //                                                                  }
-            //                                                              }];
+            
+           
         } else {
             [[YNCMessageBox instance] show:NSLocalizedString(@"gallery_no_files", nil)];
             [SVProgressHUD dismiss];
@@ -489,24 +486,24 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 - (void)configureToolViewWithNumber:(NSInteger)number
 {
     if (self.dataArray.count > number) {
-//        YuneecMedia *media = self.dataArray[number];
-//        NSString *createDate = media.thumbnailMedia.createDate;
-//        NSString *fileName = media.thumbnailMedia.fileName;
-//        YNCMediaType mediaType = YNCMediaTypeDronePhoto;
-//        fileName = [NSString stringWithFormat:@"%@_%@", createDate, fileName];
-//        fileName = [fileName stringByDeletingPathExtension];
-//        if (media.mediaType == YuneecMediaTypeMP4) {
-//            mediaType = YNCMediaTypeDroneVideo;
-//        } else if (media.mediaType == YuneecMediaTypeJPEG) {
-//        }
-//        YNCPhotosDataBaseModel *model = [[YNCPhotosDataBase shareDataBase] selectOnePhotoDataBaseModelBySingleKey:fileName type:mediaType];
-//        if (model.singleKey.length > 0) {
-//            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
-//            _toolView.downloadBtn.enabled = NO;
-//        } else {
-//            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"btn_download"] forState:(UIControlStateNormal)];
-//            _toolView.downloadBtn.enabled = YES;
-//        }
+        //        YuneecMedia *media = self.dataArray[number];
+        //        NSString *createDate = media.thumbnailMedia.createDate;
+        //        NSString *fileName = media.thumbnailMedia.fileName;
+        //        YNCMediaType mediaType = YNCMediaTypeDronePhoto;
+        //        fileName = [NSString stringWithFormat:@"%@_%@", createDate, fileName];
+        //        fileName = [fileName stringByDeletingPathExtension];
+        //        if (media.mediaType == YuneecMediaTypeMP4) {
+        //            mediaType = YNCMediaTypeDroneVideo;
+        //        } else if (media.mediaType == YuneecMediaTypeJPEG) {
+        //        }
+        //        YNCPhotosDataBaseModel *model = [[YNCPhotosDataBase shareDataBase] selectOnePhotoDataBaseModelBySingleKey:fileName type:mediaType];
+        //        if (model.singleKey.length > 0) {
+        //            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
+        //            _toolView.downloadBtn.enabled = NO;
+        //        } else {
+        //            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"btn_download"] forState:(UIControlStateNormal)];
+        //            _toolView.downloadBtn.enabled = YES;
+        //        }
     }
 }
 
@@ -518,26 +515,26 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 
 - (void)deleteMediaInDataArrayWithMedia:(id)media
 {
-//    NSString *createTime = [media.createDate componentsSeparatedByString:@" "].firstObject;
-//    NSArray *separatedDateArray = [createTime componentsSeparatedByString:@":"];
-//    NSString *mediaCreateDate = [NSString stringWithFormat:@"%@-%@-%@", separatedDateArray[0], separatedDateArray[1], separatedDateArray[2]];
-//    for (NSString *createDate in self.dateArray) {
-//        if ([mediaCreateDate isEqualToString:createDate]) {
-//            NSMutableArray *dataArray = self.dataDictionary[createDate];
-//            [dataArray removeObject:media];
-//            if (dataArray.count > 0) {
-//                self.dataDictionary[createDate] = dataArray;
-//            } else {
-//                [self.dataDictionary removeObjectForKey:createDate];
-//                [self.dateArray removeObject:createDate];
-//            }
-//        }
-//    }
-//    if (media.mediaType == YuneecMediaTypeMP4) {
-//        --self.droneNavigationModel.videosAmount;
-//    } else if (media.mediaType == YuneecMediaTypeJPEG) {
-//        --self.droneNavigationModel.photosAmount;
-//    }
+    //    NSString *createTime = [media.createDate componentsSeparatedByString:@" "].firstObject;
+    //    NSArray *separatedDateArray = [createTime componentsSeparatedByString:@":"];
+    //    NSString *mediaCreateDate = [NSString stringWithFormat:@"%@-%@-%@", separatedDateArray[0], separatedDateArray[1], separatedDateArray[2]];
+    //    for (NSString *createDate in self.dateArray) {
+    //        if ([mediaCreateDate isEqualToString:createDate]) {
+    //            NSMutableArray *dataArray = self.dataDictionary[createDate];
+    //            [dataArray removeObject:media];
+    //            if (dataArray.count > 0) {
+    //                self.dataDictionary[createDate] = dataArray;
+    //            } else {
+    //                [self.dataDictionary removeObjectForKey:createDate];
+    //                [self.dateArray removeObject:createDate];
+    //            }
+    //        }
+    //    }
+    //    if (media.mediaType == YuneecMediaTypeMP4) {
+    //        --self.droneNavigationModel.videosAmount;
+    //    } else if (media.mediaType == YuneecMediaTypeJPEG) {
+    //        --self.droneNavigationModel.photosAmount;
+    //    }
 }
 
 
@@ -613,13 +610,13 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

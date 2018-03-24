@@ -15,7 +15,7 @@
 
 #import <NSObject+YYModel.h>
 
-@interface YNCABECamManager ()
+@interface YNCABECamManager () <AbeCamHandleDelegate>
 {
     dispatch_source_t _checkWiFiTimer;
 }
@@ -58,6 +58,7 @@ YNCSingletonM(ABECamManager)
         //在这里执行事件
         BOOL tmpValue = [[AbeCamHandle sharedInstance] checkWIFI];
         if (weakSelf.currentWiFiConnected != tmpValue) {
+            [AbeCamHandle sharedInstance].delegate = self;//最先设置好 first set delegate
             [[AbeCamHandle sharedInstance] connectedTalkSession];
             if ([[AbeCamHandle sharedInstance]checkTalkSeesion]) {
                 [[AbeCamHandle sharedInstance] getDeviceParameterResult:^(BOOL succeeded, NSData *data) {
@@ -104,6 +105,66 @@ YNCSingletonM(ABECamManager)
         }];
     });
     
+}
+
+//MARK: -- AbeCamHandleDelegate methods
+//MARK: -- 检查WiFi错误
+-(void)checkWifiError {
+//    DLog(@"[%s  %d], thread: %@", __func__, __LINE__, [NSThread currentThread]);
+}
+
+-(void)liveStreamDidConnected {
+//    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+}
+
+-(void)liveStreamDidDisconnected {
+//    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+    
+}
+
+//-(void)liveStreamConnectedFailed;
+-(void)liveStreamDidRcvFrm {
+    //        DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+}
+
+-(void)liveStreamRcvErrData {
+//    DLog(@"[%s  %d], thread: %@", __func__, __LINE__, [NSThread currentThread]);
+}
+
+-(void)talkSessonDidConnected {
+//    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+    
+    [[AbeCamHandle sharedInstance] syncTime:[NSDate date] result:^(BOOL succeeded) {
+        if (succeeded) {
+            DLog(@"sync time success");
+            
+        }else{
+            DLog(@"sync time failed");
+        }
+    }];
+}
+
+-(void)talkSessonDidDisconnected {
+    //    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+}
+
+-(void)recordStart {
+    //    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+}
+
+-(void)recordWriteFrame {
+    //    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+    
+}
+
+-(void)recordStop {
+//    DLog(@"[%d %s], %@ ", __LINE__, __func__, [NSThread currentThread]);
+}
+//MARK: -- 当前视频转换为图像格式 current video to uiimage
+-(void)getCurrentVideoToImg:(UIImage *)img
+{
+//    DLog(@"[%s  %d], thread: %@", __func__, __LINE__, [NSThread currentThread]);
+    //    imgView.image = img;
 }
 
 @end

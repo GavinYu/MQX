@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class YNCCameraSettingModel;
+
 @interface WTAboutInfoCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *versionTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionNumberLabel;
+
+//MARK: -- config Cell
+- (void)configureWithModel:(YNCCameraSettingModel *)model;
 
 @end

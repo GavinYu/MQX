@@ -298,6 +298,36 @@ typedef NS_ENUM(NSInteger, YNCRC_State) {
     YNCRC_StateExitBindMode
 };
 
+//MARK: --  Meida Type
+typedef NS_ENUM (NSInteger, WTMediaType) {
+    /**
+     Unknown
+     */
+    WTMediaTypeUnknown,
+    /**
+     JPEG
+     */
+    WTMediaTypeJPEG,
+    /**
+     DNG
+     */
+    WTMediaTypeDNG,
+    /**
+     MP4
+     */
+    WTMediaTypeMP4,
+    /**
+     2nd, preview video
+     */
+    WTMediaType2nd,
+    /**
+     thm, thumbnail
+     */
+    WTMediaTypeThm,
+};
+
+
+
 
 typedef NS_ENUM(NSInteger, YNCPlayerMode) {
     YNCPlayerModeFullScreen,

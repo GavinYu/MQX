@@ -9,8 +9,7 @@
 #import "YNCCameraSettingModeCell.h"
 
 #import "YNCCameraSettingModel.h"
-
-#import "UIFont+YNCFont.h"
+#import "YNCAppConfig.h"
 
 @interface YNCCameraSettingModeCell ()
 
@@ -32,8 +31,15 @@
 //MARK: -- config Cell
 - (void)configureWithModel:(YNCCameraSettingModel *)model
 {
-    self.itemLabel.text = NSLocalizedString(model.item, nil);
-    self.statusLabel.text = NSLocalizedString(model.status, nil);
+    _itemLabel.text = NSLocalizedString(model.item, nil);
+//    CGFloat width = [YNCUtil getTextWidthWithContent:_itemLabel.text withContentSizeOfHeight:CGRectGetHeight(_itemLabel.bounds) withAttribute:@{NSFontAttributeName:_itemLabel.font}];
+//    [_itemLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@(width));
+//    }];
+//    [self layoutIfNeeded];
+    
+    _statusLabel.text = NSLocalizedString(model.status, nil);
+    _statusLabel.hidden = model.status.length > 0 ? NO:YES;
 }
 //MARK: -- setter titleColor
 - (void)setTitleColor:(UIColor *)titleColor {

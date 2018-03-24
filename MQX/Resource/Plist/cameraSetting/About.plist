@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>title</key>
+	<string>full_settings_about</string>
+	<key>content</key>
+	<array>
+		<dict>
+			<key>item</key>
+			<string>full_settings_flight_control_version</string>
+			<key>status</key>
+			<string>--</string>
+		</dict>
+		<dict>
+			<key>item</key>
+			<string>full_settings_camera_version</string>
+			<key>status</key>
+			<string>--</string>
+		</dict>
+		<dict>
+			<key>item</key>
+			<string>full_settings_app_version</string>
+			<key>status</key>
+			<string>--</string>
+		</dict>
+	</array>
+</dict>
+</plist>

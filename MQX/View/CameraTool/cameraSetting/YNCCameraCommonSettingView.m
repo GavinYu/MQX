@@ -14,11 +14,14 @@
 #import "YNCFB_SwitchCell.h"
 #import "YNCAppConfig.h"
 #import "YNCWarningConstMacro.h"
+#import "WTAboutInfoCell.h"
+#import "YNCDeviceInfoModel.h"
 
 #define kCell @"commonSettingViewcell"
 #define kTableViewCell @"commonSettingTableViewCell"
 
 static NSString *SWITCHCELL = @"switchcell";
+static NSString *ABOUTCELL = @"aboutcell";
 
 @interface YNCCameraCommonSettingView ()<UITableViewDelegate, UITableViewDataSource, YNCFB_SwitchCellDelegate>
 
@@ -28,10 +31,25 @@ static NSString *SWITCHCELL = @"switchcell";
 @property (nonatomic, assign) BOOL SW_On; // 记录switch状态
 @property (nonatomic, strong) NSMutableArray *currentStatusArray;
 
+@property (nonatomic, strong) UILabel *aboutCopyrightLabel;
+
 @end
 
 @implementation YNCCameraCommonSettingView
 
+//MARK: -- lazyload aboutCopyrightLabel
+- (UILabel *)aboutCopyrightLabel {
+    if (!_aboutCopyrightLabel) {
+        _aboutCopyrightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 50)];
+        _aboutCopyrightLabel.text = @"Copyright © 2018 YUNEEC All Rights Reserved";
+        _aboutCopyrightLabel.font = [UIFont twelveFontSize];
+        _aboutCopyrightLabel.textColor = [UIColor grayishColor];
+        _aboutCopyrightLabel.backgroundColor = [UIColor whiteColor];
+        _aboutCopyrightLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    
+    return _aboutCopyrightLabel;
+}
 #pragma mark - setter
 - (void)setDataDictionary:(NSMutableDictionary *)dataDictionary
 {
@@ -92,9 +110,8 @@ static NSString *SWITCHCELL = @"switchcell";
     
     [_tableView registerNib:[UINib nibWithNibName:@"YNCCameraSettingModeCell" bundle:nil] forCellReuseIdentifier:kCell];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([YNCFB_SwitchCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SWITCHCELL];
-
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WTAboutInfoCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:ABOUTCELL];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCell];
-    
 }
 //MARK: -- UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -103,6 +120,14 @@ static NSString *SWITCHCELL = @"switchcell";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return _headerView;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (self.cameraSettingViewType == YNCCameraSettingViewTypeAbout) {
+        return self.aboutCopyrightLabel;
+    } else {
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -154,7 +179,27 @@ static NSString *SWITCHCELL = @"switchcell";
             
         case YNCCameraSettingViewTypeAbout:
         {
-            return nil;
+            WTAboutInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:ABOUTCELL];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            switch (row) {
+                case 0:
+                    break;
+                    
+                case 1:
+                    rowDataModel.status = [YNCABECamManager sharedABECamManager].deviceInfo.fwversion;
+                    break;
+                    
+                case 2:
+                    rowDataModel.status = APPVERSION;
+                    break;
+                    
+                default:
+                    break;
+            }
+
+            [cell configureWithModel:rowDataModel];
+            
+            return cell;
         }
             break;
             
@@ -165,8 +210,11 @@ static NSString *SWITCHCELL = @"switchcell";
 }
 
 //MARK: -- UITableViewDelegate methods
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 50;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return self.cameraSettingViewType == YNCCameraSettingViewTypeAbout ? 50 : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -228,10 +276,7 @@ static NSString *SWITCHCELL = @"switchcell";
     WS(weakSelf);
 
     [[AbeCamHandle sharedInstance] setFlipWithStatus:[NSNumber numberWithBool:btn.on] result:^(BOOL succeeded) {
-        if (succeeded) {
-            btn.on = YES;
-        } else {
-            btn.on = NO;
+        if (!succeeded) {
             [weakSelf postCameraNotificationWithNumber:YNCWARNING_CAMERA_VIDEO_DIRECTION_FAILED];
         }
     }];

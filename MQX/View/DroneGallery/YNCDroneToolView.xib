@@ -22,7 +22,7 @@
                         <constraint firstAttribute="width" constant="30" id="VW1-bQ-0SE"/>
                         <constraint firstAttribute="height" constant="30" id="l6k-Ev-kN7"/>
                     </constraints>
-                    <state key="normal" title="Button" image="btn_delete"/>
+                    <state key="normal" image="btn_delete"/>
                     <connections>
                         <action selector="deleteBtnAction:" destination="6tS-sl-mJz" eventType="touchUpInside" id="beO-sP-iaV"/>
                     </connections>
@@ -33,7 +33,7 @@
                         <constraint firstAttribute="width" constant="30" id="kgb-2y-XLD"/>
                         <constraint firstAttribute="height" constant="30" id="q9t-V7-uW2"/>
                     </constraints>
-                    <state key="normal" title="Button" image="btn_download"/>
+                    <state key="normal" image="btn_download"/>
                     <connections>
                         <action selector="downloadBtnAction:" destination="6tS-sl-mJz" eventType="touchUpInside" id="xAH-uC-DgP"/>
                     </connections>

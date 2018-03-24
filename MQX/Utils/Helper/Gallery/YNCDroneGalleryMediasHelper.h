@@ -8,15 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class WTMediaModel;
+
 @interface YNCDroneGalleryMediasHelper : NSObject
 
 /**
- 获取飞机的数据信息
+ 获取飞机的图库数据信息
  
  @param complete 完成回调
  */
-+ (void)requestDronePhotoListComplete:(void(^)(NSString *photoListString,
++ (void)requestDroneInfoDataComplete:(void(^)(NSDictionary *dataDictionary,
                                                       NSArray *dateArray,
+                                                      NSArray<WTMediaModel *> *mediaArray,
+                                                      NSInteger videoAmount,
                                                       NSInteger photoAmount,
                                                       NSError * error))complete;
 

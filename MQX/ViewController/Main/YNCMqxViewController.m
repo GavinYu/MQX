@@ -19,6 +19,7 @@
 #import "YNCNavigationViewController.h"
 #import "YNCWarningConstMacro.h"
 #import "YNCDroneGalleryPreviewViewController.h"
+#import "YNCWarningManager.h"
 
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
 {
@@ -72,6 +73,11 @@
     [self initMySubView];
     
     [self addGestureRecognizers];
+    [self addNotification];
+}
+//MARK: -- Dealloc methods
+- (void)dealloc {
+    [self removeNotification];
 }
 
 //MARK: -- Lazyload  videoHomepageView
@@ -177,6 +183,50 @@
   
   return _cameraToolView;
 }
+
+//MARK: -- 添加  通知
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCameraWarningNotification:) name:YNC_CAMEAR_WARNING_NOTIFICATION object:nil];
+}
+
+//MARK: -- 移除 通知
+- (void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:YNC_CAMEAR_WARNING_NOTIFICATION object:nil];
+}
+
+//MARK: -- 处理相机警告通知
+- (void)handleCameraWarningNotification:(NSNotification *)notification {
+    int tmpType = [notification.userInfo[@"msgid"] intValue];
+    YNCWarningLevel tmpWarningLevel = [[YNCWarningManager sharedWarningManager] getWarningType:tmpType];
+    if (tmpWarningLevel == YNCWarningLevelFirst) {
+        [self.leftNavigationBar updateStateView:notification.userInfo];
+        [self.rightNavigationBar updateStateView:notification.userInfo];
+        [self.myNavigationBar updateStateView:notification.userInfo];
+    } else {
+        [self showCameraWarningWithNumber:tmpType];
+    }
+}
+
+//MARK: -- 显示相机操作警告
+- (void)showCameraWarningWithNumber:(int)number
+{
+    if (![[YNCWarningManager sharedWarningManager].thirdWarningArray containsObject:[NSNumber numberWithInt:number]]) {
+        [self handleShowWarning:@{@"msgid":[NSNumber numberWithInt:number], @"isHidden":[NSNumber numberWithBool:NO]}];
+    }
+}
+
+//MARK: -- 显示二级或者三级警报
+- (void)handleShowWarning:(NSDictionary *)warningDic {
+    [[YNCWarningManager sharedWarningManager] setContainerView:self.leftVideoHomepageView];
+    [[YNCWarningManager sharedWarningManager] showWarningViewInViewWithObject:warningDic withModeDisplay:self.currentDisplay withDirectCode:1];
+    
+    [[YNCWarningManager sharedWarningManager] setContainerView:self.rightVideoHomepageView];
+    [[YNCWarningManager sharedWarningManager] showWarningViewInViewWithObject:warningDic withModeDisplay:self.currentDisplay withDirectCode:2];
+    
+    [[YNCWarningManager sharedWarningManager] setContainerView:self.videoHomepageView];
+    [[YNCWarningManager sharedWarningManager] showWarningViewInViewWithObject:warningDic withModeDisplay:self.currentDisplay withDirectCode:0];
+}
+
 //MARK: -- 强制横屏
 - (void)forceOrientationLandscape
 {
@@ -348,7 +398,7 @@
   
   [self.cameraToolView initSubView:[YNCABECamManager sharedABECamManager].WiFiConnected];
   
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [weakSelf setCameraToolViewShowStatus:NO];
   });
     
@@ -517,11 +567,13 @@
 }
 
 #pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
   UIEvent *event = [[UIEvent alloc] init];
   CGPoint locataion = [gestureRecognizer locationInView:gestureRecognizer.view];
   UIView *view = [gestureRecognizer.view hitTest:locataion withEvent:event];
+    if ([view isKindOfClass:[UITableView class]]) {
+        return NO;
+    }
     
   return YES;
 }

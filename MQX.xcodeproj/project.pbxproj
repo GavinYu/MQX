@@ -95,6 +95,8 @@
 		F4B7F5D820463B8000B06CEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5D720463B8000B06CEE /* main.m */; };
 		F4B7F5E220463B8000B06CEE /* MQXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5E120463B8000B06CEE /* MQXTests.m */; };
 		F4B7F5ED20463B8100B06CEE /* MQXUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5EC20463B8100B06CEE /* MQXUITests.m */; };
+		F4C561F92065EBAE0032748A /* About.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C561F82065EBAE0032748A /* About.plist */; };
+		F4C561FC20663D100032748A /* WTMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C561FB20663D100032748A /* WTMediaModel.m */; };
 		F4F1872F20650EFC007B82E4 /* WTAboutInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1872E20650EFC007B82E4 /* WTAboutInfoView.m */; };
 		F4F1873120650F17007B82E4 /* WTAboutInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F1873020650F17007B82E4 /* WTAboutInfoView.xib */; };
 		F4F1873620651314007B82E4 /* WTAboutInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1873420651314007B82E4 /* WTAboutInfoCell.m */; };
@@ -298,6 +300,9 @@
 		F4B7F5E820463B8100B06CEE /* MQXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B7F5EC20463B8100B06CEE /* MQXUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MQXUITests.m; sourceTree = "<group>"; };
 		F4B7F5EE20463B8100B06CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4C561F82065EBAE0032748A /* About.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = About.plist; sourceTree = "<group>"; };
+		F4C561FA20663D100032748A /* WTMediaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTMediaModel.h; sourceTree = "<group>"; };
+		F4C561FB20663D100032748A /* WTMediaModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTMediaModel.m; sourceTree = "<group>"; };
 		F4F1872D20650EFC007B82E4 /* WTAboutInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTAboutInfoView.h; sourceTree = "<group>"; };
 		F4F1872E20650EFC007B82E4 /* WTAboutInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTAboutInfoView.m; sourceTree = "<group>"; };
 		F4F1873020650F17007B82E4 /* WTAboutInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WTAboutInfoView.xib; sourceTree = "<group>"; };
@@ -374,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				8442DD0B204C026B00BF1E30 /* CameraSetting.plist */,
+				F4C561F82065EBAE0032748A /* About.plist */,
 			);
 			path = cameraSetting;
 			sourceTree = "<group>";
@@ -519,6 +525,8 @@
 				F41071AE205CEFFD00FF135D /* YNCDronePhotoInfoModel.m */,
 				F41071B9205CF5C100FF135D /* YNCCircleProgressModel.h */,
 				F41071BA205CF5C100FF135D /* YNCCircleProgressModel.m */,
+				F4C561FA20663D100032748A /* WTMediaModel.h */,
+				F4C561FB20663D100032748A /* WTMediaModel.m */,
 			);
 			path = DroneGallery;
 			sourceTree = "<group>";
@@ -1113,6 +1121,7 @@
 				8442DCEA204BF31500BF1E30 /* YNCCameraSettingModeCell.xib in Resources */,
 				F4107141205CC72800FF135D /* YNCDroneToolView.xib in Resources */,
 				8442DD3E204C3A7500BF1E30 /* YNCFB_SwitchCell.xib in Resources */,
+				F4C561F92065EBAE0032748A /* About.plist in Resources */,
 				F4AFAB242054FAC200BC425A /* YNCNavigationBar.xib in Resources */,
 				8442DCF8204BF31500BF1E30 /* YNCCameraSettingHeaderView.xib in Resources */,
 				F4107159205CCFA100FF135D /* YNCAVPlayerView.xib in Resources */,
@@ -1215,6 +1224,7 @@
 				F4107160205CD79600FF135D /* YNCPhotosDataBaseModel.m in Sources */,
 				F4F1872F20650EFC007B82E4 /* WTAboutInfoView.m in Sources */,
 				F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */,
+				F4C561FC20663D100032748A /* WTMediaModel.m in Sources */,
 				F410712B205CC17000FF135D /* YNCDroneGalleryViewController.m in Sources */,
 				F41071AF205CEFFD00FF135D /* YNCDronePhotoInfoModel.m in Sources */,
 				F4107133205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m in Sources */,

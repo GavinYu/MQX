@@ -15,7 +15,7 @@
 #import "WTAboutInfoView.h"
 
 #define kAnimationTime 0.3
-#define kViewWidth 210.0
+#define kViewWidth 270.0
 // 向右动画出window的rect
 #define kRightRect CGRectMake(_cameraSettingView.frame.size.width, 0, _cameraSettingView.frame.size.width, _cameraSettingView.frame.size.height - 45)
 
@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *dataDictionary;
 @property (nonatomic, strong) YNCCameraCommonSettingView *cameraSettingView; // 相机设置主页
+@property (nonatomic, strong) YNCCameraCommonSettingView *aboutView; // 关于页面
 @property (nonatomic, assign) YNCCameraSettingViewType type;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSIndexPath *previousIndexPath;
@@ -80,7 +81,7 @@
             
         case 3:
         {
-            [self formatSDcardStoreage];
+            [self pushAboutView];
         }
             break;
             
@@ -114,9 +115,9 @@
 // MARK:消失动画
 - (void)back
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.type + 3 inSection:0];
-
-    [self.cameraSettingView reloadCellWithIndexPaths:@[indexPath]];
+    if (self.type == YNCCameraSettingViewTypeAbout) {
+        [self popView:_aboutView];
+    }
 }
 //MARK: -- 设置视频方向
 
@@ -172,16 +173,16 @@
 
 //MARK: -- PUSH About View
 - (void)pushAboutView {
-    WTAboutInfoView *aboutInfoView = [WTAboutInfoView aboutInfoView];
-    [_scrollView addSubview:aboutInfoView];
-    aboutInfoView.frame = kRightRect;
-    [aboutInfoView setUpSubViews];
-    aboutInfoView.dataArray = @[NSLocalizedString(@"full_settings_flight_control_version", nil), NSLocalizedString(@"full_settings_camera_version", nil)];
-//    _cameraSettingView. = NSLocalizedString(@"full_settings_about", nil);
-
+    CGFloat width = self.scrollView.frame.size.width;
+    self.aboutView = [[YNCCameraCommonSettingView alloc] initWithFrame:CGRectMake(width, 0, kViewWidth, _scrollView.frame.size.height)];
+    _aboutView.delegate = self;
+    [_scrollView addSubview:_aboutView];
+    _aboutView.showBackBtn = YES;
+    _aboutView.cameraSettingViewType = YNCCameraSettingViewTypeAbout;
+    self.type = YNCCameraSettingViewTypeAbout;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"About" ofType:@"plist"];
+    _aboutView.dataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     [self pushView];
-    
-   
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
