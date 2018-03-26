@@ -216,6 +216,8 @@
 #define Document_FlightLog [DocumentDirectiory stringByAppendingPathComponent:@"flightLog"]
 #define Document_FilterImage [DocumentDirectiory stringByAppendingPathComponent:@"filterImage"]
 #define Document_Version [DocumentDirectiory stringByAppendingPathComponent:@"version"]
+#define Document_Download_Video [Document_Download stringByAppendingPathComponent:@"Video"]
+#define Document_Download_Photo [Document_Download stringByAppendingPathComponent:@"Photo"]
 
 #define kURL_MQX_VIDEO @"https://192.168.99.1/VIDEO"
 #define kURL_MQX_PHOTO @"https://192.168.99.1/PHOTO"

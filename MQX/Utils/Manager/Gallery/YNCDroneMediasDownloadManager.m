@@ -20,9 +20,11 @@
 @property (nonatomic, copy) void (^progressBlock)(NSInteger currentNum, NSString *fileSize, CGFloat progress);
 @property (nonatomic, copy) void (^completeBlock)(BOOL completed);
 @property (nonatomic, copy) void (^downloadCompleteBlock)(BOOL complete);
+
 @end
 #warning TODO: --- Need coding
 @implementation YNCDroneMediasDownloadManager
+
 // MARK: 下载缩略图
 - (void)downloadMediaThumbnailWithMediaArray:(NSArray *)mediaArray
                               CompletedBlock:(void(^)(BOOL completed))completed;
@@ -34,21 +36,28 @@
 
 - (void)downloadThumbnailsWithMediasArray:(NSArray *)mediasArray
 {
+    WS(weakSelf);
     __block NSInteger i = 0;
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
-    dispatch_queue_t queue = dispatch_queue_create("com.download.thumb", DISPATCH_QUEUE_SERIAL);
-    
-    dispatch_async(queue, ^{
-        WTMediaModel *media = mediasArray[1];
+    dispatch_queue_t downloadQueue_t = dispatch_queue_create("com.WT.download", DISPATCH_QUEUE_SERIAL);
+    WTMediaModel *media = mediasArray[i];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *fileName = media.fileName;
-        NSString *filePath = [Document_Download stringByAppendingPathComponent:fileName];
-        [[AbeCamHandle sharedInstance] downloadFileToPath:filePath fileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) pos:@(0) progressBlock:^(float percentDone) {
+        NSString *filePath;
+        NSNumber *fileType;
+        if (media.mediaType == WTMediaTypeJPEG) {
+            filePath = [Document_Download stringByAppendingPathComponent:fileName];
+            fileType = @(kPicture);
+        } else {
+            filePath = [Document_Download_Video stringByAppendingPathComponent:fileName];
+            fileType = @(kRecord);
+        }
+        
+        [[AbeCamHandle sharedInstance] downloadFileToPath:filePath fileName:fileName FileType:fileType pos:@(0) progressBlock:^(float percentDone) {
             DLog(@"下载进度%.1f%%", percentDone*100);
         } resultblock:^(BOOL succeeded, NSString *path) {
             if (succeeded) {
                 DLog(@"保存的路径：%@", path);
-                [[AbeCamHandle sharedInstance] downloadFinishWithFileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) result:^(BOOL succeeded) {
+                [[AbeCamHandle sharedInstance] downloadFinishWithFileName:fileName FileType:fileType result:^(BOOL succeeded) {
                     if (succeeded) {
                         DLog(@"下载成功 Yea!");
                     }
@@ -56,66 +65,14 @@
             }
         }];
     });
-    
-    dispatch_async(queue, ^{
-        WTMediaModel *media = mediasArray[2];
-        NSString *fileName = media.fileName;
-        NSString *filePath = [Document_Download stringByAppendingPathComponent:fileName];
-        [[AbeCamHandle sharedInstance] downloadFileToPath:filePath fileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) pos:@(0) progressBlock:^(float percentDone) {
-            DLog(@"下载进度%.1f%%", percentDone*100);
-        } resultblock:^(BOOL succeeded, NSString *path) {
-            if (succeeded) {
-                DLog(@"保存的路径：%@", path);
-                [[AbeCamHandle sharedInstance] downloadFinishWithFileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) result:^(BOOL succeeded) {
-                    if (succeeded) {
-                        DLog(@"下载成功 Yea!");
-                    }
-                }];
-            }
-        }];
-    });
-    
-    dispatch_async(queue, ^{
-        WTMediaModel *media = mediasArray[3];
-        NSString *fileName = media.fileName;
-        NSString *filePath = [Document_Download stringByAppendingPathComponent:fileName];
-        [[AbeCamHandle sharedInstance] downloadFileToPath:filePath fileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) pos:@(0) progressBlock:^(float percentDone) {
-            DLog(@"下载进度%.1f%%", percentDone*100);
-        } resultblock:^(BOOL succeeded, NSString *path) {
-            if (succeeded) {
-                DLog(@"保存的路径：%@", path);
-                [[AbeCamHandle sharedInstance] downloadFinishWithFileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) result:^(BOOL succeeded) {
-                    if (succeeded) {
-                        DLog(@"下载成功 Yea!");
-                    }
-                }];
-            }
-        }];
-    });
-//    for (int i = 0; i < mediasArray.count; ++i) {
-//        dispatch_async(queue, ^{
-//            WTMediaModel *media = mediasArray[i];
-//            NSString *fileName = media.fileName;
-//            NSString *filePath = [Document_Download stringByAppendingPathComponent:fileName];
-//            [[AbeCamHandle sharedInstance] downloadFileToPath:filePath fileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) pos:@(0) progressBlock:^(float percentDone) {
-//                DLog(@"下载进度%.1f%%", percentDone*100);
-//            } resultblock:^(BOOL succeeded, NSString *path) {
-//                if (succeeded) {
-//                    DLog(@"保存的路径：%@", path);
-//                    [[AbeCamHandle sharedInstance] downloadFinishWithFileName:fileName FileType:media.mediaType == WTMediaTypeJPEG ? @(kPicture) : @(kRecord) result:^(BOOL succeeded) {
-//                        if (succeeded) {
-//                            DLog(@"下载成功 Yea!");
-//                        }
-//                    }];
-//                }
-//            }];
-//        });
-    
-    
-//    }
 
     self.isDownloadingThumbs = NO;
     self.downloadCompleteBlock(YES);
+}
+
+//MARK: -- 下载某个文件
+- (void)downloadMedia:(WTMediaModel *)media withCompletion:(void(^)(BOOL succeed))completionBlock {
+    
 }
 
 //MARK 下载原图 / 视频
