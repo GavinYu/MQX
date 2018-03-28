@@ -25,8 +25,6 @@
 @property (nonatomic, assign, readwrite) BOOL  WiFiConnected;
 //SD卡总容量
 @property (nonatomic, copy) NSString *totalStorage;
-//SD卡可用容量
-@property (nonatomic, copy) NSString *freeStorage;
 @property (nonatomic, assign) BOOL currentWiFiConnected;
 //设备信息
 @property (nonatomic, strong) YNCDeviceInfoModel *deviceInfo;
@@ -73,6 +71,8 @@ YNCSingletonM(ABECamManager)
                     }
                 }];
             }
+        } else {
+            
         }
     });
     

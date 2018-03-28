@@ -161,7 +161,7 @@
 - (void)showInViewWithOriginY:(CGFloat)originY {
     WS(weakSelf);
     
-    self.frame = CGRectMake(-self.bounds.size.width, originY*_sizeMultiple, self.bounds.size.width, self.bounds.size.height);
+    self.frame = CGRectMake(0, originY*_sizeMultiple, self.bounds.size.width, self.bounds.size.height);
     [_containerView addSubview:self];
     self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
 
@@ -181,7 +181,7 @@
 }
 //MARK: -- 更新警告图标和字体颜色
 - (void)setWarningViewIconAndTitleColor:(BOOL)isSucceed {
-    _iconImageView.image = [UIImage imageNamed: isSucceed==YES?@"icon_firebird_warning_succeed":@"icon_firebird_warning_warning"];
+    _iconImageView.image = [UIImage imageNamed: isSucceed==YES?@"icon_tips_normal":@"icon_tips_abnormal"];
     _messageLabel.textColor = isSucceed==YES?[UIColor yncFirebirdGreenColor]:[UIColor yncFirebirdYellowColor];
 }
 

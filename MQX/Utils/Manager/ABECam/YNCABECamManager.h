@@ -24,7 +24,7 @@ YNCSingletonH(ABECamManager)
 //SD卡总容量
 @property (nonatomic, readonly) NSString *totalStorage;
 //SD卡可用容量
-@property (nonatomic, readonly) NSString *freeStorage;
+@property (nonatomic, copy) NSString *freeStorage;
 //设备信息
 @property (nonatomic, readonly) YNCDeviceInfoModel *deviceInfo;
 

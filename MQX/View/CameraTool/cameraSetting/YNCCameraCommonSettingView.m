@@ -28,7 +28,6 @@ static NSString *ABOUTCELL = @"aboutcell";
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray *dataArray;
 @property (nonatomic, strong) YNCCameraSettingHeaderView *headerView;
-@property (nonatomic, assign) BOOL SW_On; // 记录switch状态
 @property (nonatomic, strong) NSMutableArray *currentStatusArray;
 
 @property (nonatomic, strong) UILabel *aboutCopyrightLabel;
@@ -149,11 +148,10 @@ static NSString *ABOUTCELL = @"aboutcell";
                 YNCFB_SwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:SWITCHCELL];
                 cell.leftConstraint.constant = 10;
                 cell.rightConstraint.constant = 10;
-                _SW_On = NO;
                 cell.showLine = NO;
                 cell.delegate = self;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.switchBtn.on = _SW_On;
+                rowDataModel.status = [NSString stringWithFormat:@"%@", [YNCUtil getUserDefaultInfo:@"videoFlipStatus"]];
                 [cell configureTextLabel:rowDataModel];
                 
                 return cell;
@@ -167,6 +165,7 @@ static NSString *ABOUTCELL = @"aboutcell";
                 
                 if (row == 2) {
                     cell.isShowRightArrowImage = NO;
+                    rowDataModel.status = [NSString stringWithFormat:@"%@/%@", [YNCABECamManager sharedABECamManager].freeStorage, [YNCABECamManager sharedABECamManager].totalStorage];
                 }
                 
                 [cell configureWithModel:rowDataModel];
@@ -258,9 +257,9 @@ static NSString *ABOUTCELL = @"aboutcell";
     return cell;
 }
 //MARK: -- 更新SD卡容量
-- (void)updateFooterViewStorage
-{
-
+- (void)updateFooterViewStorage {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    [self reloadCellWithIndexPaths:@[indexPath]];
 }
 
 #pragma mark - BtnAction
@@ -278,14 +277,12 @@ static NSString *ABOUTCELL = @"aboutcell";
     [[AbeCamHandle sharedInstance] setFlipWithStatus:[NSNumber numberWithBool:btn.on] result:^(BOOL succeeded) {
         if (!succeeded) {
             [weakSelf postCameraNotificationWithNumber:YNCWARNING_CAMERA_VIDEO_DIRECTION_FAILED];
+        } else {
+            [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:btn.on] forKey:@"videoFlipStatus"];
         }
     }];
 }
-//MARK: -- setter _SW_On
-- (void)switchIsOn:(BOOL)isOn
-{
-    _SW_On = isOn;
-}
+
 //MARK: -- reload Cell
 - (void)reloadCellWithIndexPaths:(NSArray *)indexPaths
 {

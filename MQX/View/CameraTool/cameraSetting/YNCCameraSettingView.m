@@ -132,17 +132,21 @@
                         colorType:PopWindowViewColorTypeOrange
                          sizeType:PopWindowViewSizeTypeBig
                     handleConfirm:^{
-                        [[AbeCamHandle sharedInstance] deviceResetToDefault:^(BOOL succeeded) {
-                            if (!succeeded) {
-                                [weakSelf postNotificationWithNumber:YNCWARNING_RESET_ALL_SETTINGS_FAILED];
-                            } else {
-                                double delayInSeconds = 1.5f;
-                                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
-                                dispatch_after(popTime, dispatch_get_main_queue(), ^{
-                                    [weakSelf.cameraSettingView reloadTableView];
-                                });
-                            }
-                        }];
+                        if ([[AbeCamHandle sharedInstance]checkTalkSeesion]) {
+                            [[AbeCamHandle sharedInstance] deviceResetToDefault:^(BOOL succeeded) {
+                                if (!succeeded) {
+                                    [weakSelf postNotificationWithNumber:YNCWARNING_RESET_ALL_SETTINGS_FAILED];
+                                } else {
+                                    [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:NO] forKey:@"videoFlipStatus"];
+                                    double delayInSeconds = 1.5f;
+                                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
+                                    dispatch_after(popTime, dispatch_get_main_queue(), ^{
+                                        [weakSelf.cameraSettingView reloadTableView];
+                                    });
+                                }
+                            }];
+                        }
+                        
                     }handleCancel:^{
         
     }];
@@ -160,8 +164,7 @@
                     handleConfirm:^{
                         [[AbeCamHandle sharedInstance] setSDFormat:^(BOOL succeeded, NSData *data) {
                             if (succeeded) {
-                                NSDictionary *tmp = [NSDictionary modelDictionaryWithClass:[NSData class] json:data];
-                                DLog(@"成功返回数据：%@", tmp);
+                                [YNCABECamManager sharedABECamManager].freeStorage = [YNCABECamManager sharedABECamManager].totalStorage;
                                 [weakSelf.cameraSettingView updateFooterViewStorage];
                             }
                             [weakSelf postNotificationWithNumber:succeeded==YES?YNCWARNING_CAMERA_SD_FORMAT_SUCCEED:YNCWARNING_CAMERA_SD_FORMAT_FAILED];
