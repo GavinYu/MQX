@@ -132,24 +132,24 @@
                         colorType:PopWindowViewColorTypeOrange
                          sizeType:PopWindowViewSizeTypeBig
                     handleConfirm:^{
-                        if ([[AbeCamHandle sharedInstance]checkTalkSeesion]) {
-                            [[AbeCamHandle sharedInstance] deviceResetToDefault:^(BOOL succeeded) {
-                                if (!succeeded) {
-                                    [weakSelf postNotificationWithNumber:YNCWARNING_RESET_ALL_SETTINGS_FAILED];
-                                } else {
-                                    [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:NO] forKey:@"videoFlipStatus"];
-                                    double delayInSeconds = 1.5f;
-                                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
-                                    dispatch_after(popTime, dispatch_get_main_queue(), ^{
-                                        [weakSelf.cameraSettingView reloadTableView];
-                                    });
-                                }
-                            }];
-                        }
+                        [[AbeCamHandle sharedInstance] deviceResetToDefault:^(BOOL succeeded) {
+                        }];
+                        [[AbeCamHandle sharedInstance] closeVideo];
+                        [[AbeCamHandle sharedInstance] clearFrame];
+                        [[AbeCamHandle sharedInstance] disconnectedTalkSession];
                         
+                        if (![[AbeCamHandle sharedInstance] checkTalkSeesion]) {
+                            [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:NO] forKey:@"videoFlipStatus"];
+          
+                            double delayInSeconds = 1.5f;
+                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
+                            dispatch_after(popTime, dispatch_get_main_queue(), ^{
+                                [weakSelf.cameraSettingView reloadTableView];
+                            });
+                        }
                     }handleCancel:^{
-        
-    }];
+                        
+                    }];
 }
 
 #pragma mark - 格式化内存卡
@@ -170,8 +170,8 @@
                             [weakSelf postNotificationWithNumber:succeeded==YES?YNCWARNING_CAMERA_SD_FORMAT_SUCCEED:YNCWARNING_CAMERA_SD_FORMAT_FAILED];
                         }];
                     } handleCancel:^{
-        
-    }];
+                        
+                    }];
 }
 
 //MARK: -- PUSH About View
@@ -223,15 +223,15 @@
 
 - (void)dealloc
 {
-//    [self removeObserver:self forKeyPath:@"cameraManager.freeStorage"];
+    //    [self removeObserver:self forKeyPath:@"cameraManager.freeStorage"];
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

@@ -95,9 +95,7 @@ static CGFloat kDroneNameFontSize = 38.0f;
     [_kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
         BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (tmpWiFiConnected) {
-                [weakSelf refreshUI:tmpWiFiConnected];
-            }
+            [weakSelf refreshUI:tmpWiFiConnected];
         });
     }];
 }
@@ -217,7 +215,7 @@ static CGFloat kDroneNameFontSize = 38.0f;
         [_readyToFlyButton setTitle:NSLocalizedString(@"homepage_flight_interface", nil) forState:UIControlStateNormal];
         [_readyToFlyButton setTitleColor:[UIColor grayishColor] forState:UIControlStateNormal];
         
-        [_connectionStatusButton setTitleColor:[UIColor grayishColor] forState:UIControlStateNormal];
+        [_connectionStatusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_connectionStatusButton setTitle:NSLocalizedString(@"homepage_device_not_conneted", nil) forState:UIControlStateNormal];
     }
 }

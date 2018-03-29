@@ -23,7 +23,6 @@
 
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
 {
-    FBKVOController *_kvoController;
     dispatch_source_t _countVideoDurationTimer;
     NSInteger _doubleClickCount;
 }
@@ -47,6 +46,8 @@
 @property (strong, nonatomic) UIView *fpvLineView;
 
 @property (assign, nonatomic) NSUInteger videoDuration;
+
+@property (strong, nonatomic) FBKVOController *kvoController;
 
 @end
 
@@ -77,9 +78,18 @@
 }
 //MARK: -- Dealloc methods
 - (void)dealloc {
+    DLog(@"Dealloc: %@",[self class]);
+    
     [self removeNotification];
 }
-
+//MARK: -- Lazyload kvoController
+- (FBKVOController *)kvoController {
+    if (!_kvoController) {
+        _kvoController = [[FBKVOController alloc] initWithObserver:self];
+    }
+    
+    return _kvoController;
+}
 //MARK: -- Lazyload  videoHomepageView
 - (YNCVideoHomepageView *)videoHomepageView {
     if (!_videoHomepageView) {
@@ -349,6 +359,9 @@
     [self.myNavigationBar setNavigationBarButtonEventBlock:^(YNCEventAction eventAction){
         if (eventAction == YNCEventActionNavBarHomeBtn) {
             //do something
+            if (weakSelf.kvoController) {
+                weakSelf.kvoController = nil;
+            }
             [weakSelf performSegueWithIdentifier:@"unwindToMain" sender:weakSelf];
         }
     }];
@@ -673,16 +686,20 @@
 
 //MARK: -- 绑定ViewModel
 - (void)bindViewModel {
-    _kvoController = [[FBKVOController alloc] initWithObserver:self];
-    [_kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+    [self.kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
         BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (!tmpWiFiConnected) {
+                [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:NO] forKey:@"videoFlipStatus"];
+            }
+            
             [self.myNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
             [self.leftNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
             [self.rightNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
             self.myNavigationBar.WiFiConnected = tmpWiFiConnected;
             self.leftNavigationBar.WiFiConnected = tmpWiFiConnected;
             self.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
+            [self.cameraToolView updateBtnImageWithConnect:tmpWiFiConnected];
         });
     }];
 }

@@ -40,6 +40,13 @@ YNCSingletonM(ABECamManager)
     if (_WiFiConnected != WiFiConnected) {
         _WiFiConnected = WiFiConnected;
     }
+    
+    if (!_WiFiConnected) {
+        self.deviceInfo = nil;
+        self.currentWiFiConnected = NO;
+        self.freeStorage = @"0G";
+        self.totalStorage = @"0G";
+    }
 }
 
 //MARK: -- 监测WiFi连接的状态
@@ -72,7 +79,9 @@ YNCSingletonM(ABECamManager)
                 }];
             }
         } else {
-            
+            if (![[AbeCamHandle sharedInstance]checkTalkSeesion]) {
+                weakSelf.WiFiConnected = NO;
+            }
         }
     });
     
@@ -82,6 +91,7 @@ YNCSingletonM(ABECamManager)
 }
 //MARK: -- 释放监测WiFi连接的状态的定时器
 - (void)freeCheckWiFiTimer {
+    self.WiFiConnected = NO;
     if (_checkWiFiTimer) {
         dispatch_source_cancel(_checkWiFiTimer);
         _checkWiFiTimer = nil;
