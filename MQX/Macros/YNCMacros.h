@@ -168,7 +168,7 @@
 
 //购买链接
 #ifndef YNC_STORE_LINK
-#define YNC_STORE_LINK   @"https://yuneec.tmall.com"
+#define YNC_STORE_LINK   @"https://www.horizonhobby.com"
 #endif
 
 #define kPeriod 1.0  //定时器时间 （每秒执行一次）

@@ -202,9 +202,9 @@
 "gallery_add_music" = "Add music";
 "homepage_aviation" = "Aviation";
 "homepage_start_to_fly" = "Fly Now";
-"homepage_how_to_buy" = "How to buy>";
-"homepage_device_not_conneted" = "device disconnected>";
-"homepage_device_conneted" = "device connected";
+"homepage_how_to_buy" = "Where to buy";
+"homepage_device_not_conneted" = "Device disconnected";
+"homepage_device_conneted" = "Device connected";
 "homepage_remote_controller_connected" = "Controller connected";
 "homepage_remote_controller_disconnected" = "Controller disconnected";
 "homepage_connect_help" = "Connection help";
@@ -221,7 +221,7 @@
 "homepage_tips_6" = "Check the propeller before flying. Replace if worn or damaged.";
 "homepage_tips_8" = "In order to ensure reliability and safety, please check for software updates.";
 "homepage_tips_9" = "Before taking off, please check the APP interface to confirm all conditions of the aircraft are normal.";
-"homepage_flight_interface" = "Flight Interface";
+"homepage_flight_interface" = "Enter Device";
 "homepage_choose_product" = "Choose Product";
 "homepage_exit_program_tips" = "Do not quit the program, yes quit?";
 "homepage_mall" = "Mall";

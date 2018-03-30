@@ -202,8 +202,8 @@
 "gallery_add_music" = "添加音乐";
 "homepage_aviation" = "飞行器";
 "homepage_start_to_fly" = "进入飞行";
-"homepage_how_to_buy" = "购买信息>";
-"homepage_device_not_conneted" = "设备未连接>";
+"homepage_how_to_buy" = "购买信息";
+"homepage_device_not_conneted" = "设备未连接";
 "homepage_device_conneted" = "设备已连接";
 "homepage_remote_controller_connected" = "遥控器已连接";
 "homepage_remote_controller_disconnected" = "遥控器已断开";
