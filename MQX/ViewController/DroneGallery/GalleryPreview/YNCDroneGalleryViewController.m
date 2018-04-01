@@ -181,7 +181,7 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
                                                                   [weakSelf.circleProgress configureSubviewWithModel:progressModel];
                                                                   weakSelf.circleProgress.progress = progress;
                                                               });
-                                                          } completeBlock:^(BOOL complete) {
+                                                          } completeBlock:^(BOOL complete, NSArray *photoArray, NSArray *videoArray) {
                                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                                   [weakSelf.circleProgress removeFromSuperview];
                                                                   weakSelf.circleProgress = nil;

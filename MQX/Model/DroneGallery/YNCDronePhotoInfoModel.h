@@ -32,5 +32,5 @@ typedef NS_ENUM(NSInteger, YNCMediaType)
 @property (nonatomic, assign) CGFloat pixelHeight;
 
 @property (nonatomic, assign) YNCMediaType mediaType;
-
+@property (nonatomic, copy) NSString *filePath;
 @end

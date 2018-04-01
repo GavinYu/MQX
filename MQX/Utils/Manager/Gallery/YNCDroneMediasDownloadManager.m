@@ -15,15 +15,39 @@
 #import "WTMediaModel.h"
 #import <ABECam/ABECam.h>
 
+#import "YNCDronePhotoInfoModel.h"
+
 @interface YNCDroneMediasDownloadManager ()
 @property (nonatomic, strong) NSMutableArray<id> *mediasArray;
 @property (nonatomic, copy) void (^progressBlock)(NSInteger currentNum, NSString *fileSize, CGFloat progress);
-@property (nonatomic, copy) void (^completeBlock)(BOOL completed);
+@property (nonatomic, copy) void (^completeBlock)(BOOL completed, NSArray *photoArray, NSArray *videoArray);
 @property (nonatomic, copy) void (^downloadCompleteBlock)(BOOL complete);
+//存储图片的数据
+@property (nonatomic, strong) NSMutableArray *photoFileAarry;
+//存储图片的数据
+@property (nonatomic, strong) NSMutableArray *videoFileAarry;
 
 @end
 #warning TODO: --- Need coding
 @implementation YNCDroneMediasDownloadManager
+
+//MARK: -- lazyload photoFileAarry
+- (NSMutableArray *)photoFileAarry {
+    if (!_photoFileAarry) {
+        _photoFileAarry = [NSMutableArray new];
+    }
+    
+    return _photoFileAarry;
+}
+
+//MARK: -- lazyload videoFileAarry
+- (NSMutableArray *)videoFileAarry {
+    if (!_videoFileAarry) {
+        _videoFileAarry = [NSMutableArray new];
+    }
+    
+    return _videoFileAarry;
+}
 
 // MARK: 下载缩略图
 - (void)downloadMediaThumbnailWithMediaArray:(NSArray *)mediaArray
@@ -80,8 +104,22 @@
                              progressBlock:(void (^)(NSInteger currentNum,
                                                      NSString *fileSize,
                                                      CGFloat progress))progressBlock
-                             completeBlock:(void (^)(BOOL))completeBlock
+                             completeBlock:(void (^)(BOOL completed, NSArray *photoArray, NSArray *videoArray))completeBlock
 {
+    NSFileManager *tmpFileManager = [NSFileManager defaultManager];
+    if (![tmpFileManager fileExistsAtPath:Document_Download_Photo]) {
+        BOOL tmpPhoto = [tmpFileManager createDirectoryAtPath:Document_Download_Photo withIntermediateDirectories:YES attributes:nil error:NULL];
+        if (tmpPhoto) {
+            DLog(@"create photo 路径成功");
+        }
+    }
+    if (![tmpFileManager fileExistsAtPath:Document_Download_Video]) {
+        BOOL tmpVideo = [tmpFileManager createDirectoryAtPath:Document_Download_Video withIntermediateDirectories:YES attributes:nil error:NULL];
+        if (tmpVideo) {
+            DLog(@"create video 路径成功");
+        }
+    }
+    
     if (mediasArray.count > 0) {
         if (self.mediasArray.count > 0) {
             [self.mediasArray removeAllObjects];
@@ -95,36 +133,77 @@
 
 - (void)downloadThumbImageWithNumber:(NSInteger)number
 {
-    
-    NSString *createDate = @"201801";
-    NSString *fileName = @"test";
-    fileName = [[fileName stringByDeletingPathExtension] stringByAppendingString:@".png"];
-    NSString *filePath = [YNCImageHelper convertFileNameToDownloadLocationPath:[NSString stringWithFormat:@"%@_%@", createDate, fileName]];
-    NSString *singleKey = [[filePath lastPathComponent] stringByDeletingPathExtension];
-    YNCPhotosDataBase *dataBase = [YNCPhotosDataBase shareDataBase];
-    YNCPhotosDataBaseModel *model = [[YNCPhotosDataBaseModel alloc] init];
-    if (1) {
-        model = [dataBase selectOnePhotoDataBaseModelBySingleKey:singleKey type:YNCMediaTypeDroneVideo];
-    } else if (2) {
-        model = [dataBase selectOnePhotoDataBaseModelBySingleKey:singleKey type:YNCMediaTypeDronePhoto];
+    WTMediaModel *media = self.mediasArray[number];
+    NSString *fileName = media.fileName;
+    NSString *filePath;
+    NSNumber *fileType;
+    if (media.mediaType == WTMediaTypeJPEG) {
+        filePath = [Document_Download_Photo stringByAppendingPathComponent:fileName];
+        fileType = @(kPicture);
+    } else {
+        filePath = [Document_Download_Video stringByAppendingPathComponent:fileName];
+        fileType = @(kRecord);
     }
     
-    if (model.singleKey.length > 0) {
+    DLog(@"保存的路径：%@", filePath);
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        
+        YNCDronePhotoInfoModel *itemPhotoModel = [YNCDronePhotoInfoModel new];
+        itemPhotoModel.filePath = filePath;
+        itemPhotoModel.title = fileName;
+        
+        if ([fileType integerValue] == kPicture) {
+            itemPhotoModel.mediaType = YNCMediaTypeDronePhoto;
+            [self.photoFileAarry addObject:itemPhotoModel];
+        } else {
+            itemPhotoModel.mediaType = YNCMediaTypeDroneVideo;
+            [self.videoFileAarry addObject:itemPhotoModel];
+        }
         ++number;
-        self.progressBlock(number + 1, model.mermory, 1.0);
+        
         if (number < self.mediasArray.count) {
             [self downloadThumbImageWithNumber:number];
         } else {
-            self.completeBlock(YES);
+            self.completeBlock(YES, self.photoFileAarry, self.videoFileAarry);
         }
-        return;
-    }
-    
-    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-//        [self downloadDroneMedia:media singleKey:singleKey number:number];
     } else {
-        WS(weakSelf);
-        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            WS(weakSelf);
+            __block NSInteger blockNumber = number;
+            
+            [[AbeCamHandle sharedInstance] downloadFileToPath:filePath fileName:fileName FileType:fileType pos:@(0) progressBlock:^(float percentDone) {
+                DLog(@"下载进度%.1f%%", percentDone*100);
+            } resultblock:^(BOOL succeeded, NSString *path) {
+                if (succeeded) {
+                    DLog(@"保存的路径：%@", path);
+                    YNCDronePhotoInfoModel *itemPhotoModel = [YNCDronePhotoInfoModel new];
+                    itemPhotoModel.filePath = path;
+                    itemPhotoModel.title = fileName;
+                    
+                    if ([fileType integerValue] == kPicture) {
+                        itemPhotoModel.mediaType = YNCMediaTypeDronePhoto;
+                        [weakSelf.photoFileAarry addObject:itemPhotoModel];
+                    } else {
+                        itemPhotoModel.mediaType = YNCMediaTypeDroneVideo;
+                        [weakSelf.videoFileAarry addObject:itemPhotoModel];
+                    }
+                    ++blockNumber;
+                    
+                    if (blockNumber < self.mediasArray.count) {
+                        [self downloadThumbImageWithNumber:blockNumber];
+                    } else {
+                        self.completeBlock(YES, weakSelf.photoFileAarry, weakSelf.videoFileAarry);
+                    }
+                    
+                    [[AbeCamHandle sharedInstance] downloadFinishWithFileName:fileName FileType:fileType result:^(BOOL succeeded) {
+                        if (succeeded) {
+                            DLog(@"下载成功 Yea!");
+                        }
+                    }];
+                }
+            }];
+            
+        });
     }
 }
 

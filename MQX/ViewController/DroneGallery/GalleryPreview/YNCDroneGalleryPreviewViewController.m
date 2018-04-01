@@ -23,6 +23,9 @@
 #import "YNCImageHelper.h"
 #import "YNCDroneGalleryTransitionAnimator.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
+#import "WTMediaModel.h"
+
+
 static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 
 @interface YNCDroneGalleryPreviewViewController () <YNCDroneNavigationViewDelegate, YNCDroneToolViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, YNCPreviewPhotoCellDelegate, UINavigationControllerDelegate, YNCCircleProgressDelegate, AVPlayerViewDelegate>
@@ -40,6 +43,9 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 @property (nonatomic, strong) YNCDroneMediasDownloadManager *downloadManager;
 
 //@property (strong, nonatomic) UIImageView *tmpImageView;
+@property (strong, nonatomic) NSArray *photoDataArray;
+@property (strong, nonatomic) NSArray *videoDataArray;
+
 
 @end
 
@@ -391,38 +397,34 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
                 weakSelf.dateArray = dateArray.mutableCopy;
                 weakSelf.droneNavigationModel.videosAmount = videoAmount;
                 weakSelf.droneNavigationModel.photosAmount = photoAmount;
-                [weakSelf configureData];
+                
                 YNCDroneMediasDownloadManager *droneMediasDownloadManager = [[YNCDroneMediasDownloadManager alloc] init];
-                [droneMediasDownloadManager downloadMediaThumbnailWithMediaArray:mediaArray
-                                                                  CompletedBlock:^(BOOL completed) {
-                                                                      if (completed) {
-                                                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                                                              [weakSelf configureSubViews];
-                                                                              [SVProgressHUD setContainerView:nil];
-                                                                              [SVProgressHUD dismiss];
-                                                                          });
-                                                                      }
-                                                                  }];
+                [droneMediasDownloadManager downloadDroneMediasWithMediasArray:mediaArray progressBlock:^(NSInteger currentNum, NSString *fileSize, CGFloat progress) {
+                    
+                } completeBlock:^(BOOL completed, NSArray *photoArray, NSArray *videoArray) {
+                    if (completed) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            weakSelf.photoDataArray =photoArray;
+                            weakSelf.videoDataArray = videoArray;
+                            [weakSelf configureData];
+                            [weakSelf configureSubViews];
+                            [SVProgressHUD setContainerView:nil];
+                            [SVProgressHUD dismiss];
+                        });
+                    }
+                }];
             }
-            
-           
         } else {
             [[YNCMessageBox instance] show:NSLocalizedString(@"gallery_no_files", nil)];
             [SVProgressHUD dismiss];
         }
     }];
 }
-
+//MARK: -- 配置显示数据 
 - (void)configureData
 {
-    for (NSString *date in self.dateArray) {
-        NSArray *mediaArray = self.dataDictionary[date];
-        if (mediaArray.count > 0) {
-            for (int i = 0; i < mediaArray.count; i++) {
-                [self.dataArray addObject:mediaArray[i]];
-            }
-        }
-    }
+    [self.dataArray addObjectsFromArray:self.photoDataArray];
+    [self.dataArray addObjectsFromArray:self.videoDataArray];
 }
 //MARK: -- 初始化子视图
 - (void)configureSubViews
@@ -475,6 +477,8 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
             }];
         }
     }
+
+    [self.collectionView reloadData];
 }
 
 - (void)scrollToItemAtNumber:(NSInteger)number
@@ -486,24 +490,15 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 - (void)configureToolViewWithNumber:(NSInteger)number
 {
     if (self.dataArray.count > number) {
-        //        YuneecMedia *media = self.dataArray[number];
-        //        NSString *createDate = media.thumbnailMedia.createDate;
-        //        NSString *fileName = media.thumbnailMedia.fileName;
-        //        YNCMediaType mediaType = YNCMediaTypeDronePhoto;
-        //        fileName = [NSString stringWithFormat:@"%@_%@", createDate, fileName];
-        //        fileName = [fileName stringByDeletingPathExtension];
-        //        if (media.mediaType == YuneecMediaTypeMP4) {
-        //            mediaType = YNCMediaTypeDroneVideo;
-        //        } else if (media.mediaType == YuneecMediaTypeJPEG) {
-        //        }
-        //        YNCPhotosDataBaseModel *model = [[YNCPhotosDataBase shareDataBase] selectOnePhotoDataBaseModelBySingleKey:fileName type:mediaType];
-        //        if (model.singleKey.length > 0) {
-        //            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
-        //            _toolView.downloadBtn.enabled = NO;
-        //        } else {
-        //            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"btn_download"] forState:(UIControlStateNormal)];
-        //            _toolView.downloadBtn.enabled = YES;
-        //        }
+                YNCDronePhotoInfoModel *photoInfoModel = self.dataArray[number];
+
+                if (photoInfoModel.filePath.length > 0) {
+                    [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
+                    _toolView.downloadBtn.enabled = NO;
+                } else {
+                    [_toolView.downloadBtn setImage:[UIImage imageNamed:@"btn_download"] forState:(UIControlStateNormal)];
+                    _toolView.downloadBtn.enabled = YES;
+                }
     }
 }
 

@@ -35,6 +35,6 @@
                              progressBlock:(void (^)(NSInteger currentNum,
                                                      NSString *fileSize,
                                                      CGFloat progress))progressBlock
-                             completeBlock:(void (^)(BOOL))completeBlock;
+                             completeBlock:(void (^)(BOOL completed, NSArray *photoArray, NSArray *videoArray))completeBlock;
 
 @end

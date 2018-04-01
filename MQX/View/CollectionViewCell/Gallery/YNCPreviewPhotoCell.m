@@ -48,6 +48,7 @@
     [self addSubview:_scrollView];
     
     self.imageV = [[YYAnimatedImageView alloc] init];
+    self.imageV.contentMode = UIViewContentModeScaleAspectFit;
     _imageV.userInteractionEnabled = YES;
     [self.scrollView addSubview:_imageV];    
     
@@ -84,16 +85,14 @@
         [self configureFrameWithWidth:width height:height];
     } else if ([object isKindOfClass:[YNCDronePhotoInfoModel class]]) {
         YNCDronePhotoInfoModel *photoInfo = object;
-        width = photoInfo.pixelWidth;
-        height = photoInfo.pixelHeight;
+        width = SCREENWIDTH;
+        height = SCREENHEIGHT;
         switch (photoInfo.mediaType) {
             case YNCMediaTypeDronePhoto:
             {
                 _playeBtn.hidden = YES;
                 [self addTwiceTapGesture];
-                NSString *path = [Document_Download stringByAppendingPathComponent:photoInfo.title];
-                path = [path stringByAppendingPathExtension:@"JPG"];
-                NSURL *pathUrl = [NSURL fileURLWithPath:path];
+                NSURL *pathUrl = [NSURL fileURLWithPath:photoInfo.filePath];
                 [_imageV setImageURL:pathUrl];
             }
                 break;
@@ -101,9 +100,7 @@
             {
                 _playeBtn.hidden = NO;
                 _scrollView.userInteractionEnabled = NO;
-                NSString *videoImagePath = [Document_Download stringByAppendingPathComponent:photoInfo.title];
-                videoImagePath = [videoImagePath stringByAppendingPathExtension:@"JPG"];
-                NSURL *videoImageURL = [NSURL fileURLWithPath:videoImagePath];
+                NSURL *videoImageURL = [NSURL fileURLWithPath:photoInfo.filePath];
                 [_imageV setImageURL:videoImageURL];
             }
                 break;
