@@ -439,7 +439,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     _collectionView.delegate = self;
     _collectionView.showsHorizontalScrollIndicator = NO;
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _collectionView.pagingEnabled = YES;
+    _collectionView.pagingEnabled = NO;
     [_collectionView registerClass:[YNCPreviewPhotoCell class] forCellWithReuseIdentifier:kDroneGalleryCell];
     if (self.dataArray.count > 0) {
         self.droneNavigationModel.totalMediasAmount = self.dataArray.count;
@@ -477,7 +477,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
             }];
         }
     }
-
+    
     [self.collectionView reloadData];
 }
 
@@ -490,15 +490,15 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 - (void)configureToolViewWithNumber:(NSInteger)number
 {
     if (self.dataArray.count > number) {
-                YNCDronePhotoInfoModel *photoInfoModel = self.dataArray[number];
-
-                if (photoInfoModel.filePath.length > 0) {
-                    [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
-                    _toolView.downloadBtn.enabled = NO;
-                } else {
-                    [_toolView.downloadBtn setImage:[UIImage imageNamed:@"btn_download"] forState:(UIControlStateNormal)];
-                    _toolView.downloadBtn.enabled = YES;
-                }
+        YNCDronePhotoInfoModel *photoInfoModel = self.dataArray[number];
+        
+        if (photoInfoModel.filePath.length > 0) {
+            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
+            _toolView.downloadBtn.enabled = NO;
+        } else {
+            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"btn_download"] forState:(UIControlStateNormal)];
+            _toolView.downloadBtn.enabled = YES;
+        }
     }
 }
 

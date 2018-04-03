@@ -22,19 +22,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
+    [self bindViewModel];
     // Do any additional setup after loading the view.
     [self configABECamHandle];
+    [self openAbeCamStream];
 }
 
 - (void)dealloc {
-    [self destroyAbeCam];
+    [self destroyAbeCamStream];
+    [[AbeCamHandle sharedInstance] removeLiveView];
 }
 
 //MARK: -- 配置ABECam 显示图传界面
 - (void)configABECamHandle {
     [[AbeCamHandle sharedInstance] addLiveViewToSuperView:self.view Rect:self.view.bounds dualView:NO];
-    
-    
+}
+
+//MARK: -- 打开 AbeCam
+- (void)openAbeCamStream {
     if ([[AbeCamHandle sharedInstance] checkTalkSeesion]) {
         [[AbeCamHandle sharedInstance] openLiveVideoResult:^(BOOL succeeded) {
             if (succeeded) {
@@ -52,10 +57,29 @@
 }
 
 //MARK: -- 销毁 AbeCam
-- (void)destroyAbeCam {
-    [[AbeCamHandle sharedInstance] closeVideo];
+- (void)destroyAbeCamStream {
+    [[AbeCamHandle sharedInstance] closeLiveVideoResult:^(BOOL succeeded) {
+        if (succeeded) {
+            [[AbeCamHandle sharedInstance] closeVideo];
+        }
+    }];
+    
     [[AbeCamHandle sharedInstance] clearFrame];
-    [[AbeCamHandle sharedInstance] removeLiveView];
+}
+
+//MARK: -- 绑定ViewModel
+- (void)bindViewModel {
+    WS(weakSelf);
+    [self.kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (tmpWiFiConnected) {
+                [weakSelf openAbeCamStream];
+            } else {
+                [weakSelf destroyAbeCamStream];
+            }
+        });
+    }];
 }
 
 //MARK: --  ReceiveMemoryWarning

@@ -57,12 +57,6 @@
     _galleryButton.tag = YNCEventActionCameraGallery;
     
     [self updateBtnImageWithConnect:connected];
-
-    [[YNCABECamManager sharedABECamManager] getSDCardInfo:^(YNCSDCardInfoModel *SDCardInfo) {
-        if (SDCardInfo.errorcode == 0) {
-            DLog(@"获取SD卡信息成功");
-        }
-    }];
 }
 //MARK: -- 根据连接状态更新相机工具栏
 - (void)updateBtnImageWithConnect:(BOOL)connect

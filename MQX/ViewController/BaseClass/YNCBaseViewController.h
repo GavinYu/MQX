@@ -11,10 +11,7 @@
 #import "YNCAppConfig.h"
 
 @interface YNCBaseViewController : UIViewController
-{
-    FBKVOController *_kvoController;
-}
-//绑定viewmodel
-- (void)bindViewModel;
+
+@property (strong, nonatomic) FBKVOController *kvoController;
 
 @end

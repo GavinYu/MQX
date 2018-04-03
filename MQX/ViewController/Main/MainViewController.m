@@ -45,7 +45,7 @@ static CGFloat kDroneNameFontSize = 38.0f;
 //MARK: -- View life methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self bindViewModel];
     // Do any additional setup after loading the view, typically from a nib.
     [self.droneImageArray addObject:@"icon_aircraft_mqx"];
     //初始化子视图
@@ -89,10 +89,8 @@ static CGFloat kDroneNameFontSize = 38.0f;
 
 //MARK: -- 执行bindViewMode
 - (void)bindViewModel {
-    [super bindViewModel];
-    
     WS(weakSelf);
-    [_kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+    [self.kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
         BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf refreshUI:tmpWiFiConnected];
@@ -153,7 +151,7 @@ static CGFloat kDroneNameFontSize = 38.0f;
     
     [self.connectionStatusButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_referView).offset(12);
-        make.top.equalTo(_referView).offset(42);
+        make.top.equalTo(_referView).offset(52);
         make.size.mas_equalTo(CGSizeMake(355, 30));
     }];
     
@@ -290,7 +288,11 @@ static CGFloat kDroneNameFontSize = 38.0f;
 - (IBAction)clickDeviceConnectedButton:(UIButton *)sender {
     NSString * urlString = NO_BELOW_iOS10==YES?@"App-Prefs:root=WIFI":@"prefs:root=WIFI";
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

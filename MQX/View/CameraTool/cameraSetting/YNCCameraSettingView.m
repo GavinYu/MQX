@@ -165,7 +165,6 @@
                         [[AbeCamHandle sharedInstance] setSDFormat:^(BOOL succeeded, NSData *data) {
                             if (succeeded) {
                                 [YNCABECamManager sharedABECamManager].freeStorage = [YNCABECamManager sharedABECamManager].totalStorage;
-                                [weakSelf.cameraSettingView updateFooterViewStorage];
                             }
                             [weakSelf postNotificationWithNumber:succeeded==YES?YNCWARNING_CAMERA_SD_FORMAT_SUCCEED:YNCWARNING_CAMERA_SD_FORMAT_FAILED];
                         }];
@@ -199,26 +198,13 @@
     }
 }
 
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
-{
-    WS(weakSelf);
-    if ([keyPath isEqualToString:@"cameraManager.freeStorage"]) {
-        if ([change.allKeys containsObject:@"new"] && [change.allKeys containsObject:@"old"]) {
-            if (change[@"new"] != NULL && change[@"old"] != NULL) {
-                if (![change[@"new"] isEqualToString:change[@"old"]]) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.cameraSettingView updateFooterViewStorage];
-                    });
-                }
-            }
-        }
-    }
-}
-
 - (void)postNotificationWithNumber:(int)number
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:YNC_CAMEAR_WARNING_NOTIFICATION object:nil userInfo:@{@"msgid":[NSNumber numberWithInt:number], @"isHidden":[NSNumber numberWithBool:NO]}];
+}
+//MARK: -- update cameraSettingView
+- (void)updateCameraSettingView {
+    [self.cameraSettingView updateFooterViewStorage];
 }
 
 - (void)dealloc

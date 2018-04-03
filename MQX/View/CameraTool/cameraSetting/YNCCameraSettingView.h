@@ -16,4 +16,6 @@
 
 @property (nonatomic, weak) id<YNCCameraSettingViewDelegate> delegate;
 - (void)createUI;
+
+- (void)updateCameraSettingView;
 @end

@@ -686,6 +686,7 @@
 
 //MARK: -- 绑定ViewModel
 - (void)bindViewModel {
+    WS(weakSelf);
     [self.kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"WiFiConnected" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
         BOOL tmpWiFiConnected = [change[NSKeyValueChangeNewKey] boolValue];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -693,15 +694,31 @@
                 [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:NO] forKey:@"videoFlipStatus"];
             }
             
-            [self.myNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
-            [self.leftNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
-            [self.rightNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
-            self.myNavigationBar.WiFiConnected = tmpWiFiConnected;
-            self.leftNavigationBar.WiFiConnected = tmpWiFiConnected;
-            self.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
-            [self.cameraToolView updateBtnImageWithConnect:tmpWiFiConnected];
+            [weakSelf.myNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+            [weakSelf.leftNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+            [weakSelf.rightNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
+            weakSelf.myNavigationBar.WiFiConnected = tmpWiFiConnected;
+            weakSelf.leftNavigationBar.WiFiConnected = tmpWiFiConnected;
+            weakSelf.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
+            [weakSelf.cameraToolView updateBtnImageWithConnect:tmpWiFiConnected];
         });
     }];
+    
+    [self.kvoController observe:[YNCABECamManager sharedABECamManager] keyPath:@"freeStorage" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        NSString *tmpNew = change[NSKeyValueChangeNewKey];
+        NSString *tmpOld = change[NSKeyValueChangeOldKey];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (tmpOld != NULL && tmpNew != NULL) {
+                if (tmpOld.length > 0 && tmpNew.length > 0) {
+                    if (![tmpNew isEqualToString:tmpOld]) {
+                        [weakSelf.cameraSettingView updateCameraSettingView];
+                    }
+                }
+            }
+        });
+    }];
+    
+    
 }
 
 //MARK: -- start count video duration

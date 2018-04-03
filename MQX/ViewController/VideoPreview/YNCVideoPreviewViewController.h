@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YNCVideoPreviewViewController : UIViewController
+#import "YNCBaseViewController.h"
+
+@interface YNCVideoPreviewViewController : YNCBaseViewController
 
 @end

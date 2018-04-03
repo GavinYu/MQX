@@ -19,13 +19,15 @@
     // Do any additional setup after loading the view.
     [UIViewController attemptRotationToDeviceOrientation];
     // Do any additional setup after loading the view.
-    
-    [self bindViewModel];
 }
 
-//MAKR: -- 绑定viewmodel
-- (void)bindViewModel {
-    _kvoController = [[FBKVOController alloc] initWithObserver:self];
+//MAKR: -- lazyload k
+- (FBKVOController *)kvoController {
+    if (!_kvoController) {
+        _kvoController = [[FBKVOController alloc] initWithObserver:self];
+    }
+    
+    return _kvoController;
 }
 
 - (void)didReceiveMemoryWarning {

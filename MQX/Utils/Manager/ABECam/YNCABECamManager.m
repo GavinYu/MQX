@@ -44,7 +44,7 @@ YNCSingletonM(ABECamManager)
     if (!_WiFiConnected) {
         self.deviceInfo = nil;
         self.currentWiFiConnected = NO;
-        self.freeStorage = @"0G";
+        self.freeStorage = @"0.0G";
         self.totalStorage = @"0G";
     }
 }
@@ -75,6 +75,12 @@ YNCSingletonM(ABECamManager)
                             weakSelf.WiFiConnected = tmpValue;
                             weakSelf.currentWiFiConnected = tmpValue;
                         }
+                        
+                        [weakSelf getSDCardInfo:^(YNCSDCardInfoModel *SDCardInfo) {
+                            if (SDCardInfo.errorcode == 0) {
+                                DLog(@"获取SD卡信息成功");
+                            }
+                        }];
                     }
                 }];
             }
