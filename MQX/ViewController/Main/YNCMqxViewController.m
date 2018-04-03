@@ -606,26 +606,20 @@
 
 //MARK: -- 开始录像
 - (void)startRecord {
+    WS(weakSelf);
     [[AbeCamHandle sharedInstance] setRecordStatus:@1 result:^(BOOL succeeded) {
         if (succeeded) {
-            self.videoHomepageView.isShowVideoTimeView = YES;
-            self.leftVideoHomepageView.isShowVideoTimeView = YES;
-            self.rightVideoHomepageView.isShowVideoTimeView = YES;
-            //开启计数定时器
-            [self startCountVideoDurationTimer];
+            [weakSelf setVideoTimeView:YES];
         }
       [[YNCMessageBox instance] show:succeeded==YES?@"start Record succeeded":@"start Record failed"];
     }];
 }
 //MARK: -- 停止录像
 - (void)stopRecord {
+    WS(weakSelf);
   [[AbeCamHandle sharedInstance] setRecordStatus:@0 result:^(BOOL succeeded) {
       if (succeeded) {
-          //关闭计数定时器
-          [self destroyCountVideoDurationTimer];
-          self.videoHomepageView.isShowVideoTimeView = NO;
-          self.leftVideoHomepageView.isShowVideoTimeView = NO;
-          self.rightVideoHomepageView.isShowVideoTimeView = NO;
+          [weakSelf setVideoTimeView:NO];
       }
     [[YNCMessageBox instance] show:succeeded==YES?@"stop Record succeeded":@"stop Record failed"];
   }];
@@ -692,6 +686,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!tmpWiFiConnected) {
                 [YNCUtil saveUserDefaultInfo:[NSNumber numberWithBool:NO] forKey:@"videoFlipStatus"];
+                [weakSelf setVideoTimeView:NO];
             }
             
             [weakSelf.myNavigationBar updateStateView:@{@"msgid":[NSNumber numberWithInt:tmpWiFiConnected==YES?YNCWARNING_DRONE_CONNECTED:YNCWARNING_DEVICE_DISCONNECTED], @"isHidden":[NSNumber numberWithBool:NO]}];
@@ -701,6 +696,8 @@
             weakSelf.leftNavigationBar.WiFiConnected = tmpWiFiConnected;
             weakSelf.rightNavigationBar.WiFiConnected = tmpWiFiConnected;
             [weakSelf.cameraToolView updateBtnImageWithConnect:tmpWiFiConnected];
+            
+            
         });
     }];
     
@@ -748,6 +745,21 @@
         self.videoDuration = 0;
         dispatch_source_cancel(_countVideoDurationTimer);
         _countVideoDurationTimer = nil;
+    }
+}
+
+//MARK: -- 显示/隐藏 录像时间
+- (void)setVideoTimeView:(BOOL)show {
+    self.videoHomepageView.isShowVideoTimeView = show;
+    self.leftVideoHomepageView.isShowVideoTimeView = show;
+    self.rightVideoHomepageView.isShowVideoTimeView = show;
+    
+    if (show) {
+        //开启计数定时器
+        [self startCountVideoDurationTimer];
+    } else {
+        //关闭计数定时器
+        [self destroyCountVideoDurationTimer];
     }
 }
 

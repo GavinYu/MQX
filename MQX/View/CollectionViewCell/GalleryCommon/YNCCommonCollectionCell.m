@@ -15,7 +15,7 @@
 #import "YNCPhotosDataBase.h"
 #import "YNCAppConfig.h"
 
-#define kItemWidth 2 * (kScreenWidth - 1.0 * 2.0) / 3.0
+#define kItemWidth 2 * (SCREENWIDTH - 1.0 * 2.0) / 3.0
 
 @interface YNCCommonCollectionCell ()
 
@@ -115,42 +115,19 @@
     }
 }
 
-- (void)displayCellWithMedia:(YuneecMedia *)media
+- (void)displayCellWithMedia:(YNCDronePhotoInfoModel *)media
 {
     YNCMediaType mediaType = YNCMediaTypeDronePhoto;
-//    if (media.mediaType == YuneecMediaTypeMP4) {
-//        mediaType = YNCMediaTypeDroneVideo;
-//        _playImageView.hidden = NO;
-//    } else {
-//        _playImageView.hidden = YES;
-//    }
-//    NSString *createDate = media.thumbnailMedia.createDate;
-//    NSString *fileName = media.thumbnailMedia.fileName;
-//    fileName = [NSString stringWithFormat:@"%@_%@", createDate, fileName];
-//    fileName = [fileName stringByDeletingPathExtension];
-//    NSString *filePath = [YNCImageHelper convertFileNameToDownloadLocationPath:[fileName stringByAppendingPathExtension:@"png"]];
-//    YNCPhotosDataBaseModel *model = [[YNCPhotosDataBase shareDataBase] selectOnePhotoDataBaseModelBySingleKey:fileName type:mediaType];
-//    if (model.singleKey.length > 0) {
-//        _tagImageView.hidden = NO;
-//    } else {
-//        _tagImageView.hidden = YES;
-//    }
-//    if (fileExistsAtPath(filePath)) {
-//        [_imageView setImageURL:[NSURL fileURLWithPath:filePath]];
-//    } else {
-//        WS(weakSelf);
-//        [media fetchThumbnailWithFilePath:filePath block:^(NSError * _Nullable error) {
-//            if (error == nil) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [weakSelf.imageView setImageURL:[NSURL fileURLWithPath:filePath]];
-//                });
-//            } else {
-//#ifdef OPENTOAST_HANK
-//                [[YNCMessageBox instance] show:@"show thuImage failed"];
-//#endif
-//            }
-//        }];
-//    }
+    if (media.mediaType == YNCMediaTypeDroneVideo) {
+        mediaType = YNCMediaTypeDroneVideo;
+        _playImageView.hidden = NO;
+    } else {
+        _playImageView.hidden = YES;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:media.filePath]) {
+        [_imageView setImageURL:[NSURL fileURLWithPath:media.filePath]];
+    }
 }
 
 

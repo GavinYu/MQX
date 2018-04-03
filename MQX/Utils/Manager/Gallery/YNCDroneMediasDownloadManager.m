@@ -151,9 +151,16 @@
         YNCDronePhotoInfoModel *itemPhotoModel = [YNCDronePhotoInfoModel new];
         itemPhotoModel.filePath = filePath;
         itemPhotoModel.title = fileName;
+        itemPhotoModel.pixelWidth = SCREENWIDTH;
+        itemPhotoModel.pixelHeight = SCREENHEIGHT;
         
         if ([fileType integerValue] == kPicture) {
             itemPhotoModel.mediaType = YNCMediaTypeDronePhoto;
+            
+            UIImage *tmpImg = [UIImage imageWithContentsOfFile:filePath];
+            itemPhotoModel.pixelWidth = tmpImg.size.width;
+            itemPhotoModel.pixelHeight = tmpImg.size.height;
+            
             [self.photoFileAarry addObject:itemPhotoModel];
         } else {
             itemPhotoModel.mediaType = YNCMediaTypeDroneVideo;

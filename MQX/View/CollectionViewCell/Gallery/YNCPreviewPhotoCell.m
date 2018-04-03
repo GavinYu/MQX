@@ -45,6 +45,7 @@
     _scrollView.delegate = self;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.pagingEnabled = YES;
     [self addSubview:_scrollView];
     
     self.imageV = [[YYAnimatedImageView alloc] init];
@@ -85,8 +86,8 @@
         [self configureFrameWithWidth:width height:height];
     } else if ([object isKindOfClass:[YNCDronePhotoInfoModel class]]) {
         YNCDronePhotoInfoModel *photoInfo = object;
-        width = SCREENWIDTH;
-        height = SCREENHEIGHT;
+        width = photoInfo.pixelWidth;
+        height = photoInfo.pixelHeight;
         switch (photoInfo.mediaType) {
             case YNCMediaTypeDronePhoto:
             {

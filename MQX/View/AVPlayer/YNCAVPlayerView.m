@@ -44,7 +44,7 @@
     }
 }
 
-+ (instancetype)sharedFB_AVPlayerView
++ (instancetype)sharedAVPlayerView
 {
     static YNCAVPlayerView *playerView = nil;
     static dispatch_once_t onceToken;
@@ -103,11 +103,11 @@
         if (number.integerValue == 0) {
             NSLog(@"pause");
             self.playBtn.hidden = NO;
-            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"btn_play_small"] forState:(UIControlStateNormal)];
+            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"btn_play_big"] forState:(UIControlStateNormal)];
         } else {
             NSLog(@"play");
             self.playBtn.hidden = YES;
-            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"btn_stop_small"] forState:(UIControlStateNormal)];
+            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"btn_stop_big"] forState:(UIControlStateNormal)];
         }
     }
 }

@@ -11,9 +11,9 @@
 
 @class AVAsset;
 
-@class YuneecMedia;
 @class PHAsset;
-@class YNCDronePhotoInfo;
+@class YNCDronePhotoInfoModel;
+
 @interface YNCCommonCollectionCell : UICollectionViewCell
 
 /** 播放的按钮 **/
@@ -34,8 +34,8 @@
 // 配置数据
 - (void)displayCellWithAsset:(PHAsset *)asset;
 
-- (void)displayCellWithModel:(YNCDronePhotoInfo *)photoInfo;
+- (void)displayCellWithModel:(YNCDronePhotoInfoModel *)photoInfo;
 
-- (void)displayCellWithMedia:(YuneecMedia *)media;
+- (void)displayCellWithMedia:(YNCDronePhotoInfoModel *)media;
 
 @end

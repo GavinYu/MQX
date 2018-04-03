@@ -50,12 +50,18 @@
                         [mediaArray addObjectsFromArray:videoList];
                     }
                     
-                    complete(dataDictionary,dateArray,mediaArray,photoList.count,videoList.count,nil);
+                    complete(dataDictionary,dateArray,mediaArray,videoList.count,photoList.count,nil);
                 } else {
                     complete(nil,nil,nil,0,0,[NSError errorWithDomain:@"error" code:404 userInfo:nil]);
                 }
             }];
         }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (mediaArray.count == 0) {
+                complete(nil,nil,nil,0,0,[NSError errorWithDomain:@"error" code:404 userInfo:nil]);
+            }
+        });
     });
 }
 

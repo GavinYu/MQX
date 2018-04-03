@@ -35,7 +35,7 @@
 @property (nonatomic, assign) YNCPlayerMode playerMode;
 - (void)play;
 - (void)pause;
-+ (instancetype)sharedFB_AVPlayerView;
++ (instancetype)sharedAVPlayerView;
 - (void)setUpSubviews;
 - (void)removeTimerObserver;
 - (void)layoutProgressLine;

@@ -47,7 +47,7 @@ static NSString *const kDroneGalleryFooterView = @"droneGalleryFooterView";
         itemNum = 5;
     }
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    width = (kScreenWidth - distance * (itemNum - 1) - 2 * edgeInset) / itemNum;
+    width = (SCREENWIDTH - distance * (itemNum - 1) - 2 * edgeInset) / itemNum;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, edgeInset, 0, edgeInset);
     flowLayout.itemSize = CGSizeMake(width, width);
     flowLayout.minimumInteritemSpacing = 0;
@@ -55,7 +55,7 @@ static NSString *const kDroneGalleryFooterView = @"droneGalleryFooterView";
     CGFloat collectionViewHeight = self.view.frame.size.height;
     CGFloat collectionViewWidth = self.view.frame.size.width;
     if (self.displayType == YNCDisplayTypeDroneGallery) {
-        collectionViewHeight = kScreenHeight;
+        collectionViewHeight = SCREENHEIGHT;
     }
     // 创建CollectionView对象
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, collectionViewWidth, collectionViewHeight) collectionViewLayout:flowLayout];
@@ -161,7 +161,7 @@ static NSString *const kDroneGalleryFooterView = @"droneGalleryFooterView";
 #pragma mark - dataSourceDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (self.dateArray.count == 0) {
+    if (self.dataDictionary.count == 0) {
         return 0;
     } else {
         NSString *key = self.dateArray[section];
