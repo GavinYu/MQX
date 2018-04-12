@@ -19,6 +19,7 @@
 #import "YNCCircleProgressModel.h"
 #import "YNCCircleProgressView.h"
 #import "YNCAppConfig.h"
+#import "YNCDronePhotoInfoModel.h"
 
 #define kSelectedArray [self mutableArrayValueForKey:@"selectedArray"]
 #define kWeakSelfSelectedArray [weakSelf mutableArrayValueForKey:@"selectedArray"]
@@ -28,18 +29,60 @@
 @property (weak, nonatomic)  YNCDroneToolView *toolView;
 @property (nonatomic, strong) YNCDroneMediasDownloadManager *droneMediasDownloadManager;
 @property (nonatomic, strong) YNCCircleProgressView *circleProgress;
+@property (nonatomic, strong) NSMutableArray *deleteArray;
+
+@property (nonatomic, strong) NSMutableArray *photoArray;
+@property (nonatomic, strong) NSMutableArray *videoArray;
+
+@property (nonatomic, strong) NSMutableDictionary *deleteIndexSetDic;
+@property (nonatomic, assign) NSUInteger deletePhotosNum;
+@property (nonatomic, assign) NSUInteger deleteVideosNum;
+
 @end
 
 static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
 
 @implementation YNCDroneGalleryViewController
 
+//MARK: -- lazyload deleteArray
+- (NSMutableArray *)deleteArray {
+    if (!_deleteArray) {
+        _deleteArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _deleteArray;
+}
+
+//MARK: -- lazyload photoArray
+- (NSMutableArray *)photoArray {
+    if (!_photoArray) {
+        _photoArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _photoArray;
+}
+
+//MARK: -- lazyload videoArray
+- (NSMutableArray *)videoArray {
+    if (!_videoArray) {
+        _videoArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _videoArray;
+}
+
+//MARK: -- lazyload deleteIndexSetDic
+- (NSMutableDictionary *)deleteIndexSetDic {
+    if (!_deleteIndexSetDic) {
+        _deleteIndexSetDic = [NSMutableDictionary dictionaryWithCapacity:0];
+    }
+    return _deleteIndexSetDic;
+}
+
+//MARK: -- View lifecycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = BackgroundColor_Black;
     // Do any additional setup after loading the view from its nib.
-    
+    self.fd_interactivePopDisabled = YES;
     self.enablePreview = YES;
     self.enableEdit = NO;
 }
@@ -48,12 +91,8 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
 #pragma mark - YNCDroneNavigationViewDelegate
 - (void)back
 {
-    for (UIViewController *vc in self.navigationController.childViewControllers) {
-        if ([vc isKindOfClass:[YNCMqxViewController class]]) {
-            [YNCUtil saveUserDefaultInfo:@(0) forKey:YNC_DRONEGALLERY_SCROLLPOINTY];
-            [self.navigationController popToViewController:vc animated:YES];
-        }
-    }
+    [YNCUtil saveUserDefaultInfo:@(0) forKey:YNC_DRONEGALLERY_SCROLLPOINTY];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)editDroneGalleryPhotos
@@ -99,65 +138,28 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
     [SVProgressHUD setContainerView:self.view];
     [SVProgressHUD setAnimationDelay:1.0];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"gallery_deleting", nil)];
-    NSMutableArray *deleteArray = [NSMutableArray arrayWithCapacity:0];
+    
     for (NSIndexPath *indexPath in self.selectedArray) {
         NSString *date = self.dateArray[indexPath.section];
         NSArray *dataArray = self.dataDictionary[date];
-//        YuneecMedia *media = dataArray[indexPath.row];
-//        [deleteArray addObject:media];
+        YNCDronePhotoInfoModel *media = dataArray[indexPath.row];
+        [self.deleteArray addObject:media];
+        if ([self.deleteIndexSetDic.allKeys containsObject:date]) {
+            NSMutableIndexSet *indexSet = self.deleteIndexSetDic[date];
+            [indexSet addIndex:indexPath.row];
+            self.deleteIndexSetDic[date] = indexSet;
+        } else {
+            NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSetWithIndex:indexPath.row];
+            self.deleteIndexSetDic[date] = indexSet;
+        }
+        if (media.mediaType == YNCMediaTypeDronePhoto) {
+            self.deletePhotosNum ++;
+        } else {
+            self.deleteVideosNum ++;
+        }
     }
-//    YuneecMediaManager *mediaManager = [[YuneecMediaManager alloc] initWithCameraType:YuneecCameraTypeFirebird];
-//    WS(weakSelf);
-//    [mediaManager deleteMedia:deleteArray withCompletion:^(NSError * _Nullable error) {
-//        if (error == nil) {
-//            double delayInSeconds = 0.5f;
-//            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(delayInSeconds * NSEC_PER_SEC));
-//            dispatch_after(popTime, dispatch_get_main_queue(), ^{
-//                [YNCDroneGalleryMediasHelper requestFireBirdDroneInfoDataComplete:^(NSDictionary *dataDictionary, NSArray *dateArray, NSArray *mediaArray, NSInteger videoAmount, NSInteger photoAmount, NSError *error) {
-//                    if (error == nil) {
-//                        if (dataDictionary == nil) {
-//                            weakSelf.toolView.ableUse = NO;
-//                            weakSelf.navigationView.type = NavigationViewTypeEdit;
-//                            [weakSelf.navigationView.editBtn setTitleColor:TextGrayColor forState:(UIControlStateNormal)];
-//                            weakSelf.navigationView.editBtn.enabled = NO;
-//                        }
-//                        weakSelf.dataDictionary = dataDictionary.mutableCopy;
-//                        weakSelf.dateArray = dateArray.mutableCopy;
-//                        weakSelf.droneNavigationModel.photosAmount = photoAmount;
-//                        weakSelf.droneNavigationModel.videosAmount = videoAmount;
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [weakSelf.navigationView updateCurrentIndexWithModel:weakSelf.droneNavigationModel];
-//                            [weakSelf.collectionView reloadData];
-//                            [SVProgressHUD setContainerView:nil];
-//                            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"gallery_file_delete", nil)];
-//                        });
-//                    } else {
-//                        if ([error.localizedDescription isEqualToString:@"No meida at SD card"]) {
-//                            [weakSelf.dataDictionary removeAllObjects];
-//                            [weakSelf.dateArray removeAllObjects];
-//                            weakSelf.droneNavigationModel.photosAmount = 0;
-//                            weakSelf.droneNavigationModel.videosAmount = 0;
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                [weakSelf.navigationView updateCurrentIndexWithModel:weakSelf.droneNavigationModel];
-//                                [weakSelf.collectionView reloadData];
-//                                [SVProgressHUD setContainerView:nil];
-//                                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"gallery_file_delete", nil)];
-//                            });
-//                        } else {
-//                            [SVProgressHUD setContainerView:nil];
-//                            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"failed--%@", error.localizedDescription]];
-//                        }
-//                    }
-//                }];
-//            });
-//        } else {
-//            [SVProgressHUD setContainerView:nil];
-//            [SVProgressHUD showSuccessWithStatus:@"删除失败"];
-//        }
-//        [kWeakSelfSelectedArray removeAllObjects];
-//    }];
-    
-    
+
+    [self deleteFileWithNumber:0];
 }
 
 - (void)downloadMedia
@@ -236,6 +238,9 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
             _toolView.ableUse = NO;
         } else {
             _toolView.ableUse = YES;
+            [_toolView.downloadBtn setImage:[UIImage imageNamed:@"icon_down_finished"] forState:(UIControlStateNormal)];
+            _toolView.downloadBtn.enabled = NO;
+            
             if (number == totalNumber) {
                 if ([_navigationView.selectedAllBtn.titleLabel.text isEqualToString:NSLocalizedString(@"gallery_unselect_all", nil)]) {
                     return;
@@ -336,6 +341,61 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//MARK: -- 递归删除图库
+- (void)deleteFileWithNumber:(NSInteger)number
+{
+    YNCDronePhotoInfoModel *media = self.deleteArray[number];
+    WS(weakSelf);
+    NSNumber *tmpType = media.mediaType==YNCMediaTypeDroneVideo?@(kRecord):@(kPicture);
+    
+    __block NSInteger blockNumber = number;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [[AbeCamHandle sharedInstance] deleteWithFileName:media.title FileType:tmpType result:^(BOOL succeeded) {
+            if (succeeded) {
+                NSFileManager *defaultFileManager  = [NSFileManager defaultManager];
+                if ([defaultFileManager fileExistsAtPath:media.filePath]) {
+                    [defaultFileManager removeItemAtPath:media.filePath error:nil];
+                }
+                
+                ++blockNumber;
+                if (blockNumber < weakSelf.deleteArray.count) {
+                    [weakSelf deleteFileWithNumber:blockNumber];
+                } else {
+                    for (NSString *date in self.deleteIndexSetDic.allKeys) {
+                        NSMutableArray *array = self.dataDictionary[date];
+                        [array removeObjectsAtIndexes:self.deleteIndexSetDic[date]];
+                        if (array.count > 0) {
+                            self.dataDictionary[date] = array;
+                        } else {
+                            [self.dateArray removeObject:date];
+                            [self.dataDictionary removeObjectForKey:date];
+                        }
+                    }
+                    if (self.dataDictionary.allKeys == 0) {
+                        weakSelf.toolView.ableUse = NO;
+                        weakSelf.navigationView.type = NavigationViewTypeEdit;
+                        [weakSelf.navigationView.editBtn setTitleColor:TextGrayColor forState:(UIControlStateNormal)];
+                        weakSelf.navigationView.editBtn.enabled = NO;
+                    }
+                    weakSelf.droneNavigationModel.photosAmount -= weakSelf.deletePhotosNum;
+                    weakSelf.droneNavigationModel.videosAmount -= weakSelf.deleteVideosNum;
+                    
+                    [kWeakSelfSelectedArray removeAllObjects];
+                    [weakSelf.deleteArray removeAllObjects];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.navigationView updateCurrentIndexWithModel:weakSelf.droneNavigationModel];
+                        [weakSelf.collectionView reloadData];
+                        [SVProgressHUD setContainerView:nil];
+                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"gallery_file_delete", nil)];
+                    });
+                }
+            } else {
+                
+            }
+        }];
+    });
 }
 
 /*

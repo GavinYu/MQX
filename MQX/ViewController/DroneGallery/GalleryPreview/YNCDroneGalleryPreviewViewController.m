@@ -166,7 +166,7 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 {
     [self releasePlayerView];
     [YNCUtil saveUserDefaultInfo:@(0) forKey:YNC_DRONEGALLERY_SCROLLPOINTY];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)rightBtnAction
@@ -449,11 +449,12 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     if (self.dataArray.count > 0) {
         self.droneNavigationModel.totalMediasAmount = self.dataArray.count;
         self.droneNavigationModel.currentIndex = 1;
-        [self configureToolViewWithNumber:0];
         _toolView.deleteBtn.enabled = YES;
         _toolView.downloadBtn.enabled = YES;
         _toolView.deleteBtn.alpha = 1.0;
         _toolView.downloadBtn.alpha = 1.0;
+        
+        [self configureToolViewWithNumber:0];
     }
     [self.view insertSubview:_collectionView belowSubview:_navigationView];
     

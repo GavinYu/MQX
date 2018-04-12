@@ -27,6 +27,8 @@ YNCSingletonH(ABECamManager)
 @property (nonatomic, copy) NSString *freeStorage;
 //设备信息
 @property (nonatomic, readonly) YNCDeviceInfoModel *deviceInfo;
+//是否正在录像
+@property (nonatomic, assign) BOOL isRecordingVideo;
 
 //监测WiFi连接的状态
 - (void)checkWiFiState;

@@ -11,6 +11,7 @@
 #import "YNCCommonCollectionHeaderView.h"
 #import "YNCCommonCollectionCell.h"
 #import "YNCDroneGalleryPreviewViewController.h"
+#import "YNCDronePhotoInfoModel.h"
 
 static NSString *const kDroneGalleryCommonCell = @"droneGalleryCommonCell";
 static NSString *const kDroneGalleryHeaderView = @"droneGalleryHeaderView";

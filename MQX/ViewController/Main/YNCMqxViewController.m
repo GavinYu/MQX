@@ -20,6 +20,7 @@
 #import "YNCWarningConstMacro.h"
 #import "YNCDroneGalleryPreviewViewController.h"
 #import "YNCWarningManager.h"
+#import "YNCNavigationViewController.h"
 
 @interface YNCMqxViewController () <UIGestureRecognizerDelegate, YNCCameraSettingViewDelegate>
 {
@@ -457,13 +458,22 @@
         
       case YNCEventActionCameraGallery:
       {
-//        if ([[YNCCameraManager sharedCameraManager].totalStorage isEqualToString:@"0MB"]) {
-//          [[YNCMessageBox instance] show:[NSString stringWithFormat:@"%@", NSLocalizedString(@"flight_interface_warning_CAMERA_NO_SDCARD", nil)]];
-//          return;
-//        }
+          if ([[YNCABECamManager sharedABECamManager].totalStorage isEqualToString:@"0MB"]) {
+              [[YNCMessageBox instance] show:NSLocalizedString(@"flight_interface_warning_CAMERA_NO_SDCARD", nil)];
+              return;
+          }
+          
+          if ([YNCABECamManager sharedABECamManager].isRecordingVideo) {
+              [[YNCMessageBox instance] show:NSLocalizedString(@"gallery_enter_drone_gallery_warning_recording", nil)];
+              return;
+          }
+          
           YNCDroneGalleryPreviewViewController *droneGalleryVC = [[YNCDroneGalleryPreviewViewController alloc] init];
-          [weakSelf.navigationController pushViewController:droneGalleryVC animated:YES];
-        
+          YNCNavigationViewController *droneGalleryNC = [[YNCNavigationViewController alloc] initWithRootViewController:droneGalleryVC];
+          droneGalleryNC.interfaceOrientation = UIInterfaceOrientationLandscapeRight;
+          droneGalleryNC.interfaceOrientationMask = UIInterfaceOrientationMaskLandscapeRight;
+          droneGalleryNC.navigationController.navigationBarHidden = YES;
+          [weakSelf presentViewController:droneGalleryNC animated:YES completion:nil];
       }
         break;
         
@@ -610,6 +620,7 @@
     [[AbeCamHandle sharedInstance] setRecordStatus:@1 result:^(BOOL succeeded) {
         if (succeeded) {
             [weakSelf setVideoTimeView:YES];
+            [YNCABECamManager sharedABECamManager].isRecordingVideo = YES;
         }
       [[YNCMessageBox instance] show:succeeded==YES?@"start Record succeeded":@"start Record failed"];
     }];
@@ -620,6 +631,7 @@
   [[AbeCamHandle sharedInstance] setRecordStatus:@0 result:^(BOOL succeeded) {
       if (succeeded) {
           [weakSelf setVideoTimeView:NO];
+          [YNCABECamManager sharedABECamManager].isRecordingVideo = NO;
       }
     [[YNCMessageBox instance] show:succeeded==YES?@"stop Record succeeded":@"stop Record failed"];
   }];

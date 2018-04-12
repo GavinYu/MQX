@@ -12,6 +12,9 @@
 @class YNCDroneNavigationModel;
 
 @interface YNCDroneGalleryViewController : YNCMeidasViewController
+
 @property (nonatomic, strong) YNCDroneNavigationModel *droneNavigationModel;
+
+
 - (void)configureSubView;
 @end
