@@ -171,8 +171,23 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
 
 - (void)rightBtnAction
 {
+    WS(weakSelf);
     [self releasePlayerView];
     YNCDroneGalleryViewController *droneGalleryVC = [[YNCDroneGalleryViewController alloc] init];
+    [droneGalleryVC setDroneGalleryDataChangeBlock:^(NSArray<YNCDronePhotoInfoModel *> *deleteDataArray, YNCDroneNavigationModel *droneNavigationModel) {
+        weakSelf.droneNavigationModel = droneNavigationModel;
+        [deleteDataArray enumerateObjectsUsingBlock:^(YNCDronePhotoInfoModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([weakSelf.dataArray containsObject:obj]) {
+                [weakSelf.dataArray removeObject:obj];
+            }
+            
+            if (idx == deleteDataArray.count - 1) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.collectionView reloadData];
+                });
+            }
+        }];
+    }];
     droneGalleryVC.dataDictionary = self.dataDictionary;
     droneGalleryVC.dateArray = self.dateArray;
     droneGalleryVC.droneNavigationModel = self.droneNavigationModel;
@@ -566,7 +581,6 @@ static NSString *const kDroneGalleryCell = @"droneGalleryCell";
     _number = number;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:number inSection:0];
     [_collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-    self.droneNavigationModel.totalMediasAmount = self.dataArray.count;
     self.droneNavigationModel.currentIndex = number + 1;
     [self configureToolViewWithNumber:number];
 }

@@ -33,4 +33,5 @@ typedef NS_ENUM(NSInteger, YNCMediaType)
 
 @property (nonatomic, assign) YNCMediaType mediaType;
 @property (nonatomic, copy) NSString *filePath;
+@property (nonatomic, copy) NSString *videoThumbPath;
 @end

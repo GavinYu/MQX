@@ -101,8 +101,11 @@
             {
                 _playeBtn.hidden = NO;
                 _scrollView.userInteractionEnabled = NO;
-                NSURL *videoImageURL = [NSURL fileURLWithPath:photoInfo.filePath];
-                [_imageV setImageURL:videoImageURL];
+
+                if (photoInfo.videoThumbPath) {
+                    NSURL *videoImageURL = [NSURL fileURLWithPath:photoInfo.videoThumbPath];
+                    [_imageV setImageURL:videoImageURL];
+                }
             }
                 break;
             case YNCMediaTypeEditedPhoto:
@@ -119,6 +122,7 @@
             {
                 _playeBtn.hidden = NO;
                 _scrollView.userInteractionEnabled = NO;
+
                 NSString *videoImagePath = [Document_ImageEdit stringByAppendingPathComponent:photoInfo.title];
                 videoImagePath = [videoImagePath stringByAppendingPathExtension:@"JPG"];
                 NSURL *videoImageURL = [NSURL fileURLWithPath:videoImagePath];
@@ -183,8 +187,12 @@
     _scrollView.minimumZoomScale = min;
     _scrollView.maximumZoomScale = 1.0;
     _scrollView.zoomScale = _scrollView.minimumZoomScale;
-    _imageV.frame = CGRectMake(0, 0, width * _scrollView.minimumZoomScale, height * _scrollView.minimumZoomScale);
-    _scrollView.contentSize = CGSizeMake(width * _scrollView.minimumZoomScale, height * _scrollView.minimumZoomScale);
+    if (width > 0 && height > 0) {
+        _imageV.frame = CGRectMake(0, 0, width * _scrollView.minimumZoomScale, height * _scrollView.minimumZoomScale);
+        _scrollView.contentSize = CGSizeMake(width * _scrollView.minimumZoomScale, height * _scrollView.minimumZoomScale);
+    }
+    
+    
     _imageV.frame = [self centerFrameSubview:_imageV inSuperview:_scrollView];
     self.currentImageVFrame = _imageV.frame;
 }

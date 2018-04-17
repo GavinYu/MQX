@@ -121,12 +121,14 @@
     if (media.mediaType == YNCMediaTypeDroneVideo) {
         mediaType = YNCMediaTypeDroneVideo;
         _playImageView.hidden = NO;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:media.videoThumbPath]) {
+            [_imageView setImageURL:[NSURL fileURLWithPath:media.videoThumbPath]];
+        }
     } else {
         _playImageView.hidden = YES;
-    }
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:media.filePath]) {
-        [_imageView setImageURL:[NSURL fileURLWithPath:media.filePath]];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:media.filePath]) {
+            [_imageView setImageURL:[NSURL fileURLWithPath:media.filePath]];
+        }
     }
 }
 

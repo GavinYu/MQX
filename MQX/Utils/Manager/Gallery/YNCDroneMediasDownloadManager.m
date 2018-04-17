@@ -164,6 +164,14 @@
             [self.photoFileAarry addObject:itemPhotoModel];
         } else {
             itemPhotoModel.mediaType = YNCMediaTypeDroneVideo;
+            NSString *tmpStr = [filePath stringByDeletingPathExtension];
+            NSString *videoThumbImagePath = [tmpStr stringByAppendingPathExtension:@"JPG"];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:videoThumbImagePath]) {
+                UIImage *tmpImg = [UIImage imageWithContentsOfFile:videoThumbImagePath];
+                itemPhotoModel.pixelWidth = tmpImg.size.width;
+                itemPhotoModel.pixelHeight = tmpImg.size.height;
+                itemPhotoModel.videoThumbPath = videoThumbImagePath;
+            }
             [self.videoFileAarry addObject:itemPhotoModel];
         }
         ++number;
@@ -188,10 +196,15 @@
                     itemPhotoModel.title = fileName;
                     
                     if ([fileType integerValue] == kPicture) {
+                        UIImage *tmpImg = [UIImage imageWithContentsOfFile:filePath];
+                        itemPhotoModel.pixelWidth = tmpImg.size.width;
+                        itemPhotoModel.pixelHeight = tmpImg.size.height;
                         itemPhotoModel.mediaType = YNCMediaTypeDronePhoto;
                         [weakSelf.photoFileAarry addObject:itemPhotoModel];
                     } else {
                         itemPhotoModel.mediaType = YNCMediaTypeDroneVideo;
+                        //截取视频的第一帧图像作为视频的缩略图
+                        itemPhotoModel = [self interceptVideoFirstImage:path withPhotoInfoModel:itemPhotoModel];
                         [weakSelf.videoFileAarry addObject:itemPhotoModel];
                     }
                     ++blockNumber;
@@ -253,6 +266,25 @@ static int xxxx = 0;
         model.createDate = [NSString stringWithFormat:@"%@-%@-%@",strArray[0], strArray[1], strArray[2]];
     }
     [[YNCPhotosDataBase shareDataBase] insertOnePhotoDataBase:model];
+}
+
+//MARK: -- 截取视频第一帧图像
+- (YNCDronePhotoInfoModel *)interceptVideoFirstImage:(NSString *)videoPath withPhotoInfoModel:(YNCDronePhotoInfoModel *)photoInfoModel {
+    //截取视频的第一帧图像作为视频的缩略图
+    UIImage *originImage = [YNCImageHelper getVideoFirstImageWithVideoPath:videoPath];
+    photoInfoModel.pixelWidth = originImage.size.width;
+    photoInfoModel.pixelHeight = originImage.size.height;
+    NSString *tmpStr = [videoPath stringByDeletingPathExtension];
+    NSString *videoThumbImagePath = [tmpStr stringByAppendingPathExtension:@"JPG"];
+    
+    [YNCImageHelper writeImage:originImage
+                        toPath:videoThumbImagePath
+            compressionQuality:1.0];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:videoThumbImagePath]) {
+        photoInfoModel.videoThumbPath = videoThumbImagePath;
+    }
+    
+    return photoInfoModel;
 }
 
 #pragma mark ----------------------------------- getters & setters

@@ -10,10 +10,15 @@
 #import "YNCMeidasViewController.h"
 
 @class YNCDroneNavigationModel;
+@class YNCDronePhotoInfoModel;
+
+typedef void(^YNCChangeDroneGalleryDataBlock)(NSArray <YNCDronePhotoInfoModel *> *deleteDataArray,YNCDroneNavigationModel *droneNavigationModel);
 
 @interface YNCDroneGalleryViewController : YNCMeidasViewController
 
 @property (nonatomic, strong) YNCDroneNavigationModel *droneNavigationModel;
+
+@property (nonatomic, copy) YNCChangeDroneGalleryDataBlock droneGalleryDataChangeBlock;
 
 
 - (void)configureSubView;

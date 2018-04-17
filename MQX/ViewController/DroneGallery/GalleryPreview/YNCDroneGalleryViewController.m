@@ -358,6 +358,10 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
                     [defaultFileManager removeItemAtPath:media.filePath error:nil];
                 }
                 
+                if ([defaultFileManager fileExistsAtPath:media.videoThumbPath]) {
+                    [defaultFileManager removeItemAtPath:media.videoThumbPath error:nil];
+                }
+                
                 ++blockNumber;
                 if (blockNumber < weakSelf.deleteArray.count) {
                     [weakSelf deleteFileWithNumber:blockNumber];
@@ -380,7 +384,10 @@ static NSString *const DRONECOLLECTIONVIEWCELL = @"dronecollectioncell";
                     }
                     weakSelf.droneNavigationModel.photosAmount -= weakSelf.deletePhotosNum;
                     weakSelf.droneNavigationModel.videosAmount -= weakSelf.deleteVideosNum;
-                    
+                    weakSelf.droneNavigationModel.totalMediasAmount = weakSelf.droneNavigationModel.photosAmount + weakSelf.droneNavigationModel.videosAmount;
+                    if (_droneGalleryDataChangeBlock) {
+                        _droneGalleryDataChangeBlock(weakSelf.deleteArray, weakSelf.droneNavigationModel);
+                    }
                     [kWeakSelfSelectedArray removeAllObjects];
                     [weakSelf.deleteArray removeAllObjects];
                     
