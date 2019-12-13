@@ -23,6 +23,97 @@
 		8442DD43204C3B0E00BF1E30 /* YNCPopWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD40204C3B0D00BF1E30 /* YNCPopWindowView.xib */; };
 		8442DD44204C3B0E00BF1E30 /* YNCPopWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */; };
 		D8D212EC9FA78396A8372755 /* libPods-MQX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EE210233C280BA3763F0E7 /* libPods-MQX.a */; };
+		E8CAA28223A37241008C8CE2 /* YNCPhotosDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F410715E205CD79500FF135D /* YNCPhotosDataBaseModel.m */; };
+		E8CAA28323A37241008C8CE2 /* WTAboutInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1872E20650EFC007B82E4 /* WTAboutInfoView.m */; };
+		E8CAA28423A37241008C8CE2 /* YNCVideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */; };
+		E8CAA28523A37241008C8CE2 /* WTMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C561FB20663D100032748A /* WTMediaModel.m */; };
+		E8CAA28623A37241008C8CE2 /* YNCDroneGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F410712A205CC17000FF135D /* YNCDroneGalleryViewController.m */; };
+		E8CAA28723A37241008C8CE2 /* YNCDronePhotoInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071AE205CEFFD00FF135D /* YNCDronePhotoInfoModel.m */; };
+		E8CAA28823A37241008C8CE2 /* YNCCommonCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107132205CC3DB00FF135D /* YNCCommonCollectionHeaderView.m */; };
+		E8CAA28923A37241008C8CE2 /* YNCWarningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB29205502E800BC425A /* YNCWarningManager.m */; };
+		E8CAA28A23A37241008C8CE2 /* YNCDroneStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB212054FAC200BC425A /* YNCDroneStateView.m */; };
+		E8CAA28B23A37241008C8CE2 /* UIColor+YNCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD34204C386E00BF1E30 /* UIColor+YNCColor.m */; };
+		E8CAA28C23A37241008C8CE2 /* YNCCameraSettingModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCD0204BF31200BF1E30 /* YNCCameraSettingModeCell.m */; };
+		E8CAA28D23A37241008C8CE2 /* YNCDroneToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = F410713B205CC6FB00FF135D /* YNCDroneToolView.m */; };
+		E8CAA28E23A37241008C8CE2 /* YNCPopWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */; };
+		E8CAA28F23A37241008C8CE2 /* YNCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB0B2050DDD700C885CE /* YNCNavigationViewController.m */; };
+		E8CAA29023A37241008C8CE2 /* YNCCameraCommonSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCC2204BF31000BF1E30 /* YNCCameraCommonSettingView.m */; };
+		E8CAA29123A37241008C8CE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5D720463B8000B06CEE /* main.m */; };
+		E8CAA29223A37241008C8CE2 /* YNCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B6EEBC205A19AA00B92BEA /* YNCBaseViewController.m */; };
+		E8CAA29323A37241008C8CE2 /* YNCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F410716D205CD98E00FF135D /* YNCDownloadManager.m */; };
+		E8CAA29423A37241008C8CE2 /* YNCDroneMediasDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071BE205CF6E300FF135D /* YNCDroneMediasDownloadManager.m */; };
+		E8CAA29523A37241008C8CE2 /* YNCPreviewPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F410715B205CD3E200FF135D /* YNCPreviewPhotoCell.m */; };
+		E8CAA29623A37241008C8CE2 /* YNCStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B6EEC0205A3FB600B92BEA /* YNCStoreViewController.m */; };
+		E8CAA29723A37241008C8CE2 /* YNCCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071B5205CF3FC00FF135D /* YNCCircleProgressView.m */; };
+		E8CAA29823A37241008C8CE2 /* UIButton+YNCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F4664204204AAFE600DA4CCE /* UIButton+YNCButton.m */; };
+		E8CAA29923A37241008C8CE2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF2204A7C0800029E50 /* MainViewController.m */; };
+		E8CAA29A23A37241008C8CE2 /* YNCCircleProgressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071BA205CF5C100FF135D /* YNCCircleProgressModel.m */; };
+		E8CAA29B23A37241008C8CE2 /* YNCAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107156205CCEE500FF135D /* YNCAVPlayerView.m */; };
+		E8CAA29C23A37241008C8CE2 /* YNCVideoHomepageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB002054D35600BC425A /* YNCVideoHomepageView.m */; };
+		E8CAA29D23A37241008C8CE2 /* YNCCameraSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCDA204BF31300BF1E30 /* YNCCameraSettingView.m */; };
+		E8CAA29E23A37241008C8CE2 /* YNCCameraSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071AA205CE21800FF135D /* YNCCameraSettingModel.m */; };
+		E8CAA29F23A37241008C8CE2 /* YNCMessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD2A204C202500BF1E30 /* YNCMessageBox.m */; };
+		E8CAA2A023A37241008C8CE2 /* YNCDroneGalleryTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071C4205CFD8500FF135D /* YNCDroneGalleryTransitionAnimator.m */; };
+		E8CAA2A123A37241008C8CE2 /* WTAboutInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1873420651314007B82E4 /* WTAboutInfoCell.m */; };
+		E8CAA2A223A37241008C8CE2 /* YNCDroneNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F410713E205CC71700FF135D /* YNCDroneNavigationView.m */; };
+		E8CAA2A323A37241008C8CE2 /* UIImage+Clip.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107170205CD98E00FF135D /* UIImage+Clip.m */; };
+		E8CAA2A423A37241008C8CE2 /* UIFont+YNCFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD36204C387C00BF1E30 /* UIFont+YNCFont.m */; };
+		E8CAA2A523A37241008C8CE2 /* YNCABECamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF9204A83B300029E50 /* YNCABECamManager.m */; };
+		E8CAA2A623A37241008C8CE2 /* YNCFB_SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DD3A204C3A7400BF1E30 /* YNCFB_SwitchCell.m */; };
+		E8CAA2A723A37241008C8CE2 /* ZWVerticalAlignLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107174205CD98E00FF135D /* ZWVerticalAlignLabel.m */; };
+		E8CAA2A823A37241008C8CE2 /* YNCDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB372055247200BC425A /* YNCDeviceInfoModel.m */; };
+		E8CAA2A923A37241008C8CE2 /* YNCGalleryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F458A571205CBDEE008B57D8 /* YNCGalleryBaseViewController.m */; };
+		E8CAA2AA23A37241008C8CE2 /* YNCBaseNavigationControllerStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACED204A78DA00029E50 /* YNCBaseNavigationControllerStack.m */; };
+		E8CAA2AB23A37241008C8CE2 /* YNCDroneNavigationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107150205CCAA200FF135D /* YNCDroneNavigationModel.m */; };
+		E8CAA2AC23A37241008C8CE2 /* YNCVideoTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641FD204AACA600DA4CCE /* YNCVideoTimeView.m */; };
+		E8CAA2AD23A37241008C8CE2 /* YNCDroneGalleryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107127205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m */; };
+		E8CAA2AE23A37241008C8CE2 /* YNCSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F410716A205CD98E00FF135D /* YNCSessionModel.m */; };
+		E8CAA2AF23A37241008C8CE2 /* YNCImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107172205CD98E00FF135D /* YNCImageHelper.m */; };
+		E8CAA2B023A37241008C8CE2 /* YNCCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071B2205CF3A500FF135D /* YNCCircleProgress.m */; };
+		E8CAA2B123A37241008C8CE2 /* YNCFlightStatusView_Firebird.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB0F2054DD1D00BC425A /* YNCFlightStatusView_Firebird.m */; };
+		E8CAA2B223A37241008C8CE2 /* YNCNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB1D2054FAC100BC425A /* YNCNavigationBar.m */; };
+		E8CAA2B323A37241008C8CE2 /* YNCDroneGalleryMediasHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071C2205CFC5D00FF135D /* YNCDroneGalleryMediasHelper.m */; };
+		E8CAA2B423A37241008C8CE2 /* YNCDroneGalleryPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107124205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m */; };
+		E8CAA2B523A37241008C8CE2 /* UIImage+YNCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB1A2054F7CB00BC425A /* UIImage+YNCImage.m */; };
+		E8CAA2B623A37241008C8CE2 /* YNCWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB2D2055089000BC425A /* YNCWarningView.m */; };
+		E8CAA2B723A37241008C8CE2 /* YNCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACDA204A6D1E00029E50 /* YNCConst.m */; };
+		E8CAA2B823A37241008C8CE2 /* YNCMeidasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F410712D205CC23700FF135D /* YNCMeidasViewController.m */; };
+		E8CAA2B923A37241008C8CE2 /* YNCStatusView_Firebird.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFAB142054DDFF00BC425A /* YNCStatusView_Firebird.m */; };
+		E8CAA2BA23A37241008C8CE2 /* YNCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB072050D09700C885CE /* YNCScrollLabelView.m */; };
+		E8CAA2BB23A37241008C8CE2 /* YNCCameraToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641FA204AAC8400DA4CCE /* YNCCameraToolView.m */; };
+		E8CAA2BC23A37241008C8CE2 /* YNCPhotosDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F410716F205CD98E00FF135D /* YNCPhotosDataBase.m */; };
+		E8CAA2BD23A37241008C8CE2 /* YNCMqxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46641DF204A972800DA4CCE /* YNCMqxViewController.m */; };
+		E8CAA2BE23A37241008C8CE2 /* YNCSDCardInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41071C8205D1D3700FF135D /* YNCSDCardInfoModel.m */; };
+		E8CAA2BF23A37241008C8CE2 /* YNCCameraSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442DCBF204BF31000BF1E30 /* YNCCameraSettingHeaderView.m */; };
+		E8CAA2C023A37241008C8CE2 /* YNCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACE9204A72FC00029E50 /* YNCUtil.m */; };
+		E8CAA2C123A37241008C8CE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7F5C920463B8000B06CEE /* AppDelegate.m */; };
+		E8CAA2C223A37241008C8CE2 /* YNCCommonCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107137205CC47500FF135D /* YNCCommonCollectionCell.m */; };
+		E8CAA2C423A37241008C8CE2 /* libPods-MQX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EE210233C280BA3763F0E7 /* libPods-MQX.a */; };
+		E8CAA2C523A37241008C8CE2 /* ABECam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F484491C205BCAC700EC4CCC /* ABECam.framework */; };
+		E8CAA2C723A37241008C8CE2 /* YNCFlightStatusView_Firebird.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB102054DD1D00BC425A /* YNCFlightStatusView_Firebird.xib */; };
+		E8CAA2C823A37241008C8CE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5D320463B8000B06CEE /* LaunchScreen.storyboard */; };
+		E8CAA2C923A37241008C8CE2 /* WTAboutInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F1873520651314007B82E4 /* WTAboutInfoCell.xib */; };
+		E8CAA2CA23A37241008C8CE2 /* YNCCameraSettingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCC0204BF31000BF1E30 /* YNCCameraSettingModeCell.xib */; };
+		E8CAA2CB23A37241008C8CE2 /* YNCDroneToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4107140205CC72800FF135D /* YNCDroneToolView.xib */; };
+		E8CAA2CC23A37241008C8CE2 /* YNCFB_SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD3B204C3A7400BF1E30 /* YNCFB_SwitchCell.xib */; };
+		E8CAA2CD23A37241008C8CE2 /* About.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C561F82065EBAE0032748A /* About.plist */; };
+		E8CAA2CE23A37241008C8CE2 /* YNCNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB1E2054FAC100BC425A /* YNCNavigationBar.xib */; };
+		E8CAA2CF23A37241008C8CE2 /* YNCCameraSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DCD6204BF31300BF1E30 /* YNCCameraSettingHeaderView.xib */; };
+		E8CAA2D023A37241008C8CE2 /* YNCAVPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4107158205CCFA000FF135D /* YNCAVPlayerView.xib */; };
+		E8CAA2D123A37241008C8CE2 /* CameraSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD0B204C026B00BF1E30 /* CameraSetting.plist */; };
+		E8CAA2D223A37241008C8CE2 /* YNCVideoHomepageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB162054F55700BC425A /* YNCVideoHomepageView.xib */; };
+		E8CAA2D323A37241008C8CE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5D120463B8000B06CEE /* Assets.xcassets */; };
+		E8CAA2D423A37241008C8CE2 /* YNCDroneNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4107152205CCCDE00FF135D /* YNCDroneNavigationView.xib */; };
+		E8CAA2D523A37241008C8CE2 /* YNCCameraToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46641FF204AACBD00DA4CCE /* YNCCameraToolView.xib */; };
+		E8CAA2D623A37241008C8CE2 /* YNCDroneStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB1C2054FAC100BC425A /* YNCDroneStateView.xib */; };
+		E8CAA2D723A37241008C8CE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B7F5CE20463B8000B06CEE /* Main.storyboard */; };
+		E8CAA2D823A37241008C8CE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD28204C03C200BF1E30 /* Localizable.strings */; };
+		E8CAA2D923A37241008C8CE2 /* YNCWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFAB2E2055089100BC425A /* YNCWarningView.xib */; };
+		E8CAA2DA23A37241008C8CE2 /* YNCPopWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442DD40204C3B0D00BF1E30 /* YNCPopWindowView.xib */; };
+		E8CAA2DB23A37241008C8CE2 /* YNCCircleProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41071B7205CF4DA00FF135D /* YNCCircleProgressView.xib */; };
+		E8CAA2DC23A37241008C8CE2 /* YNCVideoTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4664201204AACC900DA4CCE /* YNCVideoTimeView.xib */; };
+		E8CAA2DD23A37241008C8CE2 /* WTAboutInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F1873020650F17007B82E4 /* WTAboutInfoView.xib */; };
+		E8CAA2E023A37241008C8CE2 /* ABECam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F484491C205BCAC700EC4CCC /* ABECam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4107125205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107124205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m */; };
 		F4107128205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4107127205CBFF800FF135D /* YNCDroneGalleryBaseViewController.m */; };
 		F410712B205CC17000FF135D /* YNCDroneGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F410712A205CC17000FF135D /* YNCDroneGalleryViewController.m */; };
@@ -67,7 +158,6 @@
 		F482ACF3204A7C0800029E50 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF2204A7C0800029E50 /* MainViewController.m */; };
 		F482ACF6204A7C4D00029E50 /* YNCVideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF5204A7C4D00029E50 /* YNCVideoPreviewViewController.m */; };
 		F482ACFA204A83B300029E50 /* YNCABECamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F482ACF9204A83B300029E50 /* YNCABECamManager.m */; };
-		F484491D205BCAC700EC4CCC /* ABECam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F484491C205BCAC700EC4CCC /* ABECam.framework */; };
 		F484491E205BCC8300EC4CCC /* ABECam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F484491C205BCAC700EC4CCC /* ABECam.framework */; };
 		F484491F205BCC8300EC4CCC /* ABECam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F484491C205BCAC700EC4CCC /* ABECam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F498FB092050D09700C885CE /* YNCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F498FB072050D09700C885CE /* YNCScrollLabelView.m */; };
@@ -121,6 +211,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E8CAA2DF23A37241008C8CE2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8CAA2E023A37241008C8CE2 /* ABECam.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F46641E3204AA07500DA4CCE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,6 +266,8 @@
 		8442DD41204C3B0D00BF1E30 /* YNCPopWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNCPopWindowView.h; sourceTree = "<group>"; };
 		8442DD42204C3B0E00BF1E30 /* YNCPopWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNCPopWindowView.m; sourceTree = "<group>"; };
 		88825A89DA548D527E95DEEC /* Pods-MQX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQX.release.xcconfig"; path = "Pods/Target Support Files/Pods-MQX/Pods-MQX.release.xcconfig"; sourceTree = "<group>"; };
+		E8CAA2E423A37241008C8CE2 /* YMQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8CAA2E523A37244008C8CE2 /* MQX copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MQX copy-Info.plist"; path = "/Users/yuneec/Desktop/GavinYu/MQX/MQX copy-Info.plist"; sourceTree = "<absolute>"; };
 		F4107123205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryPreviewViewController.h; sourceTree = "<group>"; };
 		F4107124205CBF7800FF135D /* YNCDroneGalleryPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YNCDroneGalleryPreviewViewController.m; sourceTree = "<group>"; };
 		F4107126205CBFF800FF135D /* YNCDroneGalleryBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNCDroneGalleryBaseViewController.h; sourceTree = "<group>"; };
@@ -312,13 +415,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E8CAA2C323A37241008C8CE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CAA2C423A37241008C8CE2 /* libPods-MQX.a in Frameworks */,
+				E8CAA2C523A37241008C8CE2 /* ABECam.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4B7F5C220463B8000B06CEE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D8D212EC9FA78396A8372755 /* libPods-MQX.a in Frameworks */,
 				F484491E205BCC8300EC4CCC /* ABECam.framework in Frameworks */,
-				F484491D205BCAC700EC4CCC /* ABECam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +1051,7 @@
 				F4B7F5C620463B8000B06CEE /* Products */,
 				ECDE4F8590148917D54E9AE7 /* Pods */,
 				DED28BE5DF4D2DEBF7ABC81B /* Frameworks */,
+				E8CAA2E523A37244008C8CE2 /* MQX copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -949,6 +1061,7 @@
 				F4B7F5C520463B8000B06CEE /* MQX.app */,
 				F4B7F5DD20463B8000B06CEE /* MQXTests.xctest */,
 				F4B7F5E820463B8100B06CEE /* MQXUITests.xctest */,
+				E8CAA2E423A37241008C8CE2 /* YMQ.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1007,6 +1120,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E8CAA27F23A37241008C8CE2 /* YMQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8CAA2E123A37241008C8CE2 /* Build configuration list for PBXNativeTarget "YMQ" */;
+			buildPhases = (
+				E8CAA28023A37241008C8CE2 /* [CP] Check Pods Manifest.lock */,
+				E8CAA28123A37241008C8CE2 /* Sources */,
+				E8CAA2C323A37241008C8CE2 /* Frameworks */,
+				E8CAA2C623A37241008C8CE2 /* Resources */,
+				E8CAA2DE23A37241008C8CE2 /* [CP] Copy Pods Resources */,
+				E8CAA2DF23A37241008C8CE2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YMQ;
+			productName = MQX;
+			productReference = E8CAA2E423A37241008C8CE2 /* YMQ.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F4B7F5C420463B8000B06CEE /* MQX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4B7F5F120463B8100B06CEE /* Build configuration list for PBXNativeTarget "MQX" */;
@@ -1015,7 +1148,6 @@
 				F4B7F5C120463B8000B06CEE /* Sources */,
 				F4B7F5C220463B8000B06CEE /* Frameworks */,
 				F4B7F5C320463B8000B06CEE /* Resources */,
-				588270316B76C2D5E76A1CBA /* [CP] Embed Pods Frameworks */,
 				8E2DCF15F2C0C0A77200F3C5 /* [CP] Copy Pods Resources */,
 				F46641E3204AA07500DA4CCE /* Embed Frameworks */,
 			);
@@ -1070,9 +1202,12 @@
 		F4B7F5BD20463B8000B06CEE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = YunEEC;
 				TargetAttributes = {
+					E8CAA27F23A37241008C8CE2 = {
+						ProvisioningStyle = Automatic;
+					};
 					F4B7F5C420463B8000B06CEE = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -1106,11 +1241,42 @@
 				F4B7F5C420463B8000B06CEE /* MQX */,
 				F4B7F5DC20463B8000B06CEE /* MQXTests */,
 				F4B7F5E720463B8100B06CEE /* MQXUITests */,
+				E8CAA27F23A37241008C8CE2 /* YMQ */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E8CAA2C623A37241008C8CE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CAA2C723A37241008C8CE2 /* YNCFlightStatusView_Firebird.xib in Resources */,
+				E8CAA2C823A37241008C8CE2 /* LaunchScreen.storyboard in Resources */,
+				E8CAA2C923A37241008C8CE2 /* WTAboutInfoCell.xib in Resources */,
+				E8CAA2CA23A37241008C8CE2 /* YNCCameraSettingModeCell.xib in Resources */,
+				E8CAA2CB23A37241008C8CE2 /* YNCDroneToolView.xib in Resources */,
+				E8CAA2CC23A37241008C8CE2 /* YNCFB_SwitchCell.xib in Resources */,
+				E8CAA2CD23A37241008C8CE2 /* About.plist in Resources */,
+				E8CAA2CE23A37241008C8CE2 /* YNCNavigationBar.xib in Resources */,
+				E8CAA2CF23A37241008C8CE2 /* YNCCameraSettingHeaderView.xib in Resources */,
+				E8CAA2D023A37241008C8CE2 /* YNCAVPlayerView.xib in Resources */,
+				E8CAA2D123A37241008C8CE2 /* CameraSetting.plist in Resources */,
+				E8CAA2D223A37241008C8CE2 /* YNCVideoHomepageView.xib in Resources */,
+				E8CAA2D323A37241008C8CE2 /* Assets.xcassets in Resources */,
+				E8CAA2D423A37241008C8CE2 /* YNCDroneNavigationView.xib in Resources */,
+				E8CAA2D523A37241008C8CE2 /* YNCCameraToolView.xib in Resources */,
+				E8CAA2D623A37241008C8CE2 /* YNCDroneStateView.xib in Resources */,
+				E8CAA2D723A37241008C8CE2 /* Main.storyboard in Resources */,
+				E8CAA2D823A37241008C8CE2 /* Localizable.strings in Resources */,
+				E8CAA2D923A37241008C8CE2 /* YNCWarningView.xib in Resources */,
+				E8CAA2DA23A37241008C8CE2 /* YNCPopWindowView.xib in Resources */,
+				E8CAA2DB23A37241008C8CE2 /* YNCCircleProgressView.xib in Resources */,
+				E8CAA2DC23A37241008C8CE2 /* YNCVideoTimeView.xib in Resources */,
+				E8CAA2DD23A37241008C8CE2 /* WTAboutInfoView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4B7F5C320463B8000B06CEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1158,21 +1324,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		588270316B76C2D5E76A1CBA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQX/Pods-MQX-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		77C67240540FEA6BAF7C122D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1197,7 +1348,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MQX/Pods-MQX-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MQX/Pods-MQX-resources.sh",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
@@ -1207,16 +1358,139 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQX/Pods-MQX-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MQX/Pods-MQX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8CAA28023A37241008C8CE2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MQX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8CAA2DE23A37241008C8CE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MQX/Pods-MQX-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MQX/Pods-MQX-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E8CAA28123A37241008C8CE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CAA28223A37241008C8CE2 /* YNCPhotosDataBaseModel.m in Sources */,
+				E8CAA28323A37241008C8CE2 /* WTAboutInfoView.m in Sources */,
+				E8CAA28423A37241008C8CE2 /* YNCVideoPreviewViewController.m in Sources */,
+				E8CAA28523A37241008C8CE2 /* WTMediaModel.m in Sources */,
+				E8CAA28623A37241008C8CE2 /* YNCDroneGalleryViewController.m in Sources */,
+				E8CAA28723A37241008C8CE2 /* YNCDronePhotoInfoModel.m in Sources */,
+				E8CAA28823A37241008C8CE2 /* YNCCommonCollectionHeaderView.m in Sources */,
+				E8CAA28923A37241008C8CE2 /* YNCWarningManager.m in Sources */,
+				E8CAA28A23A37241008C8CE2 /* YNCDroneStateView.m in Sources */,
+				E8CAA28B23A37241008C8CE2 /* UIColor+YNCColor.m in Sources */,
+				E8CAA28C23A37241008C8CE2 /* YNCCameraSettingModeCell.m in Sources */,
+				E8CAA28D23A37241008C8CE2 /* YNCDroneToolView.m in Sources */,
+				E8CAA28E23A37241008C8CE2 /* YNCPopWindowView.m in Sources */,
+				E8CAA28F23A37241008C8CE2 /* YNCNavigationViewController.m in Sources */,
+				E8CAA29023A37241008C8CE2 /* YNCCameraCommonSettingView.m in Sources */,
+				E8CAA29123A37241008C8CE2 /* main.m in Sources */,
+				E8CAA29223A37241008C8CE2 /* YNCBaseViewController.m in Sources */,
+				E8CAA29323A37241008C8CE2 /* YNCDownloadManager.m in Sources */,
+				E8CAA29423A37241008C8CE2 /* YNCDroneMediasDownloadManager.m in Sources */,
+				E8CAA29523A37241008C8CE2 /* YNCPreviewPhotoCell.m in Sources */,
+				E8CAA29623A37241008C8CE2 /* YNCStoreViewController.m in Sources */,
+				E8CAA29723A37241008C8CE2 /* YNCCircleProgressView.m in Sources */,
+				E8CAA29823A37241008C8CE2 /* UIButton+YNCButton.m in Sources */,
+				E8CAA29923A37241008C8CE2 /* MainViewController.m in Sources */,
+				E8CAA29A23A37241008C8CE2 /* YNCCircleProgressModel.m in Sources */,
+				E8CAA29B23A37241008C8CE2 /* YNCAVPlayerView.m in Sources */,
+				E8CAA29C23A37241008C8CE2 /* YNCVideoHomepageView.m in Sources */,
+				E8CAA29D23A37241008C8CE2 /* YNCCameraSettingView.m in Sources */,
+				E8CAA29E23A37241008C8CE2 /* YNCCameraSettingModel.m in Sources */,
+				E8CAA29F23A37241008C8CE2 /* YNCMessageBox.m in Sources */,
+				E8CAA2A023A37241008C8CE2 /* YNCDroneGalleryTransitionAnimator.m in Sources */,
+				E8CAA2A123A37241008C8CE2 /* WTAboutInfoCell.m in Sources */,
+				E8CAA2A223A37241008C8CE2 /* YNCDroneNavigationView.m in Sources */,
+				E8CAA2A323A37241008C8CE2 /* UIImage+Clip.m in Sources */,
+				E8CAA2A423A37241008C8CE2 /* UIFont+YNCFont.m in Sources */,
+				E8CAA2A523A37241008C8CE2 /* YNCABECamManager.m in Sources */,
+				E8CAA2A623A37241008C8CE2 /* YNCFB_SwitchCell.m in Sources */,
+				E8CAA2A723A37241008C8CE2 /* ZWVerticalAlignLabel.m in Sources */,
+				E8CAA2A823A37241008C8CE2 /* YNCDeviceInfoModel.m in Sources */,
+				E8CAA2A923A37241008C8CE2 /* YNCGalleryBaseViewController.m in Sources */,
+				E8CAA2AA23A37241008C8CE2 /* YNCBaseNavigationControllerStack.m in Sources */,
+				E8CAA2AB23A37241008C8CE2 /* YNCDroneNavigationModel.m in Sources */,
+				E8CAA2AC23A37241008C8CE2 /* YNCVideoTimeView.m in Sources */,
+				E8CAA2AD23A37241008C8CE2 /* YNCDroneGalleryBaseViewController.m in Sources */,
+				E8CAA2AE23A37241008C8CE2 /* YNCSessionModel.m in Sources */,
+				E8CAA2AF23A37241008C8CE2 /* YNCImageHelper.m in Sources */,
+				E8CAA2B023A37241008C8CE2 /* YNCCircleProgress.m in Sources */,
+				E8CAA2B123A37241008C8CE2 /* YNCFlightStatusView_Firebird.m in Sources */,
+				E8CAA2B223A37241008C8CE2 /* YNCNavigationBar.m in Sources */,
+				E8CAA2B323A37241008C8CE2 /* YNCDroneGalleryMediasHelper.m in Sources */,
+				E8CAA2B423A37241008C8CE2 /* YNCDroneGalleryPreviewViewController.m in Sources */,
+				E8CAA2B523A37241008C8CE2 /* UIImage+YNCImage.m in Sources */,
+				E8CAA2B623A37241008C8CE2 /* YNCWarningView.m in Sources */,
+				E8CAA2B723A37241008C8CE2 /* YNCConst.m in Sources */,
+				E8CAA2B823A37241008C8CE2 /* YNCMeidasViewController.m in Sources */,
+				E8CAA2B923A37241008C8CE2 /* YNCStatusView_Firebird.m in Sources */,
+				E8CAA2BA23A37241008C8CE2 /* YNCScrollLabelView.m in Sources */,
+				E8CAA2BB23A37241008C8CE2 /* YNCCameraToolView.m in Sources */,
+				E8CAA2BC23A37241008C8CE2 /* YNCPhotosDataBase.m in Sources */,
+				E8CAA2BD23A37241008C8CE2 /* YNCMqxViewController.m in Sources */,
+				E8CAA2BE23A37241008C8CE2 /* YNCSDCardInfoModel.m in Sources */,
+				E8CAA2BF23A37241008C8CE2 /* YNCCameraSettingHeaderView.m in Sources */,
+				E8CAA2C023A37241008C8CE2 /* YNCUtil.m in Sources */,
+				E8CAA2C123A37241008C8CE2 /* AppDelegate.m in Sources */,
+				E8CAA2C223A37241008C8CE2 /* YNCCommonCollectionCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4B7F5C120463B8000B06CEE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1351,6 +1625,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E8CAA2E223A37241008C8CE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 412D59867CEB8D47C4686724 /* Pods-MQX.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A8Y3CK95UR;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MQX/Vendor",
+				);
+				INFOPLIST_FILE = "MQX copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banana.YMQ;
+				PRODUCT_NAME = YMQ;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8CAA2E323A37241008C8CE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88825A89DA548D527E95DEEC /* Pods-MQX.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A8Y3CK95UR;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MQX/Vendor",
+				);
+				INFOPLIST_FILE = "MQX copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banana.YMQ;
+				PRODUCT_NAME = YMQ;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F4B7F5EF20463B8100B06CEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1366,6 +1688,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1373,6 +1696,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1400,7 +1724,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1422,6 +1746,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1429,6 +1754,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1450,7 +1776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1464,14 +1790,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K57RY5M6B;
+				DEVELOPMENT_TEAM = 7TWV6233J9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MQX/Vendor",
 				);
 				INFOPLIST_FILE = MQX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.MQX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1487,14 +1813,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K57RY5M6B;
+				DEVELOPMENT_TEAM = 7TWV6233J9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MQX/Vendor",
 				);
 				INFOPLIST_FILE = MQX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.MQX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1564,6 +1890,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E8CAA2E123A37241008C8CE2 /* Build configuration list for PBXNativeTarget "YMQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8CAA2E223A37241008C8CE2 /* Debug */,
+				E8CAA2E323A37241008C8CE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F4B7F5C020463B8000B06CEE /* Build configuration list for PBXProject "MQX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

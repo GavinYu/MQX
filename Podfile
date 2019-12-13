@@ -1,6 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 target "MQX" do
  
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 pod 'Masonry'
 pod 'SVProgressHUD'
